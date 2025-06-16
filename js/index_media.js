@@ -1,46 +1,6 @@
 // ======================= 横竖屏自适应背景媒体加载器 =======================
 let lastOrientation = null; // 记录上一次的方向状态
 let isMediaInitializing = false; // 防止重复初始化的状态锁
-let currentParallaxHandlers = null; // 当前视差效果处理器
-
-// ================= 视频懒加载器类 =================
-class VideoLazyLoader {
-  constructor() {
-    this.isLoading = false;
-    this.loadPromise = null;
-  }
-
-  async loadVideo(src, mediaContainer) {
-    if (this.isLoading) return this.loadPromise;
-
-    this.isLoading = true;
-    this.loadPromise = new Promise((resolve, reject) => {
-      const video = document.createElement('video');
-      video.src = src;
-      video.autoplay = true;
-      video.muted = true;
-      video.loop = true;
-      video.playsInline = true;
-      video.style.cssText = 'width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.5s ease';
-      video.className = 'home-media';
-
-      video.addEventListener('loadeddata', () => {
-        resolve(video);
-      });
-
-      video.onerror = () => {
-        reject(new Error(`视频加载失败: ${src}`));
-      };
-
-      // 预加载但不显示
-      mediaContainer.appendChild(video);
-    });
-
-    return this.loadPromise;
-  }
-}
-
-const videoLazyLoader = new VideoLazyLoader();
 
 // ================= 新增滚动渐变效果函数 =================
 function initScrollFadeEffect() {
@@ -172,7 +132,6 @@ function initResponsiveBackground() {
 
   // 如果方向未改变，则直接返回
   if (lastOrientation === currentOrientation) {
-    isMediaInitializing = false; // 解锁
     return;
   }
 
@@ -186,179 +145,142 @@ function initResponsiveBackground() {
   if (existingLoader) existingLoader.remove();
 
   // 根据方向选择资源
-  let imgSrc, videoSrc, posterSrc;
+  let mediaSrc, posterSrc, mediaType;
   if (currentIsPortrait) {
-    imgSrc = mediaContainer.dataset.portraitImg;
-    videoSrc = mediaContainer.dataset.portraitVideo;
+    mediaSrc = mediaContainer.dataset.portraitVideo || mediaContainer.dataset.portraitImg;
     posterSrc = mediaContainer.dataset.portraitPoster;
+    mediaType = mediaContainer.dataset.portraitVideo ? 'video' : 'img';
   } else {
-    imgSrc = mediaContainer.dataset.landscapeImg;
-    videoSrc = mediaContainer.dataset.landscapeVideo;
+    mediaSrc = mediaContainer.dataset.landscapeVideo || mediaContainer.dataset.landscapeImg;
     posterSrc = mediaContainer.dataset.landscapePoster;
+    mediaType = mediaContainer.dataset.landscapeVideo ? 'video' : 'img';
   }
 
-  // 优先使用图片作为占位符，如果没有图片则使用poster
-  const placeholderSrc = imgSrc || posterSrc;
-
-  if (!placeholderSrc && !videoSrc) {
+  if (!mediaSrc) {
     console.error('[背景加载器] 未找到有效媒体资源');
-    isMediaInitializing = false;
     return;
   }
 
-  console.log(`[背景加载器] 占位图片: ${placeholderSrc}, 视频: ${videoSrc}`);
+  console.log(`[背景加载器] 使用资源: ${mediaSrc} (类型: ${mediaType})`);
 
-  // 第一阶段：立即显示占位图片
-  if (placeholderSrc) {
-    showPlaceholderImage(mediaContainer, placeholderSrc, currentIsPortrait);
-  }
+  // 创建媒体元素
+  const mediaElement = document.createElement(mediaType);
+  mediaElement.className = 'home-media';
+  mediaElement.style.cssText = 'width:100%;height:100%;object-fit:cover';
 
-  // 第二阶段：如果有视频，异步加载
-  if (videoSrc) {
-    loadVideoAsync(mediaContainer, videoSrc, currentIsPortrait);
+  // ================= 设置初始透明度 =================
+  mediaElement.style.opacity = '1';
+  mediaElement.style.transition = 'opacity 0.5s ease';
+  // ================================================
+
+  // 在媒体容器添加媒体元素后调用效果函数
+  mediaContainer.appendChild(mediaElement);
+  addMediaEffects(mediaElement, mediaType); // 添加新功能
+
+  console.log('[背景加载器] 媒体元素已创建');
+
+  // 创建自定义加载动画容器
+  const loaderContainer = document.createElement('div');
+  loaderContainer.className = 'custom-loader';
+  mediaContainer.prepend(loaderContainer);
+
+  // 创建加载动画元素
+  const loaderElement = document.createElement('div');
+  loaderElement.className = 'loader-animation';
+
+  // 设置加载动画样式（使用GIF）
+  loaderElement.style.backgroundImage = `url(${posterSrc})`;
+  loaderContainer.appendChild(loaderElement);
+
+  // 视频特殊处理
+  if (mediaType === 'video') {
+    mediaElement.autoplay = true;
+    mediaElement.muted = true;
+    mediaElement.loop = true;
+    mediaElement.playsInline = true;
+
+    // 增强循环播放机制 - 备用处理
+    mediaElement.addEventListener('ended', () => {
+      console.log('[背景加载器] 视频播放结束，重新开始播放');
+      mediaElement.currentTime = 0;
+      mediaElement.play().catch(e => console.warn('重新播放失败:', e));
+    });
+    mediaElement.setAttribute('playsinline', '');
+    mediaElement.setAttribute('webkit-playsinline', '');
+
+    // 多源支持
+    const source = document.createElement('source');
+    source.src = mediaSrc;
+    source.type = 'video/mp4';
+    mediaElement.appendChild(source);
+
+    // 处理自动播放限制
+    const playPromise = mediaElement.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(error => {
+        console.warn('[背景加载器] 自动播放被阻止:', error);
+        mediaElement.muted = true;
+        mediaElement.play();
+      });
+    }
+
+    // 视频加载完成后移除加载动画
+    mediaElement.addEventListener('loadeddata', () => {
+      loaderContainer.style.opacity = '0';
+      setTimeout(() => {
+        if (loaderContainer.parentNode) {
+          loaderContainer.parentNode.removeChild(loaderContainer);
+        }
+      }, 500); // 淡出动画持续时间
+      isMediaInitializing = false; // 解锁
+    });
   } else {
-    isMediaInitializing = false; // 只有图片的情况下解锁
+    mediaElement.src = mediaSrc;
+    mediaElement.loading = 'eager';
+
+    // 图片加载完成后移除加载动画
+    mediaElement.addEventListener('load', () => {
+      loaderContainer.style.opacity = '0';
+      setTimeout(() => {
+        if (loaderContainer.parentNode) {
+          loaderContainer.parentNode.removeChild(loaderContainer);
+        }
+      }, 500);
+      isMediaInitializing = false; // 解锁
+    });
   }
+
+  // 错误处理
+  mediaElement.onerror = function () {
+    console.error(`[背景加载器] 资源加载失败: ${mediaSrc}`);
+    this.style.display = 'none';
+    isMediaInitializing = false; // 解锁
+
+    // 尝试回退到备用类型
+    console.warn('[背景加载器] 尝试回退到备用媒体');
+    const fallbackType = mediaType === 'video' ? 'img' : 'video';
+    const fallbackSrc = currentIsPortrait ?
+      (mediaContainer.dataset.portraitImg || mediaContainer.dataset.portraitVideo) :
+      (mediaContainer.dataset.landscapeImg || mediaContainer.dataset.landscapeVideo);
+
+    if (fallbackSrc && fallbackSrc !== mediaSrc) {
+      console.log(`[背景加载器] 使用备用资源: ${fallbackSrc}`);
+      mediaElement.src = fallbackSrc;
+      mediaElement.style.display = 'block';
+    }
+  };
+
+  mediaContainer.appendChild(mediaElement);
+  console.log('[背景加载器] 媒体元素已创建');
 
   // ================= 初始化滚动渐变效果 =================
   initScrollFadeEffect();
 }
 
-// 显示占位图片（立即执行）
-function showPlaceholderImage(mediaContainer, imageSrc, isPortrait) {
-  // 创建自定义加载动画容器（使用高质量图片）
-  const loaderContainer = document.createElement('div');
-  loaderContainer.className = 'custom-loader';
-  mediaContainer.appendChild(loaderContainer);
-
-  const loaderElement = document.createElement('div');
-  loaderElement.className = 'loader-animation';
-  loaderElement.style.backgroundImage = `url(${imageSrc})`;
-  loaderContainer.appendChild(loaderElement);
-
-  // 创建图片元素
-  const imgElement = document.createElement('img');
-  imgElement.className = 'home-media';
-  imgElement.style.cssText = 'width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.5s ease';
-  imgElement.src = imageSrc;
-
-  imgElement.addEventListener('load', () => {
-    // 图片加载完成，显示图片，隐藏加载器
-    imgElement.style.opacity = '1';
-    loaderContainer.style.opacity = '0';
-
-    setTimeout(() => {
-      if (loaderContainer.parentNode) {
-        loaderContainer.remove();
-      }
-    }, 500);
-
-    // 立即为图片绑定视差效果
-    addMediaEffects(imgElement, 'img', isPortrait);
-    console.log('[背景加载器] 占位图片显示完成，视差效果已绑定');
-  });
-
-  imgElement.onerror = () => {
-    console.error(`[背景加载器] 占位图片加载失败: ${imageSrc}`);
-    loaderContainer.style.opacity = '0';
-    setTimeout(() => loaderContainer.remove(), 500);
-  };
-
-  mediaContainer.appendChild(imgElement);
-}
-
-// 异步加载视频（后台执行）
-async function loadVideoAsync(mediaContainer, videoSrc, isPortrait) {
-  try {
-    console.log('[背景加载器] 开始异步加载视频...');
-    const videoElement = await videoLazyLoader.loadVideo(videoSrc, mediaContainer);
-
-    // 视频加载完成，开始切换
-    switchToVideo(mediaContainer, videoElement, isPortrait);
-  } catch (error) {
-    console.error('[背景加载器] 视频加载失败:', error);
-    isMediaInitializing = false; // 视频加载失败时解锁
-  }
-}
-
-// 切换到视频（保持视差效果连续性）
-function switchToVideo(mediaContainer, videoElement, isPortrait) {
-  const currentImage = mediaContainer.querySelector('img.home-media');
-
-  if (currentImage) {
-    // 保存当前transform状态
-    const currentTransform = currentImage.style.transform;
-
-    // 移除图片的视差效果
-    removeParallaxEffects();
-
-    // 显示视频
-    videoElement.style.opacity = '1';
-    if (currentTransform) {
-      videoElement.style.transform = currentTransform;
-    }
-
-    // 为视频绑定视差效果
-    addMediaEffects(videoElement, 'video', isPortrait);
-
-    // 淡出图片
-    currentImage.style.opacity = '0';
-    setTimeout(() => {
-      if (currentImage.parentNode) {
-        currentImage.remove();
-      }
-    }, 500);
-
-    console.log('[背景加载器] 视频切换完成，视差效果已转移');
-  }
-
-  // 播放视频
-  const playPromise = videoElement.play();
-  if (playPromise !== undefined) {
-    playPromise.catch(error => {
-      console.warn('[背景加载器] 视频自动播放被阻止:', error);
-      videoElement.muted = true;
-      videoElement.play();
-    });
-  }
-
-  isMediaInitializing = false; // 完成后解锁
-}
-
-// 移除当前视差效果
-function removeParallaxEffects() {
-  if (currentParallaxHandlers) {
-    const mediaContainer = document.getElementById('page-header');
-
-    // 移除所有事件监听器
-    if (currentParallaxHandlers.mousemove) {
-      mediaContainer.removeEventListener('mousemove', currentParallaxHandlers.mousemove);
-    }
-    if (currentParallaxHandlers.mouseleave) {
-      mediaContainer.removeEventListener('mouseleave', currentParallaxHandlers.mouseleave);
-    }
-    if (currentParallaxHandlers.touchmove) {
-      mediaContainer.removeEventListener('touchmove', currentParallaxHandlers.touchmove);
-    }
-    if (currentParallaxHandlers.touchend) {
-      mediaContainer.removeEventListener('touchend', currentParallaxHandlers.touchend);
-    }
-    if (currentParallaxHandlers.deviceorientation) {
-      window.removeEventListener('deviceorientation', currentParallaxHandlers.deviceorientation);
-    }
-
-    currentParallaxHandlers = null;
-    console.log('[视差效果] 已移除当前视差效果');
-  }
-}
-
-function addMediaEffects(mediaElement, mediaType, isPortrait) {
-  // 先移除之前的视差效果
-  removeParallaxEffects();
-
+function addMediaEffects(mediaElement, mediaType) {
   if (mediaType === 'video') {
-    // 获取当前方向（使用传入的参数，更准确）
-    const currentIsPortrait = isPortrait !== undefined ? isPortrait : (window.innerHeight > window.innerWidth);
+    // 获取当前方向
+    const currentIsPortrait = window.innerHeight > window.innerWidth;
 
     // 竖屏模式下固定放大105%
     const baseScale = currentIsPortrait ? 1.05 : 1.2;
@@ -426,37 +348,33 @@ function addMediaEffects(mediaElement, mediaType, isPortrait) {
 
     // 设置陀螺仪监听
     function setupGyroListeners() {
-      const orientationHandler = (event) => {
-        if (!isGyroActive) return;
+      window.addEventListener('deviceorientation', handleOrientation);
+    }
 
-        // 获取陀螺仪数据（beta: 前后倾斜, gamma: 左右倾斜）
-        const beta = event.beta || 0;  // 前后倾斜（-180到180）
-        const gamma = event.gamma || 0; // 左右倾斜（-90到90）
+    // 处理陀螺仪数据
+    function handleOrientation(event) {
+      // 竖屏模式使用105%基础缩放
+      const baseScaleValue = currentIsPortrait ? 1.05 : 1;
+      if (!isGyroActive) return;
 
-        // 将角度转换为百分比偏移（归一化处理）
-        const moveX = (gamma / 90) * parallaxIntensity * 100; // -100% 到 100%
-        const moveY = (beta / 180) * parallaxIntensity * 100;
+      // 获取陀螺仪数据（beta: 前后倾斜, gamma: 左右倾斜）
+      const beta = event.beta || 0;  // 前后倾斜（-180到180）
+      const gamma = event.gamma || 0; // 左右倾斜（-90到90）
 
-        // 修正baseScaleValue变量名
-        const baseScaleValue = currentIsPortrait ? 1.05 : 1;
+      // 将角度转换为百分比偏移（归一化处理）
+      const moveX = (gamma / 90) * parallaxIntensity * 100; // -100% 到 100%
+      const moveY = (beta / 180) * parallaxIntensity * 100;
 
-        // 应用视差效果
-        mediaElement.style.transform = `
-              translate(${moveX}%, ${moveY}%)
-              scale(${baseScaleValue + scaleIntensity})
-            `;
-      };
-
-      window.addEventListener('deviceorientation', orientationHandler);
-
-      // 存储处理器引用
-      if (!currentParallaxHandlers) currentParallaxHandlers = {};
-      currentParallaxHandlers.deviceorientation = orientationHandler;
+      // 应用视差效果
+      mediaElement.style.transform = `
+        translate(${moveX}%, ${moveY}%)
+        scale(${baseScaleValue + scaleIntensity})
+      `;
     }
 
     // ================= 鼠标视差效果 =================
     function initMouseParallax() {
-      const mousemoveHandler = (e) => {
+      mediaContainer.addEventListener('mousemove', (e) => {
         const rect = mediaContainer.getBoundingClientRect();
         const x = (e.clientX - rect.left) / rect.width;
         const y = (e.clientY - rect.top) / rect.height;
@@ -464,28 +382,15 @@ function addMediaEffects(mediaElement, mediaType, isPortrait) {
         const moveX = (x - 0.5) * parallaxIntensity * 100;
         const moveY = (y - 0.5) * parallaxIntensity * 100;
 
-        // 修正baseScaleValue变量名
-        const baseScaleValue = currentIsPortrait ? 1.05 : 1;
-
         mediaElement.style.transform = `
-              translate(${moveX}%, ${moveY}%)
-              scale(${baseScaleValue + scaleIntensity})
-            `;
-      };
+          translate(${moveX}%, ${moveY}%)
+          scale(${1 + scaleIntensity})
+        `;
+      });
 
-      const mouseleaveHandler = () => {
-        // 修正baseScaleValue变量名
-        const baseScaleValue = currentIsPortrait ? 1.05 : 1;
-        mediaElement.style.transform = `scale(${baseScaleValue})`;
-      };
-
-      mediaContainer.addEventListener('mousemove', mousemoveHandler);
-      mediaContainer.addEventListener('mouseleave', mouseleaveHandler);
-
-      // 存储处理器引用
-      if (!currentParallaxHandlers) currentParallaxHandlers = {};
-      currentParallaxHandlers.mousemove = mousemoveHandler;
-      currentParallaxHandlers.mouseleave = mouseleaveHandler;
+      mediaContainer.addEventListener('mouseleave', () => {
+        mediaElement.style.transform = 'scale(1)';
+      });
     }
 
     // ================= 根据设备类型初始化 =================
@@ -502,63 +407,10 @@ function addMediaEffects(mediaElement, mediaType, isPortrait) {
       // PC设备使用鼠标事件
       initMouseParallax();
     }
-  }
-
-  // 为图片也添加视差效果支持
-  if (mediaType === 'img') {
-    const mediaContainer = document.getElementById('page-header');
-    if (!mediaContainer) return;
-
-    mediaContainer.style.overflow = 'hidden';
-    mediaElement.style.transformOrigin = 'center center';
-
-    // 图片的基础缩放
-    const baseScale = currentIsPortrait ? 1.05 : 1.1;
-    mediaElement.style.transform = `scale(${baseScale})`;
-    mediaElement.style.transition = 'transform 0.5s ease-out';
-
-    // 视差效果参数
-    const parallaxIntensity = 0.05;
-    const scaleIntensity = 0.05;
-
-    // 检测移动设备
-    const isMobile = /Mobi|Android/i.test(navigator.userAgent);
-
-    if (isMobile) {
-      // 移动设备不为图片添加复杂视差，保持性能
-      console.log('[视差效果] 移动设备图片模式，使用基础缩放');
-    } else {
-      // PC设备为图片添加鼠标视差
-      const mousemoveHandler = (e) => {
-        const rect = mediaContainer.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width;
-        const y = (e.clientY - rect.top) / rect.height;
-
-        const moveX = (x - 0.5) * parallaxIntensity * 100;
-        const moveY = (y - 0.5) * parallaxIntensity * 100;
-
-        mediaElement.style.transform = `
-          translate(${moveX}%, ${moveY}%)
-          scale(${baseScale + scaleIntensity})
-        `;
-      };
-
-      const mouseleaveHandler = () => {
-        mediaElement.style.transform = `scale(${baseScale})`;
-      };
-
-      mediaContainer.addEventListener('mousemove', mousemoveHandler);
-      mediaContainer.addEventListener('mouseleave', mouseleaveHandler);
-
-      // 存储处理器引用
-      if (!currentParallaxHandlers) currentParallaxHandlers = {};
-      currentParallaxHandlers.mousemove = mousemoveHandler;
-      currentParallaxHandlers.mouseleave = mouseleaveHandler;
-    }
 
     // ================= 触摸事件回退方案 =================
     function initTouchParallax() {
-      const touchmoveHandler = (e) => {
+      mediaContainer.addEventListener('touchmove', (e) => {
         e.preventDefault();
         const touch = e.touches[0];
         const rect = mediaContainer.getBoundingClientRect();
@@ -569,24 +421,14 @@ function addMediaEffects(mediaElement, mediaType, isPortrait) {
         const moveY = (y - 0.5) * parallaxIntensity * 50;
 
         mediaElement.style.transform = `
-              translate(${moveX}%, ${moveY}%)
-              scale(${baseScaleValue + scaleIntensity * 0.5}) // 缩放强度减半
-            `;
-      };
+          translate(${moveX}%, ${moveY}%)
+          scale(${1 + scaleIntensity * 0.5}) // 缩放强度减半
+        `;
+      });
 
-      const touchendHandler = () => {
-        // 修正baseScaleValue变量名
-        const baseScaleValue = currentIsPortrait ? 1.05 : 1;
-        mediaElement.style.transform = `scale(${baseScaleValue})`;
-      };
-
-      mediaContainer.addEventListener('touchmove', touchmoveHandler);
-      mediaContainer.addEventListener('touchend', touchendHandler);
-
-      // 存储处理器引用
-      if (!currentParallaxHandlers) currentParallaxHandlers = {};
-      currentParallaxHandlers.touchmove = touchmoveHandler;
-      currentParallaxHandlers.touchend = touchendHandler;
+      mediaContainer.addEventListener('touchend', () => {
+        mediaElement.style.transform = 'scale(1)';
+      });
     }
 
     // ================= 性能优化 =================
@@ -682,45 +524,23 @@ window.addEventListener('popstate', () => {
   }
 });
 
-// 3. 媒体状态自检（事件驱动，移除定时器）
-function setupMediaStatusCheck() {
-  // 使用MutationObserver监听DOM变化，替代定时器
+// 3. 媒体状态自检（兜底方案）
+function checkMediaStatus() {
+  if (location.pathname !== '/') return;
+
   const container = document.getElementById('home-media-container');
   if (!container) return;
 
-  const observer = new MutationObserver((mutations) => {
-    // 只在首页执行检查
-    if (location.pathname !== '/') return;
-
-    let mediaRemoved = false;
-    mutations.forEach((mutation) => {
-      mutation.removedNodes.forEach((node) => {
-        if (node.classList && node.classList.contains('home-media')) {
-          mediaRemoved = true;
-        }
-      });
-    });
-
-    if (mediaRemoved) {
-      console.log('[修复] 检测到媒体元素被移除，重新初始化');
-      setTimeout(() => {
-        const hasMedia = container.querySelector('.home-media');
-        if (!hasMedia) {
-          lastOrientation = null;
-          initResponsiveBackground();
-        }
-      }, 100);
-    }
-  });
-
-  observer.observe(container, {
-    childList: true,
-    subtree: true
-  });
-
-  return observer;
+  const hasMedia = container.querySelector('.home-media');
+  if (!hasMedia) {
+    console.log('[修复] 自检发现媒体丢失');
+    lastOrientation = null;
+    initResponsiveBackground();
+  }
+  // ================= 媒体自检时重置透明度 =================
+  initScrollFadeEffect();
 }
 
-// 启动媒体状态监听
-setupMediaStatusCheck();
+// 每0.5秒检查一次（轻量级检测）
+setInterval(checkMediaStatus, 500);
 

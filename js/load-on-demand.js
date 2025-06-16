@@ -61,25 +61,13 @@ class ResourceLoader {
     }
 
     /**
-     * 检测页面内容并按需加载相关资源
-     */
+ * 检测页面内容并按需加载相关资源
+ */
     autoDetectAndLoad() {
-        // 检测是否为首页 - 延迟加载视频背景相关资源
+        // 检测是否为首页
         if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
-            // 立即加载CSS，延迟加载JS以避免主线程阻塞
             this.loadCSS('/css/index_media.css', 'index-media-style');
-
-            // 使用window.onload延迟加载JS，确保核心脚本完成后再执行
-            if (document.readyState === 'complete') {
-                this.loadJS('/js/index_media.js', 'index-media-script');
-            } else {
-                window.addEventListener('load', () => {
-                    // 额外延迟100ms，确保其他onload事件完成
-                    setTimeout(() => {
-                        this.loadJS('/js/index_media.js', 'index-media-script');
-                    }, 100);
-                }, { once: true });
-            }
+            this.loadJS('/js/index_media.js', 'index-media-script');
         }
 
         // 检测是否为文章页
