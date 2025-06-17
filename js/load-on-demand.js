@@ -66,13 +66,12 @@ class ResourceLoader {
     autoDetectAndLoad() {
         // 检测是否为首页
         if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
-            this.loadCSS('/css/index_media.css', 'index-media-style');
+            // 修复：index_media.css 现在由头部优先加载，只需加载JS
             this.loadJS('/js/index_media.js', 'index-media-script');
         }
 
         // 检测是否为文章页
         if (document.querySelector('#post') || document.querySelector('.post-content')) {
-            this.loadCSS('/css/post-ui.css', 'post-ui-style');
             this.loadCSS('/css/custom-comment.css', 'custom-comment-style');
             this.loadCSS('/custom/css/tip_style.css', 'tip-style');
             this.loadJS('/js/fixed_comment.js', 'fixed-comment-script');
