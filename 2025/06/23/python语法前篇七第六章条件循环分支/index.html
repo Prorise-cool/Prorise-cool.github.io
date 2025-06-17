@@ -1,0 +1,713 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"><title>Python语法前篇（七）：第六章：条件循环分支 | 格物致知</title><meta name="keywords" content="Python-语法篇"><meta name="author" content="Prorise"><meta name="copyright" content="Prorise"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#cee8ff"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="Python语法前篇（七）：第六章：条件循环分支"><meta name="application-name" content="Python语法前篇（七）：第六章：条件循环分支"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#cee8ff"><meta property="og:type" content="article"><meta property="og:title" content="Python语法前篇（七）：第六章：条件循环分支"><meta property="og:url" content="https://prorise-cool.github.io/2025/06/23/python%E8%AF%AD%E6%B3%95%E5%89%8D%E7%AF%87%E4%B8%83%E7%AC%AC%E5%85%AD%E7%AB%A0%E6%9D%A1%E4%BB%B6%E5%BE%AA%E7%8E%AF%E5%88%86%E6%94%AF/index.html"><meta property="og:site_name" content="格物致知"><meta property="og:description" content="第六章：条件循环分支条件语句的高级用法链式比较Python 支持数学风格的链式比较，使得条件表达式更简洁明了。 1234567891011# 传统方式if x &amp;gt; 0 and x &amp;lt; 10:    print(&amp;quot;x在0到10之间&amp;quot;)# 链式比较if 0 &amp;lt; x"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://bu.dusays.com/2025/06/17/685113b7c39b1.webp"><meta property="article:author" content="Prorise"><meta property="article:tag" content="全栈, Full Stack, 前端, 后端, Node.js, Vue, React, 数据库, Linux, Docker, 个人博客, 技术分享"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://bu.dusays.com/2025/06/17/685113b7c39b1.webp"><meta name="description" content="第六章：条件循环分支条件语句的高级用法链式比较Python 支持数学风格的链式比较，使得条件表达式更简洁明了。 1234567891011# 传统方式if x &amp;gt; 0 and x &amp;lt; 10:    print(&amp;quot;x在0到10之间&amp;quot;)# 链式比较if 0 &amp;lt; x"><link rel="shortcut icon" href="/img/icons/favicon.ico"><link rel="canonical" href="https://prorise-cool.github.io/2025/06/23/python%E8%AF%AD%E6%B3%95%E5%89%8D%E7%AF%87%E4%B8%83%E7%AC%AC%E5%85%AD%E7%AB%A0%E6%9D%A1%E4%BB%B6%E5%BE%AA%E7%8E%AF%E5%88%86%E6%94%AF/"><link rel="preconnect" href="//cdn.cbd.int"><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""><link rel="preconnect" href="//busuanzi.ibruce.info"><meta name="google-site-verification" content="xxx"><meta name="baidu-site-verification" content="code-xxx"><meta name="msvalidate.01" content="xxx"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media=&quot;all&quot;"><link rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/node-snackbar/0.1.16/snackbar.min.css" media="print" onload="this.media=&quot;all&quot;"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media=&quot;all&quot;"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media=&quot;all&quot;"><script async="" src="https://www.googletagmanager.com/gtag/js?id=[object Object]"></script><script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","[object Object]")</script><script>const GLOBAL_CONFIG = {
+  linkPageTop: {"enable":true,"title":"与数百名博主无限进步","addFriendPlaceholder":"昵称（请勿包含博客等字样）：\n网站地址（要求博客地址，请勿提交个人主页）：\n头像图片url（请提供尽可能清晰的图片，我会上传到我自己的图床）：\n描述：\n站点截图（可选）：\n"},
+  peoplecanvas: undefined,
+  postHeadAiDescription: {"enable":true,"gptName":"Prorise","mode":"tianli","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"S-DNA1JM95BX2F9L0N","Referer":"https://xx.xx/"},
+  diytitle: undefined,
+  LA51: undefined,
+  greetingBox: {"enable":true,"default":"晚上好👋","list":[{"greeting":"晚安😴","startTime":0,"endTime":5},{"greeting":"早上好鸭👋, 祝你一天好心情！","startTime":6,"endTime":9},{"greeting":"上午好👋, 状态很好，鼓励一下～","startTime":10,"endTime":10},{"greeting":"11点多啦, 在坚持一下就吃饭啦～","startTime":11,"endTime":11},{"greeting":"午安👋, 宝贝","startTime":12,"endTime":14},{"greeting":"🌈充实的一天辛苦啦！","startTime":14,"endTime":18},{"greeting":"19点喽, 奖励一顿丰盛的大餐吧🍔。","startTime":19,"endTime":19},{"greeting":"晚上好👋, 在属于自己的时间好好放松😌~","startTime":20,"endTime":24}]},
+  twikooEnvId: 'https://twikoo.prorise666.site/',
+  commentBarrageConfig:{"enable":true,"maxBarrage":1,"barrageTime":4000,"accessToken":"b39753735ed0ed5ffeb771bc108e3158","mailMd5":"ec3291d59a8d7d3675df8a0537fcbc979f0fa611c8df55841fb7f4fd162bd07a"},
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: {"mode":"both","api":"https://img2color-go.vercel.app/api?img=","cover_change":true},
+  authorStatus: {"skills":["🤣 全栈开发工程师","🙂 前端架构设计师","🙃 后端服务构建者","🤩 移动端应用开发","🤯 数据库设计专家","🥳 DevOps运维实践者","🤭 技术栈多面手","😎 性能优化达人"]},
+  algolia: {"appId":"K8Y7M0RMXQ","apiKey":"11fa7380e2694483a44b143044e69e6e","indexName":"prorise_blog","hits":{"per_page":6},"languages":{"input_placeholder":"输入关键词后按下回车查找","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: {"limitDay":3,"position":"top","messagePrev":"距离上次更新已经过了","messageNext":"天，文章内容可能已经过时。"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    simplehomepage: false,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: Prorise","link":"链接: ","source":"来源: 格物致知","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: true,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE={configTitle:"格物致知",title:"Python语法前篇（七）：第六章：条件循环分支",postAI:"false",pageFillDescription:"第六章：条件循环分支, 条件语句的高级用法, 链式比较, 短路逻辑评估, 条件表达式的嵌套, 模式匹配（Python 3.10+）, 循环的高级技巧, 循环与迭代器协议, 生成器表达式代替列表推导式, 使用 enumerate 获取索引, 并行迭代多个序列, 流程控制的高级模式, 嵌套循环的优化, 递归与循环第六章条件循环分支条件语句的高级用法链式比较支持数学风格的链式比较使得条件表达式更简洁明了传统方式在到之间链式比较在到之间多重链式比较在到之间且在到之间短路逻辑评估使用短路逻辑评估条件表达式即一旦表达式的真假已经确定后续部分不再执行短路与如果返回不会执行短路或如果返回不会执行条件表达式的嵌套可以在条件表达式内部嵌套其他条件表达式创建复杂的决策树复杂嵌套的三元表达式高分良好及格不及格更复杂的嵌套条件儿童青少年成人老年人模式匹配引入了结构化模式匹配类似于其他语言的语句但功能更强大基本模式匹配整数浮点数字符串列表字典其他类型结构匹配和变量绑定原点轴上的点轴上的点对角线上的点普通点匹配对象属性原点轴上的点轴上的点对角线上的点普通点循环的高级技巧循环与迭代器协议理解迭代器协议有助于更高效地编写循环代码返回迭代器对象这个方法使类的实例成为一个可迭代对象当使用循环遍历该对象时会自动调用这个方法获取迭代器返回返回自身作为迭代器获取迭代器中的下一个值这个方法定义了迭代过程中如何获取下一个元素每次调用时计数器减并返回减前的值当计数器减到时抛出异常表示迭代结束如果当前值小于等于表示迭代已结束保存当前值计数器减返回减前的值测试代码生成器表达式代替列表推导式生成器表达式在处理大量数据时更节省内存列表推导式一次性创建所有元素占用大量内存占用内存占用内存生成器表达式按需生成元素内存效率高占用内存占用内存使用获取索引传统方式使用更优雅并可指定起始索引从开始计数并行迭代多个序列使用并行迭代岁来自流程控制的高级模式嵌套循环的优化嵌套循环的替代方案传统嵌套循环使用代替嵌套循环递归与循环有些问题使用递归比循环更直观通过下列的代码处理思想对于常见的树结构都能以递归的思想去解决问题递归处理嵌套结构递归处理子列表处理叶节点递归执行逻辑解析函数接收一个嵌套列表和当前深度默认为遍历列表中的每个元素如果元素是列表递归调用自身处理该子列表深度如果元素不是列表将深度元素值添加到结果中最终返回包含所有元素及其深度信息的扁平列表例如处理不是列表添加是列表递归处理不是列表添加是列表递归处理不是列表添加不是列表添加不是列表添加不是列表添加最终结果使用示例",isPost:!0,isHome:!1,isHighlightShrink:!1,isToc:!0,postUpdate:"2025-06-17 17:51:07",postMainColor:""}</script><noscript><style type="text/css">#nav{opacity:1}.justified-gallery img{opacity:1}#post-meta time,#recent-posts time{display:inline!important}</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0F1C2E')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#cee8ff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/font.css"><link rel="stylesheet" href="/css/index_media.css" media="(max-width:0),screen and (prefers-reduced-motion:reduce)" onload="this.media=`screen`"><link rel="stylesheet" href="/css/post-ui.css"><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://bu.dusays.com/2025/06/16/684f747174bc3.webp"><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"><script async="" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" href="/" title="博客"><img class="back-menu-item-icon" src="/img/favicon.ico" alt="博客"><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" href="/" title="后续项目..."><img class="back-menu-item-icon" src="https://image.anheyu.com/favicon.ico" alt="后续项目..."><span class="back-menu-item-text">后续项目...</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title">格物致知</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)" rel="external nofollow noreferrer">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size:.9em"></i><span> 归档</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size:.9em"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size:.9em"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>个人</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size:.9em"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size:.9em"></i><span> 留言板</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/todolist/"><i class="fas fa-check-double faa-tada"></i><span> 代办清单</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>预览</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/?server=netease&amp;id=3117791189"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size:.9em"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size:.9em"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/messages/"><i class="fas fa-comments faa-tada"></i><span> 评论总览</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size:.9em"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size:.9em"></i><span> 即刻短文</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size:.9em"></i><span> 随便逛逛</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="background-change-button"><a class="site-page" onclick="toggleWinbox()" title="切换背景" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-palette"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" rel="external nofollow noreferrer" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole()"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://tc.z.wiki/autoupload/iXoPwUD80CPTvQUyITTBFOykMT9FcWW5SasRoXZEs3Wyl5f0KlZfm6UsKj-HyTuv/20250609/bYMH/418X445/ef9a3f68-d36a-441a-95fe-8179b1a25992.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://tc.z.wiki/autoupload/iXoPwUD80CPTvQUyITTBFOykMT9FcWW5SasRoXZEs3Wyl5f0KlZfm6UsKj-HyTuv/20250609/bYMH/418X445/ef9a3f68-d36a-441a-95fe-8179b1a25992.png"></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://tc.z.wiki/autoupload/iXoPwUD80CPTvQUyITTBFOykMT9FcWW5SasRoXZEs3Wyl5f0KlZfm6UsKj-HyTuv/20250609/cYu3/347X390/zfb.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://tc.z.wiki/autoupload/iXoPwUD80CPTvQUyITTBFOykMT9FcWW5SasRoXZEs3Wyl5f0KlZfm6UsKj-HyTuv/20250609/cYu3/347X390/zfb.png"></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title">最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">音乐</div><span class="author-content-item-title">灵魂的碰撞💥</span></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/07/"><span class="card-archive-list-date">七月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/06/"><span class="card-archive-list-date">六月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">14</span><span>篇</span></div></a></li></ul></div></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item on" id="consoleCommentBarrage" onclick="anzhiyu.switchCommentBarrage()" title="热评开关"><a class="commentBarrage"><i class="anzhiyufont anzhiyu-icon-message"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);" rel="external nofollow noreferrer"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/" itemprop="url">后端技术</a><i class="anzhiyufont anzhiyu-icon-angle-right post-meta-separator"></i><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/Python/" itemprop="url">Python</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/Python-%E8%AF%AD%E6%B3%95%E7%AF%87/" tabindex="-1" itemprop="url"> <span><i class="anzhiyufont anzhiyu-icon-hashtag"></i>Python-语法篇</span></a></span></div></div><h1 class="post-title" itemprop="name headline">Python语法前篇（七）：第六章：条件循环分支</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-06-23T08:13:45.000Z" title="发表于 2025-06-23 16:13:45">2025-06-23</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-06-17T09:51:07.128Z" title="更新于 2025-06-17 17:51:07">2025-06-17</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span data-flag-title="Python语法前篇（七）：第六章：条件循环分支"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="twikoo_visitors" title="访问量"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator"> </span><span class="post-meta-position" title="作者IP属地为广东"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>广东</span><span class="post-meta-separator"></span><span class="post-meta-commentcount"><i class="anzhiyufont anzhiyu-icon-comments post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2025/06/23/python%E8%AF%AD%E6%B3%95%E5%89%8D%E7%AF%87%E4%B8%83%E7%AC%AC%E5%85%AD%E7%AB%A0%E6%9D%A1%E4%BB%B6%E5%BE%AA%E7%8E%AF%E5%88%86%E6%94%AF/#post-comment" tabindex="-1"><span id="twikoo-count"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></a></span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://bu.dusays.com/2025/06/17/685113b7c39b1.webp"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope="" itemtype="https://prorise-cool.github.io/2025/06/23/python%E8%AF%AD%E6%B3%95%E5%89%8D%E7%AF%87%E4%B8%83%E7%AC%AC%E5%85%AD%E7%AB%A0%E6%9D%A1%E4%BB%B6%E5%BE%AA%E7%8E%AF%E5%88%86%E6%94%AF/"><header><a class="post-meta-categories" href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/" itemprop="url">后端技术</a><a class="post-meta-categories" href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/Python/" itemprop="url">Python</a><a href="/tags/Python-%E8%AF%AD%E6%B3%95%E7%AF%87/" tabindex="-1" itemprop="url">Python-语法篇</a><h1 id="CrawlerTitle" itemprop="name headline">Python语法前篇（七）：第六章：条件循环分支</h1><span itemprop="author" itemscope="" itemtype="http://schema.org/Person">Prorise</span><time itemprop="dateCreated datePublished" datetime="2025-06-23T08:13:45.000Z" title="发表于 2025-06-23 16:13:45">2025-06-23</time><time itemprop="dateCreated datePublished" datetime="2025-06-17T09:51:07.128Z" title="更新于 2025-06-17 17:51:07">2025-06-17</time></header><div id="postchat_postcontent"><h2 id="第六章：条件循环分支"><a href="#第六章：条件循环分支" class="headerlink" title="第六章：条件循环分支"></a>第六章：条件循环分支</h2><h3 id="条件语句的高级用法"><a href="#条件语句的高级用法" class="headerlink" title="条件语句的高级用法"></a>条件语句的高级用法</h3><h4 id="链式比较"><a href="#链式比较" class="headerlink" title="链式比较"></a>链式比较</h4><p>Python 支持数学风格的链式比较，使得条件表达式更简洁明了。</p><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 传统方式</span></span><br><span class="line"><span class="keyword">if</span> x &gt; <span class="number">0</span> <span class="keyword">and</span> x &lt; <span class="number">10</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"x在0到10之间"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 链式比较</span></span><br><span class="line"><span class="keyword">if</span> <span class="number">0</span> &lt; x &lt; <span class="number">10</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"x在0到10之间"</span>)</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 多重链式比较</span></span><br><span class="line"><span class="keyword">if</span> <span class="number">10</span> &lt;= x &lt; <span class="number">20</span> &lt;= y &lt; <span class="number">30</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"x在10到20之间且y在20到30之间"</span>)</span><br></pre></td></tr></tbody></table></figure><h4 id="短路逻辑评估"><a href="#短路逻辑评估" class="headerlink" title="短路逻辑评估"></a>短路逻辑评估</h4><p>Python 使用短路逻辑评估条件表达式，即一旦表达式的真假已经确定，后续部分不再执行。</p><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 短路与(and)</span></span><br><span class="line"><span class="keyword">if</span> expensive_function() <span class="keyword">and</span> rare_condition():</span><br><span class="line">    <span class="comment"># 如果expensive_function()返回False，不会执行rare_condition()</span></span><br><span class="line">    do_something()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 短路或(or)</span></span><br><span class="line"><span class="keyword">if</span> quick_check() <span class="keyword">or</span> expensive_operation():</span><br><span class="line">    <span class="comment"># 如果quick_check()返回True，不会执行expensive_operation()</span></span><br><span class="line">    do_something()</span><br></pre></td></tr></tbody></table></figure><h4 id="条件表达式的嵌套"><a href="#条件表达式的嵌套" class="headerlink" title="条件表达式的嵌套"></a>条件表达式的嵌套</h4><p>可以在条件表达式内部嵌套其他条件表达式，创建复杂的决策树。</p><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 复杂嵌套的三元表达式</span></span><br><span class="line">result = (</span><br><span class="line">    <span class="string">"高分"</span> <span class="keyword">if</span> score &gt;= <span class="number">90</span> <span class="keyword">else</span> </span><br><span class="line">    <span class="string">"良好"</span> <span class="keyword">if</span> score &gt;= <span class="number">80</span> <span class="keyword">else</span> </span><br><span class="line">    <span class="string">"及格"</span> <span class="keyword">if</span> score &gt;= <span class="number">60</span> <span class="keyword">else</span> </span><br><span class="line">    <span class="string">"不及格"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更复杂的嵌套条件</span></span><br><span class="line">category = (</span><br><span class="line">    <span class="string">"儿童"</span> <span class="keyword">if</span> age &lt; <span class="number">12</span> <span class="keyword">else</span></span><br><span class="line">    <span class="string">"青少年"</span> <span class="keyword">if</span> age &lt; <span class="number">18</span> <span class="keyword">else</span></span><br><span class="line">    <span class="string">"成人"</span> <span class="keyword">if</span> age &lt; <span class="number">65</span> <span class="keyword">else</span></span><br><span class="line">    <span class="string">"老年人"</span></span><br><span class="line">)</span><br></pre></td></tr></tbody></table></figure><h4 id="模式匹配（Python-3-10-）"><a href="#模式匹配（Python-3-10-）" class="headerlink" title="模式匹配（Python 3.10+）"></a>模式匹配（Python 3.10+）</h4><p>Python 3.10 引入了结构化模式匹配，类似于其他语言的 switch/case 语句，但功能更强大。</p><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 基本模式匹配</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">analyze_type</span>(<span class="params">data</span>):</span><br><span class="line">    <span class="keyword">match</span> data:</span><br><span class="line">        <span class="keyword">case</span> <span class="built_in">int</span>():</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"整数"</span></span><br><span class="line">        <span class="keyword">case</span> <span class="built_in">float</span>():</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"浮点数"</span></span><br><span class="line">        <span class="keyword">case</span> <span class="built_in">str</span>():</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"字符串"</span></span><br><span class="line">        <span class="keyword">case</span> <span class="built_in">list</span>():</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"列表"</span></span><br><span class="line">        <span class="keyword">case</span> <span class="built_in">dict</span>():</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"字典"</span></span><br><span class="line">        <span class="keyword">case</span> _:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"其他类型"</span></span><br><span class="line"><span class="comment">#===========#===========#===========#===========#===========#===========#===========#===========</span></span><br><span class="line"><span class="comment"># 结构匹配和变量绑定</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">process_point</span>(<span class="params">point</span>):</span><br><span class="line">    <span class="keyword">match</span> point:</span><br><span class="line">        <span class="keyword">case</span> (<span class="number">0</span>, <span class="number">0</span>):</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"原点"</span></span><br><span class="line">        <span class="keyword">case</span> (<span class="number">0</span>, y):</span><br><span class="line">            <span class="keyword">return</span> <span class="string">f"Y轴上的点 y=<span class="subst">{y}</span>"</span></span><br><span class="line">        <span class="keyword">case</span> (x, <span class="number">0</span>):</span><br><span class="line">            <span class="keyword">return</span> <span class="string">f"X轴上的点 x=<span class="subst">{x}</span>"</span></span><br><span class="line">        <span class="keyword">case</span> (x, y) <span class="keyword">if</span> x == y:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">f"对角线上的点 (<span class="subst">{x}</span>, <span class="subst">{y}</span>)"</span></span><br><span class="line">        <span class="keyword">case</span> (x, y):</span><br><span class="line">            <span class="keyword">return</span> <span class="string">f"普通点 (<span class="subst">{x}</span>, <span class="subst">{y}</span>)"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 匹配对象属性</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Point</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, x, y</span>):</span><br><span class="line">        <span class="variable language_">self</span>.x = x</span><br><span class="line">        <span class="variable language_">self</span>.y = y</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">analyze_point</span>(<span class="params">point</span>):</span><br><span class="line">    <span class="keyword">match</span> point:</span><br><span class="line">        <span class="keyword">case</span> Point(x=<span class="number">0</span>, y=<span class="number">0</span>):</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"原点"</span></span><br><span class="line">        <span class="keyword">case</span> Point(x=<span class="number">0</span>, y=y):</span><br><span class="line">            <span class="keyword">return</span> <span class="string">f"Y轴上的点 y=<span class="subst">{y}</span>"</span></span><br><span class="line">        <span class="keyword">case</span> Point(x=x, y=<span class="number">0</span>):</span><br><span class="line">            <span class="keyword">return</span> <span class="string">f"X轴上的点 x=<span class="subst">{x}</span>"</span></span><br><span class="line">        <span class="keyword">case</span> Point(x=x, y=y) <span class="keyword">if</span> x == y:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">f"对角线上的点 (<span class="subst">{x}</span>, <span class="subst">{y}</span>)"</span></span><br><span class="line">        <span class="keyword">case</span> Point():</span><br><span class="line">            <span class="keyword">return</span> <span class="string">f"普通点 (<span class="subst">{point.x}</span>, <span class="subst">{point.y}</span>)"</span></span><br></pre></td></tr></tbody></table></figure><h3 id="循环的高级技巧"><a href="#循环的高级技巧" class="headerlink" title="循环的高级技巧"></a>循环的高级技巧</h3><h4 id="循环与迭代器协议"><a href="#循环与迭代器协议" class="headerlink" title="循环与迭代器协议"></a>循环与迭代器协议</h4><p>理解迭代器协议有助于更高效地编写循环代码：</p><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">CountDown</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, start</span>):</span><br><span class="line">        <span class="variable language_">self</span>.start = start</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__iter__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        返回迭代器对象</span></span><br><span class="line"><span class="string">        </span></span><br><span class="line"><span class="string">        这个方法使CountDown类的实例成为一个可迭代对象。</span></span><br><span class="line"><span class="string">        当使用for循环遍历该对象时，Python会自动调用这个方法获取迭代器。</span></span><br><span class="line"><span class="string">        </span></span><br><span class="line"><span class="string">        返回:</span></span><br><span class="line"><span class="string">            self: 返回自身作为迭代器</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">self</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__next__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        获取迭代器中的下一个值</span></span><br><span class="line"><span class="string">        </span></span><br><span class="line"><span class="string">        这个方法定义了迭代过程中如何获取下一个元素。</span></span><br><span class="line"><span class="string">        每次调用时，计数器减1并返回减1前的值。</span></span><br><span class="line"><span class="string">        当计数器减到0时，抛出StopIteration异常表示迭代结束。</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> <span class="variable language_">self</span>.start &lt;= <span class="number">0</span>:  <span class="comment"># 如果当前值小于等于0，表示迭代已结束</span></span><br><span class="line">            <span class="keyword">raise</span> StopIteration</span><br><span class="line">        current = <span class="variable language_">self</span>.start  <span class="comment"># 保存当前值</span></span><br><span class="line">        <span class="variable language_">self</span>.start -= <span class="number">1</span>       <span class="comment"># 计数器减1</span></span><br><span class="line">        <span class="keyword">return</span> current        <span class="comment"># 返回减1前的值</span></span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"><span class="comment"># 测试代码</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> CountDown(<span class="number">5</span>):</span><br><span class="line">    <span class="built_in">print</span>(i)</span><br></pre></td></tr></tbody></table></figure><h4 id="生成器表达式代替列表推导式"><a href="#生成器表达式代替列表推导式" class="headerlink" title="生成器表达式代替列表推导式"></a>生成器表达式代替列表推导式</h4><p>生成器表达式在处理大量数据时更节省内存：</p><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="comment"># 列表推导式 - 一次性创建所有元素</span></span><br><span class="line">sum_of_squares = sys.getsizeof(<span class="built_in">sum</span>([x*x <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1000000</span>)]))  <span class="comment"># 占用大量内存</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f"占用内存: <span class="subst">{sum_of_squares}</span> bytes"</span>) <span class="comment"># 占用内存: 32 bytes</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成器表达式 - 按需生成元素</span></span><br><span class="line">sum_of_squares = sys.getsizeof(<span class="built_in">sum</span>(x*x <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1000000</span>)))    <span class="comment"># 内存效率高</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f"占用内存: <span class="subst">{sys.getsizeof(sum_of_squares)}</span> bytes"</span>) <span class="comment"># 占用内存: 28 bytes</span></span><br></pre></td></tr></tbody></table></figure><h4 id="使用-enumerate-获取索引"><a href="#使用-enumerate-获取索引" class="headerlink" title="使用 enumerate 获取索引"></a>使用 enumerate 获取索引</h4><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 传统方式</span></span><br><span class="line">fruits = [<span class="string">'apple'</span>, <span class="string">'banana'</span>, <span class="string">'cherry'</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(fruits)):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f"<span class="subst">{i + <span class="number">1</span>}</span>. <span class="subst">{fruits[i]}</span>"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用enumerate更优雅（并可指定起始索引）</span></span><br><span class="line"><span class="keyword">for</span> i, fruit <span class="keyword">in</span> <span class="built_in">enumerate</span>(fruits, <span class="number">1</span>):  <span class="comment"># 从1开始计数</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f"<span class="subst">{i}</span>. <span class="subst">{fruit}</span>"</span>)</span><br></pre></td></tr></tbody></table></figure><h4 id="并行迭代多个序列"><a href="#并行迭代多个序列" class="headerlink" title="并行迭代多个序列"></a>并行迭代多个序列</h4><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用zip()并行迭代</span></span><br><span class="line">names = [<span class="string">'Alice'</span>, <span class="string">'Bob'</span>, <span class="string">'Charlie'</span>]</span><br><span class="line">ages = [<span class="number">24</span>, <span class="number">32</span>, <span class="number">28</span>]</span><br><span class="line">cities = [<span class="string">'New York'</span>, <span class="string">'Boston'</span>, <span class="string">'Chicago'</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> name, age, city <span class="keyword">in</span> <span class="built_in">zip</span>(names, ages, cities):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f"<span class="subst">{name}</span>, <span class="subst">{age}</span>岁, 来自<span class="subst">{city}</span>"</span>)</span><br></pre></td></tr></tbody></table></figure><h3 id="流程控制的高级模式"><a href="#流程控制的高级模式" class="headerlink" title="流程控制的高级模式"></a>流程控制的高级模式</h3><h4 id="嵌套循环的优化"><a href="#嵌套循环的优化" class="headerlink" title="嵌套循环的优化"></a>嵌套循环的优化</h4><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 嵌套循环的替代方案</span></span><br><span class="line"><span class="keyword">import</span> itertools</span><br><span class="line"></span><br><span class="line"><span class="comment"># 传统嵌套循环</span></span><br><span class="line">results = []</span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>):</span><br><span class="line">    <span class="keyword">for</span> y <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>):</span><br><span class="line">        <span class="keyword">for</span> z <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>):</span><br><span class="line">            results.append((x, y, z))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用product代替嵌套循环</span></span><br><span class="line">results = <span class="built_in">list</span>(itertools.product(<span class="built_in">range</span>(<span class="number">3</span>), <span class="built_in">range</span>(<span class="number">3</span>), <span class="built_in">range</span>(<span class="number">3</span>)))</span><br></pre></td></tr></tbody></table></figure><h4 id="递归与循环"><a href="#递归与循环" class="headerlink" title="递归与循环"></a>递归与循环</h4><p>有些问题使用递归比循环更直观：</p><blockquote><p>通过下列的代码处理思想，对于常见的树结构都能以递归的思想去解决问题</p></blockquote><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 递归处理嵌套结构</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">process_nested_list</span>(<span class="params">nested_list, depth=<span class="number">0</span></span>):</span><br><span class="line">    result = []</span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> nested_list:</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">isinstance</span>(item, <span class="built_in">list</span>):</span><br><span class="line">            <span class="comment"># 递归处理子列表</span></span><br><span class="line">            sub_result = process_nested_list(item, depth + <span class="number">1</span>)</span><br><span class="line">            result.extend(sub_result)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="comment"># 处理叶节点</span></span><br><span class="line">            result.append((depth, item))</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 递归执行逻辑解析:</span></span><br><span class="line"><span class="comment"># 1. 函数接收一个嵌套列表和当前深度(默认为0)</span></span><br><span class="line"><span class="comment"># 2. 遍历列表中的每个元素:</span></span><br><span class="line"><span class="comment">#    - 如果元素是列表，递归调用自身处理该子列表，深度+1</span></span><br><span class="line"><span class="comment">#    - 如果元素不是列表，将(深度,元素值)添加到结果中</span></span><br><span class="line"><span class="comment"># 3. 最终返回包含所有元素及其深度信息的扁平列表</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># 例如处理 [1, [2, [3, 4], 5], 6]:</span></span><br><span class="line"><span class="comment"># - 1不是列表，添加(0,1)</span></span><br><span class="line"><span class="comment"># - [2,[3,4],5]是列表，递归处理:</span></span><br><span class="line"><span class="comment">#   - 2不是列表，添加(1,2)</span></span><br><span class="line"><span class="comment">#   - [3,4]是列表，递归处理:</span></span><br><span class="line"><span class="comment">#     - 3不是列表，添加(2,3)</span></span><br><span class="line"><span class="comment">#     - 4不是列表，添加(2,4)</span></span><br><span class="line"><span class="comment">#   - 5不是列表，添加(1,5)</span></span><br><span class="line"><span class="comment"># - 6不是列表，添加(0,6)</span></span><br><span class="line"><span class="comment"># 最终结果: [(0,1), (1,2), (2,3), (2,4), (1,5), (0,6)]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用示例</span></span><br><span class="line">data = [<span class="number">1</span>, [<span class="number">2</span>, [<span class="number">3</span>, <span class="number">4</span>], <span class="number">5</span>], <span class="number">6</span>]</span><br><span class="line"><span class="built_in">print</span>(process_nested_list(data))  <span class="comment"># [(0, 1), (1, 2), (2, 3), (2, 4), (1, 5), (0, 6)]</span></span><br></pre></td></tr></tbody></table></figure></div></article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/16/684f747174bc3.webp" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/16/684f747174bc3.webp" title="头像" alt="头像"></a><div class="post-copyright__author_name">Prorise</div><div class="post-copyright__author_desc">这聒噪的世界让沉默的人显得另类</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://prorise-cool.github.io/2025/06/23/python%E8%AF%AD%E6%B3%95%E5%89%8D%E7%AF%87%E4%B8%83%E7%AC%AC%E5%85%AD%E7%AB%A0%E6%9D%A1%E4%BB%B6%E5%BE%AA%E7%8E%AF%E5%88%86%E6%94%AF/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl(&quot;https://prorise-cool.github.io/2025/06/23/python%E8%AF%AD%E6%B3%95%E5%89%8D%E7%AF%87%E4%B8%83%E7%AC%AC%E5%85%AD%E7%AB%A0%E6%9D%A1%E4%BB%B6%E5%BE%AA%E7%8E%AF%E5%88%86%E6%94%AF/&quot;)">Python语法前篇（七）：第六章：条件循环分支</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://tc.z.wiki/autoupload/iXoPwUD80CPTvQUyITTBFOykMT9FcWW5SasRoXZEs3Wyl5f0KlZfm6UsKj-HyTuv/20250609/bYMH/418X445/ef9a3f68-d36a-441a-95fe-8179b1a25992.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://tc.z.wiki/autoupload/iXoPwUD80CPTvQUyITTBFOykMT9FcWW5SasRoXZEs3Wyl5f0KlZfm6UsKj-HyTuv/20250609/bYMH/418X445/ef9a3f68-d36a-441a-95fe-8179b1a25992.png" alt="微信"></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://tc.z.wiki/autoupload/iXoPwUD80CPTvQUyITTBFOykMT9FcWW5SasRoXZEs3Wyl5f0KlZfm6UsKj-HyTuv/20250609/cYu3/347X390/zfb.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://tc.z.wiki/autoupload/iXoPwUD80CPTvQUyITTBFOykMT9FcWW5SasRoXZEs3Wyl5f0KlZfm6UsKj-HyTuv/20250609/cYu3/347X390/zfb.png" alt="支付宝"></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display:none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://prorise-cool.github.io/2025/06/23/python%E8%AF%AD%E6%B3%95%E5%89%8D%E7%AF%87%E4%B8%83%E7%AC%AC%E5%85%AD%E7%AB%A0%E6%9D%A1%E4%BB%B6%E5%BE%AA%E7%8E%AF%E5%88%86%E6%94%AF/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=Python语法前篇（七）：第六章：条件循环分支&amp;url=https://prorise-cool.github.io/2025/06/23/python%E8%AF%AD%E6%B3%95%E5%89%8D%E7%AF%87%E4%B8%83%E7%AC%AC%E5%85%AD%E7%AB%A0%E6%9D%A1%E4%BB%B6%E5%BE%AA%E7%8E%AF%E5%88%86%E6%94%AF/&amp;pic=https://bu.dusays.com/2025/06/17/685113b7c39b1.webp" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl(){var e=window.location.href,t=document.createElement("input");t.setAttribute("value",e),document.body.appendChild(t),t.select(),t.setSelectionRange(0,99999),document.execCommand("copy"),document.body.removeChild(t)}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://Prorise-cool.github.io" target="_blank">格物致知</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/Python-%E8%AF%AD%E6%B3%95%E7%AF%87/"><span class="tags-punctuation"><i class="anzhiyufont anzhiyu-icon-tag"></i></span>Python-语法篇<span class="tagsPageCount">15</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://bu.dusays.com/2025/06/17/685113b7c39b1.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media=&quot;all&quot;"><script src="https://lib.baomitu.com/social-share.js/1.0.16/js/social-share.min.js" defer=""></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/06/22/python%E8%AF%AD%E6%B3%95%E5%89%8D%E7%AF%87%E5%85%AD%E7%AC%AC%E4%BA%94%E7%AB%A0%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/17/685113b7c39b1.webp" onerror="onerror=null,src=&quot;/img/404.jpg&quot;" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Python语法前篇（六）：第五章：数据类型</div></div></a></div><div class="next-post pull-right"><a href="/2025/06/24/python%E8%AF%AD%E6%B3%95%E5%89%8D%E7%AF%87%E5%85%AB%E7%AC%AC%E4%B8%83%E7%AB%A0-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/17/685113b7c39b1.webp" onerror="onerror=null,src=&quot;/img/404.jpg&quot;" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Python语法前篇（八）：第七章： 文件操作</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size:1.5rem;margin-right:4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2025/06/17/python%E8%AF%AD%E6%B3%95%E5%89%8D%E7%AF%87%E4%B8%80python-%E8%AF%AD%E8%A8%80%E7%89%B9%E6%80%A7/" title="Python语法前篇（一）：Python 语言特性"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/17/685113b7c39b1.webp" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-06-17</div><div class="title">Python语法前篇（一）：Python 语言特性</div></div></a></div><div><a href="/2025/06/19/python%E8%AF%AD%E6%B3%95%E5%89%8D%E7%AF%87%E4%B8%89%E7%AC%AC%E4%BA%8C%E7%AB%A0%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6/" title="Python语法前篇（三）：第二章：转义字符"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/17/685113b7c39b1.webp" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-06-19</div><div class="title">Python语法前篇（三）：第二章：转义字符</div></div></a></div><div><a href="/2025/06/18/python%E8%AF%AD%E6%B3%95%E5%89%8D%E7%AF%87%E4%BA%8C%E7%AC%AC%E4%B8%80%E7%AB%A0%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%89%93%E5%8D%B0%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%B8%8Epycharm%E6%A8%A1%E6%9D%BF%E5%8F%98%E9%87%8F/" title="Python语法前篇（二）：第一章：字符串打印格式化与PyCharm模板变量"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/17/685113b7c39b1.webp" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-06-18</div><div class="title">Python语法前篇（二）：第一章：字符串打印格式化与PyCharm模板变量</div></div></a></div><div><a href="/2025/06/24/python%E8%AF%AD%E6%B3%95%E5%89%8D%E7%AF%87%E5%85%AB%E7%AC%AC%E4%B8%83%E7%AB%A0-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" title="Python语法前篇（八）：第七章： 文件操作"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/17/685113b7c39b1.webp" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-06-24</div><div class="title">Python语法前篇（八）：第七章： 文件操作</div></div></a></div><div><a href="/2025/06/21/python%E8%AF%AD%E6%B3%95%E5%89%8D%E7%AF%87%E4%BA%94%E7%AC%AC%E5%9B%9B%E7%AB%A0%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E8%AF%A6%E8%A7%A3/" title="Python语法前篇（五）：第四章：类型转换详解"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/17/685113b7c39b1.webp" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-06-21</div><div class="title">Python语法前篇（五）：第四章：类型转换详解</div></div></a></div><div><a href="/2025/06/25/python%E8%AF%AD%E6%B3%95%E5%89%8D%E7%AF%87%E4%B9%9D%E7%AC%AC%E5%85%AB%E7%AB%A0-%E5%87%BD%E6%95%B0%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" title="Python语法前篇（九）：第八章： 函数知识总结"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/17/685113b7c39b1.webp" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-06-25</div><div class="title">Python语法前篇（九）：第八章： 函数知识总结</div></div></a></div></div></div><hr><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)" rel="external nofollow noreferrer">匿名评论</a><a href="/privacy" style="margin-left:4px">隐私政策</a></div><div class="comment-switch"><span class="first-comment">Twikoo</span><span id="switch-btn"></span><span class="second-comment">Waline</span></div><div class="comment-tips" id="comment-tips"><span>✅ 你无需删除空行，直接评论以获取最佳展示效果</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div><div><div id="waline-wrap"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/16/684f747174bc3.webp" onerror="this.onerror=null,this.src=&quot;/img/friend_404.gif&quot;" alt="avatar"><div class="author-status"><img class="g-status" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/user/status.png" alt="status"></div></div><div class="author-info__description"><div style="line-height:1.4;color:rgba(255,255,255,.9);text-align:center">🚀 全栈开发者，专注于构建优雅高效的数字解决方案<br><span style="color:#fff;font-weight:700">前端 · 后端 · 架构 · 优化</span><br>📚 分享实战经验，一起探索技术边界</div></div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">Prorise</h1><div class="author-info__desc">这聒噪的世界让沉默的人显得另类</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com/361040115?spm_id_from=333.1387.0.0" rel="external nofollow noreferrer" target="_blank" title="BiliBili"><i class="anzhiyufont anzhiyu-icon-bilibili"></i></a></div></div></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background:url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center/100% no-repeat"></div><div class="back face" style="background:url(https://bu.dusays.com/2023/05/13/645fa415e8694.png) center center/100% no-repeat"></div></div></div></div><div class="card-widget card-latest-comments"><div class="item-headline"><i class="fas fa-comments"></i><span>最新评论</span></div><div class="item-content"><a href="/messages/" class="headline-right" title="查看更多"><i class="fas fa-angle-right"></i></a><div class="aside-list" id="latest-comments"></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E7%AB%A0%EF%BC%9A%E6%9D%A1%E4%BB%B6%E5%BE%AA%E7%8E%AF%E5%88%86%E6%94%AF"><span class="toc-number">1.</span> <span class="toc-text">第六章：条件循环分支</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5%E7%9A%84%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95"><span class="toc-number">1.1.</span> <span class="toc-text">条件语句的高级用法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%93%BE%E5%BC%8F%E6%AF%94%E8%BE%83"><span class="toc-number">1.1.1.</span> <span class="toc-text">链式比较</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9F%AD%E8%B7%AF%E9%80%BB%E8%BE%91%E8%AF%84%E4%BC%B0"><span class="toc-number">1.1.2.</span> <span class="toc-text">短路逻辑评估</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E5%B5%8C%E5%A5%97"><span class="toc-number">1.1.3.</span> <span class="toc-text">条件表达式的嵌套</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D%EF%BC%88Python-3-10-%EF%BC%89"><span class="toc-number">1.1.4.</span> <span class="toc-text">模式匹配（Python 3.10+）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF%E7%9A%84%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7"><span class="toc-number">1.2.</span> <span class="toc-text">循环的高级技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF%E4%B8%8E%E8%BF%AD%E4%BB%A3%E5%99%A8%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.2.1.</span> <span class="toc-text">循环与迭代器协议</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E5%99%A8%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%BB%A3%E6%9B%BF%E5%88%97%E8%A1%A8%E6%8E%A8%E5%AF%BC%E5%BC%8F"><span class="toc-number">1.2.2.</span> <span class="toc-text">生成器表达式代替列表推导式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-enumerate-%E8%8E%B7%E5%8F%96%E7%B4%A2%E5%BC%95"><span class="toc-number">1.2.3.</span> <span class="toc-text">使用 enumerate 获取索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B9%B6%E8%A1%8C%E8%BF%AD%E4%BB%A3%E5%A4%9A%E4%B8%AA%E5%BA%8F%E5%88%97"><span class="toc-number">1.2.4.</span> <span class="toc-text">并行迭代多个序列</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E7%9A%84%E9%AB%98%E7%BA%A7%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.3.</span> <span class="toc-text">流程控制的高级模式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B5%8C%E5%A5%97%E5%BE%AA%E7%8E%AF%E7%9A%84%E4%BC%98%E5%8C%96"><span class="toc-number">1.3.1.</span> <span class="toc-text">嵌套循环的优化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E4%B8%8E%E5%BE%AA%E7%8E%AF"><span class="toc-number">1.3.2.</span> <span class="toc-text">递归与循环</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/07/01/python%E8%AF%AD%E6%B3%95%E5%89%8D%E7%AF%87%E5%8D%81%E4%BA%94%E7%AC%AC%E5%8D%81%E5%9B%9B%E7%AB%A0%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" title="Python语法前篇（十五）：第十四章：深入解析并发编程"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/17/685113b7c39b1.webp" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" alt="Python语法前篇（十五）：第十四章：深入解析并发编程"></a><div class="content"><a class="title" href="/2025/07/01/python%E8%AF%AD%E6%B3%95%E5%89%8D%E7%AF%87%E5%8D%81%E4%BA%94%E7%AC%AC%E5%8D%81%E5%9B%9B%E7%AB%A0%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" title="Python语法前篇（十五）：第十四章：深入解析并发编程">Python语法前篇（十五）：第十四章：深入解析并发编程</a><time datetime="2025-07-01T08:13:45.000Z" title="发表于 2025-07-01 16:13:45">2025-07-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/30/python%E8%AF%AD%E6%B3%95%E5%89%8D%E7%AF%87%E5%8D%81%E5%9B%9B%E7%AC%AC%E5%8D%81%E4%B8%89%E7%AB%A0-%E9%AB%98%E7%BA%A7%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/" title="Python语法前篇（十四）：第十三章： 高级数据处理"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/17/685113b7c39b1.webp" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" alt="Python语法前篇（十四）：第十三章： 高级数据处理"></a><div class="content"><a class="title" href="/2025/06/30/python%E8%AF%AD%E6%B3%95%E5%89%8D%E7%AF%87%E5%8D%81%E5%9B%9B%E7%AC%AC%E5%8D%81%E4%B8%89%E7%AB%A0-%E9%AB%98%E7%BA%A7%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/" title="Python语法前篇（十四）：第十三章： 高级数据处理">Python语法前篇（十四）：第十三章： 高级数据处理</a><time datetime="2025-06-30T08:13:45.000Z" title="发表于 2025-06-30 16:13:45">2025-06-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/29/python%E8%AF%AD%E6%B3%95%E5%89%8D%E7%AF%87%E5%8D%81%E4%B8%89%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" title="Python语法前篇（十三）：第十二章： 异常处理"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/17/685113b7c39b1.webp" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" alt="Python语法前篇（十三）：第十二章： 异常处理"></a><div class="content"><a class="title" href="/2025/06/29/python%E8%AF%AD%E6%B3%95%E5%89%8D%E7%AF%87%E5%8D%81%E4%B8%89%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" title="Python语法前篇（十三）：第十二章： 异常处理">Python语法前篇（十三）：第十二章： 异常处理</a><time datetime="2025-06-29T08:13:45.000Z" title="发表于 2025-06-29 16:13:45">2025-06-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/28/python%E8%AF%AD%E6%B3%95%E5%89%8D%E7%AF%87%E5%8D%81%E4%BA%8C%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/" title="Python语法前篇（十二）：第十一章：面向对象编程"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/17/685113b7c39b1.webp" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" alt="Python语法前篇（十二）：第十一章：面向对象编程"></a><div class="content"><a class="title" href="/2025/06/28/python%E8%AF%AD%E6%B3%95%E5%89%8D%E7%AF%87%E5%8D%81%E4%BA%8C%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/" title="Python语法前篇（十二）：第十一章：面向对象编程">Python语法前篇（十二）：第十一章：面向对象编程</a><time datetime="2025-06-28T08:13:45.000Z" title="发表于 2025-06-28 16:13:45">2025-06-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/27/python%E8%AF%AD%E6%B3%95%E5%89%8D%E7%AF%87%E5%8D%81%E4%B8%80%E7%AC%AC%E5%8D%81%E7%AB%A0-%E6%A8%A1%E5%9D%97%E4%B8%8E%E5%8C%85/" title="Python语法前篇（十一）：第十章： 模块与包"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/17/685113b7c39b1.webp" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" alt="Python语法前篇（十一）：第十章： 模块与包"></a><div class="content"><a class="title" href="/2025/06/27/python%E8%AF%AD%E6%B3%95%E5%89%8D%E7%AF%87%E5%8D%81%E4%B8%80%E7%AC%AC%E5%8D%81%E7%AB%A0-%E6%A8%A1%E5%9D%97%E4%B8%8E%E5%8C%85/" title="Python语法前篇（十一）：第十章： 模块与包">Python语法前篇（十一）：第十章： 模块与包</a><time datetime="2025-06-27T08:13:45.000Z" title="发表于 2025-06-27 16:13:45">2025-06-27</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="footer_deal"><a class="deal_link" href="mailto:3381292732@qq.com" rel="external nofollow noreferrer" title="email"><i class="anzhiyufont anzhiyu-icon-envelope"></i></a><a class="deal_link" target="_blank" rel="noopener external nofollow noreferrer" href="https://weibo.com/u/7484736298?tabtype=home" title="微博"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a><a class="deal_link" href="/atom.xml" title="RSS"><i class="anzhiyufont anzhiyu-icon-rss"></i></a><img class="footer_mini_logo" title="返回顶部" alt="返回顶部" onclick="anzhiyu.scrollToDest(0,500)" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/16/684f745b722d7.webp" size="50px"><a class="deal_link" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Prorise-cool" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a><a class="deal_link" target="_blank" rel="noopener external nofollow noreferrer" href="https://space.bilibili.com/361040115?spm_id_from=333.788.0.0" title="Bilibili"><i class="anzhiyufont anzhiyu-icon-bilibili"></i></a><a class="deal_link" href="/copyright" title="CC"><i class="anzhiyufont anzhiyu-icon-copyright-line"></i></a></div><div id="workboard"><div id="runtimeTextTip"></div></div><div class="footer_custom_text">这是我的个人博客，分享技术与生活点滴。</div><div id="anzhiyu-footer"><div class="footer-group"><div class="footer-title">服务</div><div class="footer-links"><a class="footer-item" title="51la统计" target="_blank" rel="noopener external nofollow noreferrer" href="https://v6.51.la/">51la统计</a><a class="footer-item" title="十年之约" target="_blank" rel="noopener external nofollow noreferrer" href="https://www.foreverblog.cn/">十年之约</a></div></div><div class="footer-group"><div class="footer-title">主题</div><div class="footer-links"><a class="footer-item" title="文档" href="/docs/">文档</a><a class="footer-item" title="源码" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu">源码</a></div></div><div class="footer-group"><div class="footer-title">导航</div><div class="footer-links"><a class="footer-item" title="即刻短文" href="/essay/">即刻短文</a><a class="footer-item" title="留言板" href="/comments/">留言板</a></div></div><div class="footer-group"><div class="footer-title">协议</div><div class="footer-links"><a class="footer-item" title="隐私协议" href="/privacy/">隐私协议</a><a class="footer-item" title="版权协议" href="/copyright/">版权协议</a></div></div><div class="footer-group"><div class="footer-title-group"><div class="footer-title">友链</div><a class="random-friends-btn" id="footer-random-friends-btn" href="javascript:addFriendLinksInFooter();" rel="external nofollow noreferrer" title="换一批友情链接"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right"></i></a></div><div class="footer-links" id="friend-links-in-footer"></div></div></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="博客框架为Hexo7.0" title="博客框架为Hexo7.0"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Frame-Hexo.svg" alt="博客框架为Hexo7.0"></a><a class="github-badge" target="_blank" href="https://www.dogecloud.com/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站使用多吉云为静态资源提供CDN加速" title="本站使用多吉云为静态资源提供CDN加速"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/CDN-多吉云-3693F3.svg" alt="本站使用多吉云为静态资源提供CDN加速"></a><a class="github-badge" target="_blank" href="https://github.com/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站项目由Github托管" title="本站项目由Github托管"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Source-Github.svg" alt="本站项目由Github托管"></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站采用CC BY-NC-SA 4.0协议" title="本站采用CC BY-NC-SA 4.0协议"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/Copyright-BY-NC-SA.svg" alt="本站采用CC BY-NC-SA 4.0协议"></a></p></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">©2025 By <a class="footer-bar-link" href="/about/" title="Prorise" target="_blank">Prorise</a></div></div><div id="footer-type-tips"></div><div class="js-pjax"><script>function subtitleType () {
+  fetch('https://v1.hitokoto.cn')
+    .then(response => response.json())
+    .then(data => {
+      if (true) {
+        const from = '出自 ' + data.from
+        const sub = ["生活明朗, 万物可爱, 人间值得, 未来可期.","愿你眼里的星星，永远亮晶晶。","愿我们每个人都能被世界温柔以待。"]
+        sub.unshift(data.hitokoto, from)
+        window.typed = new Typed('#footer-type-tips', {
+          strings: sub,
+          startDelay: 300,
+          typeSpeed: 150,
+          loop: true,
+          backSpeed: 50,
+        })
+      } else {
+        document.getElementById('footer-type-tips').innerHTML = data.hitokoto
+      }
+    })
+}
+
+if (true) {
+  if (typeof Typed === 'function') {
+    subtitleType()
+  } else {
+    getScript('https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/typed.js/2.0.12/typed.min.js').then(subtitleType)
+  }
+} else {
+  subtitleType()
+}</script></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Prorise-cool?tab=repositories" title="网站源码">网站源码</a><a class="footer-bar-link" target="_blank" rel="noopener external nofollow noreferrer" href="https://beian.miit.gov.cn/" title="湘ICP备23041-302号">湘ICP备23041-302号</a><a class="footer-bar-link cc" href="/copyright" title="cc协议"><i class="anzhiyufont anzhiyu-icon-copyright-line"></i><i class="anzhiyufont anzhiyu-icon-creative-commons-by-line"></i><i class="anzhiyufont anzhiyu-icon-creative-commons-nc-line"></i><i class="anzhiyufont anzhiyu-icon-creative-commons-nd-line"></i></a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">15</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">2</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" rel="external nofollow noreferrer" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" href="/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" href="/" title="后续项目..."><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="后续项目..."><span class="back-menu-item-text">后续项目...</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size:.9em"></i><span> 归档</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size:.9em"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size:.9em"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>个人</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size:.9em"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size:.9em"></i><span> 留言板</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/todolist/"><i class="fas fa-check-double faa-tada"></i><span> 代办清单</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>预览</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/?server=netease&amp;id=3117791189"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size:.9em"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size:.9em"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/messages/"><i class="fas fa-comments faa-tada"></i><span> 评论总览</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size:.9em"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size:.9em"></i><span> 即刻短文</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size:.9em"></i><span> 随便逛逛</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/Python-%E8%AF%AD%E6%B3%95%E7%AF%87/" style="font-size:.88rem">Python-语法篇<sup>15</sup></a></div></div><hr></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="go-down" type="button" title="直达底部" onclick="anzhiyu.scrollToDest(document.body.scrollHeight,500)"><i class="anzhiyufont anzhiyu-icon-arrow-down"></i></button><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="anzhiyufont anzhiyu-icon-comment-sms"></i></button><button id="to_comment" type="button" title="直达评论" onclick="FixedCommentBtn()"><i class="anzhiyufont anzhiyu-icon-comments"></i></button><a id="switch-commentBarrage" href="javascript:anzhiyu.switchCommentBarrage();" rel="external nofollow noreferrer" title="开关弹幕"><i class="anzhiyufont anzhiyu-icon-danmu"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="3117791189" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size:1rem"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://music.163.com/#/playlist?id=3117791189&quot;, &quot;_blank&quot;);" style="display:none"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/instant.page/5.1.0/instantpage.min.js" type="module"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/vanilla-lazyload/17.3.1/lazyload.iife.min.js"></script><script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/node-snackbar/0.1.16/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/pangu/4.0.7/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><canvas id="universe"></canvas><script async="" src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>//- 从这里开始的所有JS代码，都必须有缩进（例如2个空格）
+// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("06/10/2025 00:00:00"); // 此处读取您配置中的建站时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  
+  // --- 已将您的专属LOGO和个人信息集成到这里 ---
+  const ascll = [
+    `欢迎访问 Prorise 的数字空间!`,
+    `代码构建世界，思想驱动未来`,
+    // 这里的反引号和所有ASCII art行，都必须有正确的缩进
+    `
+     ____                      _             
+    |  _ \\  _ __   ___   _ __  (_) ___   ___  
+    | |_) || '__| / _ \\ | '__| | |/ __| / _ \\ 
+    |  __/ | |   | (_) || |    | |\\__ \\|  __/ 
+    |_|    |_|    \\___/ |_|    |_||___/ \\___| 
+                                             
+    `,
+    "已稳定运行",
+    dnum,
+    "天",
+    `©2025 By Prorise 1.0.0`,
+  ];
+  
+  const ascll2 = [`SYS-INFO`, `前置摄像头拍照成功`, `您的帅气脸庞为：`, `😎`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c${ascll[2]} \n%c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF; font-family:monospace;",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，朋友.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Created by Prorise %c 你正在访问 Prorise 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 注意，你的所有操作已被记录.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async="" src="/anzhiyu/random.js"></script><script async="">(function () {
+  var grt = new Date("06/10/2025 00:00:00"); //设置网站上线时间
+  var now = new Date();
+  var dnum;
+  var hnum;
+  var mnum;
+  var snum;
+  var nowHour;
+
+  // 计算并更新天数、小时数、分钟数和秒数
+  function updateTime() {
+    now = new Date(); // 更新 now 的值
+    nowHour = now.getHours(); // 更新 nowHour 的值
+    var days = (now - grt) / 1000 / 60 / 60 / 24;
+    dnum = Math.floor(days);
+    var hours = (now - grt) / 1000 / 60 / 60 - 24 * dnum;
+    hnum = Math.floor(hours);
+    if (String(hnum).length == 1) {
+      hnum = "0" + hnum;
+    }
+    var minutes = (now - grt) / 1000 / 60 - 24 * 60 * dnum - 60 * hnum;
+    mnum = Math.floor(minutes);
+    if (String(mnum).length == 1) {
+      mnum = "0" + mnum;
+    }
+    var seconds = (now - grt) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
+    snum = Math.round(seconds);
+    if (String(snum).length == 1) {
+      snum = "0" + snum;
+    }
+  }
+
+  // 更新网页中显示的网站运行时间
+  function updateHtml() {
+    const footer = document.getElementById("footer");
+    if (!footer) return
+    let currentTimeHtml = "";
+    if (nowHour < 18 && nowHour >= 9) {
+      // 如果是上班时间，默认就是"安知鱼-上班摸鱼中.svg"图片，不需要更改
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    } else {
+      // 如果是下班时间，插入"安知鱼-下班啦.svg"图片
+      let img = document.querySelector("#workboard .workSituationImg");
+      if (img != null) {
+        img.src = "";
+        img.title = "下班了就该开开心心的玩耍，嘿嘿~";
+        img.alt = "下班了就该开开心心的玩耍，嘿嘿~";
+      }
+
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    }
+
+    if (document.getElementById("runtimeTextTip")) {
+      document.getElementById("runtimeTextTip").innerHTML = currentTimeHtml;
+    }
+  }
+
+  setInterval(() => {
+    updateTime();
+    updateHtml();
+  }, 1000);
+})();</script><script src="https://cdn.cbd.int/algoliasearch@4.18.0/dist/algoliasearch-lite.umd.js"></script><script src="https://cdn.cbd.int/instantsearch.js@4.60.0/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><div class="js-pjax"><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdn.cbd.int/mermaid@10.2.4/dist/mermaid.min.js').then(runMermaid)
+  }
+
+  anzhiyu.addGlobalFn('themeChange', runMermaid, 'mermaid')
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>(() => {
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo.prorise666.site/',
+      region: 'ap-shanghai',
+      onCommentLoaded: () => {
+        anzhiyu.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') setTimeout(runFn,0)
+    else getScript('https://cdn.cbd.int/twikoo@1.6.39/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo.prorise666.site/',
+      region: 'ap-shanghai',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const runFn = () => {
+    init();
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else {
+      loadTwikoo()
+    }
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script><script>(() => {
+  let initFn = window.walineFn || null
+
+  const initWaline = (Fn) => {
+    const waline = Fn(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'https://waline.prorise666.site',
+      pageview: true,
+      dark: 'html[data-theme="dark"]',
+      path: window.location.pathname,
+      comment: true,
+      imageUploader: true,
+    }, null))
+
+    const destroyWaline = () => {
+      waline.destroy()
+    }
+
+    anzhiyu.addGlobalFn('pjax', destroyWaline, 'destroyWaline')
+  }
+
+  const loadWaline = async () => {
+    if (initFn) initWaline(initFn)
+    else {
+      await getCSS('https://cdn.cbd.int/@waline/client@3.1.3/dist/waline.css')
+      if (true) await getCSS('https://cdn.cbd.int/@waline/client@3.1.3/dist/waline-meta.css')
+      const { init } = await import('https://cdn.cbd.int/@waline/client@3.1.3/dist/waline.js')
+      initFn = init || Waline.init
+      initWaline(initFn)
+      window.walineFn = initFn
+    }
+  }
+
+  if ('Twikoo' === 'Waline' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('waline-wrap'),loadWaline)
+    else setTimeout(loadWaline, 0)
+  } else {
+    window.loadOtherComment = loadWaline
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"><script async="" src="/js/anzhiyu/comment_barrage.js"></script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'https://twikoo.prorise666.site/',
+        region: 'ap-shanghai',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://cdn.cbd.int/twikoo@1.6.39/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'><div class='name'><span>${array[i].nick} </span></div></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script async="" data-pjax="" src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail=""</script><script async="" data-pjax="" src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script src="/js/anzhiyu/right_click_menu.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script src="/js/load-on-demand.js"></script><script defer="" id="fluttering_ribbon" mobile="false" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="" color="0,0,255" opacity="0.7" zindex="-1" count="99" mobile="false" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful=!0,POWERMODE.shake=!1,POWERMODE.mobile=!1,document.body.addEventListener("input",POWERMODE)</script><script id="click-heart" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="" mobile="false"></script><script src="//code.tidio.co//tk571vck0ua2wjoalfbp8wyrlsdaunmz.js" async=""></script><script>(() => {
+  const isChatBtn = true
+  const isChatHideShow = true
+
+  if (isChatBtn) {
+    let isShow = false
+    const close = () => {
+      window.tidioChatApi.hide()
+      isShow = false
+      document.body.style.position = 'relative';
+      document.documentElement.style.overflow = 'auto'
+    }
+    
+    const open = () => {
+      window.tidioChatApi.open()
+      window.tidioChatApi.show()
+      isShow = true
+    }
+
+    const onTidioChatApiReady = () => {
+      window.tidioChatApi.hide()
+      window.tidioChatApi.on("close", close)
+    }
+    if (window.tidioChatApi) {
+      window.tidioChatApi.on("ready", onTidioChatApiReady)
+    } else {
+      document.addEventListener("tidioChat-ready", onTidioChatApiReady)
+    }
+
+    window.chatBtnFn = () => {
+      if (!window.tidioChatApi) return
+      isShow ? close() : open()
+    }
+  } else if (isChatHideShow) {
+    window.chatBtn = {
+      hide: () => {
+        window.tidioChatApi && window.tidioChatApi.hide()
+      },
+      show: () => {
+        window.tidioChatApi && window.tidioChatApi.show()
+      }
+    }
+  }
+})()</script><link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/aplayer/1.10.1/APlayer.min.css" media="print" onload="this.media=&quot;all&quot;"><script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/aplayer/1.10.1/APlayer.min.js"></script><script src="https://npm.elemecdn.com/meting@2.0.1/dist/Meting.min.js"></script><script src="https://lib.baomitu.com/pjax/0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","meta[property=\"og:type\"]","meta[property=\"og:site_name\"]","meta[property=\"og:description\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: true,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '[object Object]', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async="" data-pjax="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div>
+    <link rel="stylesheet" href="https://ai.tianli0.top/static/public/postChatUser_summary.min.css">
+    <script>
+        let tianliGPT_key = '';
+        let tianliGPT_postSelector = '#post-container .post-content';
+        let tianliGPT_Title = '✨ AI 文章摘要';
+        let tianliGPT_postURL = '/^https?:\/\/[^\/]+\/[0-9]{4}\/[0-9]{2}\/[0-9]{2}\/';
+        let tianliGPT_blacklist = '';
+        let tianliGPT_wordLimit = '1000';
+        let tianliGPT_typingAnimate = true;
+        let tianliGPT_theme = 'default';
+        var postChatConfig = {
+          backgroundColor: "#4d648d",
+          bottom: "76px",
+          left: "16px",
+          fill: "#FFFFFF",
+          width: "50px",
+          frameWidth: "380px",
+          frameHeight: "600px",
+          defaultInput: true,
+          upLoadWeb: true,
+          showInviteLink: true,
+          userTitle: "💬 智能助手",
+          userDesc: "我是 Prorise 博客的 AI 助手，有任何关于网站内容的问题都可以问我哦～",
+          addButton: true,
+          beginningText: "这篇文章介绍了",
+          userIcon: "https://ai.tianli0.top/static/img/PostChat.webp",
+          userMode: "magic",
+          defaultChatQuestions: ["你好","你是谁"],
+          defaultSearchQuestions: ["视频压缩","设计"]
+        };
+    </script>
+    <script data-postchat_key="" src="https://ai.tianli0.top/static/public/tianli_gpt.min.js"></script>
+  </body></html>
