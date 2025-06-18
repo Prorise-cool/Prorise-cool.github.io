@@ -106,6 +106,14 @@ class ResourceLoader {
             this.loadCSS('/custom/css/todolist.css', 'todolist-style');
         }
 
+        // 检测实用网站导航页面
+        if (window.location.pathname.includes('/awesome-links/') ||
+            document.querySelector('#useful-links-search-container') ||
+            document.querySelector('.useful-links-page')) {
+            this.loadCSS('/css/useful-links-search.css', 'useful-links-search-style');
+            this.loadJS('/js/useful-links-search.js', 'useful-links-search-script');
+        }
+
         // 检测侧边栏相关功能
         if (document.querySelector('#sidebar')) {
             this.loadCSS('/custom/css/schedule.css', 'schedule-style');
