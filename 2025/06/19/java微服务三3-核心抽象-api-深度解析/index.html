@@ -1,0 +1,707 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"><title>Java微服务（三）：3. 核心抽象 API 深度解析 | 格物致知</title><meta name="keywords" content="Java微服务-AI篇"><meta name="author" content="Prorise"><meta name="copyright" content="Prorise"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#cee8ff"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="Java微服务（三）：3. 核心抽象 API 深度解析"><meta name="application-name" content="Java微服务（三）：3. 核心抽象 API 深度解析"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#cee8ff"><meta property="og:type" content="article"><meta property="og:title" content="Java微服务（三）：3. 核心抽象 API 深度解析"><meta property="og:url" content="https://prorise-cool.github.io/2025/06/19/java%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%893-%E6%A0%B8%E5%BF%83%E6%8A%BD%E8%B1%A1-api-%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90/index.html"><meta property="og:site_name" content="格物致知"><meta property="og:description" content="3. 核心抽象 API 深度解析在快速入门章节中，我们已经初步体验了 ChatClient 的便捷。现在，是时候深入水面之下，探索 Spring AI 设计的基石——核心抽象 API。Spring AI 的“可移植性”设计哲学，正是通过这层优雅的抽象实现的。无论你面对的是 OpenAI、Azure、"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://bu.dusays.com/2025/06/19/68535b23089d0.webp"><meta property="article:author" content="Prorise"><meta property="article:tag" content="全栈, Full Stack, 前端, 后端, Node.js, Vue, React, 数据库, Linux, Docker, 个人博客, 技术分享"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://bu.dusays.com/2025/06/19/68535b23089d0.webp"><meta name="description" content="3. 核心抽象 API 深度解析在快速入门章节中，我们已经初步体验了 ChatClient 的便捷。现在，是时候深入水面之下，探索 Spring AI 设计的基石——核心抽象 API。Spring AI 的“可移植性”设计哲学，正是通过这层优雅的抽象实现的。无论你面对的是 OpenAI、Azure、"><link rel="shortcut icon" href="/img/icons/favicon.ico"><link rel="canonical" href="https://prorise-cool.github.io/2025/06/19/java%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%893-%E6%A0%B8%E5%BF%83%E6%8A%BD%E8%B1%A1-api-%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90/"><link rel="preconnect" href="//cdn.cbd.int"><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""><link rel="preconnect" href="//busuanzi.ibruce.info"><meta name="google-site-verification" content="xxx"><meta name="baidu-site-verification" content="code-xxx"><meta name="msvalidate.01" content="xxx"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media=&quot;all&quot;"><link rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/node-snackbar/0.1.16/snackbar.min.css" media="print" onload="this.media=&quot;all&quot;"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media=&quot;all&quot;"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media=&quot;all&quot;"><script async="" src="https://www.googletagmanager.com/gtag/js?id=[object Object]"></script><script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","[object Object]")</script><script>const GLOBAL_CONFIG = {
+  linkPageTop: {"enable":true,"title":"与数百名博主无限进步","addFriendPlaceholder":"昵称（请勿包含博客等字样）：\n网站地址（要求博客地址，请勿提交个人主页）：\n头像图片url（请提供尽可能清晰的图片，我会上传到我自己的图床）：\n描述：\n站点截图（可选）：\n"},
+  peoplecanvas: undefined,
+  postHeadAiDescription: {"enable":true,"gptName":"Prorise","mode":"tianli","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"S-DNA1JM95BX2F9L0N","Referer":"https://xx.xx/"},
+  diytitle: undefined,
+  LA51: undefined,
+  greetingBox: {"enable":true,"default":"晚上好👋","list":[{"greeting":"晚安😴","startTime":0,"endTime":5},{"greeting":"早上好鸭👋, 祝你一天好心情！","startTime":6,"endTime":9},{"greeting":"上午好👋, 状态很好，鼓励一下～","startTime":10,"endTime":10},{"greeting":"11点多啦, 在坚持一下就吃饭啦～","startTime":11,"endTime":11},{"greeting":"午安👋, 宝贝","startTime":12,"endTime":14},{"greeting":"🌈充实的一天辛苦啦！","startTime":14,"endTime":18},{"greeting":"19点喽, 奖励一顿丰盛的大餐吧🍔。","startTime":19,"endTime":19},{"greeting":"晚上好👋, 在属于自己的时间好好放松😌~","startTime":20,"endTime":24}]},
+  twikooEnvId: 'https://twikoo.prorise666.site/',
+  commentBarrageConfig:{"enable":true,"maxBarrage":1,"barrageTime":4000,"accessToken":"b39753735ed0ed5ffeb771bc108e3158","mailMd5":"ec3291d59a8d7d3675df8a0537fcbc979f0fa611c8df55841fb7f4fd162bd07a"},
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: {"mode":"both","api":"https://img2color-go.vercel.app/api?img=","cover_change":true},
+  authorStatus: {"skills":["🤣 全栈开发工程师","🙂 前端架构设计师","🙃 后端服务构建者","🤩 移动端应用开发","🤯 数据库设计专家","🥳 DevOps运维实践者","🤭 技术栈多面手","😎 性能优化达人"]},
+  algolia: {"appId":"K8Y7M0RMXQ","apiKey":"11fa7380e2694483a44b143044e69e6e","indexName":"prorise_blog","hits":{"per_page":6},"languages":{"input_placeholder":"输入关键词后按下回车查找","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: {"limitDay":3,"position":"top","messagePrev":"距离上次更新已经过了","messageNext":"天，文章内容可能已经过时。"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    simplehomepage: false,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: Prorise","link":"链接: ","source":"来源: 格物致知","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: true,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE={configTitle:"格物致知",title:"Java微服务（三）：3. 核心抽象 API 深度解析",postAI:"true",pageFillDescription:"3. 核心抽象 API 深度解析, 3.1 ChatClient 对话的核心枢纽, 3.1.1 call() vs. stream() 同步与流式的抉择, 3.1.2 ChatClient 实战代码, 3.1.3 真实应用场景, 3.2 ImageClient 文本到图像的创意画板, 3.2.1 ImageClient 实战代码, 3.2.2 真实应用场景, 3.3 EmbeddingClient 将世界向量化, 3.3.1 EmbeddingClient 实战代码, 3.3.2 真实应用场景核心抽象深度解析在快速入门章节中我们已经初步体验了的便捷现在是时候深入水面之下探索设计的基石核心抽象的可移植性设计哲学正是通过这层优雅的抽象实现的无论你面对的是还是未来的任何新模型你的业务代码始终与一套稳定统一的接口对话本章我将带你逐一解构这些核心接口和对话的核心枢纽是你与大语言模型进行对话交互的唯一入口它将底层不同厂商的复杂性如不同的认证方式请求响应格式错误处理完全封装为你提供了一个极其简洁和统一的编程模型它的核心职责是发送一个包含上下文和指令的并接收模型生成的这个过程可以通过两种方式完成同步和流式同步与流式的抉择和方法是的两个主要动作它们服务于不同的交互场景同步调用这是最直接的方式你的应用发送请求后会一直等待直到模型生成完整的响应后一次性返回它简单易于处理适用于那些不需要实时反馈可以接受短暂等待的场景流式调用这种方式会立即返回一个来自的响应式流模型会像打字机一样逐个可以理解为单词或字符块地将内容推送回来你的应用可以实时接收并处理这些数据片段这极大地提升了用户体验尤其是在构建交互式聊天机器人时下表清晰地对比了两种方法的差异特性方法方法方法签名返回类型单个响应对象响应式数据流执行模式同步阻塞异步非阻塞数据返回一次性返回完整内容逐步分块返回内容典型用例后台任务处理如生成报告总结邮件中简单的问答数据提取与转换交互式聊天机器人界面打字机效果需要处理长文本响应的应用对实时性要求高的场景编程模型传统命令式编程响应式编程实战代码让我们通过一个简单的例子看看如何在代码中使用假设我们需要一个服务它既能提供一次性的答案也能提供流式输出通过构造函数注入由自动配置好的同步调用示例一次性获取的完整回答用户的提问生成的完整文本内容是一个便捷的流式入口用于快速构建和发送请求指定了用户角色的消息发起同步调用是一个快捷方法用于直接从中提取文本内容流式调用示例返回一个可以逐块消费的响应流用户的提问一个包含片段的流构建一个对象这将在第四章详细讲解发起流式调用它会立即返回一个对象调用者可以订阅这个来处理陆续到达的数据返回一个真实应用场景智能客服使用为用户提供实时的打字机效果的对话体验内容创作助手用户输入标题写一篇关于的博客使用在后台生成完整的文章草稿数据分析报告生成一个定时任务调用传入一段业务数据描述生成一份自然语言格式的分析总结文本到图像的创意画板是中负责文生图功能的抽象接口它允许你用一段文本描述即来调用等图像生成模型创造出对应的图片与一样它也实现了可移植性你的代码只需与交互而无需关心背后是哪个厂商的模型在工作实战代码使用非常直接你需要创建一个对象来封装你的图像描述和一些生成选项如图片数量尺寸质量等然后调用方法首先确保你的中引入了图像模型的依赖以为例注的图像和聊天功能在同一个中然后在中配置相关选项指定默认使用的文生图模型默认生成的图片质量默认生成的图片尺寸最后编写调用代码同样的也是由自动配置的根据文本描述生成图片图片的文本描述包含图片或数据等信息的响应对象创建一个传入文本描述可以在这里通过覆盖中的默认配置调用方法发起生成请求中包含了生成结果的元数据和图像数据本身对象中包含了列表每一个都代表一张生成的图片你可以通过获取图片的如果模型提供商支持或者通过获取编码的图像数据真实应用场景营销内容生成为社交媒体帖子或广告自动生成配图用户只需输入一张展示夏天海滩边喝着鸡尾酒的悠闲场景的图片风格要求是卡通插画应用个性化允许用户在个人资料页面通过文本描述生成自己的专属头像设计原型工具产品经理输入一个简洁的移动端登录页面包含用户名密码输入框和一个蓝色的登录按钮快速生成设计草图将世界向量化可能是中最强大但又最隐形的接口它的作用只有一个将文本转换为一串被称为嵌入的数字向量为什么这很重要嵌入向量是理解语义的基石在向量空间中意思相近的文本它们的向量在几何上也更接近例如小猫和小狗的向量距离会远远小于小猫和汽车的向量距离这种特性使得我们能够进行语义搜索即根据意思而不是关键词来查找信息这是实现检索增强生成构建知识库问答系统的核心技术将文本转换为高维浮点数数组为所有高级应用奠定了数学基础实战代码的非常简单核心方法就是它可以接收单个文本或一个文本列表同样由自动配置为单个文本生成嵌入向量需要向量化的文本代表该文本的向量浮点数列表调用方法它会返回一个对象从响应中获取第一个结果因为我们只传入了一个文本的嵌入向量为一批文本批量生成嵌入向量需要向量化的文本列表包含每个文本对应向量的响应对象直接调用并传入整个列表这通常比循环调用更高效内部创建和是其核心数据结构封装了要处理的文本列表和一些模型选项则包含了对象的列表每个对象都含有原始文本的索引和其对应的向量真实应用场景知识库问答数据入库将公司所有产品的文档分割成小段落向量化使用将每个段落转换为向量存储将文本段落和其对应的向量存入向量数据库查询当用户提问产品的功能如何使用时先用将问题转为向量然后在向量数据库中查找最相似的文本段落最后将这些段落作为上下文喂给生成精准答案相关文章推荐在博客文章底部使用计算当前文章与数据库中其他所有文章的向量相似度推荐最相关的几篇情感分析通过比较用户评论的向量与正面评价负面评价等基准向量的距离来判断评论的情感倾向通过理解这三大核心抽象你就掌握了与进行交互的关键钥匙它们共同构成了的基座支撑起后续所有高级功能的实现在下一章我们将聚焦于如何更精巧地使用深入探索工程的艺术",isPost:!0,isHome:!1,isHighlightShrink:!1,isToc:!0,postUpdate:"2025-06-19 08:35:40",postMainColor:""}</script><noscript><style type="text/css">#nav{opacity:1}.justified-gallery img{opacity:1}#post-meta time,#recent-posts time{display:inline!important}</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0F1C2E')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#cee8ff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/font.css"><link rel="stylesheet" href="/css/index_media.css" media="(max-width:0),screen and (prefers-reduced-motion:reduce)" onload="this.media=`screen`"><link rel="stylesheet" href="/css/post-ui.css" "=""><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://bu.dusays.com/2025/06/16/684f747174bc3.webp"><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"><script async="" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" href="/" title="博客"><img class="back-menu-item-icon" src="/img/favicon.ico" alt="博客"><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" href="/" title="后续项目..."><img class="back-menu-item-icon" src="https://image.anheyu.com/favicon.ico" alt="后续项目..."><span class="back-menu-item-text">后续项目...</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title">格物致知</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)" rel="external nofollow noreferrer">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size:.9em"></i><span> 归档</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size:.9em"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size:.9em"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>个人</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size:.9em"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size:.9em"></i><span> 留言板</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/todolist/"><i class="fas fa-check-double faa-tada"></i><span> 代办清单</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/awesome-links/"><i class="fas fa-link faa-tada"></i><span> 实用网站</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>预览</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/?server=netease&amp;id=3117791189"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size:.9em"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size:.9em"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/messages/"><i class="fas fa-comments faa-tada"></i><span> 评论总览</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size:.9em"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size:.9em"></i><span> 即刻短文</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size:.9em"></i><span> 随便逛逛</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="background-change-button"><a class="site-page" onclick="toggleWinbox()" title="切换背景" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-palette"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" rel="external nofollow noreferrer" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole()"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://tc.z.wiki/autoupload/iXoPwUD80CPTvQUyITTBFOykMT9FcWW5SasRoXZEs3Wyl5f0KlZfm6UsKj-HyTuv/20250609/bYMH/418X445/ef9a3f68-d36a-441a-95fe-8179b1a25992.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://tc.z.wiki/autoupload/iXoPwUD80CPTvQUyITTBFOykMT9FcWW5SasRoXZEs3Wyl5f0KlZfm6UsKj-HyTuv/20250609/bYMH/418X445/ef9a3f68-d36a-441a-95fe-8179b1a25992.png"></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://tc.z.wiki/autoupload/iXoPwUD80CPTvQUyITTBFOykMT9FcWW5SasRoXZEs3Wyl5f0KlZfm6UsKj-HyTuv/20250609/cYu3/347X390/zfb.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://tc.z.wiki/autoupload/iXoPwUD80CPTvQUyITTBFOykMT9FcWW5SasRoXZEs3Wyl5f0KlZfm6UsKj-HyTuv/20250609/cYu3/347X390/zfb.png"></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title">最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">音乐</div><span class="author-content-item-title">灵魂的碰撞💥</span></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/07/"><span class="card-archive-list-date">七月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/06/"><span class="card-archive-list-date">六月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">28</span><span>篇</span></div></a></li></ul></div></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item on" id="consoleCommentBarrage" onclick="anzhiyu.switchCommentBarrage()" title="热评开关"><a class="commentBarrage"><i class="anzhiyufont anzhiyu-icon-message"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);" rel="external nofollow noreferrer"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/" itemprop="url">后端技术</a><i class="anzhiyufont anzhiyu-icon-angle-right post-meta-separator"></i><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/Java/" itemprop="url">Java</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/Java%E5%BE%AE%E6%9C%8D%E5%8A%A1-AI%E7%AF%87/" tabindex="-1" itemprop="url"> <span><i class="anzhiyufont anzhiyu-icon-hashtag"></i>Java微服务-AI篇</span></a></span></div></div><h1 class="post-title" itemprop="name headline">Java微服务（三）：3. 核心抽象 API 深度解析</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-06-19T08:13:45.000Z" title="发表于 2025-06-19 16:13:45">2025-06-19</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-06-19T00:35:40.314Z" title="更新于 2025-06-19 08:35:40">2025-06-19</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span data-flag-title="Java微服务（三）：3. 核心抽象 API 深度解析"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="twikoo_visitors" title="访问量"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator"> </span><span class="post-meta-position" title="作者IP属地为广东"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>广东</span><span class="post-meta-separator"></span><span class="post-meta-commentcount"><i class="anzhiyufont anzhiyu-icon-comments post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2025/06/19/java%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%893-%E6%A0%B8%E5%BF%83%E6%8A%BD%E8%B1%A1-api-%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90/#post-comment" tabindex="-1"><span id="twikoo-count"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></a></span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://bu.dusays.com/2025/06/19/68535b23089d0.webp"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><div class="post-ai-description"><div class="ai-title"><i class="anzhiyufont anzhiyu-icon-bilibili"></i><div class="ai-title-text">AI-摘要</div><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right"></i><i class="anzhiyufont anzhiyu-icon-circle-dot" title="朗读摘要"></i><div id="ai-tag">Tianli GPT</div></div><div class="ai-explanation">AI初始化中...</div><div class="ai-btn-box"><div class="ai-btn-item">介绍自己 🙈</div><div class="ai-btn-item">生成本文简介 👋</div><div class="ai-btn-item">推荐相关文章 📖</div><div class="ai-btn-item">前往主页 🏠</div><div class="ai-btn-item" id="go-tianli-blog">前往爱发电购买</div></div><script data-pjax="" src="/js/anzhiyu/ai_abstract.js"></script></div><article class="post-content" id="article-container" itemscope="" itemtype="https://prorise-cool.github.io/2025/06/19/java%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%893-%E6%A0%B8%E5%BF%83%E6%8A%BD%E8%B1%A1-api-%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90/"><header><a class="post-meta-categories" href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/" itemprop="url">后端技术</a><a class="post-meta-categories" href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/Java/" itemprop="url">Java</a><a href="/tags/Java%E5%BE%AE%E6%9C%8D%E5%8A%A1-AI%E7%AF%87/" tabindex="-1" itemprop="url">Java微服务-AI篇</a><h1 id="CrawlerTitle" itemprop="name headline">Java微服务（三）：3. 核心抽象 API 深度解析</h1><span itemprop="author" itemscope="" itemtype="http://schema.org/Person">Prorise</span><time itemprop="dateCreated datePublished" datetime="2025-06-19T08:13:45.000Z" title="发表于 2025-06-19 16:13:45">2025-06-19</time><time itemprop="dateCreated datePublished" datetime="2025-06-19T00:35:40.314Z" title="更新于 2025-06-19 08:35:40">2025-06-19</time></header><div id="postchat_postcontent"><h2 id="3-核心抽象-API-深度解析"><a href="#3-核心抽象-API-深度解析" class="headerlink" title="3. 核心抽象 API 深度解析"></a>3. 核心抽象 API 深度解析</h2><p>在快速入门章节中，我们已经初步体验了 <code>ChatClient</code> 的便捷。现在，是时候深入水面之下，探索 Spring AI 设计的基石——核心抽象 API。Spring AI 的“可移植性”设计哲学，正是通过这层优雅的抽象实现的。无论你面对的是 OpenAI、Azure、Ollama 还是未来的任何新模型，你的业务代码始终与一套稳定、统一的接口对话。本章，我将带你逐一解构这些核心接口：<code>ChatClient</code>, <code>ImageClient</code>, 和 <code>EmbeddingClient</code>。</p><h4 id="3-1-ChatClient-对话的核心枢纽"><a href="#3-1-ChatClient-对话的核心枢纽" class="headerlink" title="3.1 ChatClient: 对话的核心枢纽"></a>3.1 <code>ChatClient</code>: 对话的核心枢纽</h4><p><code>ChatClient</code> 是你与大语言模型（LLM）进行对话交互的唯一入口。它将底层不同厂商 API 的复杂性（如不同的认证方式、请求/响应格式、错误处理）完全封装，为你提供了一个极其简洁和统一的编程模型。</p><p>它的核心职责是：发送一个包含上下文和指令的 <code>Prompt</code>，并接收模型生成的 <code>ChatResponse</code>。这个过程可以通过两种方式完成：同步 (<code>call</code>) 和流式 (<code>stream</code>)。</p><h5 id="3-1-1-call-vs-stream-同步与流式的抉择"><a href="#3-1-1-call-vs-stream-同步与流式的抉择" class="headerlink" title="3.1.1 call() vs. stream(): 同步与流式的抉择"></a>3.1.1 <code>call()</code> vs. <code>stream()</code>: 同步与流式的抉择</h5><p><code>call()</code> 和 <code>stream()</code> 方法是 <code>ChatClient</code> 的两个主要动作，它们服务于不同的交互场景。</p><ul><li><strong><code>call()</code> (同步调用)</strong>: 这是最直接的方式。你的应用发送请求后会一直等待，直到模型生成完整的响应后一次性返回。它简单、易于处理，适用于那些不需要实时反馈、可以接受短暂等待的场景。</li><li><strong><code>stream()</code> (流式调用)</strong>: 这种方式会立即返回一个 <code>Flux&lt;ChatResponse&gt;</code>（来自 Project Reactor 的响应式流）。模型会像打字机一样，逐个 Token（可以理解为单词或字符块）地将内容推送回来。你的应用可以实时接收并处理这些数据片段。这极大地提升了用户体验，尤其是在构建交互式聊天机器人时。</li></ul><p>下表清晰地对比了两种方法的差异：</p><table><thead><tr><th align="left">特性</th><th align="left"><code>.call()</code> 方法</th><th align="left"><code>.stream()</code> 方法</th></tr></thead><tbody><tr><td align="left"><strong>方法签名</strong></td><td align="left"><code>ChatResponse call(Prompt prompt)</code></td><td align="left"><code>Flux&lt;ChatResponse&gt; stream(Prompt prompt)</code></td></tr><tr><td align="left"><strong>返回类型</strong></td><td align="left"><code>ChatResponse</code> (单个响应对象)</td><td align="left"><code>Flux&lt;ChatResponse&gt;</code> (响应式数据流)</td></tr><tr><td align="left"><strong>执行模式</strong></td><td align="left">同步阻塞</td><td align="left">异步非阻塞</td></tr><tr><td align="left"><strong>数据返回</strong></td><td align="left">一次性返回完整内容</td><td align="left">逐步、分块返回内容</td></tr><tr><td align="left"><strong>典型用例</strong></td><td align="left">- 后台任务处理（如生成报告、总结邮件）<br>- API 中简单的问答<br>- 数据提取与转换</td><td align="left">- 交互式聊天机器人界面（打字机效果）<br>- 需要处理长文本响应的应用<br>- 对实时性要求高的场景</td></tr><tr><td align="left"><strong>编程模型</strong></td><td align="left">传统命令式编程</td><td align="left">响应式编程 (Reactive)</td></tr></tbody></table><h5 id="3-1-2-ChatClient-实战代码"><a href="#3-1-2-ChatClient-实战代码" class="headerlink" title="3.1.2 ChatClient 实战代码"></a>3.1.2 <code>ChatClient</code> 实战代码</h5><p>让我们通过一个简单的例子，看看如何在代码中使用 <code>ChatClient</code>。假设我们需要一个服务，它既能提供一次性的答案，也能提供流式输出。</p><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.hellospringai.service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.ai.chat.client.ChatClient;</span><br><span class="line"><span class="keyword">import</span> org.springframework.ai.chat.model.ChatResponse;</span><br><span class="line"><span class="keyword">import</span> org.springframework.ai.chat.prompt.Prompt;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Service;</span><br><span class="line"><span class="keyword">import</span> reactor.core.publisher.Flux;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ChatService</span> {</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> ChatClient chatClient;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 通过构造函数注入由 Spring Boot 自动配置好的 ChatClient.Builder</span></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">ChatService</span><span class="params">(ChatClient.Builder chatClientBuilder)</span> {</span><br><span class="line">        <span class="built_in">this</span>.chatClient = chatClientBuilder.build();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 同步调用示例：一次性获取 AI 的完整回答</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> message 用户的提问</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> AI 生成的完整文本内容</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getSimpleResponse</span><span class="params">(String message)</span> {</span><br><span class="line">        <span class="comment">// .prompt() 是一个便捷的流式 API 入口，用于快速构建和发送请求</span></span><br><span class="line">        <span class="comment">// .user() 指定了用户角色的消息</span></span><br><span class="line">        <span class="comment">// .call() 发起同步调用</span></span><br><span class="line">        <span class="comment">// .content() 是一个快捷方法，用于直接从 ChatResponse 中提取文本内容</span></span><br><span class="line">        <span class="keyword">return</span> chatClient.prompt()</span><br><span class="line">                .user(message)</span><br><span class="line">                .call()</span><br><span class="line">                .content();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 流式调用示例：返回一个可以逐块消费的响应流</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> message 用户的提问</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 一个包含 ChatResponse 片段的 Flux 流</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> Flux&lt;ChatResponse&gt; <span class="title function_">getStreamResponse</span><span class="params">(String message)</span> {</span><br><span class="line">        <span class="comment">// 构建一个 Prompt 对象，这将在第四章详细讲解</span></span><br><span class="line">        <span class="type">Prompt</span> <span class="variable">prompt</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Prompt</span>(message);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// .stream() 发起流式调用，它会立即返回一个 Flux 对象</span></span><br><span class="line">        <span class="comment">// 调用者可以订阅这个 Flux 来处理陆续到达的数据</span></span><br><span class="line">        <span class="keyword">return</span> chatClient.prompt()</span><br><span class="line">                .user(message)</span><br><span class="line">                .stream()</span><br><span class="line">                .responses(); <span class="comment">// .responses() 返回一个 Flux&lt;ChatResponse&gt;</span></span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><h5 id="3-1-3-真实应用场景"><a href="#3-1-3-真实应用场景" class="headerlink" title="3.1.3 真实应用场景"></a>3.1.3 真实应用场景</h5><ul><li><strong>智能客服</strong>：使用 <code>stream()</code> 为用户提供实时的、打字机效果的对话体验。</li><li><strong>内容创作助手</strong>：用户输入标题“写一篇关于 Spring AI 的博客”，使用 <code>call()</code> 在后台生成完整的文章草稿。</li><li><strong>数据分析报告生成</strong>：一个定时任务调用 <code>call()</code>，传入一段业务数据描述，生成一份自然语言格式的分析总结。</li></ul><h4 id="3-2-ImageClient-文本到图像的创意画板"><a href="#3-2-ImageClient-文本到图像的创意画板" class="headerlink" title="3.2 ImageClient: 文本到图像的创意画板"></a>3.2 <code>ImageClient</code>: 文本到图像的创意画板</h4><p><code>ImageClient</code> 是 Spring AI 中负责“文生图”（Text-to-Image）功能的抽象接口。它允许你用一段文本描述（即 Prompt）来调用 DALL-E, Stable Diffusion 等图像生成模型，创造出对应的图片。与 <code>ChatClient</code> 一样，它也实现了可移植性，你的代码只需与 <code>ImageClient</code> 交互，而无需关心背后是哪个厂商的模型在工作。</p><h5 id="3-2-1-ImageClient-实战代码"><a href="#3-2-1-ImageClient-实战代码" class="headerlink" title="3.2.1 ImageClient 实战代码"></a>3.2.1 <code>ImageClient</code> 实战代码</h5><p>使用 <code>ImageClient</code> 非常直接。你需要创建一个 <code>ImagePrompt</code> 对象来封装你的图像描述和一些生成选项（如图片数量、尺寸、质量等），然后调用 <code>.call()</code> 方法。</p><p>首先，确保你的 <code>pom.xml</code> 中引入了图像模型的依赖（以 OpenAI DALL-E 3 为例）：</p><figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.ai<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-ai-openai-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure><p><em>注：OpenAI 的图像和聊天功能在同一个 Starter 中。</em></p><p>然后，在 <code>application.yml</code> 中配置相关选项：</p><figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">ai:</span></span><br><span class="line">    <span class="attr">openai:</span></span><br><span class="line">      <span class="attr">api-key:</span> <span class="string">${OPENAI_API_KEY}</span></span><br><span class="line">      <span class="attr">image:</span></span><br><span class="line">        <span class="attr">options:</span></span><br><span class="line">          <span class="comment"># 指定默认使用的文生图模型</span></span><br><span class="line">          <span class="attr">model:</span> <span class="string">dall-e-3</span></span><br><span class="line">          <span class="comment"># 默认生成的图片质量</span></span><br><span class="line">          <span class="attr">quality:</span> <span class="string">hd</span></span><br><span class="line">          <span class="comment"># 默认生成的图片尺寸</span></span><br><span class="line">          <span class="attr">width:</span> <span class="number">1024</span></span><br><span class="line">          <span class="attr">height:</span> <span class="number">1024</span></span><br></pre></td></tr></tbody></table></figure><p>最后，编写调用代码：</p><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.hellospringai.service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.ai.image.ImageClient;</span><br><span class="line"><span class="keyword">import</span> org.springframework.ai.image.ImagePrompt;</span><br><span class="line"><span class="keyword">import</span> org.springframework.ai.image.ImageResponse;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Service;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ImageService</span> {</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> ImageClient imageClient;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 同样，ImageClient 的 Bean 也是由 Spring AI 自动配置的</span></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">ImageService</span><span class="params">(ImageClient imageClient)</span> {</span><br><span class="line">        <span class="built_in">this</span>.imageClient = imageClient;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据文本描述生成图片</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> description 图片的文本描述</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 包含图片 URL 或 Base64 数据等信息的响应对象</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> ImageResponse <span class="title function_">generateImage</span><span class="params">(String description)</span> {</span><br><span class="line">        <span class="comment">// 创建一个 ImagePrompt，传入文本描述</span></span><br><span class="line">        <span class="comment">// 可以在这里通过 .withOptions() 覆盖 application.yml 中的默认配置</span></span><br><span class="line">        <span class="type">ImagePrompt</span> <span class="variable">imagePrompt</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ImagePrompt</span>(description);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 调用 .call() 方法发起生成请求</span></span><br><span class="line">        <span class="type">ImageResponse</span> <span class="variable">response</span> <span class="operator">=</span> imageClient.call(imagePrompt);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ImageResponse 中包含了生成结果的元数据和图像数据本身</span></span><br><span class="line">        <span class="keyword">return</span> response;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p><code>ImageResponse</code> 对象中包含了 <code>ImageGeneration</code> 列表，每一个 <code>ImageGeneration</code> 都代表一张生成的图片。你可以通过 <code>.getOutput().getUrl()</code> 获取图片的 URL（如果模型提供商支持），或者通过 <code>.getOutput().getB64Json()</code> 获取 Base64 编码的图像数据。</p><h5 id="3-2-2-真实应用场景"><a href="#3-2-2-真实应用场景" class="headerlink" title="3.2.2 真实应用场景"></a>3.2.2 真实应用场景</h5><ul><li><strong>营销内容生成</strong>：为社交媒体帖子或广告自动生成配图。用户只需输入“一张展示夏天海滩边喝着鸡尾酒的悠闲场景的图片，风格要求是卡通插画”。</li><li><strong>应用个性化</strong>：允许用户在个人资料页面通过文本描述生成自己的专属头像。</li><li><strong>设计原型工具</strong>：产品经理输入“一个简洁的移动端登录页面，包含用户名、密码输入框和一个蓝色的登录按钮”，快速生成 UI 设计草图。</li></ul><h4 id="3-3-EmbeddingClient-将世界向量化"><a href="#3-3-EmbeddingClient-将世界向量化" class="headerlink" title="3.3 EmbeddingClient: 将世界向量化"></a>3.3 <code>EmbeddingClient</code>: 将世界向量化</h4><p><code>EmbeddingClient</code> 可能是 Spring AI 中最强大但又最“隐形”的接口。它的作用只有一个：<strong>将文本转换为一串被称为“嵌入（Embedding）”的数字向量</strong>。</p><blockquote><p><strong>为什么这很重要？</strong><br>嵌入向量是 AI 理解语义的基石。在向量空间中，意思相近的文本，它们的向量在几何上也更接近。例如，“小猫”和“小狗”的向量距离，会远远小于“小猫”和“汽车”的向量距离。</p><p>这种特性使得我们能够进行<strong>语义搜索</strong>，即根据意思而不是关键词来查找信息。这是实现检索增强生成（RAG）、构建知识库问答系统的核心技术。</p></blockquote><p><code>EmbeddingClient</code> 将文本（<code>String</code>）转换为高维浮点数数组（<code>List&lt;Double&gt;</code>），为所有高级 AI 应用奠定了数学基础。</p><h5 id="3-3-1-EmbeddingClient-实战代码"><a href="#3-3-1-EmbeddingClient-实战代码" class="headerlink" title="3.3.1 EmbeddingClient 实战代码"></a>3.3.1 <code>EmbeddingClient</code> 实战代码</h5><p><code>EmbeddingClient</code> 的 API 非常简单，核心方法就是 <code>embed()</code>，它可以接收单个文本或一个文本列表。</p><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.hellospringai.service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.ai.embedding.EmbeddingClient;</span><br><span class="line"><span class="keyword">import</span> org.springframework.ai.embedding.EmbeddingResponse;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">EmbeddingService</span> {</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> EmbeddingClient embeddingClient;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// EmbeddingClient 同样由 Spring AI 自动配置</span></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">EmbeddingService</span><span class="params">(EmbeddingClient embeddingClient)</span> {</span><br><span class="line">        <span class="built_in">this</span>.embeddingClient = embeddingClient;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 为单个文本生成嵌入向量</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> text 需要向量化的文本</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 代表该文本的向量（浮点数列表）</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;Double&gt; <span class="title function_">embed</span><span class="params">(String text)</span> {</span><br><span class="line">        <span class="comment">// 调用 embed 方法，它会返回一个 EmbeddingResponse 对象</span></span><br><span class="line">        <span class="type">EmbeddingResponse</span> <span class="variable">embeddingResponse</span> <span class="operator">=</span> <span class="built_in">this</span>.embeddingClient.embedForResponse(List.of(text));</span><br><span class="line">        <span class="comment">// 从响应中获取第一个结果（因为我们只传入了一个文本）的嵌入向量</span></span><br><span class="line">        <span class="keyword">return</span> embeddingResponse.getResult().getOutput();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 为一批文本批量生成嵌入向量</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> texts 需要向量化的文本列表</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 包含每个文本对应向量的响应对象</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> EmbeddingResponse <span class="title function_">embed</span><span class="params">(List&lt;String&gt; texts)</span> {</span><br><span class="line">        <span class="comment">// 直接调用 embedForResponse 并传入整个列表，这通常比循环调用更高效</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.embeddingClient.embedForResponse(texts);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p><code>EmbeddingRequest</code> (内部创建) 和 <code>EmbeddingResponse</code> 是其核心数据结构。<code>EmbeddingRequest</code> 封装了要处理的文本列表和一些模型选项。<code>EmbeddingResponse</code> 则包含了 <code>Embedding</code> 对象的列表，每个 <code>Embedding</code> 对象都含有原始文本的索引和其对应的向量 <code>List&lt;Double&gt;</code>。</p><h5 id="3-3-2-真实应用场景"><a href="#3-3-2-真实应用场景" class="headerlink" title="3.3.2 真实应用场景"></a>3.3.2 真实应用场景</h5><ul><li><strong>知识库问答 (RAG)</strong>：<ol><li><strong>数据入库</strong>：将公司所有产品的 PDF 文档分割成小段落。</li><li><strong>向量化</strong>：使用 <code>EmbeddingClient</code> 将每个段落转换为向量。</li><li><strong>存储</strong>：将文本段落和其对应的向量存入向量数据库。</li><li><strong>查询</strong>：当用户提问“A产品的XX功能如何使用？”时，先用 <code>EmbeddingClient</code> 将问题转为向量，然后在向量数据库中查找最相似的文本段落，最后将这些段落作为上下文喂给 <code>ChatClient</code> 生成精准答案。</li></ol></li><li><strong>相关文章推荐</strong>：在博客文章底部，使用 <code>EmbeddingClient</code> 计算当前文章与数据库中其他所有文章的向量相似度，推荐最相关的几篇。</li><li><strong>情感分析</strong>：通过比较用户评论的向量与“正面评价”、“负面评价”等基准向量的距离，来判断评论的情感倾向。</li></ul><p>通过理解这三大核心抽象，你就掌握了与 AI 进行 đa dạng 交互的关键钥匙。它们共同构成了 Spring AI 的基座，支撑起后续所有高级功能的实现。在下一章，我们将聚焦于如何更精巧地使用 <code>ChatClient</code>，深入探索 Prompt 工程的艺术。</p><hr></div></article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/16/684f747174bc3.webp" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/16/684f747174bc3.webp" title="头像" alt="头像"></a><div class="post-copyright__author_name">Prorise</div><div class="post-copyright__author_desc">这聒噪的世界让沉默的人显得另类</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://prorise-cool.github.io/2025/06/19/java%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%893-%E6%A0%B8%E5%BF%83%E6%8A%BD%E8%B1%A1-api-%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl(&quot;https://prorise-cool.github.io/2025/06/19/java%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%893-%E6%A0%B8%E5%BF%83%E6%8A%BD%E8%B1%A1-api-%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90/&quot;)">Java微服务（三）：3. 核心抽象 API 深度解析</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://tc.z.wiki/autoupload/iXoPwUD80CPTvQUyITTBFOykMT9FcWW5SasRoXZEs3Wyl5f0KlZfm6UsKj-HyTuv/20250609/bYMH/418X445/ef9a3f68-d36a-441a-95fe-8179b1a25992.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://tc.z.wiki/autoupload/iXoPwUD80CPTvQUyITTBFOykMT9FcWW5SasRoXZEs3Wyl5f0KlZfm6UsKj-HyTuv/20250609/bYMH/418X445/ef9a3f68-d36a-441a-95fe-8179b1a25992.png" alt="微信"></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://tc.z.wiki/autoupload/iXoPwUD80CPTvQUyITTBFOykMT9FcWW5SasRoXZEs3Wyl5f0KlZfm6UsKj-HyTuv/20250609/cYu3/347X390/zfb.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://tc.z.wiki/autoupload/iXoPwUD80CPTvQUyITTBFOykMT9FcWW5SasRoXZEs3Wyl5f0KlZfm6UsKj-HyTuv/20250609/cYu3/347X390/zfb.png" alt="支付宝"></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display:none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://prorise-cool.github.io/2025/06/19/java%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%893-%E6%A0%B8%E5%BF%83%E6%8A%BD%E8%B1%A1-api-%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=Java微服务（三）：3. 核心抽象 API 深度解析&amp;url=https://prorise-cool.github.io/2025/06/19/java%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%893-%E6%A0%B8%E5%BF%83%E6%8A%BD%E8%B1%A1-api-%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90/&amp;pic=https://bu.dusays.com/2025/06/19/68535b23089d0.webp" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl(){var e=window.location.href,t=document.createElement("input");t.setAttribute("value",e),document.body.appendChild(t),t.select(),t.setSelectionRange(0,99999),document.execCommand("copy"),document.body.removeChild(t)}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://Prorise-cool.github.io" target="_blank">格物致知</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/Java%E5%BE%AE%E6%9C%8D%E5%8A%A1-AI%E7%AF%87/"><span class="tags-punctuation"><i class="anzhiyufont anzhiyu-icon-tag"></i></span>Java微服务-AI篇<span class="tagsPageCount">15</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://bu.dusays.com/2025/06/19/68535b23089d0.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media=&quot;all&quot;"><script src="https://lib.baomitu.com/social-share.js/1.0.16/js/social-share.min.js" defer=""></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/06/18/python%E8%AF%AD%E6%B3%95%E5%89%8D%E7%AF%87%E4%BA%8C%E7%AC%AC%E4%B8%80%E7%AB%A0%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%89%93%E5%8D%B0%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%B8%8Epycharm%E6%A8%A1%E6%9D%BF%E5%8F%98%E9%87%8F/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/17/685113b7c39b1.webp" onerror="onerror=null,src=&quot;/img/404.jpg&quot;" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Python语法前篇（二）：第一章：字符串打印格式化与PyCharm模板变量</div></div></a></div><div class="next-post pull-right"><a href="/2025/06/19/python%E8%AF%AD%E6%B3%95%E5%89%8D%E7%AF%87%E4%B8%89%E7%AC%AC%E4%BA%8C%E7%AB%A0%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/17/685113b7c39b1.webp" onerror="onerror=null,src=&quot;/img/404.jpg&quot;" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Python语法前篇（三）：第二章：转义字符</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size:1.5rem;margin-right:4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2025/06/17/java%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%801-%E5%BA%8F%E7%AB%A0%E8%BF%8E%E6%8E%A5-java-ai-%E5%BC%80%E5%8F%91%E6%96%B0%E7%BA%AA%E5%85%83/" title="Java微服务（一）：1. 序章：迎接 Java AI 开发新纪元"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/19/68535b23089d0.webp" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-06-17</div><div class="title">Java微服务（一）：1. 序章：迎接 Java AI 开发新纪元</div></div></a></div><div><a href="/2025/06/23/java%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%837-embedding-models%E4%B8%87%E7%89%A9%E7%9A%86%E5%8F%AF%E5%90%91%E9%87%8F%E5%8C%96/" title="Java微服务（七）：7. Embedding Models：万物皆可向量化"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/19/68535b23089d0.webp" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-06-23</div><div class="title">Java微服务（七）：7. Embedding Models：万物皆可向量化</div></div></a></div><div><a href="/2025/06/25/java%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B9%9D9-%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8-function-calling%E8%AE%A9-ai-%E8%B0%83%E7%94%A8%E4%BD%A0%E7%9A%84%E4%BB%A3%E7%A0%81/" title="Java微服务（九）：9. 函数调用 (Function Calling)：让 AI 调用你的代码"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/19/68535b23089d0.webp" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-06-25</div><div class="title">Java微服务（九）：9. 函数调用 (Function Calling)：让 AI 调用你的代码</div></div></a></div><div><a href="/2025/06/18/java%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%BA%8C2-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E6%9E%84%E5%BB%BA%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA-ai-%E5%BA%94%E7%94%A8/" title="Java微服务（二）：2. 快速入门：构建你的第一个 AI 应用"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/19/68535b23089d0.webp" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-06-18</div><div class="title">Java微服务（二）：2. 快速入门：构建你的第一个 AI 应用</div></div></a></div><div><a href="/2025/06/21/java%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%BA%945-chat-models%E4%B8%8E%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E5%AF%B9%E8%AF%9D/" title="Java微服务（五）：5. Chat Models：与大语言模型对话"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/19/68535b23089d0.webp" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-06-21</div><div class="title">Java微服务（五）：5. Chat Models：与大语言模型对话</div></div></a></div><div><a href="/2025/06/24/java%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%85%AB8-vector-storesai-%E7%9A%84%E8%AE%B0%E5%BF%86%E4%BD%93/" title="Java微服务（八）：8. Vector Stores：AI 的记忆体"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/19/68535b23089d0.webp" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-06-24</div><div class="title">Java微服务（八）：8. Vector Stores：AI 的记忆体</div></div></a></div></div></div><hr><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)" rel="external nofollow noreferrer">匿名评论</a><a href="/privacy" style="margin-left:4px">隐私政策</a></div><div class="comment-switch"><span class="first-comment">Twikoo</span><span id="switch-btn"></span><span class="second-comment">Waline</span></div><div class="comment-tips" id="comment-tips"><span>✅ 你无需删除空行，直接评论以获取最佳展示效果</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div><div><div id="waline-wrap"></div></div></div></div><div class="comment-barrage"></div><script>window.postData={title:"Java微服务（三）：3. 核心抽象 API 深度解析",date:"2025-06-19 16:13:45",updated:"2025-06-19 08:35:40",tags:["Java微服务-AI篇"],categories:["后端技术","Java"],content:"\n## 3. 核心抽象 API 深度解析\n\n在快速入门章节中，我们已经初步体验了 `ChatClient` 的便捷。现在，是时候深入水面之下，探索 Spring AI 设计的基石——核心抽象 API。Spring AI 的“可移植性”设计哲学，正是通过这层优雅的抽象实现的。无论你面对的是 OpenAI、Azure、Ollama 还是未来的任何新模型，你的业务代码始终与一套稳定、统一的接口对话。本章，我将带你逐一解构这些核心接口：`ChatClient`, `ImageClient`, 和 `EmbeddingClient`。\n\n#### 3.1 `ChatClient`: 对话的核心枢纽\n\n`ChatClient` 是你与大语言模型（LLM）进行对话交互的唯一入口。它将底层不同厂商 API 的复杂性（如不同的认证方式、请求/响应格式、错误处理）完全封装，为你提供了一个极其简洁和统一的编程模型。\n\n它的核心职责是：发送一个包含上下文和指令的 `Prompt`，并接收模型生成的 `ChatResponse`。这个过程可以通过两种方式完成：同步 (`call`) 和流式 (`stream`)。\n\n##### 3.1.1 `call()` vs. `stream()`: 同步与流式的抉择\n\n`call()` 和 `stream()` 方法是 `ChatClient` 的两个主要动作，它们服务于不同的交互场景。\n\n*   **`call()` (同步调用)**: 这是最直接的方式。你的应用发送请求后会一直等待，直到模型生成完整的响应后一次性返回。它简单、易于处理，适用于那些不需要实时反馈、可以接受短暂等待的场景。\n*   **`stream()` (流式调用)**: 这种方式会立即返回一个 `Flux<ChatResponse>`（来自 Project Reactor 的响应式流）。模型会像打字机一样，逐个 Token（可以理解为单词或字符块）地将内容推送回来。你的应用可以实时接收并处理这些数据片段。这极大地提升了用户体验，尤其是在构建交互式聊天机器人时。\n\n下表清晰地对比了两种方法的差异：\n\n| 特性 | `.call()` 方法 | `.stream()` 方法 |\n| :--- | :--- | :--- |\n| **方法签名** | `ChatResponse call(Prompt prompt)` | `Flux<ChatResponse> stream(Prompt prompt)` |\n| **返回类型** | `ChatResponse` (单个响应对象) | `Flux<ChatResponse>` (响应式数据流) |\n| **执行模式** | 同步阻塞 | 异步非阻塞 |\n| **数据返回** | 一次性返回完整内容 | 逐步、分块返回内容 |\n| **典型用例** | - 后台任务处理（如生成报告、总结邮件）<br>- API 中简单的问答<br>- 数据提取与转换 | - 交互式聊天机器人界面（打字机效果）<br>- 需要处理长文本响应的应用<br>- 对实时性要求高的场景 |\n| **编程模型** | 传统命令式编程 | 响应式编程 (Reactive) |\n\n##### 3.1.2 `ChatClient` 实战代码\n\n让我们通过一个简单的例子，看看如何在代码中使用 `ChatClient`。假设我们需要一个服务，它既能提供一次性的答案，也能提供流式输出。\n\n```java\npackage com.example.hellospringai.service;\n\nimport org.springframework.ai.chat.client.ChatClient;\nimport org.springframework.ai.chat.model.ChatResponse;\nimport org.springframework.ai.chat.prompt.Prompt;\nimport org.springframework.beans.factory.annotation.Autowired;\nimport org.springframework.stereotype.Service;\nimport reactor.core.publisher.Flux;\n\n@Service\npublic class ChatService {\n\n    private final ChatClient chatClient;\n\n    // 通过构造函数注入由 Spring Boot 自动配置好的 ChatClient.Builder\n    @Autowired\n    public ChatService(ChatClient.Builder chatClientBuilder) {\n        this.chatClient = chatClientBuilder.build();\n    }\n\n    /**\n     * 同步调用示例：一次性获取 AI 的完整回答\n     * @param message 用户的提问\n     * @return AI 生成的完整文本内容\n     */\n    public String getSimpleResponse(String message) {\n        // .prompt() 是一个便捷的流式 API 入口，用于快速构建和发送请求\n        // .user() 指定了用户角色的消息\n        // .call() 发起同步调用\n        // .content() 是一个快捷方法，用于直接从 ChatResponse 中提取文本内容\n        return chatClient.prompt()\n                .user(message)\n                .call()\n                .content();\n    }\n\n    /**\n     * 流式调用示例：返回一个可以逐块消费的响应流\n     * @param message 用户的提问\n     * @return 一个包含 ChatResponse 片段的 Flux 流\n     */\n    public Flux<ChatResponse> getStreamResponse(String message) {\n        // 构建一个 Prompt 对象，这将在第四章详细讲解\n        Prompt prompt = new Prompt(message);\n\n        // .stream() 发起流式调用，它会立即返回一个 Flux 对象\n        // 调用者可以订阅这个 Flux 来处理陆续到达的数据\n        return chatClient.prompt()\n                .user(message)\n                .stream()\n                .responses(); // .responses() 返回一个 Flux<ChatResponse>\n    }\n}\n```\n\n##### 3.1.3 真实应用场景\n\n*   **智能客服**：使用 `stream()` 为用户提供实时的、打字机效果的对话体验。\n*   **内容创作助手**：用户输入标题“写一篇关于 Spring AI 的博客”，使用 `call()` 在后台生成完整的文章草稿。\n*   **数据分析报告生成**：一个定时任务调用 `call()`，传入一段业务数据描述，生成一份自然语言格式的分析总结。\n\n#### 3.2 `ImageClient`: 文本到图像的创意画板\n\n`ImageClient` 是 Spring AI 中负责“文生图”（Text-to-Image）功能的抽象接口。它允许你用一段文本描述（即 Prompt）来调用 DALL-E, Stable Diffusion 等图像生成模型，创造出对应的图片。与 `ChatClient` 一样，它也实现了可移植性，你的代码只需与 `ImageClient` 交互，而无需关心背后是哪个厂商的模型在工作。\n\n##### 3.2.1 `ImageClient` 实战代码\n\n使用 `ImageClient` 非常直接。你需要创建一个 `ImagePrompt` 对象来封装你的图像描述和一些生成选项（如图片数量、尺寸、质量等），然后调用 `.call()` 方法。\n\n首先，确保你的 `pom.xml` 中引入了图像模型的依赖（以 OpenAI DALL-E 3 为例）：\n\n```xml\n<dependency>\n    <groupId>org.springframework.ai</groupId>\n    <artifactId>spring-ai-openai-spring-boot-starter</artifactId>\n</dependency>\n```\n*注：OpenAI 的图像和聊天功能在同一个 Starter 中。*\n\n然后，在 `application.yml` 中配置相关选项：\n\n```yaml\nspring:\n  ai:\n    openai:\n      api-key: ${OPENAI_API_KEY}\n      image:\n        options:\n          # 指定默认使用的文生图模型\n          model: dall-e-3\n          # 默认生成的图片质量\n          quality: hd\n          # 默认生成的图片尺寸\n          width: 1024\n          height: 1024\n```\n\n最后，编写调用代码：\n\n```java\npackage com.example.hellospringai.service;\n\nimport org.springframework.ai.image.ImageClient;\nimport org.springframework.ai.image.ImagePrompt;\nimport org.springframework.ai.image.ImageResponse;\nimport org.springframework.beans.factory.annotation.Autowired;\nimport org.springframework.stereotype.Service;\n\n@Service\npublic class ImageService {\n\n    private final ImageClient imageClient;\n\n    // 同样，ImageClient 的 Bean 也是由 Spring AI 自动配置的\n    @Autowired\n    public ImageService(ImageClient imageClient) {\n        this.imageClient = imageClient;\n    }\n\n    /**\n     * 根据文本描述生成图片\n     * @param description 图片的文本描述\n     * @return 包含图片 URL 或 Base64 数据等信息的响应对象\n     */\n    public ImageResponse generateImage(String description) {\n        // 创建一个 ImagePrompt，传入文本描述\n        // 可以在这里通过 .withOptions() 覆盖 application.yml 中的默认配置\n        ImagePrompt imagePrompt = new ImagePrompt(description);\n\n        // 调用 .call() 方法发起生成请求\n        ImageResponse response = imageClient.call(imagePrompt);\n\n        // ImageResponse 中包含了生成结果的元数据和图像数据本身\n        return response;\n    }\n}\n```\n`ImageResponse` 对象中包含了 `ImageGeneration` 列表，每一个 `ImageGeneration` 都代表一张生成的图片。你可以通过 `.getOutput().getUrl()` 获取图片的 URL（如果模型提供商支持），或者通过 `.getOutput().getB64Json()` 获取 Base64 编码的图像数据。\n\n##### 3.2.2 真实应用场景\n\n*   **营销内容生成**：为社交媒体帖子或广告自动生成配图。用户只需输入“一张展示夏天海滩边喝着鸡尾酒的悠闲场景的图片，风格要求是卡通插画”。\n*   **应用个性化**：允许用户在个人资料页面通过文本描述生成自己的专属头像。\n*   **设计原型工具**：产品经理输入“一个简洁的移动端登录页面，包含用户名、密码输入框和一个蓝色的登录按钮”，快速生成 UI 设计草图。\n\n#### 3.3 `EmbeddingClient`: 将世界向量化\n\n`EmbeddingClient` 可能是 Spring AI 中最强大但又最“隐形”的接口。它的作用只有一个：**将文本转换为一串被称为“嵌入（Embedding）”的数字向量**。\n\n> **为什么这很重要？**\n> 嵌入向量是 AI 理解语义的基石。在向量空间中，意思相近的文本，它们的向量在几何上也更接近。例如，“小猫”和“小狗”的向量距离，会远远小于“小猫”和“汽车”的向量距离。\n>\n> 这种特性使得我们能够进行**语义搜索**，即根据意思而不是关键词来查找信息。这是实现检索增强生成（RAG）、构建知识库问答系统的核心技术。\n\n`EmbeddingClient` 将文本（`String`）转换为高维浮点数数组（`List<Double>`），为所有高级 AI 应用奠定了数学基础。\n\n##### 3.3.1 `EmbeddingClient` 实战代码\n\n`EmbeddingClient` 的 API 非常简单，核心方法就是 `embed()`，它可以接收单个文本或一个文本列表。\n\n```java\npackage com.example.hellospringai.service;\n\nimport org.springframework.ai.embedding.EmbeddingClient;\nimport org.springframework.ai.embedding.EmbeddingResponse;\nimport org.springframework.beans.factory.annotation.Autowired;\nimport org.springframework.stereotype.Service;\n\nimport java.util.List;\n\n@Service\npublic class EmbeddingService {\n\n    private final EmbeddingClient embeddingClient;\n\n    // EmbeddingClient 同样由 Spring AI 自动配置\n    @Autowired\n    public EmbeddingService(EmbeddingClient embeddingClient) {\n        this.embeddingClient = embeddingClient;\n    }\n\n    /**\n     * 为单个文本生成嵌入向量\n     * @param text 需要向量化的文本\n     * @return 代表该文本的向量（浮点数列表）\n     */\n    public List<Double> embed(String text) {\n        // 调用 embed 方法，它会返回一个 EmbeddingResponse 对象\n        EmbeddingResponse embeddingResponse = this.embeddingClient.embedForResponse(List.of(text));\n        // 从响应中获取第一个结果（因为我们只传入了一个文本）的嵌入向量\n        return embeddingResponse.getResult().getOutput();\n    }\n\n    /**\n     * 为一批文本批量生成嵌入向量\n     * @param texts 需要向量化的文本列表\n     * @return 包含每个文本对应向量的响应对象\n     */\n    public EmbeddingResponse embed(List<String> texts) {\n        // 直接调用 embedForResponse 并传入整个列表，这通常比循环调用更高效\n        return this.embeddingClient.embedForResponse(texts);\n    }\n}\n```\n`EmbeddingRequest` (内部创建) 和 `EmbeddingResponse` 是其核心数据结构。`EmbeddingRequest` 封装了要处理的文本列表和一些模型选项。`EmbeddingResponse` 则包含了 `Embedding` 对象的列表，每个 `Embedding` 对象都含有原始文本的索引和其对应的向量 `List<Double>`。\n\n##### 3.3.2 真实应用场景\n\n*   **知识库问答 (RAG)**：\n    1.  **数据入库**：将公司所有产品的 PDF 文档分割成小段落。\n    2.  **向量化**：使用 `EmbeddingClient` 将每个段落转换为向量。\n    3.  **存储**：将文本段落和其对应的向量存入向量数据库。\n    4.  **查询**：当用户提问“A产品的XX功能如何使用？”时，先用 `EmbeddingClient` 将问题转为向量，然后在向量数据库中查找最相似的文本段落，最后将这些段落作为上下文喂给 `ChatClient` 生成精准答案。\n*   **相关文章推荐**：在博客文章底部，使用 `EmbeddingClient` 计算当前文章与数据库中其他所有文章的向量相似度，推荐最相关的几篇。\n*   **情感分析**：通过比较用户评论的向量与“正面评价”、“负面评价”等基准向量的距离，来判断评论的情感倾向。\n\n通过理解这三大核心抽象，你就掌握了与 AI 进行 đa dạng 交互的关键钥匙。它们共同构成了 Spring AI 的基座，支撑起后续所有高级功能的实现。在下一章，我们将聚焦于如何更精巧地使用 `ChatClient`，深入探索 Prompt 工程的艺术。\n\n---"}</script></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/16/684f747174bc3.webp" onerror="this.onerror=null,this.src=&quot;/img/friend_404.gif&quot;" alt="avatar"><div class="author-status"><img class="g-status" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/user/status.png" alt="status"></div></div><div class="author-info__description"><div style="line-height:1.4;color:rgba(255,255,255,.9);text-align:center">🚀 全栈开发者，专注于构建优雅高效的数字解决方案<br><span style="color:#fff;font-weight:700">前端 · 后端 · 架构 · 优化</span><br>📚 分享实战经验，一起探索技术边界</div></div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">Prorise</h1><div class="author-info__desc">这聒噪的世界让沉默的人显得另类</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com/361040115?spm_id_from=333.1387.0.0" rel="external nofollow noreferrer" target="_blank" title="BiliBili"><i class="anzhiyufont anzhiyu-icon-bilibili"></i></a></div></div></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background:url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center/100% no-repeat"></div><div class="back face" style="background:url(https://bu.dusays.com/2023/05/13/645fa415e8694.png) center center/100% no-repeat"></div></div></div></div><div class="card-widget card-latest-comments"><div class="item-headline"><i class="fas fa-comments"></i><span>最新评论</span></div><div class="item-content"><a href="/messages/" class="headline-right" title="查看更多"><i class="fas fa-angle-right"></i></a><div class="aside-list" id="latest-comments"></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%A0%B8%E5%BF%83%E6%8A%BD%E8%B1%A1-API-%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90"><span class="toc-number">1.</span> <span class="toc-text">3. 核心抽象 API 深度解析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-ChatClient-%E5%AF%B9%E8%AF%9D%E7%9A%84%E6%A0%B8%E5%BF%83%E6%9E%A2%E7%BA%BD"><span class="toc-number">1.0.1.</span> <span class="toc-text">3.1 ChatClient: 对话的核心枢纽</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-1-call-vs-stream-%E5%90%8C%E6%AD%A5%E4%B8%8E%E6%B5%81%E5%BC%8F%E7%9A%84%E6%8A%89%E6%8B%A9"><span class="toc-number">1.0.1.1.</span> <span class="toc-text">3.1.1 call() vs. stream(): 同步与流式的抉择</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-2-ChatClient-%E5%AE%9E%E6%88%98%E4%BB%A3%E7%A0%81"><span class="toc-number">1.0.1.2.</span> <span class="toc-text">3.1.2 ChatClient 实战代码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-3-%E7%9C%9F%E5%AE%9E%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">1.0.1.3.</span> <span class="toc-text">3.1.3 真实应用场景</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-ImageClient-%E6%96%87%E6%9C%AC%E5%88%B0%E5%9B%BE%E5%83%8F%E7%9A%84%E5%88%9B%E6%84%8F%E7%94%BB%E6%9D%BF"><span class="toc-number">1.0.2.</span> <span class="toc-text">3.2 ImageClient: 文本到图像的创意画板</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-1-ImageClient-%E5%AE%9E%E6%88%98%E4%BB%A3%E7%A0%81"><span class="toc-number">1.0.2.1.</span> <span class="toc-text">3.2.1 ImageClient 实战代码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-2-%E7%9C%9F%E5%AE%9E%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">1.0.2.2.</span> <span class="toc-text">3.2.2 真实应用场景</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-EmbeddingClient-%E5%B0%86%E4%B8%96%E7%95%8C%E5%90%91%E9%87%8F%E5%8C%96"><span class="toc-number">1.0.3.</span> <span class="toc-text">3.3 EmbeddingClient: 将世界向量化</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-3-1-EmbeddingClient-%E5%AE%9E%E6%88%98%E4%BB%A3%E7%A0%81"><span class="toc-number">1.0.3.1.</span> <span class="toc-text">3.3.1 EmbeddingClient 实战代码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-3-2-%E7%9C%9F%E5%AE%9E%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">1.0.3.2.</span> <span class="toc-text">3.3.2 真实应用场景</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/07/01/python%E8%AF%AD%E6%B3%95%E5%89%8D%E7%AF%87%E5%8D%81%E4%BA%94%E7%AC%AC%E5%8D%81%E5%9B%9B%E7%AB%A0%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" title="Python语法前篇（十五）：第十四章：深入解析并发编程"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/17/685113b7c39b1.webp" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" alt="Python语法前篇（十五）：第十四章：深入解析并发编程"></a><div class="content"><a class="title" href="/2025/07/01/python%E8%AF%AD%E6%B3%95%E5%89%8D%E7%AF%87%E5%8D%81%E4%BA%94%E7%AC%AC%E5%8D%81%E5%9B%9B%E7%AB%A0%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" title="Python语法前篇（十五）：第十四章：深入解析并发编程">Python语法前篇（十五）：第十四章：深入解析并发编程</a><time datetime="2025-07-01T08:13:45.000Z" title="发表于 2025-07-01 16:13:45">2025-07-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/01/java%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%8D%81%E4%BA%94%E9%99%84%E5%BD%95/" title="Java微服务（十五）：附录"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/19/68535b23089d0.webp" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" alt="Java微服务（十五）：附录"></a><div class="content"><a class="title" href="/2025/07/01/java%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%8D%81%E4%BA%94%E9%99%84%E5%BD%95/" title="Java微服务（十五）：附录">Java微服务（十五）：附录</a><time datetime="2025-07-01T08:13:45.000Z" title="发表于 2025-07-01 16:13:45">2025-07-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/30/python%E8%AF%AD%E6%B3%95%E5%89%8D%E7%AF%87%E5%8D%81%E5%9B%9B%E7%AC%AC%E5%8D%81%E4%B8%89%E7%AB%A0-%E9%AB%98%E7%BA%A7%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/" title="Python语法前篇（十四）：第十三章： 高级数据处理"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/17/685113b7c39b1.webp" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" alt="Python语法前篇（十四）：第十三章： 高级数据处理"></a><div class="content"><a class="title" href="/2025/06/30/python%E8%AF%AD%E6%B3%95%E5%89%8D%E7%AF%87%E5%8D%81%E5%9B%9B%E7%AC%AC%E5%8D%81%E4%B8%89%E7%AB%A0-%E9%AB%98%E7%BA%A7%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/" title="Python语法前篇（十四）：第十三章： 高级数据处理">Python语法前篇（十四）：第十三章： 高级数据处理</a><time datetime="2025-06-30T08:13:45.000Z" title="发表于 2025-06-30 16:13:45">2025-06-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/30/java%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%8D%81%E5%9B%9B14-%E7%A4%BE%E5%8C%BA%E7%94%9F%E6%80%81%E4%B8%8E%E6%9C%AA%E6%9D%A5%E5%B1%95%E6%9C%9B/" title="Java微服务（十四）：14. 社区、生态与未来展望"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/19/68535b23089d0.webp" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" alt="Java微服务（十四）：14. 社区、生态与未来展望"></a><div class="content"><a class="title" href="/2025/06/30/java%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%8D%81%E5%9B%9B14-%E7%A4%BE%E5%8C%BA%E7%94%9F%E6%80%81%E4%B8%8E%E6%9C%AA%E6%9D%A5%E5%B1%95%E6%9C%9B/" title="Java微服务（十四）：14. 社区、生态与未来展望">Java微服务（十四）：14. 社区、生态与未来展望</a><time datetime="2025-06-30T08:13:45.000Z" title="发表于 2025-06-30 16:13:45">2025-06-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/29/python%E8%AF%AD%E6%B3%95%E5%89%8D%E7%AF%87%E5%8D%81%E4%B8%89%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" title="Python语法前篇（十三）：第十二章： 异常处理"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/17/685113b7c39b1.webp" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" alt="Python语法前篇（十三）：第十二章： 异常处理"></a><div class="content"><a class="title" href="/2025/06/29/python%E8%AF%AD%E6%B3%95%E5%89%8D%E7%AF%87%E5%8D%81%E4%B8%89%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" title="Python语法前篇（十三）：第十二章： 异常处理">Python语法前篇（十三）：第十二章： 异常处理</a><time datetime="2025-06-29T08:13:45.000Z" title="发表于 2025-06-29 16:13:45">2025-06-29</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="footer_deal"><a class="deal_link" href="mailto:3381292732@qq.com" rel="external nofollow noreferrer" title="email"><i class="anzhiyufont anzhiyu-icon-envelope"></i></a><a class="deal_link" target="_blank" rel="noopener external nofollow noreferrer" href="https://weibo.com/u/7484736298?tabtype=home" title="微博"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a><a class="deal_link" href="/atom.xml" title="RSS"><i class="anzhiyufont anzhiyu-icon-rss"></i></a><img class="footer_mini_logo" title="返回顶部" alt="返回顶部" onclick="anzhiyu.scrollToDest(0,500)" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/16/684f745b722d7.webp" size="50px"><a class="deal_link" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Prorise-cool" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a><a class="deal_link" target="_blank" rel="noopener external nofollow noreferrer" href="https://space.bilibili.com/361040115?spm_id_from=333.788.0.0" title="Bilibili"><i class="anzhiyufont anzhiyu-icon-bilibili"></i></a><a class="deal_link" href="/copyright" title="CC"><i class="anzhiyufont anzhiyu-icon-copyright-line"></i></a></div><div id="workboard"><div id="runtimeTextTip"></div></div><div class="footer_custom_text">这是我的个人博客，分享技术与生活点滴。</div><div id="anzhiyu-footer"><div class="footer-group"><div class="footer-title">服务</div><div class="footer-links"><a class="footer-item" title="51la统计" target="_blank" rel="noopener external nofollow noreferrer" href="https://v6.51.la/">51la统计</a><a class="footer-item" title="十年之约" target="_blank" rel="noopener external nofollow noreferrer" href="https://www.foreverblog.cn/">十年之约</a></div></div><div class="footer-group"><div class="footer-title">主题</div><div class="footer-links"><a class="footer-item" title="文档" href="/docs/">文档</a><a class="footer-item" title="源码" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu">源码</a></div></div><div class="footer-group"><div class="footer-title">导航</div><div class="footer-links"><a class="footer-item" title="即刻短文" href="/essay/">即刻短文</a><a class="footer-item" title="留言板" href="/comments/">留言板</a></div></div><div class="footer-group"><div class="footer-title">协议</div><div class="footer-links"><a class="footer-item" title="隐私协议" href="/privacy/">隐私协议</a><a class="footer-item" title="版权协议" href="/copyright/">版权协议</a></div></div><div class="footer-group"><div class="footer-title-group"><div class="footer-title">友链</div><a class="random-friends-btn" id="footer-random-friends-btn" href="javascript:addFriendLinksInFooter();" rel="external nofollow noreferrer" title="换一批友情链接"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right"></i></a></div><div class="footer-links" id="friend-links-in-footer"></div></div></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="博客框架为Hexo7.0" title="博客框架为Hexo7.0"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Frame-Hexo.svg" alt="博客框架为Hexo7.0"></a><a class="github-badge" target="_blank" href="https://www.dogecloud.com/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站使用多吉云为静态资源提供CDN加速" title="本站使用多吉云为静态资源提供CDN加速"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/CDN-多吉云-3693F3.svg" alt="本站使用多吉云为静态资源提供CDN加速"></a><a class="github-badge" target="_blank" href="https://github.com/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站项目由Github托管" title="本站项目由Github托管"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Source-Github.svg" alt="本站项目由Github托管"></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站采用CC BY-NC-SA 4.0协议" title="本站采用CC BY-NC-SA 4.0协议"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/Copyright-BY-NC-SA.svg" alt="本站采用CC BY-NC-SA 4.0协议"></a></p></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">©2025 By <a class="footer-bar-link" href="/about/" title="Prorise" target="_blank">Prorise</a></div></div><div id="footer-type-tips"></div><div class="js-pjax"><script>function subtitleType () {
+  fetch('https://v1.hitokoto.cn')
+    .then(response => response.json())
+    .then(data => {
+      if (true) {
+        const from = '出自 ' + data.from
+        const sub = ["生活明朗, 万物可爱, 人间值得, 未来可期.","愿你眼里的星星，永远亮晶晶。","愿我们每个人都能被世界温柔以待。"]
+        sub.unshift(data.hitokoto, from)
+        window.typed = new Typed('#footer-type-tips', {
+          strings: sub,
+          startDelay: 300,
+          typeSpeed: 150,
+          loop: true,
+          backSpeed: 50,
+        })
+      } else {
+        document.getElementById('footer-type-tips').innerHTML = data.hitokoto
+      }
+    })
+}
+
+if (true) {
+  if (typeof Typed === 'function') {
+    subtitleType()
+  } else {
+    getScript('https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/typed.js/2.0.12/typed.min.js').then(subtitleType)
+  }
+} else {
+  subtitleType()
+}</script></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Prorise-cool?tab=repositories" title="网站源码">网站源码</a><a class="footer-bar-link" target="_blank" rel="noopener external nofollow noreferrer" href="https://beian.miit.gov.cn/" title="湘ICP备23041-302号">湘ICP备23041-302号</a><a class="footer-bar-link cc" href="/copyright" title="cc协议"><i class="anzhiyufont anzhiyu-icon-copyright-line"></i><i class="anzhiyufont anzhiyu-icon-creative-commons-by-line"></i><i class="anzhiyufont anzhiyu-icon-creative-commons-nc-line"></i><i class="anzhiyufont anzhiyu-icon-creative-commons-nd-line"></i></a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">30</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">3</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" rel="external nofollow noreferrer" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" href="/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" href="/" title="后续项目..."><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="后续项目..."><span class="back-menu-item-text">后续项目...</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size:.9em"></i><span> 归档</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size:.9em"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size:.9em"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>个人</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size:.9em"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size:.9em"></i><span> 留言板</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/todolist/"><i class="fas fa-check-double faa-tada"></i><span> 代办清单</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/awesome-links/"><i class="fas fa-link faa-tada"></i><span> 实用网站</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>预览</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/?server=netease&amp;id=3117791189"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size:.9em"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size:.9em"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/messages/"><i class="fas fa-comments faa-tada"></i><span> 评论总览</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size:.9em"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size:.9em"></i><span> 即刻短文</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size:.9em"></i><span> 随便逛逛</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/Java%E5%BE%AE%E6%9C%8D%E5%8A%A1-AI%E7%AF%87/" style="font-size:.88rem">Java微服务-AI篇<sup>15</sup></a><a href="/tags/Python-%E8%AF%AD%E6%B3%95%E7%AF%87/" style="font-size:.88rem">Python-语法篇<sup>15</sup></a></div></div><hr></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="go-down" type="button" title="直达底部" onclick="anzhiyu.scrollToDest(document.body.scrollHeight,500)"><i class="anzhiyufont anzhiyu-icon-arrow-down"></i></button><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="anzhiyufont anzhiyu-icon-comment-sms"></i></button><button id="to_comment" type="button" title="直达评论" onclick="FixedCommentBtn()"><i class="anzhiyufont anzhiyu-icon-comments"></i></button><a id="switch-commentBarrage" href="javascript:anzhiyu.switchCommentBarrage();" rel="external nofollow noreferrer" title="开关弹幕"><i class="anzhiyufont anzhiyu-icon-danmu"></i></a><button id="download-md-btn" type="button" title="下载文章源文件"><i class="anzhiyufont anzhiyu-icon-download"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="3117791189" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size:1rem"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://music.163.com/#/playlist?id=3117791189&quot;, &quot;_blank&quot;);" style="display:none"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/instant.page/5.1.0/instantpage.min.js" type="module"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/vanilla-lazyload/17.3.1/lazyload.iife.min.js"></script><script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/node-snackbar/0.1.16/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/pangu/4.0.7/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><canvas id="universe"></canvas><script async="" src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>//- 从这里开始的所有JS代码，都必须有缩进（例如2个空格）
+// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("06/10/2025 00:00:00"); // 此处读取您配置中的建站时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  
+  // --- 已将您的专属LOGO和个人信息集成到这里 ---
+  const ascll = [
+    `欢迎访问 Prorise 的数字空间!`,
+    `代码构建世界，思想驱动未来`,
+    // 这里的反引号和所有ASCII art行，都必须有正确的缩进
+    `
+     ____                      _             
+    |  _ \\  _ __   ___   _ __  (_) ___   ___  
+    | |_) || '__| / _ \\ | '__| | |/ __| / _ \\ 
+    |  __/ | |   | (_) || |    | |\\__ \\|  __/ 
+    |_|    |_|    \\___/ |_|    |_||___/ \\___| 
+                                             
+    `,
+    "已稳定运行",
+    dnum,
+    "天",
+    `©2025 By Prorise 1.0.0`,
+  ];
+  
+  const ascll2 = [`SYS-INFO`, `前置摄像头拍照成功`, `您的帅气脸庞为：`, `😎`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c${ascll[2]} \n%c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF; font-family:monospace;",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，朋友.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Created by Prorise %c 你正在访问 Prorise 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 注意，你的所有操作已被记录.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async="" src="/anzhiyu/random.js"></script><script async="">(function () {
+  var grt = new Date("06/10/2025 00:00:00"); //设置网站上线时间
+  var now = new Date();
+  var dnum;
+  var hnum;
+  var mnum;
+  var snum;
+  var nowHour;
+
+  // 计算并更新天数、小时数、分钟数和秒数
+  function updateTime() {
+    now = new Date(); // 更新 now 的值
+    nowHour = now.getHours(); // 更新 nowHour 的值
+    var days = (now - grt) / 1000 / 60 / 60 / 24;
+    dnum = Math.floor(days);
+    var hours = (now - grt) / 1000 / 60 / 60 - 24 * dnum;
+    hnum = Math.floor(hours);
+    if (String(hnum).length == 1) {
+      hnum = "0" + hnum;
+    }
+    var minutes = (now - grt) / 1000 / 60 - 24 * 60 * dnum - 60 * hnum;
+    mnum = Math.floor(minutes);
+    if (String(mnum).length == 1) {
+      mnum = "0" + mnum;
+    }
+    var seconds = (now - grt) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
+    snum = Math.round(seconds);
+    if (String(snum).length == 1) {
+      snum = "0" + snum;
+    }
+  }
+
+  // 更新网页中显示的网站运行时间
+  function updateHtml() {
+    const footer = document.getElementById("footer");
+    if (!footer) return
+    let currentTimeHtml = "";
+    if (nowHour < 18 && nowHour >= 9) {
+      // 如果是上班时间，默认就是"安知鱼-上班摸鱼中.svg"图片，不需要更改
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    } else {
+      // 如果是下班时间，插入"安知鱼-下班啦.svg"图片
+      let img = document.querySelector("#workboard .workSituationImg");
+      if (img != null) {
+        img.src = "";
+        img.title = "下班了就该开开心心的玩耍，嘿嘿~";
+        img.alt = "下班了就该开开心心的玩耍，嘿嘿~";
+      }
+
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    }
+
+    if (document.getElementById("runtimeTextTip")) {
+      document.getElementById("runtimeTextTip").innerHTML = currentTimeHtml;
+    }
+  }
+
+  setInterval(() => {
+    updateTime();
+    updateHtml();
+  }, 1000);
+})();</script><script src="https://cdn.cbd.int/algoliasearch@4.18.0/dist/algoliasearch-lite.umd.js"></script><script src="https://cdn.cbd.int/instantsearch.js@4.60.0/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><div class="js-pjax"><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdn.cbd.int/mermaid@10.2.4/dist/mermaid.min.js').then(runMermaid)
+  }
+
+  anzhiyu.addGlobalFn('themeChange', runMermaid, 'mermaid')
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>(() => {
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo.prorise666.site/',
+      region: 'ap-shanghai',
+      onCommentLoaded: () => {
+        anzhiyu.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') setTimeout(runFn,0)
+    else getScript('https://cdn.cbd.int/twikoo@1.6.39/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo.prorise666.site/',
+      region: 'ap-shanghai',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const runFn = () => {
+    init();
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else {
+      loadTwikoo()
+    }
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script><script>(() => {
+  let initFn = window.walineFn || null
+
+  const initWaline = (Fn) => {
+    const waline = Fn(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'https://waline.prorise666.site',
+      pageview: true,
+      dark: 'html[data-theme="dark"]',
+      path: window.location.pathname,
+      comment: true,
+      imageUploader: true,
+    }, null))
+
+    const destroyWaline = () => {
+      waline.destroy()
+    }
+
+    anzhiyu.addGlobalFn('pjax', destroyWaline, 'destroyWaline')
+  }
+
+  const loadWaline = async () => {
+    if (initFn) initWaline(initFn)
+    else {
+      await getCSS('https://cdn.cbd.int/@waline/client@3.1.3/dist/waline.css')
+      if (true) await getCSS('https://cdn.cbd.int/@waline/client@3.1.3/dist/waline-meta.css')
+      const { init } = await import('https://cdn.cbd.int/@waline/client@3.1.3/dist/waline.js')
+      initFn = init || Waline.init
+      initWaline(initFn)
+      window.walineFn = initFn
+    }
+  }
+
+  if ('Twikoo' === 'Waline' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('waline-wrap'),loadWaline)
+    else setTimeout(loadWaline, 0)
+  } else {
+    window.loadOtherComment = loadWaline
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"><script async="" src="/js/anzhiyu/comment_barrage.js"></script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'https://twikoo.prorise666.site/',
+        region: 'ap-shanghai',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://cdn.cbd.int/twikoo@1.6.39/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'><div class='name'><span>${array[i].nick} </span></div></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script async="" data-pjax="" src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail=""</script><script async="" data-pjax="" src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script src="/js/anzhiyu/right_click_menu.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script src="/js/load-on-demand.js"></script><script src="/custom/js/markdown-download.js"></script><script defer="" id="fluttering_ribbon" mobile="false" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="" color="0,0,255" opacity="0.7" zindex="-1" count="99" mobile="false" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="//code.tidio.co//tk571vck0ua2wjoalfbp8wyrlsdaunmz.js" async=""></script><script>(() => {
+  const isChatBtn = true
+  const isChatHideShow = true
+
+  if (isChatBtn) {
+    let isShow = false
+    const close = () => {
+      window.tidioChatApi.hide()
+      isShow = false
+      document.body.style.position = 'relative';
+      document.documentElement.style.overflow = 'auto'
+    }
+    
+    const open = () => {
+      window.tidioChatApi.open()
+      window.tidioChatApi.show()
+      isShow = true
+    }
+
+    const onTidioChatApiReady = () => {
+      window.tidioChatApi.hide()
+      window.tidioChatApi.on("close", close)
+    }
+    if (window.tidioChatApi) {
+      window.tidioChatApi.on("ready", onTidioChatApiReady)
+    } else {
+      document.addEventListener("tidioChat-ready", onTidioChatApiReady)
+    }
+
+    window.chatBtnFn = () => {
+      if (!window.tidioChatApi) return
+      isShow ? close() : open()
+    }
+  } else if (isChatHideShow) {
+    window.chatBtn = {
+      hide: () => {
+        window.tidioChatApi && window.tidioChatApi.hide()
+      },
+      show: () => {
+        window.tidioChatApi && window.tidioChatApi.show()
+      }
+    }
+  }
+})()</script><link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/aplayer/1.10.1/APlayer.min.css" media="print" onload="this.media=&quot;all&quot;"><script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/aplayer/1.10.1/APlayer.min.js"></script><script src="https://npm.elemecdn.com/meting@2.0.1/dist/Meting.min.js"></script><script src="https://lib.baomitu.com/pjax/0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","meta[property=\"og:type\"]","meta[property=\"og:site_name\"]","meta[property=\"og:description\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: true,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '[object Object]', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async="" data-pjax="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div><link rel="stylesheet" href="https://ai.tianli0.top/static/public/postChatUser_summary.min.css"><script>let tianliGPT_key = '';
+        let tianliGPT_postSelector = '#post-container .post-content';
+        let tianliGPT_Title = '✨ AI 文章摘要';
+        let tianliGPT_postURL = '/^https?:\/\/[^\/]+\/[0-9]{4}\/[0-9]{2}\/[0-9]{2}\/';
+        let tianliGPT_blacklist = '';
+        let tianliGPT_wordLimit = '1000';
+        let tianliGPT_typingAnimate = true;
+        let tianliGPT_theme = 'default';
+        var postChatConfig = {
+          backgroundColor: "#4d648d",
+          bottom: "76px",
+          left: "16px",
+          fill: "#FFFFFF",
+          width: "50px",
+          frameWidth: "380px",
+          frameHeight: "600px",
+          defaultInput: true,
+          upLoadWeb: true,
+          showInviteLink: true,
+          userTitle: "💬 智能助手",
+          userDesc: "我是 Prorise 博客的 AI 助手，有任何关于网站内容的问题都可以问我哦～",
+          addButton: true,
+          beginningText: "这篇文章介绍了",
+          userIcon: "https://ai.tianli0.top/static/img/PostChat.webp",
+          userMode: "magic",
+          defaultChatQuestions: ["你好","你是谁"],
+          defaultSearchQuestions: ["视频压缩","设计"]
+        };</script><script data-postchat_key="" src="https://ai.tianli0.top/static/public/tianli_gpt.min.js"></script></body></html>
