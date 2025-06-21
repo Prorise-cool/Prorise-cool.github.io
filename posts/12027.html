@@ -1,0 +1,713 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"><title>2. 快速入门：构建你的第一个 AI 应用 | 格物致知</title><meta name="keywords" content="Java微服务-AI篇"><meta name="author" content="Prorise"><meta name="copyright" content="Prorise"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#cee8ff"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="2. 快速入门：构建你的第一个 AI 应用"><meta name="application-name" content="2. 快速入门：构建你的第一个 AI 应用"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#cee8ff"><meta property="og:type" content="article"><meta property="og:title" content="2. 快速入门：构建你的第一个 AI 应用"><meta property="og:url" content="https://prorise-cool.github.io/posts/12027.html"><meta property="og:site_name" content="格物致知"><meta property="og:description" content="2. 快速入门：构建你的第一个 AI 应用理论讲了再多，也不如亲手写下第一行代码来得实在。在本章中，我将手把手地带你完成从项目创建到运行第一个 AI 聊天应用的全部过程。这个过程会非常迅速，你将亲身体会到 Spring AI 如何将复杂的 AI 调用，简化为几次点击和几行代码。 2.1 环境准备与项"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://bu.dusays.com/2025/06/19/68535b23089d0.webp"><meta property="article:author" content="Prorise"><meta property="article:tag" content="全栈, Full Stack, 前端, 后端, Node.js, Vue, React, 数据库, Linux, Docker, 个人博客, 技术分享"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://bu.dusays.com/2025/06/19/68535b23089d0.webp"><meta name="description" content="2. 快速入门：构建你的第一个 AI 应用理论讲了再多，也不如亲手写下第一行代码来得实在。在本章中，我将手把手地带你完成从项目创建到运行第一个 AI 聊天应用的全部过程。这个过程会非常迅速，你将亲身体会到 Spring AI 如何将复杂的 AI 调用，简化为几次点击和几行代码。 2.1 环境准备与项"><link rel="shortcut icon" href="/img/icons/favicon.ico"><link rel="canonical" href="https://prorise-cool.github.io/posts/12027.html"><link rel="preconnect" href="//cdn.cbd.int"><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""><link rel="preconnect" href="//busuanzi.ibruce.info"><meta name="google-site-verification" content="xxx"><meta name="baidu-site-verification" content="code-xxx"><meta name="msvalidate.01" content="xxx"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media=&quot;all&quot;"><link rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/node-snackbar/0.1.16/snackbar.min.css" media="print" onload="this.media=&quot;all&quot;"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media=&quot;all&quot;"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media=&quot;all&quot;"><script async="" src="https://www.googletagmanager.com/gtag/js?id=[object Object]"></script><script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","[object Object]")</script><script>const GLOBAL_CONFIG = {
+  linkPageTop: {"enable":true,"title":"与数百名博主无限进步","addFriendPlaceholder":"昵称（请勿包含博客等字样）：\n网站地址（要求博客地址，请勿提交个人主页）：\n头像图片url（请提供尽可能清晰的图片，我会上传到我自己的图床）：\n描述：\n站点截图（可选）：\n"},
+  peoplecanvas: undefined,
+  postHeadAiDescription: {"enable":true,"gptName":"Prorise","mode":"tianli","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"S-DNA1JM95BX2F9L0N","Referer":"https://xx.xx/"},
+  diytitle: undefined,
+  LA51: undefined,
+  greetingBox: {"enable":true,"default":"晚上好👋","list":[{"greeting":"晚安😴","startTime":0,"endTime":5},{"greeting":"早上好鸭👋, 祝你一天好心情！","startTime":6,"endTime":9},{"greeting":"上午好👋, 状态很好，鼓励一下～","startTime":10,"endTime":10},{"greeting":"11点多啦, 在坚持一下就吃饭啦～","startTime":11,"endTime":11},{"greeting":"午安👋, 宝贝","startTime":12,"endTime":14},{"greeting":"🌈充实的一天辛苦啦！","startTime":14,"endTime":18},{"greeting":"19点喽, 奖励一顿丰盛的大餐吧🍔。","startTime":19,"endTime":19},{"greeting":"晚上好👋, 在属于自己的时间好好放松😌~","startTime":20,"endTime":24}]},
+  twikooEnvId: 'https://twikoo.prorise666.site/',
+  commentBarrageConfig:{"enable":true,"maxBarrage":1,"barrageTime":10000,"accessToken":"b39753735ed0ed5ffeb771bc108e3158","mailMd5":"ec3291d59a8d7d3675df8a0537fcbc979f0fa611c8df55841fb7f4fd162bd07a"},
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: {"mode":"both","api":"https://img2color-go.vercel.app/api?img=","cover_change":true},
+  authorStatus: {"skills":["🤣 全栈开发工程师","🙂 前端架构设计师","🙃 后端服务构建者","🤩 移动端应用开发","🤯 数据库设计专家","🥳 DevOps运维实践者","🤭 技术栈多面手","😎 性能优化达人"]},
+  algolia: {"appId":"K8Y7M0RMXQ","apiKey":"11fa7380e2694483a44b143044e69e6e","indexName":"prorise_blog","hits":{"per_page":6},"languages":{"input_placeholder":"输入关键词后按下回车查找","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: {"limitDay":3,"position":"top","messagePrev":"距离上次更新已经过了","messageNext":"天，文章内容可能已经过时。"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    simplehomepage: false,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: Prorise","link":"链接: ","source":"来源: 格物致知","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: true,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE={configTitle:"格物致知",title:"2. 快速入门：构建你的第一个 AI 应用",postAI:"false",pageFillDescription:"2. 快速入门：构建你的第一个 AI 应用, 2.1 环境准备与项目初始化, 2.2 核心依赖辨析：BOM 与 Starter, 核心概念解读, 2.3 Hello AI! 第一个聊天应用, 2.3.1 配置 API Key (以 OpenAI 为例), 2.3.2 配置ClientBean, 2.3.3 编写 Controller, 2.3.4 运行与测试, 2.4 项目结构与核心配置解析, 2.4.1 项目结构最佳实践, 2.4.2 核心自动配置类, 2.4.3 全局配置选项快速入门构建你的第一个应用理论讲了再多也不如亲手写下第一行代码来得实在在本章中我将手把手地带你完成从项目创建到运行第一个聊天应用的全部过程这个过程会非常迅速你将亲身体会到如何将复杂的调用简化为几次点击和几行代码环境准备与项目初始化在开始之前请确保你的开发环境中安装了以下必备工具版本要求或更高和都是基于构建的项目构建工具本教程将主要使用作为示例集成开发环境推荐使用或带有插件的一个模型的我们需要一个服务提供商的账户和密钥在本入门示例中我们将使用大语言模型请前往开放平台注册并创建一个准备就绪后我们使用官方的项目生成器来创建我们的项目访问在浏览器中打开填写项目元数据配置项值说明选择作为项目构建工具选择作为开发语言选择一个最新的稳定版避免选择或版本通常是公司或组织的反向域名项目的唯一标识符代码的基础包名我们将应用打包成一个可执行的文件必须与你环境中安装的版本匹配添加依赖这是最关键的一步我们告诉项目需要哪些能力点击按钮搜索并添加用于构建让我们能通过请求与应用交互注意即使我们的目标是我们依然先添加这个依赖因为它不仅提供了的客户端更重要的是它提供了一套与兼容的实现的正好遵循了这个规范这为我们后续的无缝切换埋下了伏笔图片来源官方文档生成并下载项目点击按钮下载生成的压缩包解压后用你的将其作为一个项目导入核心依赖辨析与打开项目的文件这是项目的心脏我们来解读一下为我们生成的关键配置核心概念解读概念作用实际应用场景定义并管理一组相互兼容的依赖版本在一个大型项目中手动管理几十个库的版本非常痛苦且容易出错使用后我们只需引入本身所有清单内的库版本都会被自动和谐地确定下来的自动化配置启动器当我们想使用时只需引入所有关于连接序列化模板类的都会被自动创建也是同理它为我们自动创建了第一个聊天应用配置完成现在进入激动人心的编码环节在这之前我们需要引入为了以后的环节进行便利的操作在文件夹中引入不要选创建脚手架的会导致很多的问题配置以为例首先配置永远不要将密钥硬编码在代码中这是安全红线我们将其配置在文件里打开并将其重命名为格式更具结构化可读性更强然后添加以下内容配置使用兼容协议注意这里不能加后缀在年的更新中明确指定了不需要后缀很多还是会错以为需要后缀配置导入手动创建一个根据自动配置好的实例一个配置好的实例在方法参数中请求注入将注入的传递给代码解读我们引入接口这是所有聊天模型如的实现的通用父接口这是最关键的一步我们告诉请帮我创建一个但在创建之前请把容器里已经存在的那个类型的给我从哪里来它是由这个依赖根据你的文件自动创建和配置的它已经知道了你的和默认的名称我们把这个已经配置完毕的塞给了的构建器这样这个新的就知道该如何与进行通信了编写接下来我们创建一个简单的它会接收一个问题然后调用模型生成答案在包下创建一个名为的类导入类定义一个请求接口路径为接收来自的查询参数一个包含回答的对象将返回类型从修改为给我讲个关于程序员的笑话先获取的纯文本回复将回复包装在一个对象中返回会自动将其转换为代码是不是非常简洁让我们来解读一下这个定义了一个接收用户提问调用并返回标准响应的接口注入方式通过构造器注入这是推荐的用法安全且清晰核心逻辑链式调用的作用可以概括为构建提示添加用户输入调用提取文本结果返回格式方法返回一个对象框架会自动将其转换为格式的响应非常适合现代应用开发但这样他的结果是一次性返回的会遇到长时间的阻塞我们可以对代码进行如下的微调这样子就能实现式对话式的响应结果导入定义一个请求接口以现代响应式的方式流式输出回答接收来自的查询参数一个包含回答文本块的响应式数据流这里必须指定编码否则中文将无法正确编码给我写一首关于星空的五言绝句直接返回调用链产生的运行与测试现在一切准备就绪运行应用在你的中找到文件右键点击并选择或者使用命令测试接口应用启动后默认端口为打开浏览器或使用等工具访问我们的端点使用浏览器访问你会看到类似下面的响应好的这是一个经典的程序员笑话程序员面试面试官你简历上写着你擅长那你能说出和的区别吗程序员当然是问你们的值相等吗而是问你们是不是同一个对象就像我和我女朋友她总说你和代码是真爱但从来不等于爱我面试官你被录用了但建议别让听到这个比喻附中比较内存地址比较值笑话的冷度程序员咖啡的浓度你也可以在中附带自己的问题请用三个词总结一下框架响应轻量级依赖注入模块化或替代词容器生态恭喜你你已经成功构建并运行了你的第一个应用项目结构与核心配置解析让我们最后回顾一下我们项目的结构和核心配置这有助于你建立一个清晰的整体认知项目结构最佳实践一个典型的项目结构如下主启动类存放配置类层处理请求调用数据传输对象封装请求数据封装响应数据业务逻辑层接口的实现类接口定义业务方法自定义异常及全局异常处理数据访问层如果需要持久化存放静态资源存放模板文件核心配置文件请求处理流程示例一个典型的请求会像这样在各层之间流动客户端发送请求例如请求体是一个包含的接收请求将请求体反序列化为对象调用的方法并将中的数据传递过去执行核心业务逻辑比如调用与交互或者从读取历史对话记录将处理结果的回答返回给将结果封装成对象自动将其序列化为响应返回给客户端遵循这套结构即使未来项目变得再复杂你也能保持清晰的思路和整洁的代码库核心自动配置类我们之所以能如此轻松地使用完全得益于的自动配置机制中的类在幕后为我们完成了所有繁重的工作它会读取中前缀下的所有配置使用这些配置特别是创建一个与服务器通信的基于这个和其他配置如最终创建一个的实例并将其注册为容器中的一个同时它还会注册一个方便我们进行自定义构建正是因为这些已经被自动注册我们才能在自己的中通过轻松地注入并使用它们这就是约定优于配置理念的完美体现全局配置选项在中除了和我们还可以配置更多影响行为的全局参数这些参数位于路径下例如温度控制输出的随机性值越高越随机越低越确定范围采样与温度类似但更侧重于从概率最高的词汇中选择不建议与温度同时修改最大生成的数量可以用来控制成本和响应长度这些配置会作为默认值应用到每一次调用中当然你也可以在单次调用中覆盖这些默认值我们将在后续章节中详细介绍通过本章的快速入门你应该已经感受到了的简洁与强大它将复杂的底层调用封装得严严实实让我们能以一种极其的方式轻松地将的智慧融入到应用之中在接下来的章节里我们将深入探索提供的更多核心概念和强大功能",isPost:!0,isHome:!1,isHighlightShrink:!1,isToc:!0,postUpdate:"2025-06-21 21:53:35",postMainColor:""}</script><noscript><style type="text/css">#nav{opacity:1}.justified-gallery img{opacity:1}#post-meta time,#recent-posts time{display:inline!important}</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0F1C2E')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#cee8ff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/font.css"><link rel="stylesheet" href="/css/index_media.css" media="(max-width:0),screen and (prefers-reduced-motion:reduce)" onload="this.media=`screen`"><link rel="stylesheet" href="/css/post-ui.css"><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://bu.dusays.com/2025/06/16/684f747174bc3.webp"><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"><script async="" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" href="/" title="博客"><img class="back-menu-item-icon" src="/img/favicon.ico" alt="博客"><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" href="/" title="后续项目..."><img class="back-menu-item-icon" src="https://image.anheyu.com/favicon.ico" alt="后续项目..."><span class="back-menu-item-text">后续项目...</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title">格物致知</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)" rel="external nofollow noreferrer">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size:.9em"></i><span> 归档</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size:.9em"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size:.9em"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>个人</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size:.9em"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size:.9em"></i><span> 留言板</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/todolist/"><i class="fas fa-check-double faa-tada"></i><span> 代办清单</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/awesome-links/"><i class="fas fa-link faa-tada"></i><span> 实用网站</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>预览</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/?server=netease&amp;id=3117791189"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size:.9em"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size:.9em"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/messages/"><i class="fas fa-comments faa-tada"></i><span> 评论总览</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size:.9em"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size:.9em"></i><span> 即刻短文</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size:.9em"></i><span> 随便逛逛</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="background-change-button"><a class="site-page" onclick="toggleWinbox()" title="切换背景" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-palette"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" rel="external nofollow noreferrer" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole()"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://tc.z.wiki/autoupload/iXoPwUD80CPTvQUyITTBFOykMT9FcWW5SasRoXZEs3Wyl5f0KlZfm6UsKj-HyTuv/20250609/bYMH/418X445/ef9a3f68-d36a-441a-95fe-8179b1a25992.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://tc.z.wiki/autoupload/iXoPwUD80CPTvQUyITTBFOykMT9FcWW5SasRoXZEs3Wyl5f0KlZfm6UsKj-HyTuv/20250609/bYMH/418X445/ef9a3f68-d36a-441a-95fe-8179b1a25992.png"></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://tc.z.wiki/autoupload/iXoPwUD80CPTvQUyITTBFOykMT9FcWW5SasRoXZEs3Wyl5f0KlZfm6UsKj-HyTuv/20250609/cYu3/347X390/zfb.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://tc.z.wiki/autoupload/iXoPwUD80CPTvQUyITTBFOykMT9FcWW5SasRoXZEs3Wyl5f0KlZfm6UsKj-HyTuv/20250609/cYu3/347X390/zfb.png"></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title">最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">音乐</div><span class="author-content-item-title">灵魂的碰撞💥</span></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/06/"><span class="card-archive-list-date">六月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">15</span><span>篇</span></div></a></li></ul></div></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item on" id="consoleCommentBarrage" onclick="anzhiyu.switchCommentBarrage()" title="热评开关"><a class="commentBarrage"><i class="anzhiyufont anzhiyu-icon-message"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);" rel="external nofollow noreferrer"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/" itemprop="url">后端技术</a><i class="anzhiyufont anzhiyu-icon-angle-right post-meta-separator"></i><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/Java/" itemprop="url">Java</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/Java%E5%BE%AE%E6%9C%8D%E5%8A%A1-AI%E7%AF%87/" tabindex="-1" itemprop="url"> <span><i class="anzhiyufont anzhiyu-icon-hashtag"></i>Java微服务-AI篇</span></a></span></div></div><h1 class="post-title" itemprop="name headline">2. 快速入门：构建你的第一个 AI 应用</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-06-15T09:13:45.000Z" title="发表于 2025-06-15 17:13:45">2025-06-15</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-06-21T13:53:35.182Z" title="更新于 2025-06-21 21:53:35">2025-06-21</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span data-flag-title="2. 快速入门：构建你的第一个 AI 应用"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="twikoo_visitors" title="访问量"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator"> </span><span class="post-meta-position" title="作者IP属地为广东"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>广东</span><span class="post-meta-separator"></span><span class="post-meta-commentcount"><i class="anzhiyufont anzhiyu-icon-comments post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/posts/12027.html#post-comment" tabindex="-1"><span id="twikoo-count"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></a></span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://bu.dusays.com/2025/06/19/68535b23089d0.webp"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope="" itemtype="https://prorise-cool.github.io/posts/12027.html"><header><a class="post-meta-categories" href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/" itemprop="url">后端技术</a><a class="post-meta-categories" href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/Java/" itemprop="url">Java</a><a href="/tags/Java%E5%BE%AE%E6%9C%8D%E5%8A%A1-AI%E7%AF%87/" tabindex="-1" itemprop="url">Java微服务-AI篇</a><h1 id="CrawlerTitle" itemprop="name headline">2. 快速入门：构建你的第一个 AI 应用</h1><span itemprop="author" itemscope="" itemtype="http://schema.org/Person">Prorise</span><time itemprop="dateCreated datePublished" datetime="2025-06-15T09:13:45.000Z" title="发表于 2025-06-15 17:13:45">2025-06-15</time><time itemprop="dateCreated datePublished" datetime="2025-06-21T13:53:35.182Z" title="更新于 2025-06-21 21:53:35">2025-06-21</time></header><div id="postchat_postcontent"><h2 id="2-快速入门：构建你的第一个-AI-应用"><a href="#2-快速入门：构建你的第一个-AI-应用" class="headerlink" title="2. 快速入门：构建你的第一个 AI 应用"></a>2. 快速入门：构建你的第一个 AI 应用</h2><p>理论讲了再多，也不如亲手写下第一行代码来得实在。在本章中，我将手把手地带你完成从项目创建到运行第一个 AI 聊天应用的全部过程。这个过程会非常迅速，你将亲身体会到 Spring AI 如何将复杂的 AI 调用，简化为几次点击和几行代码。</p><h3 id="2-1-环境准备与项目初始化"><a href="#2-1-环境准备与项目初始化" class="headerlink" title="2.1 环境准备与项目初始化"></a>2.1 环境准备与项目初始化</h3><p>在开始之前，请确保你的开发环境中安装了以下必备工具：</p><ul><li><strong>JDK</strong>: Java Development Kit, 版本要求 <strong>17 或更高</strong>。Spring AI 和 Spring Boot 3.x 都是基于 Java 17 构建的。</li><li><strong>Maven/Gradle</strong>: Java 项目构建工具。本教程将主要使用 Maven 作为示例。</li><li><strong>IDE</strong>: 集成开发环境。推荐使用 IntelliJ IDEA Ultimate/Community 或带有 Spring Tools Suite 插件的 VS Code。</li><li><strong>一个 AI 模型的 API Key</strong>: 我们需要一个 AI 服务提供商的账户和 API 密钥。在本入门示例中，我们将使用 <strong>DeepSeek大语言模型</strong>。请前往 (<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9wbGF0Zm9ybS5kZWVwc2Vlay5jb20vYXBpX2tleXM">DeepSeek 开放平台</a>)) 注册并创建一个 API Key。</li></ul><p>准备就绪后，我们使用 Spring 官方的项目生成器——<strong>Spring Initializr</strong> 来创建我们的项目。</p><ol><li><p><strong>访问 <code>start.spring.io</code></strong>：在浏览器中打开 <a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9zdGFydC5zcHJpbmcuaW8v">https://start.spring.io/</a>。</p></li><li><p><strong>填写项目元数据</strong>：</p></li></ol><table><thead><tr><th align="left">配置项</th><th align="left">值</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left"><strong>Project</strong></td><td align="left"><code>Maven</code></td><td align="left">选择 Maven 作为项目构建工具。</td></tr><tr><td align="left"><strong>Language</strong></td><td align="left"><code>Java</code></td><td align="left">选择 Java 作为开发语言。</td></tr><tr><td align="left"><strong>Spring Boot</strong></td><td align="left"><code>3.3.x</code></td><td align="left">选择一个最新的<strong>稳定版</strong>，避免选择 <code>SNAPSHOT</code> 或 <code>M</code> (Milestone) 版本。</td></tr><tr><td align="left"><strong>Group</strong></td><td align="left"><code>com.example</code></td><td align="left">通常是公司或组织的反向域名。</td></tr><tr><td align="left"><strong>Artifact</strong></td><td align="left"><code>hello-spring-ai</code></td><td align="left">项目的唯一标识符。</td></tr><tr><td align="left"><strong>Package name</strong></td><td align="left"><code>com.example.hellospringai</code></td><td align="left">Java 代码的基础包名。</td></tr><tr><td align="left"><strong>Packaging</strong></td><td align="left"><code>Jar</code></td><td align="left">我们将应用打包成一个可执行的 Jar 文件。</td></tr><tr><td align="left"><strong>Java</strong></td><td align="left"><code>17</code></td><td align="left">必须与你环境中安装的 JDK 版本匹配。</td></tr></tbody></table><ol start="3"><li><p><strong>添加依赖 (Dependencies)</strong>：这是最关键的一步，我们告诉 Spring Initializr 项目需要哪些能力。点击 “ADD DEPENDENCIES…” 按钮，搜索并添加：</p><ul><li><code>Spring Web</code>: 用于构建 RESTful API，让我们能通过 HTTP 请求与应用交互。</li><li><code>Spring AI OpenAI Support</code>: <strong>注意</strong>，即使我们的目标是 DeepSeek，我们依然先添加这个依赖。因为它不仅提供了 OpenAI 的客户端，更重要的是，它提供了一套与 OpenAI API <strong>兼容</strong>的实现。DeepSeek 的 API 正好遵循了这个规范，这为我们后续的无缝切换埋下了伏笔。</li></ul><blockquote><p><em>图片来源：Spring AI 官方文档</em></p></blockquote></li><li><p><strong>生成并下载项目</strong>：点击 “GENERATE” 按钮，下载生成的 <code>.zip</code> 压缩包。解压后，用你的 IDE 将其作为一个 Maven 项目导入。</p></li></ol><h3 id="2-2-核心依赖辨析：BOM-与-Starter"><a href="#2-2-核心依赖辨析：BOM-与-Starter" class="headerlink" title="2.2 核心依赖辨析：BOM 与 Starter"></a>2.2 核心依赖辨析：BOM 与 Starter</h3><p>打开项目的 <code>pom.xml</code> 文件，这是 Maven 项目的“心脏”。我们来解读一下 Spring Initializr 为我们生成的关键配置。</p><figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">java.version</span>&gt;</span>17<span class="tag">&lt;/<span class="name">java.version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependencyManagement</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.ai<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-ai-bom<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>${spring-ai.version}<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">type</span>&gt;</span>pom<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>import<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencyManagement</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.ai<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-ai-openai-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure><h4 id="核心概念解读"><a href="#核心概念解读" class="headerlink" title="核心概念解读"></a><strong>核心概念解读</strong></h4><table><thead><tr><th align="left">概念</th><th align="left">作用</th><th align="left">实际应用场景</th></tr></thead><tbody><tr><td align="left"><strong>BOM</strong> (Bill of Materials)</td><td align="left">定义并管理一组相互兼容的依赖版本。</td><td align="left">在一个大型项目中，手动管理几十个库的版本非常痛苦且容易出错。使用 BOM 后，我们只需引入 BOM 本身，所有清单内的库版本都会被自动、和谐地确定下来。</td></tr><tr><td align="left"><strong>Starter</strong></td><td align="left">Spring Boot 的自动化配置启动器。</td><td align="left">当我们想使用 Redis 时，只需引入 <code>spring-boot-starter-data-redis</code>，所有关于连接、序列化、模板类的 Bean 都会被自动创建。<code>spring-ai-openai-spring-boot-starter</code> 也是同理，它为我们自动创建了 <code>ChatClient</code>。</td></tr></tbody></table><h3 id="2-3-“Hello-AI-”-第一个聊天应用"><a href="#2-3-“Hello-AI-”-第一个聊天应用" class="headerlink" title="2.3 “Hello, AI!”: 第一个聊天应用"></a>2.3 “Hello, AI!”: 第一个聊天应用</h3><p>配置完成，现在进入激动人心的编码环节。</p><p>在这之前我们需要引入lombok为了以后的环节进行便利的操作，在<code>pom.xml</code>文件夹中引入lombok（不要选创建脚手架的lombok，会导致很多的问题）</p><figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.projectlombok<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lombok<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>1.18.20<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure><h4 id="2-3-1-配置-API-Key-以-OpenAI-为例"><a href="#2-3-1-配置-API-Key-以-OpenAI-为例" class="headerlink" title="2.3.1 配置 API Key (以 OpenAI 为例)"></a>2.3.1 配置 API Key (以 OpenAI 为例)</h4><p>首先，配置 API Key。<strong>永远不要将密钥硬编码在 Java 代码中</strong>，这是安全红线。我们将其配置在 <code>application.yml</code> 文件里。</p><p>打开 <code>src/main/resources/application.properties</code> 并将其重命名为 <code>application.yml</code>（YAML 格式更具结构化，可读性更强），然后添加以下内容：</p><figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># src/main/resources/application.yml</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">ai:</span></span><br><span class="line">    <span class="attr">openai:</span></span><br><span class="line">      <span class="comment"># DeepSeek API 配置 - 使用 OpenAI 兼容协议</span></span><br><span class="line">      <span class="comment"># 注意！这里不能加v1后缀，在2025年的DeepSeek更新中明确指定了不需要v1后缀</span></span><br><span class="line">      <span class="comment"># 很多AI还是会错以为需要v1后缀</span></span><br><span class="line">      <span class="attr">base-url:</span> <span class="string">https://api.deepseek.com</span></span><br><span class="line">      <span class="attr">api-key:</span> <span class="string">"sk-xxxxx"</span></span><br><span class="line">      <span class="attr">chat:</span></span><br><span class="line">        <span class="attr">options:</span></span><br><span class="line">          <span class="attr">model:</span> <span class="string">deepseek-chat</span></span><br><span class="line">          <span class="attr">temperature:</span> <span class="number">0.7</span></span><br></pre></td></tr></tbody></table></figure><h4 id="2-3-2-配置ClientBean"><a href="#2-3-2-配置ClientBean" class="headerlink" title="2.3.2 配置ClientBean"></a>2.3.2 配置ClientBean</h4><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/main/java/com/example/hellospringai/config/AppConfig.java</span></span><br><span class="line"><span class="keyword">package</span> com.example.hellospringai.config;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.ai.chat.client.ChatClient;</span><br><span class="line"><span class="keyword">import</span> org.springframework.ai.chat.model.ChatModel; <span class="comment">// 1. 导入 ChatModel</span></span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CommonConfiguration</span>  {</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 手动创建一个 ChatClient Bean。</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> chatModel Spring Boot 根据 application.yml 自动配置好的 ChatModel 实例</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 一个配置好的 ChatClient 实例</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> ChatClient <span class="title function_">chatClient</span><span class="params">(ChatModel chatModel)</span> { <span class="comment">// 2. 在方法参数中请求注入 ChatModel</span></span><br><span class="line">        <span class="comment">// 3. 将注入的 chatModel 传递给 ChatClient.Builder</span></span><br><span class="line">        <span class="keyword">return</span> ChatClient.builder(chatModel).build();</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p><strong>代码解读</strong></p><ol><li><strong><code>import org.springframework.ai.chat.model.ChatModel;</code></strong> 我们引入 <code>ChatModel</code> 接口，这是所有聊天模型（如 OpenAI、Ollama、DeepSeek 的实现）的通用父接口。</li><li><strong><code>public ChatClient chatClient(ChatModel chatModel)</code></strong> 这是最关键的一步。我们告诉 Spring：“请帮我创建一个 <code>chatClient</code> Bean，但在创建之前，请把容器里已经存在的那个 <code>ChatModel</code> 类型的 Bean 给我。”<ul><li><strong><code>chatModel</code> 从哪里来？</strong> 它是由 <code>spring-ai-openai-starter</code> 这个依赖根据你的 <code>application.yml</code> 文件自动创建和配置的。它已经“知道”了你的 <code>base-url</code>、<code>api-key</code> 和默认的 <code>model</code> 名称（<code>deepseek-chat</code>）。</li></ul></li><li><strong><code>return ChatClient.builder(chatModel).build();</code></strong> 我们把这个已经配置完毕的 <code>chatModel</code> “塞”给了 <code>ChatClient</code> 的构建器。这样，这个新的 <code>chatClient</code> Bean 就知道该如何与 AI 进行通信了。</li></ol><h4 id="2-3-3-编写-Controller"><a href="#2-3-3-编写-Controller" class="headerlink" title="2.3.3 编写 Controller"></a>2.3.3 编写 Controller</h4><p>接下来，我们创建一个简单的 <code>RestController</code>，它会接收一个问题，然后调用 AI 模型生成答案。</p><p>在 <code>com.example.hellospringai/controller</code> 包下创建一个名为 <code>ChatController</code> 的类：</p><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// \src\main\java\com\example\hellospringai\controller\</span></span><br><span class="line"><span class="keyword">package</span> com.example.hellospringai.controller;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> lombok.RequiredArgsConstructor;</span><br><span class="line"><span class="keyword">import</span> org.springframework.ai.chat.client.ChatClient;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.GetMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestParam;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Map; <span class="comment">// 1. 导入 Map 类</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequiredArgsConstructor</span></span><br><span class="line"><span class="meta">@RequestMapping("/ai")</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ChatController</span> {</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> ChatClient chatClient;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 定义一个 GET 请求接口，路径为 /ai/chat</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> message 接收来自 URL 的查询参数</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 一个包含 AI 回答的 JSON 对象</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@GetMapping("/chat")</span></span><br><span class="line">    <span class="comment">// 2. 将返回类型从 String 修改为 Map&lt;String, Object&gt;</span></span><br><span class="line">    <span class="keyword">public</span> Map&lt;String, Object&gt; <span class="title function_">chat</span><span class="params">(<span class="meta">@RequestParam(value = "message", defaultValue = "给我讲个关于程序员的笑话")</span> String message)</span> {</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 先获取 AI 的纯文本回复</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">aiResponse</span> <span class="operator">=</span> chatClient.prompt()</span><br><span class="line">                .user(message)</span><br><span class="line">                .call()</span><br><span class="line">                .content();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3. 将回复包装在一个 Map 对象中返回</span></span><br><span class="line">        <span class="comment">// Spring Boot 会自动将其转换为 JSON</span></span><br><span class="line">        <span class="keyword">return</span> Map.of(<span class="string">"answer"</span>, aiResponse);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p><strong><code>代码是不是非常简洁？让我们来解读一下</code></strong>：<br>这个 ChatController 定义了一个接收用户提问、调用AI、并返回标准 JSON 响应的Web接口。</p><p><strong>注入方式</strong>：通过构造器注入 ChatClient.Builder，这是 Spring 推荐的用法，安全且清晰。</p><p><strong>核心逻辑</strong>：链式调用 <code>chatClient.prompt().user(message).call().content()</code> 的作用可以概括为：</p><p><strong>构建提示 → 添加用户输入 → 调用 AI → 提取文本结果</strong>。</p><p><strong>返回格式</strong>：方法返回一个 Map 对象，Spring 框架会自动将其转换为 {“answer”: “…”} 格式的 JSON 响应，非常适合现代应用开发。</p><p>但这样他的结果是一次性返回的，会遇到长时间的阻塞，我们可以对代码进行如下的微调，这样子就能实现AI式对话式的响应结果</p><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.hellospringai.controller;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.ai.chat.client.ChatClient;</span><br><span class="line"><span class="keyword">import</span> org.springframework.http.MediaType;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.GetMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestParam;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RestController;</span><br><span class="line"><span class="keyword">import</span> reactor.core.publisher.Flux; <span class="comment">// 1. 导入 Flux</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping("/ai")</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ChatController</span> {</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> ChatClient chatClient;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">ChatController</span><span class="params">(ChatClient.Builder chatClientBuilder)</span> {</span><br><span class="line">        <span class="built_in">this</span>.chatClient = chatClientBuilder.build();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 定义一个 GET 请求接口，以现代、响应式的方式流式输出 AI 回答</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> message 接收来自 URL 的查询参数</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 一个包含 AI 回答文本块的响应式数据流 (Flux)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@GetMapping(value = "/chat", produces = "text/html;charset=utf-8")</span> <span class="comment">// 这里必须指定编码，否则中文将无法正确编码</span></span><br><span class="line">    <span class="keyword">public</span> Flux&lt;String&gt; <span class="title function_">streamChat</span><span class="params">(<span class="meta">@RequestParam(value = "message", defaultValue = "给我写一首关于星空的五言绝句")</span> String message)</span> {</span><br><span class="line">        <span class="comment">// 2. 直接返回 ChatClient 调用链产生的 Flux&lt;String&gt;</span></span><br><span class="line">        <span class="keyword">return</span> chatClient.prompt()</span><br><span class="line">                .user(message)</span><br><span class="line">                .stream()</span><br><span class="line">                .content();</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><h4 id="2-3-4-运行与测试"><a href="#2-3-4-运行与测试" class="headerlink" title="2.3.4 运行与测试"></a>2.3.4 运行与测试</h4><p>现在，一切准备就绪。</p><ol><li><strong>运行应用</strong>：在你的 IDE 中找到 <code>HelloSpringAiApplication.java</code> 文件，右键点击并选择 “Run”。或者使用 Maven 命令 <code>./mvnw spring-boot:run</code>。</li><li><strong>测试接口</strong>：应用启动后（默认端口为 8080），打开浏览器或使用 cURL 等工具访问我们的 API 端点。</li></ol><p><strong>使用浏览器</strong>：<br>访问 `<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cDovL2xvY2FsaG9zdDo4MDgwL2FpL2NoYXQ">http://localhost:8080/ai/chat</a></p><p>你会看到类似下面的 JSON 响应：<br></p><figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">{</span><span class="attr">"answer"</span><span class="punctuation">:</span><span class="string">"好的！这是一个经典的程序员笑话：</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">---</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">**程序员面试**  </span></span><br><span class="line"><span class="string">面试官： "</span>你简历上写着你擅长Python，那你能说出`is`和`==`的区别吗？<span class="string">"  </span></span><br><span class="line"><span class="string">程序员： "</span>当然！`==`是问‘你们的值相等吗？’，而`is`是问‘你们是不是同一个对象？’……就像我和我女朋友，她总说‘你和代码`is`（是）真爱，但从来不`==`（等于）爱我！’<span class="string">"  </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">面试官： "</span>……你被录用了，但建议别让HR听到这个比喻。<span class="string">"  </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">---</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">（附：Python中`is`比较内存地址，`==`比较值；笑话的冷度≈程序员咖啡的浓度☕️）"</span><span class="punctuation">}</span></span><br></pre></td></tr></tbody></table></figure><p></p><p>你也可以在 URL 中附带自己的问题：<br><code>http://localhost:8080/ai/chat?message=请用三个词总结一下Spring框架</code></p><p>响应：<br></p><figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">{</span></span><br><span class="line">  <span class="attr">"answer"</span><span class="punctuation">:</span> <span class="string">"1. **轻量级**  \n2. **依赖注入**  \n3. **模块化**  \n\n（或替代词：AOP、容器、生态）"</span></span><br><span class="line"><span class="punctuation">}</span></span><br></pre></td></tr></tbody></table></figure><br>恭喜你！你已经成功构建并运行了你的第一个 Spring AI 应用！<p></p><h3 id="2-4-项目结构与核心配置解析"><a href="#2-4-项目结构与核心配置解析" class="headerlink" title="2.4 项目结构与核心配置解析"></a>2.4 项目结构与核心配置解析</h3><p>让我们最后回顾一下我们项目的结构和核心配置，这有助于你建立一个清晰的整体认知。</p><h4 id="2-4-1-项目结构最佳实践"><a href="#2-4-1-项目结构最佳实践" class="headerlink" title="2.4.1 项目结构最佳实践"></a>2.4.1 项目结构最佳实践</h4><p>一个典型的 Spring Boot 项目结构如下：</p><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">hello-spring-ai</span><br><span class="line">└── src</span><br><span class="line">    ├── main</span><br><span class="line">    │   ├── java</span><br><span class="line">    │   │   └── com</span><br><span class="line">    │   │       └── example</span><br><span class="line">    │   │           └── hellospringai</span><br><span class="line">    │   │               │</span><br><span class="line">    │   │               ├── HelloSpringAiApplication.java  // Spring Boot 主启动类</span><br><span class="line">    │   │               │</span><br><span class="line">    │   │               ├── config               ``  // 存放配置类 (e.g., @Configuration beans)</span><br><span class="line">    │   │               │   └── CommonConfiguration.java</span><br><span class="line">    │   │               │</span><br><span class="line">    │   │               ├── controller             // Web 层：处理HTTP请求，调用Service</span><br><span class="line">    │   │               │   └── ChatController.java</span><br><span class="line">    │   │               │</span><br><span class="line">    │   │               ├── dto                    // 数据传输对象 (Data Transfer Object)</span><br><span class="line">    │   │               │   ├── ChatRequest.java   // 封装请求数据</span><br><span class="line">    │   │               │   └── ChatResponse.java  // 封装响应数据</span><br><span class="line">    │   │               │</span><br><span class="line">    │   │               ├── service                // 业务逻辑层</span><br><span class="line">    │   │               │   ├── impl               // Service接口的实现类</span><br><span class="line">    │   │               │   │   └── ChatServiceImpl.java</span><br><span class="line">    │   │               │   └── ChatService.java   // Service接口，定义业务方法</span><br><span class="line">    │   │               │</span><br><span class="line">    │   │               ├── exception              // 自定义异常及全局异常处理</span><br><span class="line">    │   │               │   └── GlobalExceptionHandler.java</span><br><span class="line">    │   │               │</span><br><span class="line">    │   │               └── repository             // 数据访问层 (如果需要持久化)</span><br><span class="line">    │   │                   └── ConversationRepository.java</span><br><span class="line">    │   │</span><br><span class="line">    │   └── resources</span><br><span class="line">    │       ├── static                         // 存放静态资源 (CSS, JavaScript, images)</span><br><span class="line">    │       │   └── css</span><br><span class="line">    │       │       └── style.css</span><br><span class="line">    │       ├── templates                      // 存放模板文件 (e.g., Thymeleaf, FreeMarker)</span><br><span class="line">    │       │   └── index.html</span><br><span class="line">    │       └── application.yml                // Spring Boot 核心配置文件</span><br><span class="line">    │</span><br><span class="line">    └── <span class="built_in">test</span></span><br><span class="line">        └── java</span><br><span class="line">            └── com</span><br><span class="line">                └── example</span><br><span class="line">                    └── hellospringai</span><br><span class="line">                        ├── controller</span><br><span class="line">                        │   └── ChatControllerTest.java</span><br><span class="line">                        └── service</span><br><span class="line">                            └── ChatServiceImplTest.java</span><br></pre></td></tr></tbody></table></figure><p><strong>请求处理流程示例</strong></p><p>一个典型的请求会像这样在各层之间流动：</p><ol><li>客户端发送 HTTP 请求（例如 <code>POST /ai/chat</code>，请求体是一个包含 <code>message</code> 的 JSON）。</li><li><code>ChatController</code> 接收请求，将 JSON 请求体反序列化为 <code>ChatRequest</code> DTO 对象。</li><li><code>ChatController</code> 调用 <code>ChatService</code> 的方法，并将 <code>ChatRequest</code> 中的数据传递过去。</li><li><code>ChatServiceImpl</code> 执行核心业务逻辑，比如调用 <code>ChatClient</code> 与 AI 交互，或者从 <code>ConversationRepository</code> 读取历史对话记录。</li><li><code>ChatService</code> 将处理结果（AI 的回答）返回给 <code>ChatController</code>。</li><li><code>ChatController</code> 将结果封装成 <code>ChatResponse</code> DTO 对象，Spring Boot 自动将其序列化为 JSON 响应，返回给客户端。</li></ol><p>遵循这套结构，即使未来项目变得再复杂，你也能保持清晰的思路和整洁的代码库。</p><h4 id="2-4-2-核心自动配置类"><a href="#2-4-2-核心自动配置类" class="headerlink" title="2.4.2 核心自动配置类"></a>2.4.2 核心自动配置类</h4><p>我们之所以能如此轻松地使用 <code>ChatClient</code>，完全得益于 Spring Boot 的自动配置机制。<code>spring-ai-openai-spring-boot-starter</code> 中的 <code>org.springframework.ai.openai.boot.OpenAiAutoConfiguration</code> 类在幕后为我们完成了所有繁重的工作。</p><p>它会：</p><ol><li>读取 <code>application.yml</code> 中 <code>spring.ai.openai</code> 前缀下的所有配置。</li><li>使用这些配置（特别是 <code>api-key</code>）创建一个与 OpenAI 服务器通信的 <code>RestTemplate</code>。</li><li>基于这个 <code>RestTemplate</code> 和其他配置（如 <code>model</code>, <code>temperature</code>），最终创建一个 <code>OpenAiChatClient</code> 的实例，并将其注册为 Spring 容器中的一个 Bean。</li><li>同时，它还会注册一个 <code>ChatClient.Builder</code> Bean，方便我们进行自定义构建。</li></ol><p>正是因为这些 Bean 已经被自动注册，我们才能在自己的 <code>ChatController</code> 中通过 <code>@Autowired</code> 轻松地注入并使用它们。这就是 Spring “约定优于配置”理念的完美体现。</p><h4 id="2-4-3-全局配置选项"><a href="#2-4-3-全局配置选项" class="headerlink" title="2.4.3 全局配置选项"></a>2.4.3 全局配置选项</h4><p>在 <code>application.yml</code> 中，除了 <code>api-key</code> 和 <code>model</code>，我们还可以配置更多影响 AI 行为的全局参数。这些参数位于 <code>spring.ai.openai.chat.options</code> 路径下。</p><p>例如：</p><figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">ai:</span></span><br><span class="line">    <span class="attr">openai:</span></span><br><span class="line">      <span class="attr">api-key:</span> <span class="string">${OPENAI_API_KEY}</span></span><br><span class="line">      <span class="attr">chat:</span></span><br><span class="line">        <span class="attr">options:</span></span><br><span class="line">          <span class="attr">model:</span> <span class="string">DeepSeek-R1-0528</span></span><br><span class="line">          <span class="comment"># 温度，控制输出的随机性。值越高越随机，越低越确定。范围 0.0 - 2.0</span></span><br><span class="line">          <span class="attr">temperature:</span> <span class="number">0.7</span> </span><br><span class="line">          <span class="comment"># Top P 采样，与温度类似，但更侧重于从概率最高的词汇中选择。不建议与温度同时修改。</span></span><br><span class="line">          <span class="attr">top-p:</span> <span class="number">1</span> </span><br><span class="line">          <span class="comment"># 最大生成的 Token 数量，可以用来控制成本和响应长度</span></span><br><span class="line">          <span class="attr">max-tokens:</span> <span class="number">2000</span></span><br></pre></td></tr></tbody></table></figure><p>这些配置会作为默认值，应用到每一次 <code>ChatClient</code> 调用中。当然，你也可以在单次调用中覆盖这些默认值，我们将在后续章节中详细介绍。</p><p>通过本章的快速入门，你应该已经感受到了 Spring AI 的简洁与强大。它将复杂的底层 API 调用封装得严严实实，让我们能以一种极其“Spring”的方式，轻松地将 AI 的智慧融入到应用之中。在接下来的章节里，我们将深入探索 Spring AI 提供的更多核心概念和强大功能。</p></div></article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/16/684f747174bc3.webp" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/16/684f747174bc3.webp" title="头像" alt="头像"></a><div class="post-copyright__author_name">Prorise</div><div class="post-copyright__author_desc">这聒噪的世界让沉默的人显得另类</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://prorise-cool.github.io/posts/12027.html">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl(&quot;https://prorise-cool.github.io/posts/12027.html&quot;)">2. 快速入门：构建你的第一个 AI 应用</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://tc.z.wiki/autoupload/iXoPwUD80CPTvQUyITTBFOykMT9FcWW5SasRoXZEs3Wyl5f0KlZfm6UsKj-HyTuv/20250609/bYMH/418X445/ef9a3f68-d36a-441a-95fe-8179b1a25992.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://tc.z.wiki/autoupload/iXoPwUD80CPTvQUyITTBFOykMT9FcWW5SasRoXZEs3Wyl5f0KlZfm6UsKj-HyTuv/20250609/bYMH/418X445/ef9a3f68-d36a-441a-95fe-8179b1a25992.png" alt="微信"></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://tc.z.wiki/autoupload/iXoPwUD80CPTvQUyITTBFOykMT9FcWW5SasRoXZEs3Wyl5f0KlZfm6UsKj-HyTuv/20250609/cYu3/347X390/zfb.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://tc.z.wiki/autoupload/iXoPwUD80CPTvQUyITTBFOykMT9FcWW5SasRoXZEs3Wyl5f0KlZfm6UsKj-HyTuv/20250609/cYu3/347X390/zfb.png" alt="支付宝"></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display:none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://prorise-cool.github.io/posts/12027.html"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=2. 快速入门：构建你的第一个 AI 应用&amp;url=https://prorise-cool.github.io/posts/12027.html&amp;pic=https://bu.dusays.com/2025/06/19/68535b23089d0.webp" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl(){var e=window.location.href,t=document.createElement("input");t.setAttribute("value",e),document.body.appendChild(t),t.select(),t.setSelectionRange(0,99999),document.execCommand("copy"),document.body.removeChild(t)}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://Prorise-cool.github.io" target="_blank">格物致知</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__category-list"><a class="post-meta__box__categoryes" href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/"><span class="categoryes-punctuation"><i class="anzhiyufont anzhiyu-icon-inbox"></i></span>后端技术<span class="categoryesPageCount">15</span></a><a class="post-meta__box__categoryes" href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/Java/"><span class="categoryes-punctuation"> <i class="anzhiyufont anzhiyu-icon-inbox"></i></span>Java<span class="categoryesPageCount">15</span></a></div><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/Java%E5%BE%AE%E6%9C%8D%E5%8A%A1-AI%E7%AF%87/"><span class="tags-punctuation"><i class="anzhiyufont anzhiyu-icon-tag"></i></span>Java微服务-AI篇<span class="tagsPageCount">15</span></a></div></div><div class="post_share"><div class="social-share" data-image="https://bu.dusays.com/2025/06/19/68535b23089d0.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media=&quot;all&quot;"><script src="https://lib.baomitu.com/social-share.js/1.0.16/js/social-share.min.js" defer=""></script></div></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/59558.html"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/19/68535b23089d0.webp" onerror="onerror=null,src=&quot;/img/404.jpg&quot;" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">1. 序章：迎接 Java AI 开发新纪元</div></div></a></div><div class="next-post pull-right"><a href="/posts/21190.html"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/19/68535b23089d0.webp" onerror="onerror=null,src=&quot;/img/404.jpg&quot;" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">3. 对话核心 API 深度解析</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size:1.5rem;margin-right:4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/posts/59558.html" title="1. 序章：迎接 Java AI 开发新纪元"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/19/68535b23089d0.webp" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-06-15</div><div class="title">1. 序章：迎接 Java AI 开发新纪元</div></div></a></div><div><a href="/posts/21190.html" title="3. 对话核心 API 深度解析"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/19/68535b23089d0.webp" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-06-15</div><div class="title">3. 对话核心 API 深度解析</div></div></a></div><div><a href="/posts/17745.html" title="12. 生产环境考量与部署"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/19/68535b23089d0.webp" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-06-16</div><div class="title">12. 生产环境考量与部署</div></div></a></div><div><a href="/posts/36675.html" title="13. 实战项目：构建一个完整的 AI 知识库应用"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/19/68535b23089d0.webp" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-06-16</div><div class="title">13. 实战项目：构建一个完整的 AI 知识库应用</div></div></a></div><div><a href="/posts/57498.html" title="10. 构建高级 RAG 应用"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/19/68535b23089d0.webp" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-06-16</div><div class="title">10. 构建高级 RAG 应用</div></div></a></div><div><a href="/posts/24414.html" title="11. ETL 框架：文档处理与数据摄取"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/19/68535b23089d0.webp" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-06-16</div><div class="title">11. ETL 框架：文档处理与数据摄取</div></div></a></div></div></div><hr><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)" rel="external nofollow noreferrer">匿名评论</a><a href="/privacy" style="margin-left:4px">隐私政策</a></div><div class="comment-switch"><span class="first-comment">Twikoo</span><span id="switch-btn"></span><span class="second-comment">Waline</span></div><div class="comment-tips" id="comment-tips"><span>✅ 你无需删除空行，直接评论以获取最佳展示效果</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div><div><div id="waline-wrap"></div></div></div></div><div class="comment-barrage"></div><script>window.postData={title:"2. 快速入门：构建你的第一个 AI 应用",date:"2025-06-15 17:13:45",updated:"2025-06-21 21:53:35",tags:["Java微服务-AI篇"],categories:["后端技术","Java"],content:'\n## 2. 快速入门：构建你的第一个 AI 应用\n\n理论讲了再多，也不如亲手写下第一行代码来得实在。在本章中，我将手把手地带你完成从项目创建到运行第一个 AI 聊天应用的全部过程。这个过程会非常迅速，你将亲身体会到 Spring AI 如何将复杂的 AI 调用，简化为几次点击和几行代码。\n\n### 2.1 环境准备与项目初始化\n\n在开始之前，请确保你的开发环境中安装了以下必备工具：\n\n-   **JDK**: Java Development Kit, 版本要求 **17 或更高**。Spring AI 和 Spring Boot 3.x 都是基于 Java 17 构建的。\n-   **Maven/Gradle**: Java 项目构建工具。本教程将主要使用 Maven 作为示例。\n-   **IDE**: 集成开发环境。推荐使用 IntelliJ IDEA Ultimate/Community 或带有 Spring Tools Suite 插件的 VS Code。\n-   **一个 AI 模型的 API Key**: 我们需要一个 AI 服务提供商的账户和 API 密钥。在本入门示例中，我们将使用 **DeepSeek大语言模型**。请前往 ([DeepSeek 开放平台](https://platform.deepseek.com/api_keys))) 注册并创建一个 API Key。\n\n准备就绪后，我们使用 Spring 官方的项目生成器——**Spring Initializr** 来创建我们的项目。\n\n1.  **访问 `start.spring.io`**：在浏览器中打开 [https://start.spring.io/](https://start.spring.io/)。\n\n2.  **填写项目元数据**：\n\n| 配置项 | 值 | 说明 |\n| :--- | :--- | :--- |\n| **Project** | `Maven` | 选择 Maven 作为项目构建工具。 |\n| **Language** | `Java` | 选择 Java 作为开发语言。 |\n| **Spring Boot**| `3.3.x` | 选择一个最新的**稳定版**，避免选择 `SNAPSHOT` 或 `M` (Milestone) 版本。 |\n| **Group** | `com.example` | 通常是公司或组织的反向域名。 |\n| **Artifact** | `hello-spring-ai` | 项目的唯一标识符。 |\n| **Package name**| `com.example.hellospringai` | Java 代码的基础包名。 |\n| **Packaging** | `Jar` | 我们将应用打包成一个可执行的 Jar 文件。 |\n| **Java** | `17` | 必须与你环境中安装的 JDK 版本匹配。 |\n\n\n3.  **添加依赖 (Dependencies)**：这是最关键的一步，我们告诉 Spring Initializr 项目需要哪些能力。点击 "ADD DEPENDENCIES..." 按钮，搜索并添加：\n\n      * `Spring Web`: 用于构建 RESTful API，让我们能通过 HTTP 请求与应用交互。\n      * `Spring AI OpenAI Support`: **注意**，即使我们的目标是 DeepSeek，我们依然先添加这个依赖。因为它不仅提供了 OpenAI 的客户端，更重要的是，它提供了一套与 OpenAI API **兼容**的实现。DeepSeek 的 API 正好遵循了这个规范，这为我们后续的无缝切换埋下了伏笔。\n\n    > *图片来源：Spring AI 官方文档*\n\n4.  **生成并下载项目**：点击 "GENERATE" 按钮，下载生成的 `.zip` 压缩包。解压后，用你的 IDE 将其作为一个 Maven 项目导入。\n\n### 2.2 核心依赖辨析：BOM 与 Starter\n\n打开项目的 `pom.xml` 文件，这是 Maven 项目的“心脏”。我们来解读一下 Spring Initializr 为我们生成的关键配置。\n\n```xml\n<properties>\n    <java.version>17</java.version>\n    </properties>\n\n<dependencyManagement>\n    <dependencies>\n        <dependency>\n            <groupId>org.springframework.ai</groupId>\n            <artifactId>spring-ai-bom</artifactId>\n            <version>${spring-ai.version}</version>\n            <type>pom</type>\n            <scope>import</scope>\n        </dependency>\n    </dependencies>\n</dependencyManagement>\n\n<dependencies>\n    <dependency>\n        <groupId>org.springframework.boot</groupId>\n        <artifactId>spring-boot-starter-web</artifactId>\n    </dependency>\n\n    <dependency>\n        <groupId>org.springframework.ai</groupId>\n        <artifactId>spring-ai-openai-spring-boot-starter</artifactId>\n    </dependency>\n\n    </dependencies>\n```\n\n#### **核心概念解读**\n\n| 概念 | 作用 | 实际应用场景 |\n| :--- | :--- | :--- |\n| **BOM** (Bill of Materials) | 定义并管理一组相互兼容的依赖版本。 | 在一个大型项目中，手动管理几十个库的版本非常痛苦且容易出错。使用 BOM 后，我们只需引入 BOM 本身，所有清单内的库版本都会被自动、和谐地确定下来。 |\n| **Starter** | Spring Boot 的自动化配置启动器。 | 当我们想使用 Redis 时，只需引入 `spring-boot-starter-data-redis`，所有关于连接、序列化、模板类的 Bean 都会被自动创建。`spring-ai-openai-spring-boot-starter` 也是同理，它为我们自动创建了 `ChatClient`。 |\n\n### 2.3 “Hello, AI\\!”: 第一个聊天应用\n\n配置完成，现在进入激动人心的编码环节。\n\n在这之前我们需要引入lombok为了以后的环节进行便利的操作，在`pom.xml`文件夹中引入lombok（不要选创建脚手架的lombok，会导致很多的问题）\n\n```xml\n\t\t<dependency>\n\t\t\t<groupId>org.projectlombok</groupId>\n\t\t\t<artifactId>lombok</artifactId>\n\t\t\t<version>1.18.20</version>\n\t\t</dependency>\n```\n\n#### 2.3.1 配置 API Key (以 OpenAI 为例)\n\n首先，配置 API Key。**永远不要将密钥硬编码在 Java 代码中**，这是安全红线。我们将其配置在 `application.yml` 文件里。\n\n打开 `src/main/resources/application.properties` 并将其重命名为 `application.yml`（YAML 格式更具结构化，可读性更强），然后添加以下内容：\n\n```yaml\n# src/main/resources/application.yml\nspring:\n  ai:\n    openai:\n      # DeepSeek API 配置 - 使用 OpenAI 兼容协议\n      # 注意！这里不能加v1后缀，在2025年的DeepSeek更新中明确指定了不需要v1后缀\n      # 很多AI还是会错以为需要v1后缀\n      base-url: https://api.deepseek.com\n      api-key: "sk-xxxxx"\n      chat:\n        options:\n          model: deepseek-chat\n          temperature: 0.7\n```\n\n\n\n#### 2.3.2 配置ClientBean\n\n```java\n// src/main/java/com/example/hellospringai/config/AppConfig.java\npackage com.example.hellospringai.config;\n\nimport org.springframework.ai.chat.client.ChatClient;\nimport org.springframework.ai.chat.model.ChatModel; // 1. 导入 ChatModel\nimport org.springframework.context.annotation.Bean;\nimport org.springframework.context.annotation.Configuration;\n\n@Configuration\npublic class CommonConfiguration  {\n\n    /**\n     * 手动创建一个 ChatClient Bean。\n     * @param chatModel Spring Boot 根据 application.yml 自动配置好的 ChatModel 实例\n     * @return 一个配置好的 ChatClient 实例\n     */\n    @Bean\n    public ChatClient chatClient(ChatModel chatModel) { // 2. 在方法参数中请求注入 ChatModel\n        // 3. 将注入的 chatModel 传递给 ChatClient.Builder\n        return ChatClient.builder(chatModel).build();\n    }\n}\n```\n\n**代码解读**\n\n1. **`import org.springframework.ai.chat.model.ChatModel;`** 我们引入 `ChatModel` 接口，这是所有聊天模型（如 OpenAI、Ollama、DeepSeek 的实现）的通用父接口。\n2. **`public ChatClient chatClient(ChatModel chatModel)`** 这是最关键的一步。我们告诉 Spring：“请帮我创建一个 `chatClient` Bean，但在创建之前，请把容器里已经存在的那个 `ChatModel` 类型的 Bean 给我。”\n   - **`chatModel` 从哪里来？** 它是由 `spring-ai-openai-starter` 这个依赖根据你的 `application.yml` 文件自动创建和配置的。它已经“知道”了你的 `base-url`、`api-key` 和默认的 `model` 名称（`deepseek-chat`）。\n3. **`return ChatClient.builder(chatModel).build();`** 我们把这个已经配置完毕的 `chatModel` “塞”给了 `ChatClient` 的构建器。这样，这个新的 `chatClient` Bean 就知道该如何与 AI 进行通信了。\n\n#### 2.3.3 编写 Controller\n\n接下来，我们创建一个简单的 `RestController`，它会接收一个问题，然后调用 AI 模型生成答案。\n\n在 `com.example.hellospringai/controller` 包下创建一个名为 `ChatController` 的类：\n\n```java\n// \\src\\main\\java\\com\\example\\hellospringai\\controller\\\npackage com.example.hellospringai.controller;\n\nimport lombok.RequiredArgsConstructor;\nimport org.springframework.ai.chat.client.ChatClient;\nimport org.springframework.beans.factory.annotation.Autowired;\nimport org.springframework.web.bind.annotation.GetMapping;\nimport org.springframework.web.bind.annotation.RequestMapping;\nimport org.springframework.web.bind.annotation.RequestParam;\nimport org.springframework.web.bind.annotation.RestController;\n\nimport java.util.Map; // 1. 导入 Map 类\n\n@RestController\n@RequiredArgsConstructor\n@RequestMapping("/ai")\npublic class ChatController {\n\n    private final ChatClient chatClient;\n\n    /**\n     * 定义一个 GET 请求接口，路径为 /ai/chat\n     * @param message 接收来自 URL 的查询参数\n     * @return 一个包含 AI 回答的 JSON 对象\n     */\n    @GetMapping("/chat")\n    // 2. 将返回类型从 String 修改为 Map<String, Object>\n    public Map<String, Object> chat(@RequestParam(value = "message", defaultValue = "给我讲个关于程序员的笑话") String message) {\n\n        // 先获取 AI 的纯文本回复\n        String aiResponse = chatClient.prompt()\n                .user(message)\n                .call()\n                .content();\n\n        // 3. 将回复包装在一个 Map 对象中返回\n        // Spring Boot 会自动将其转换为 JSON\n        return Map.of("answer", aiResponse);\n    }\n}\n```\n\n**`代码是不是非常简洁？让我们来解读一下`**：\n这个 ChatController 定义了一个接收用户提问、调用AI、并返回标准 JSON 响应的Web接口。\n\n**注入方式**：通过构造器注入 ChatClient.Builder，这是 Spring 推荐的用法，安全且清晰。\n\n**核心逻辑**：链式调用 `chatClient.prompt().user(message).call().content()` 的作用可以概括为：\n\n **构建提示 → 添加用户输入 → 调用 AI → 提取文本结果**。\n\n**返回格式**：方法返回一个 Map 对象，Spring 框架会自动将其转换为 {"answer": "..."} 格式的 JSON 响应，非常适合现代应用开发。\n\n\n\n但这样他的结果是一次性返回的，会遇到长时间的阻塞，我们可以对代码进行如下的微调，这样子就能实现AI式对话式的响应结果\n\n```java\npackage com.example.hellospringai.controller;\n\nimport org.springframework.ai.chat.client.ChatClient;\nimport org.springframework.http.MediaType;\nimport org.springframework.web.bind.annotation.GetMapping;\nimport org.springframework.web.bind.annotation.RequestMapping;\nimport org.springframework.web.bind.annotation.RequestParam;\nimport org.springframework.web.bind.annotation.RestController;\nimport reactor.core.publisher.Flux; // 1. 导入 Flux\n\n@RestController\n@RequestMapping("/ai")\npublic class ChatController {\n\n    private final ChatClient chatClient;\n\n    public ChatController(ChatClient.Builder chatClientBuilder) {\n        this.chatClient = chatClientBuilder.build();\n    }\n\n    /**\n     * 定义一个 GET 请求接口，以现代、响应式的方式流式输出 AI 回答\n     * @param message 接收来自 URL 的查询参数\n     * @return 一个包含 AI 回答文本块的响应式数据流 (Flux)\n     */\n    @GetMapping(value = "/chat", produces = "text/html;charset=utf-8") // 这里必须指定编码，否则中文将无法正确编码\n    public Flux<String> streamChat(@RequestParam(value = "message", defaultValue = "给我写一首关于星空的五言绝句") String message) {\n        // 2. 直接返回 ChatClient 调用链产生的 Flux<String>\n        return chatClient.prompt()\n                .user(message)\n                .stream()\n                .content();\n    }\n}\n```\n\n#### 2.3.4 运行与测试\n\n现在，一切准备就绪。\n1.  **运行应用**：在你的 IDE 中找到 `HelloSpringAiApplication.java` 文件，右键点击并选择 "Run"。或者使用 Maven 命令 `./mvnw spring-boot:run`。\n2.  **测试接口**：应用启动后（默认端口为 8080），打开浏览器或使用 cURL 等工具访问我们的 API 端点。\n\n   **使用浏览器**：\n   访问 `http://localhost:8080/ai/chat\n\n   你会看到类似下面的 JSON 响应：\n   ```json\n   {"answer":"好的！这是一个经典的程序员笑话：\n   \n   ---\n   \n   **程序员面试**  \n   面试官： "你简历上写着你擅长Python，那你能说出`is`和`==`的区别吗？"  \n   程序员： "当然！`==`是问‘你们的值相等吗？’，而`is`是问‘你们是不是同一个对象？’……就像我和我女朋友，她总说‘你和代码`is`（是）真爱，但从来不`==`（等于）爱我！’"  \n   \n   面试官： "……你被录用了，但建议别让HR听到这个比喻。"  \n   \n   ---\n   \n   （附：Python中`is`比较内存地址，`==`比较值；笑话的冷度≈程序员咖啡的浓度☕️）"}\n   ```\n\n   你也可以在 URL 中附带自己的问题：\n   `http://localhost:8080/ai/chat?message=请用三个词总结一下Spring框架`\n\n   响应：\n   ```json\n   {\n     "answer": "1. **轻量级**  \\n2. **依赖注入**  \\n3. **模块化**  \\n\\n（或替代词：AOP、容器、生态）"\n   }\n   ```\n   恭喜你！你已经成功构建并运行了你的第一个 Spring AI 应用！\n\n### 2.4 项目结构与核心配置解析\n\n让我们最后回顾一下我们项目的结构和核心配置，这有助于你建立一个清晰的整体认知。\n\n#### 2.4.1 项目结构最佳实践\n\n一个典型的 Spring Boot 项目结构如下：\n\n```bash\nhello-spring-ai\n└── src\n    ├── main\n    │   ├── java\n    │   │   └── com\n    │   │       └── example\n    │   │           └── hellospringai\n    │   │               │\n    │   │               ├── HelloSpringAiApplication.java  // Spring Boot 主启动类\n    │   │               │\n    │   │               ├── config               ``  // 存放配置类 (e.g., @Configuration beans)\n    │   │               │   └── CommonConfiguration.java\n    │   │               │\n    │   │               ├── controller             // Web 层：处理HTTP请求，调用Service\n    │   │               │   └── ChatController.java\n    │   │               │\n    │   │               ├── dto                    // 数据传输对象 (Data Transfer Object)\n    │   │               │   ├── ChatRequest.java   // 封装请求数据\n    │   │               │   └── ChatResponse.java  // 封装响应数据\n    │   │               │\n    │   │               ├── service                // 业务逻辑层\n    │   │               │   ├── impl               // Service接口的实现类\n    │   │               │   │   └── ChatServiceImpl.java\n    │   │               │   └── ChatService.java   // Service接口，定义业务方法\n    │   │               │\n    │   │               ├── exception              // 自定义异常及全局异常处理\n    │   │               │   └── GlobalExceptionHandler.java\n    │   │               │\n    │   │               └── repository             // 数据访问层 (如果需要持久化)\n    │   │                   └── ConversationRepository.java\n    │   │\n    │   └── resources\n    │       ├── static                         // 存放静态资源 (CSS, JavaScript, images)\n    │       │   └── css\n    │       │       └── style.css\n    │       ├── templates                      // 存放模板文件 (e.g., Thymeleaf, FreeMarker)\n    │       │   └── index.html\n    │       └── application.yml                // Spring Boot 核心配置文件\n    │\n    └── test\n        └── java\n            └── com\n                └── example\n                    └── hellospringai\n                        ├── controller\n                        │   └── ChatControllerTest.java\n                        └── service\n                            └── ChatServiceImplTest.java\n```\n\n **请求处理流程示例**\n\n一个典型的请求会像这样在各层之间流动：\n\n1. 客户端发送 HTTP 请求（例如 `POST /ai/chat`，请求体是一个包含 `message` 的 JSON）。\n2. `ChatController` 接收请求，将 JSON 请求体反序列化为 `ChatRequest` DTO 对象。\n3. `ChatController` 调用 `ChatService` 的方法，并将 `ChatRequest` 中的数据传递过去。\n4. `ChatServiceImpl` 执行核心业务逻辑，比如调用 `ChatClient` 与 AI 交互，或者从 `ConversationRepository` 读取历史对话记录。\n5. `ChatService` 将处理结果（AI 的回答）返回给 `ChatController`。\n6. `ChatController` 将结果封装成 `ChatResponse` DTO 对象，Spring Boot 自动将其序列化为 JSON 响应，返回给客户端。\n\n遵循这套结构，即使未来项目变得再复杂，你也能保持清晰的思路和整洁的代码库。\n\n\n\n#### 2.4.2 核心自动配置类\n\n我们之所以能如此轻松地使用 `ChatClient`，完全得益于 Spring Boot 的自动配置机制。`spring-ai-openai-spring-boot-starter` 中的 `org.springframework.ai.openai.boot.OpenAiAutoConfiguration` 类在幕后为我们完成了所有繁重的工作。\n\n它会：\n1.  读取 `application.yml` 中 `spring.ai.openai` 前缀下的所有配置。\n2.  使用这些配置（特别是 `api-key`）创建一个与 OpenAI 服务器通信的 `RestTemplate`。\n3.  基于这个 `RestTemplate` 和其他配置（如 `model`, `temperature`），最终创建一个 `OpenAiChatClient` 的实例，并将其注册为 Spring 容器中的一个 Bean。\n4.  同时，它还会注册一个 `ChatClient.Builder` Bean，方便我们进行自定义构建。\n\n正是因为这些 Bean 已经被自动注册，我们才能在自己的 `ChatController` 中通过 `@Autowired` 轻松地注入并使用它们。这就是 Spring “约定优于配置”理念的完美体现。\n\n#### 2.4.3 全局配置选项\n\n在 `application.yml` 中，除了 `api-key` 和 `model`，我们还可以配置更多影响 AI 行为的全局参数。这些参数位于 `spring.ai.openai.chat.options` 路径下。\n\n例如：\n```yaml\nspring:\n  ai:\n    openai:\n      api-key: ${OPENAI_API_KEY}\n      chat:\n        options:\n          model: DeepSeek-R1-0528\n          # 温度，控制输出的随机性。值越高越随机，越低越确定。范围 0.0 - 2.0\n          temperature: 0.7 \n          # Top P 采样，与温度类似，但更侧重于从概率最高的词汇中选择。不建议与温度同时修改。\n          top-p: 1 \n          # 最大生成的 Token 数量，可以用来控制成本和响应长度\n          max-tokens: 2000\n```\n这些配置会作为默认值，应用到每一次 `ChatClient` 调用中。当然，你也可以在单次调用中覆盖这些默认值，我们将在后续章节中详细介绍。\n\n通过本章的快速入门，你应该已经感受到了 Spring AI 的简洁与强大。它将复杂的底层 API 调用封装得严严实实，让我们能以一种极其“Spring”的方式，轻松地将 AI 的智慧融入到应用之中。在接下来的章节里，我们将深入探索 Spring AI 提供的更多核心概念和强大功能。'}</script></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/16/684f747174bc3.webp" onerror="this.onerror=null,this.src=&quot;/img/friend_404.gif&quot;" alt="avatar"><div class="author-status"><img class="g-status" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/user/status.png" alt="status"></div></div><div class="author-info__description"><div style="line-height:1.4;color:rgba(255,255,255,.9);text-align:center">🚀 全栈开发者，专注于构建优雅高效的数字解决方案<br><span style="color:#fff;font-weight:700">前端 · 后端 · 架构 · 优化</span><br>📚 分享实战经验，一起探索技术边界</div></div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">Prorise</h1><div class="author-info__desc">这聒噪的世界让沉默的人显得另类</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com/361040115?spm_id_from=333.1387.0.0" rel="external nofollow noreferrer" target="_blank" title="BiliBili"><i class="anzhiyufont anzhiyu-icon-bilibili"></i></a></div></div></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background:url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center/100% no-repeat"></div><div class="back face" style="background:url(https://bu.dusays.com/2023/05/13/645fa415e8694.png) center center/100% no-repeat"></div></div></div></div><div class="card-widget card-latest-comments"><div class="item-headline"><i class="fas fa-comments"></i><span>最新评论</span></div><div class="item-content"><a href="/messages/" class="headline-right" title="查看更多"><i class="fas fa-angle-right"></i></a><div class="aside-list" id="latest-comments"></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%EF%BC%9A%E6%9E%84%E5%BB%BA%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA-AI-%E5%BA%94%E7%94%A8"><span class="toc-number">1.</span> <span class="toc-text">2. 快速入门：构建你的第一个 AI 应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87%E4%B8%8E%E9%A1%B9%E7%9B%AE%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">1.1.</span> <span class="toc-text">2.1 环境准备与项目初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E6%A0%B8%E5%BF%83%E4%BE%9D%E8%B5%96%E8%BE%A8%E6%9E%90%EF%BC%9ABOM-%E4%B8%8E-Starter"><span class="toc-number">1.2.</span> <span class="toc-text">2.2 核心依赖辨析：BOM 与 Starter</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5%E8%A7%A3%E8%AF%BB"><span class="toc-number">1.2.1.</span> <span class="toc-text">核心概念解读</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E2%80%9CHello-AI-%E2%80%9D-%E7%AC%AC%E4%B8%80%E4%B8%AA%E8%81%8A%E5%A4%A9%E5%BA%94%E7%94%A8"><span class="toc-number">1.3.</span> <span class="toc-text">2.3 “Hello, AI!”: 第一个聊天应用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-1-%E9%85%8D%E7%BD%AE-API-Key-%E4%BB%A5-OpenAI-%E4%B8%BA%E4%BE%8B"><span class="toc-number">1.3.1.</span> <span class="toc-text">2.3.1 配置 API Key (以 OpenAI 为例)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-2-%E9%85%8D%E7%BD%AEClientBean"><span class="toc-number">1.3.2.</span> <span class="toc-text">2.3.2 配置ClientBean</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-3-%E7%BC%96%E5%86%99-Controller"><span class="toc-number">1.3.3.</span> <span class="toc-text">2.3.3 编写 Controller</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-4-%E8%BF%90%E8%A1%8C%E4%B8%8E%E6%B5%8B%E8%AF%95"><span class="toc-number">1.3.4.</span> <span class="toc-text">2.3.4 运行与测试</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E6%A0%B8%E5%BF%83%E9%85%8D%E7%BD%AE%E8%A7%A3%E6%9E%90"><span class="toc-number">1.4.</span> <span class="toc-text">2.4 项目结构与核心配置解析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-1-%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5"><span class="toc-number">1.4.1.</span> <span class="toc-text">2.4.1 项目结构最佳实践</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-2-%E6%A0%B8%E5%BF%83%E8%87%AA%E5%8A%A8%E9%85%8D%E7%BD%AE%E7%B1%BB"><span class="toc-number">1.4.2.</span> <span class="toc-text">2.4.2 核心自动配置类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-3-%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE%E9%80%89%E9%A1%B9"><span class="toc-number">1.4.3.</span> <span class="toc-text">2.4.3 全局配置选项</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/56706.html" title="附录"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/19/68535b23089d0.webp" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" alt="附录"></a><div class="content"><a class="title" href="/posts/56706.html" title="附录">附录</a><time datetime="2025-06-15T22:13:45.000Z" title="发表于 2025-06-16 06:13:45">2025-06-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/27374.html" title="14. 社区、生态与未来展望"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/19/68535b23089d0.webp" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" alt="14. 社区、生态与未来展望"></a><div class="content"><a class="title" href="/posts/27374.html" title="14. 社区、生态与未来展望">14. 社区、生态与未来展望</a><time datetime="2025-06-15T21:13:45.000Z" title="发表于 2025-06-16 05:13:45">2025-06-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/36675.html" title="13. 实战项目：构建一个完整的 AI 知识库应用"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/19/68535b23089d0.webp" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" alt="13. 实战项目：构建一个完整的 AI 知识库应用"></a><div class="content"><a class="title" href="/posts/36675.html" title="13. 实战项目：构建一个完整的 AI 知识库应用">13. 实战项目：构建一个完整的 AI 知识库应用</a><time datetime="2025-06-15T20:13:45.000Z" title="发表于 2025-06-16 04:13:45">2025-06-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/17745.html" title="12. 生产环境考量与部署"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/19/68535b23089d0.webp" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" alt="12. 生产环境考量与部署"></a><div class="content"><a class="title" href="/posts/17745.html" title="12. 生产环境考量与部署">12. 生产环境考量与部署</a><time datetime="2025-06-15T19:13:45.000Z" title="发表于 2025-06-16 03:13:45">2025-06-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/24414.html" title="11. ETL 框架：文档处理与数据摄取"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/19/68535b23089d0.webp" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" alt="11. ETL 框架：文档处理与数据摄取"></a><div class="content"><a class="title" href="/posts/24414.html" title="11. ETL 框架：文档处理与数据摄取">11. ETL 框架：文档处理与数据摄取</a><time datetime="2025-06-15T18:13:45.000Z" title="发表于 2025-06-16 02:13:45">2025-06-16</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="footer_deal"><a class="deal_link" href="mailto:3381292732@qq.com" rel="external nofollow noreferrer" title="email"><i class="anzhiyufont anzhiyu-icon-envelope"></i></a><a class="deal_link" target="_blank" rel="noopener external nofollow noreferrer" href="https://weibo.com/u/7484736298?tabtype=home" title="微博"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a><a class="deal_link" href="/atom.xml" title="RSS"><i class="anzhiyufont anzhiyu-icon-rss"></i></a><img class="footer_mini_logo" title="返回顶部" alt="返回顶部" onclick="anzhiyu.scrollToDest(0,500)" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/16/684f745b722d7.webp" size="50px"><a class="deal_link" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Prorise-cool" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a><a class="deal_link" target="_blank" rel="noopener external nofollow noreferrer" href="https://space.bilibili.com/361040115?spm_id_from=333.788.0.0" title="Bilibili"><i class="anzhiyufont anzhiyu-icon-bilibili"></i></a><a class="deal_link" href="/copyright" title="CC"><i class="anzhiyufont anzhiyu-icon-copyright-line"></i></a></div><div id="workboard"><div id="runtimeTextTip"></div></div><div class="footer_custom_text">这是我的个人博客，分享技术与生活点滴。</div><div id="anzhiyu-footer"><div class="footer-group"><div class="footer-title">服务</div><div class="footer-links"><a class="footer-item" title="51la统计" target="_blank" rel="noopener external nofollow noreferrer" href="https://v6.51.la/">51la统计</a><a class="footer-item" title="十年之约" target="_blank" rel="noopener external nofollow noreferrer" href="https://www.foreverblog.cn/">十年之约</a></div></div><div class="footer-group"><div class="footer-title">主题</div><div class="footer-links"><a class="footer-item" title="文档" href="/docs/">文档</a><a class="footer-item" title="源码" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu">源码</a></div></div><div class="footer-group"><div class="footer-title">导航</div><div class="footer-links"><a class="footer-item" title="即刻短文" href="/essay/">即刻短文</a><a class="footer-item" title="留言板" href="/comments/">留言板</a></div></div><div class="footer-group"><div class="footer-title">协议</div><div class="footer-links"><a class="footer-item" title="隐私协议" href="/privacy/">隐私协议</a><a class="footer-item" title="版权协议" href="/copyright/">版权协议</a></div></div><div class="footer-group"><div class="footer-title-group"><div class="footer-title">友链</div><a class="random-friends-btn" id="footer-random-friends-btn" href="javascript:addFriendLinksInFooter();" rel="external nofollow noreferrer" title="换一批友情链接"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right"></i></a></div><div class="footer-links" id="friend-links-in-footer"></div></div></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="博客框架为Hexo7.0" title="博客框架为Hexo7.0"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Frame-Hexo.svg" alt="博客框架为Hexo7.0"></a><a class="github-badge" target="_blank" href="https://www.dogecloud.com/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站使用多吉云为静态资源提供CDN加速" title="本站使用多吉云为静态资源提供CDN加速"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/CDN-多吉云-3693F3.svg" alt="本站使用多吉云为静态资源提供CDN加速"></a><a class="github-badge" target="_blank" href="https://github.com/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站项目由Github托管" title="本站项目由Github托管"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Source-Github.svg" alt="本站项目由Github托管"></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站采用CC BY-NC-SA 4.0协议" title="本站采用CC BY-NC-SA 4.0协议"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/Copyright-BY-NC-SA.svg" alt="本站采用CC BY-NC-SA 4.0协议"></a></p></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">©2025 By <a class="footer-bar-link" href="/about/" title="Prorise" target="_blank">Prorise</a></div></div><div id="footer-type-tips"></div><div class="js-pjax"><script>function subtitleType () {
+  fetch('https://v1.hitokoto.cn')
+    .then(response => response.json())
+    .then(data => {
+      if (true) {
+        const from = '出自 ' + data.from
+        const sub = ["生活明朗, 万物可爱, 人间值得, 未来可期.","愿你眼里的星星，永远亮晶晶。","愿我们每个人都能被世界温柔以待。"]
+        sub.unshift(data.hitokoto, from)
+        window.typed = new Typed('#footer-type-tips', {
+          strings: sub,
+          startDelay: 300,
+          typeSpeed: 150,
+          loop: true,
+          backSpeed: 50,
+        })
+      } else {
+        document.getElementById('footer-type-tips').innerHTML = data.hitokoto
+      }
+    })
+}
+
+if (true) {
+  if (typeof Typed === 'function') {
+    subtitleType()
+  } else {
+    getScript('https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/typed.js/2.0.12/typed.min.js').then(subtitleType)
+  }
+} else {
+  subtitleType()
+}</script></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Prorise-cool?tab=repositories" title="网站源码">网站源码</a><a class="footer-bar-link" target="_blank" rel="noopener external nofollow noreferrer" href="https://beian.miit.gov.cn/" title="湘ICP备23041-302号">湘ICP备23041-302号</a><a class="footer-bar-link cc" href="/copyright" title="cc协议"><i class="anzhiyufont anzhiyu-icon-copyright-line"></i><i class="anzhiyufont anzhiyu-icon-creative-commons-by-line"></i><i class="anzhiyufont anzhiyu-icon-creative-commons-nc-line"></i><i class="anzhiyufont anzhiyu-icon-creative-commons-nd-line"></i></a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">15</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">2</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" rel="external nofollow noreferrer" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" href="/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" href="/" title="后续项目..."><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="后续项目..."><span class="back-menu-item-text">后续项目...</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size:.9em"></i><span> 归档</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size:.9em"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size:.9em"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>个人</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size:.9em"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size:.9em"></i><span> 留言板</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/todolist/"><i class="fas fa-check-double faa-tada"></i><span> 代办清单</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/awesome-links/"><i class="fas fa-link faa-tada"></i><span> 实用网站</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>预览</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/?server=netease&amp;id=3117791189"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size:.9em"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size:.9em"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/messages/"><i class="fas fa-comments faa-tada"></i><span> 评论总览</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size:.9em"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size:.9em"></i><span> 即刻短文</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size:.9em"></i><span> 随便逛逛</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/Java%E5%BE%AE%E6%9C%8D%E5%8A%A1-AI%E7%AF%87/" style="font-size:.88rem">Java微服务-AI篇<sup>15</sup></a></div></div><hr></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="go-down" type="button" title="直达底部" onclick="anzhiyu.scrollToDest(document.body.scrollHeight,500)"><i class="anzhiyufont anzhiyu-icon-arrow-down"></i></button><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="anzhiyufont anzhiyu-icon-comment-sms"></i></button><button id="to_comment" type="button" title="直达评论" onclick="FixedCommentBtn()"><i class="anzhiyufont anzhiyu-icon-comments"></i></button><a id="switch-commentBarrage" href="javascript:anzhiyu.switchCommentBarrage();" rel="external nofollow noreferrer" title="开关弹幕"><i class="anzhiyufont anzhiyu-icon-danmu"></i></a><button id="download-md-btn" type="button" title="下载文章源文件"><i class="anzhiyufont anzhiyu-icon-download"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="3117791189" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size:1rem"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://music.163.com/#/playlist?id=3117791189&quot;, &quot;_blank&quot;);" style="display:none"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/instant.page/5.1.0/instantpage.min.js" type="module"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/vanilla-lazyload/17.3.1/lazyload.iife.min.js"></script><script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/node-snackbar/0.1.16/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/pangu/4.0.7/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><canvas id="universe"></canvas><script async="" src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>//- 从这里开始的所有JS代码，都必须有缩进（例如2个空格）
+// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("06/10/2025 00:00:00"); // 此处读取您配置中的建站时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  
+  // --- 已将您的专属LOGO和个人信息集成到这里 ---
+  const ascll = [
+    `欢迎访问 Prorise 的数字空间!`,
+    `代码构建世界，思想驱动未来`,
+    // 这里的反引号和所有ASCII art行，都必须有正确的缩进
+    `
+     ____                      _             
+    |  _ \\  _ __   ___   _ __  (_) ___   ___  
+    | |_) || '__| / _ \\ | '__| | |/ __| / _ \\ 
+    |  __/ | |   | (_) || |    | |\\__ \\|  __/ 
+    |_|    |_|    \\___/ |_|    |_||___/ \\___| 
+                                             
+    `,
+    "已稳定运行",
+    dnum,
+    "天",
+    `©2025 By Prorise 1.0.0`,
+  ];
+  
+  const ascll2 = [`SYS-INFO`, `前置摄像头拍照成功`, `您的帅气脸庞为：`, `😎`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c${ascll[2]} \n%c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF; font-family:monospace;",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，朋友.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Created by Prorise %c 你正在访问 Prorise 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 注意，你的所有操作已被记录.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async="" src="/anzhiyu/random.js"></script><script async="">(function () {
+  var grt = new Date("06/10/2025 00:00:00"); //设置网站上线时间
+  var now = new Date();
+  var dnum;
+  var hnum;
+  var mnum;
+  var snum;
+  var nowHour;
+
+  // 计算并更新天数、小时数、分钟数和秒数
+  function updateTime() {
+    now = new Date(); // 更新 now 的值
+    nowHour = now.getHours(); // 更新 nowHour 的值
+    var days = (now - grt) / 1000 / 60 / 60 / 24;
+    dnum = Math.floor(days);
+    var hours = (now - grt) / 1000 / 60 / 60 - 24 * dnum;
+    hnum = Math.floor(hours);
+    if (String(hnum).length == 1) {
+      hnum = "0" + hnum;
+    }
+    var minutes = (now - grt) / 1000 / 60 - 24 * 60 * dnum - 60 * hnum;
+    mnum = Math.floor(minutes);
+    if (String(mnum).length == 1) {
+      mnum = "0" + mnum;
+    }
+    var seconds = (now - grt) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
+    snum = Math.round(seconds);
+    if (String(snum).length == 1) {
+      snum = "0" + snum;
+    }
+  }
+
+  // 更新网页中显示的网站运行时间
+  function updateHtml() {
+    const footer = document.getElementById("footer");
+    if (!footer) return
+    let currentTimeHtml = "";
+    if (nowHour < 18 && nowHour >= 9) {
+      // 如果是上班时间，默认就是"安知鱼-上班摸鱼中.svg"图片，不需要更改
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    } else {
+      // 如果是下班时间，插入"安知鱼-下班啦.svg"图片
+      let img = document.querySelector("#workboard .workSituationImg");
+      if (img != null) {
+        img.src = "";
+        img.title = "下班了就该开开心心的玩耍，嘿嘿~";
+        img.alt = "下班了就该开开心心的玩耍，嘿嘿~";
+      }
+
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    }
+
+    if (document.getElementById("runtimeTextTip")) {
+      document.getElementById("runtimeTextTip").innerHTML = currentTimeHtml;
+    }
+  }
+
+  setInterval(() => {
+    updateTime();
+    updateHtml();
+  }, 1000);
+})();</script><script src="https://cdn.cbd.int/algoliasearch@4.18.0/dist/algoliasearch-lite.umd.js"></script><script src="https://cdn.cbd.int/instantsearch.js@4.60.0/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><div class="js-pjax"><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdn.cbd.int/mermaid@10.2.4/dist/mermaid.min.js').then(runMermaid)
+  }
+
+  anzhiyu.addGlobalFn('themeChange', runMermaid, 'mermaid')
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>(() => {
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo.prorise666.site/',
+      region: 'ap-shanghai',
+      onCommentLoaded: () => {
+        anzhiyu.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') setTimeout(runFn,0)
+    else getScript('https://cdn.cbd.int/twikoo@1.6.39/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo.prorise666.site/',
+      region: 'ap-shanghai',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const runFn = () => {
+    init();
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else {
+      loadTwikoo()
+    }
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script><script>(() => {
+  let initFn = window.walineFn || null
+
+  const initWaline = (Fn) => {
+    const waline = Fn(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'https://waline.prorise666.site',
+      pageview: true,
+      dark: 'html[data-theme="dark"]',
+      path: window.location.pathname,
+      comment: true,
+      imageUploader: true,
+    }, null))
+
+    const destroyWaline = () => {
+      waline.destroy()
+    }
+
+    anzhiyu.addGlobalFn('pjax', destroyWaline, 'destroyWaline')
+  }
+
+  const loadWaline = async () => {
+    if (initFn) initWaline(initFn)
+    else {
+      await getCSS('https://cdn.cbd.int/@waline/client@3.1.3/dist/waline.css')
+      if (true) await getCSS('https://cdn.cbd.int/@waline/client@3.1.3/dist/waline-meta.css')
+      const { init } = await import('https://cdn.cbd.int/@waline/client@3.1.3/dist/waline.js')
+      initFn = init || Waline.init
+      initWaline(initFn)
+      window.walineFn = initFn
+    }
+  }
+
+  if ('Twikoo' === 'Waline' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('waline-wrap'),loadWaline)
+    else setTimeout(loadWaline, 0)
+  } else {
+    window.loadOtherComment = loadWaline
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"><script async="" src="/js/anzhiyu/comment_barrage.js"></script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'https://twikoo.prorise666.site/',
+        region: 'ap-shanghai',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://cdn.cbd.int/twikoo@1.6.39/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'><div class='name'><span>${array[i].nick} </span></div></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script async="" data-pjax="" src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail=""</script><script async="" data-pjax="" src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script src="/js/anzhiyu/right_click_menu.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script src="/js/load-on-demand.js"></script><script src="/custom/js/markdown-download.js"></script><script defer="" id="fluttering_ribbon" mobile="false" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="" color="0,0,255" opacity="0.7" zindex="-1" count="99" mobile="false" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="//code.tidio.co//tk571vck0ua2wjoalfbp8wyrlsdaunmz.js" async=""></script><script>(() => {
+  const isChatBtn = true
+  const isChatHideShow = true
+
+  if (isChatBtn) {
+    let isShow = false
+    const close = () => {
+      window.tidioChatApi.hide()
+      isShow = false
+      document.body.style.position = 'relative';
+      document.documentElement.style.overflow = 'auto'
+    }
+    
+    const open = () => {
+      window.tidioChatApi.open()
+      window.tidioChatApi.show()
+      isShow = true
+    }
+
+    const onTidioChatApiReady = () => {
+      window.tidioChatApi.hide()
+      window.tidioChatApi.on("close", close)
+    }
+    if (window.tidioChatApi) {
+      window.tidioChatApi.on("ready", onTidioChatApiReady)
+    } else {
+      document.addEventListener("tidioChat-ready", onTidioChatApiReady)
+    }
+
+    window.chatBtnFn = () => {
+      if (!window.tidioChatApi) return
+      isShow ? close() : open()
+    }
+  } else if (isChatHideShow) {
+    window.chatBtn = {
+      hide: () => {
+        window.tidioChatApi && window.tidioChatApi.hide()
+      },
+      show: () => {
+        window.tidioChatApi && window.tidioChatApi.show()
+      }
+    }
+  }
+})()</script><link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/aplayer/1.10.1/APlayer.min.css" media="print" onload="this.media=&quot;all&quot;"><script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/aplayer/1.10.1/APlayer.min.js"></script><script src="https://npm.elemecdn.com/meting@2.0.1/dist/Meting.min.js"></script><script src="https://lib.baomitu.com/pjax/0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","meta[property=\"og:type\"]","meta[property=\"og:site_name\"]","meta[property=\"og:description\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: true,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '[object Object]', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async="" data-pjax="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div>
+    <link rel="stylesheet" href="https://ai.tianli0.top/static/public/postChatUser_summary.min.css">
+    <script>
+        let tianliGPT_key = '';
+        let tianliGPT_postSelector = '#post-container .post-content';
+        let tianliGPT_Title = '✨ AI 文章摘要';
+        let tianliGPT_postURL = '/^https?:\/\/[^\/]+\/[0-9]{4}\/[0-9]{2}\/[0-9]{2}\/';
+        let tianliGPT_blacklist = '';
+        let tianliGPT_wordLimit = '1000';
+        let tianliGPT_typingAnimate = true;
+        let tianliGPT_theme = 'default';
+        var postChatConfig = {
+          backgroundColor: "#4d648d",
+          bottom: "76px",
+          left: "16px",
+          fill: "#FFFFFF",
+          width: "50px",
+          frameWidth: "380px",
+          frameHeight: "600px",
+          defaultInput: true,
+          upLoadWeb: true,
+          showInviteLink: true,
+          userTitle: "💬 智能助手",
+          userDesc: "我是 Prorise 博客的 AI 助手，有任何关于网站内容的问题都可以问我哦～",
+          addButton: true,
+          beginningText: "这篇文章介绍了",
+          userIcon: "https://ai.tianli0.top/static/img/PostChat.webp",
+          userMode: "magic",
+          defaultChatQuestions: ["你好","你是谁"],
+          defaultSearchQuestions: ["视频压缩","设计"]
+        };
+    </script>
+    <script data-postchat_key="" src="https://ai.tianli0.top/static/public/tianli_gpt.min.js"></script>
+  </body></html>
