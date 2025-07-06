@@ -76,6 +76,8 @@ class ResourceLoader {
             this.loadCSS('/custom/css/tip_style.css', 'tip-style');
             this.loadJS('/js/fixed_comment.js', 'fixed-comment-script');
             this.loadJS('/custom/js/tip_main.js', 'tip-main-script');
+
+
         }
 
         // 检测B站视频内容
