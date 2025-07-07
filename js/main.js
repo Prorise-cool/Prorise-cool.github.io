@@ -180,6 +180,17 @@ document.addEventListener("DOMContentLoaded", function () {
   const initAdjust = () => {
     adjustMenu(true);
     $nav.classList.add("show");
+
+    // 初始化AI询问模式按钮状态
+    const askAIMode = localStorage.getItem('askAIMode') || 'send';
+    const consoleAskAIModeBtn = document.getElementById('consoleAskAIMode');
+    if (consoleAskAIModeBtn) {
+      if (askAIMode === 'input') {
+        consoleAskAIModeBtn.classList.add('on');
+      } else {
+        consoleAskAIModeBtn.classList.remove('on');
+      }
+    }
   };
 
   // sidebar menus
@@ -196,6 +207,9 @@ document.addEventListener("DOMContentLoaded", function () {
       anzhiyu.animateOut(document.getElementById("menu-mask"), "to_hide 0.5s");
       document.getElementById("sidebar-menus").classList.remove("open");
       mobileSidebarOpen = false;
+    },
+    initMobile: () => {
+      // Implementation of initMobile method
     },
   };
 
@@ -470,8 +484,8 @@ document.addEventListener("DOMContentLoaded", function () {
       ele.forEach(item => {
         item.classList.contains("url")
           ? fetchUrl(item.textContent).then(res => {
-              runJustifiedGallery(item, res);
-            })
+            runJustifiedGallery(item, res);
+          })
           : runJustifiedGallery(item, JSON.parse(item.textContent));
       });
     };
@@ -599,7 +613,7 @@ document.addEventListener("DOMContentLoaded", function () {
               $popupWindow.classList.remove("popup-hide");
               $popupWindow.classList.remove("show-popup-window");
             }, 1000);
-          }, 1000);
+          }, 1000)();
         }, 1000)();
       }
       lastScrollTop = currentTop;

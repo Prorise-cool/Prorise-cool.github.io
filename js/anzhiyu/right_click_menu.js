@@ -74,6 +74,7 @@ var oncontextmenuFunction = function (event) {
     const $rightMenuMusicForward = document.querySelector("#menu-music-forward");
     const $rightMenuMusicPlaylist = document.querySelector("#menu-music-playlist");
     const $rightMenuMusicCopyMusicName = document.querySelector("#menu-music-copyMusicName");
+    const $rightMenuAskAI = document.querySelector("#menu-askAI");
 
     let href = event.target.href;
     let imgsrc = event.target.currentSrc;
@@ -88,11 +89,13 @@ var oncontextmenuFunction = function (event) {
       pluginMode = true;
       $rightMenuCopyText.style.display = "block";
       $rightMenuCommentText.style.display = "block";
+      $rightMenuAskAI.style.display = "block";
       $rightMenuSearch.style.display = "block";
       $rightMenuSearchBaidu.style.display = "block";
     } else {
       $rightMenuCopyText.style.display = "none";
       $rightMenuCommentText.style.display = "none";
+      $rightMenuAskAI.style.display = "none";
       $rightMenuSearchBaidu.style.display = "none";
       $rightMenuSearch.style.display = "none";
     }
@@ -374,6 +377,54 @@ rm.copyLink = function () {
   anzhiyu.snackbarShow("已复制链接地址");
 };
 
+//询问智能客服
+rm.askAI = function () {
+  rm.hideRightMenu();
+  if (!selectTextNow) return;
+
+  // 构建询问内容
+  let defaultInputValue = "在" + document.title + '中，"' + selectTextNow + '"指的是什么';
+
+  // 判断postChatUser是否已加载
+  if (typeof postChatUser !== 'undefined') {
+    // 获取用户配置的模式，默认为直接发送
+    const askAIMode = localStorage.getItem('askAIMode') || 'send';
+
+    if (askAIMode === 'input') {
+      // 方式一：设置内容到输入框
+      postChatUser.setPostChatInput(defaultInputValue);
+      anzhiyu.snackbarShow("已打开智能客服对话框");
+    } else {
+      // 方式二：直接发送消息
+      postChatUser.sendChatMsg(defaultInputValue);
+      anzhiyu.snackbarShow("已发送到智能客服");
+    }
+  } else {
+    console.error("PostChat未加载");
+    anzhiyu.snackbarShow("智能客服未加载，请刷新页面后重试");
+  }
+};
+
+// 切换询问AI的模式
+rm.toggleAskAIMode = function () {
+  const currentMode = localStorage.getItem('askAIMode') || 'send';
+  const newMode = currentMode === 'send' ? 'input' : 'send';
+  localStorage.setItem('askAIMode', newMode);
+
+  // 更新控制台按钮状态
+  const consoleAskAIModeBtn = document.getElementById('consoleAskAIMode');
+  if (consoleAskAIModeBtn) {
+    if (newMode === 'input') {
+      consoleAskAIModeBtn.classList.add('on');
+    } else {
+      consoleAskAIModeBtn.classList.remove('on');
+    }
+  }
+
+  const modeTip = newMode === 'input' ? '已切换为填充输入框模式' : '已切换为直接发送模式';
+  anzhiyu.snackbarShow(modeTip);
+};
+
 function addRightMenuClickEvent() {
   // 添加点击事件
   document.getElementById("menu-backward").addEventListener("click", function () {
@@ -463,6 +514,8 @@ function addRightMenuClickEvent() {
 
   document.getElementById("menu-searchBaidu").addEventListener("click", rm.searchBaidu);
 
+  document.getElementById("menu-askAI").addEventListener("click", rm.askAI);
+
   //音乐
   document.getElementById("menu-music-toggle").addEventListener("click", anzhiyu.musicToggle);
 
@@ -474,6 +527,8 @@ function addRightMenuClickEvent() {
     rm.rightmenuCopyText(anzhiyu.musicGetName());
     anzhiyu.snackbarShow("复制歌曲名称成功", false, 3000);
   });
+
+  document.getElementById("menu-askAI").addEventListener("click", rm.askAI);
 }
 
 addRightMenuClickEvent();
