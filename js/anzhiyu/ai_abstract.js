@@ -219,52 +219,49 @@
     observer.disconnect();
 
     num = Math.max(10, Math.min(2000, num));
-    const options = {
-      key: AIKey,
-      Referer: AIReferer,
-    };
-    const truncateDescription = (title + pageFillDescription).trim().substring(0, num);
-
+    // 取摘要内容
+    const truncateContent = pageFillDescription.trim().substring(0, num);
     const requestBody = {
-      key: options.key,
-      content: truncateDescription,
+      content: truncateContent,
+      title: title,
       url: location.href,
+      key: AIKey,
+      embedding: "false"
     };
 
     const requestOptions = {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
-        Referer: options.Referer,
+        "Content-Type": "application/json"
       },
       body: JSON.stringify(requestBody),
     };
-    console.info(truncateDescription.length);
+
     try {
       let animationInterval = null;
-      let summary;
       if (animationInterval) clearInterval(animationInterval);
       animationInterval = setInterval(() => {
         const animationText = "生成中" + ".".repeat(indexJ);
         explanation.innerHTML = animationText;
         indexJ = (indexJ % 3) + 1;
       }, 500);
-      const response = await fetch(`https://summary.tianli0.top/`, requestOptions);
+
+      const response = await fetch("https://api.ai.zhheo.com/api/v2/summary/generate/external", requestOptions);
       let result;
       if (response.status === 403) {
         result = {
-          summary: "403 refer与key不匹配。",
+          summary: "403 无权限或key错误。",
         };
       } else if (response.status === 500) {
         result = {
-          summary: "500 系统内部错误",
+          summary: "500 服务器内部错误",
         };
       } else {
         result = await response.json();
       }
 
-      summary = result.summary.trim();
-      summaryID = result.id;
+      let summary = result.data && result.data.summary ? result.data.summary.trim() : "";
+      summaryID = result.data && result.data.id;
 
       setTimeout(() => {
         aiTitleRefreshIcon.style.opacity = "1";
@@ -272,12 +269,12 @@
       if (summary) {
         startAI(summary);
       } else {
-        startAI("摘要获取失败!!!请检查Tianli服务是否正常!!!");
+        startAI("摘要获取失败！请检查AI服务是否正常！");
       }
       clearInterval(animationInterval);
     } catch (error) {
       console.error(error);
-      explanation.innerHTML = "发生异常" + error;
+      explanation.innerHTML = "发生异常：" + error;
     }
   }
 
