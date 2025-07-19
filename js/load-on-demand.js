@@ -66,18 +66,30 @@ class ResourceLoader {
     autoDetectAndLoad() {
         // 检测是否为首页
         if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
-            // 修复：index_media.css 现在由头部优先加载，只需加载JS
+            this.loadCSS('/css/index_media.css', 'index-media-style');
             this.loadJS('/js/index_media.js', 'index-media-script');
         }
 
         // 检测是否为文章页
         if (document.querySelector('#post') || document.querySelector('.post-content')) {
+            // 文章页面专用样式和脚本
+            this.loadCSS('/css/doc-sidebar.css', 'doc-sidebar-style');
+            this.loadJS('/js/doc-sidebar.js', 'doc-sidebar-script');
+            this.loadJS('/custom/js/markdown-download.js', 'markdown-download-script');
+
+            // 原有的文章页资源
             this.loadCSS('/css/custom-comment.css', 'custom-comment-style');
             this.loadCSS('/custom/css/tip_style.css', 'tip-style');
             this.loadJS('/js/fixed_comment.js', 'fixed-comment-script');
             this.loadJS('/custom/js/tip_main.js', 'tip-main-script');
+        }
 
-
+        // 检测代码运行器需求（如果页面有相关按钮或配置）
+        if (document.querySelector('#code-runner-btn') ||
+            document.querySelector('[data-code-runner]') ||
+            (typeof anzhiyu !== 'undefined' && anzhiyu.codeRunner)) {
+            this.loadCSS('/css/code-runner.css', 'code-runner-style');
+            this.loadJS('/js/code-runner.js', 'code-runner-script');
         }
 
         // 检测B站视频内容
@@ -91,11 +103,19 @@ class ResourceLoader {
             this.loadCSS('/custom/css/sandbox_style.css', 'sandbox-style');
         }
 
+        // 检测最新评论小组件（独立检测，主页也需要）
+        if (document.querySelector('#latest-comments')) {
+            this.loadJS('/js/comments.js', 'comments-script');
+        }
+
         // 检测评论区
         if (document.querySelector('#twikoo') ||
             document.querySelector('#waline') ||
             document.querySelector('#valine')) {
-            this.loadJS('/js/comments.js', 'comments-script');
+            // 如果还没有加载 comments.js，则加载
+            if (!document.getElementById('comments-script')) {
+                this.loadJS('/js/comments.js', 'comments-script');
+            }
         }
 
         // 检测即刻短文页面
@@ -118,11 +138,11 @@ class ResourceLoader {
 
         // 检测侧边栏相关功能
         if (document.querySelector('#sidebar')) {
-            this.loadCSS('/custom/css/schedule.css', 'schedule-style');
+            // 注释掉日历相关的加载，减少内存占用
+            // this.loadCSS('/custom/css/schedule.css', 'schedule-style');
             this.loadCSS('/custom/css/background-box.css', 'background-style');
             this.loadJS('https://cdn.jsdelivr.net/npm/winbox@0.2.82/dist/winbox.bundle.min.js', 'winbox-lib')
-                .then(() => this.loadJS('/custom/js/chineselunar.js', 'chineselunar-script'))
-                .then(() => this.loadJS('/custom/js/schedule.js', 'schedule-script'))
+                // 移除了 chineselunar.js 和 schedule.js 的加载
                 .then(() => this.loadJS('/custom/js/background-box.js', 'background-script'))
                 .catch(err => console.warn('侧边栏脚本加载失败:', err));
         }
