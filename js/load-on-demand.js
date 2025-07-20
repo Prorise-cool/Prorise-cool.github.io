@@ -64,8 +64,12 @@ class ResourceLoader {
  * 检测页面内容并按需加载相关资源
  */
     autoDetectAndLoad() {
-        // 检测是否为首页
-        if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
+        // 检测是否为首页（包括分页）
+        const isHomePage = window.location.pathname === '/' ||
+            window.location.pathname === '/index.html' ||
+            /^\/page\/\d+\/?$/.test(window.location.pathname);
+
+        if (isHomePage) {
             this.loadCSS('/css/index_media.css', 'index-media-style');
             this.loadJS('/js/index_media.js', 'index-media-script');
         }
