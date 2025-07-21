@@ -1,0 +1,684 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"><title>产品经理入门（六）：第六章：产品需求文档（PRD）撰写 | Prorise的小站</title><meta name="keywords" content="产品经理教程"><meta name="author" content="Prorise"><meta name="copyright" content="Prorise"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#cee8ff"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="产品经理入门（六）：第六章：产品需求文档（PRD）撰写"><meta name="application-name" content="产品经理入门（六）：第六章：产品需求文档（PRD）撰写"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#cee8ff"><meta property="og:type" content="article"><meta property="og:title" content="产品经理入门（六）：第六章：产品需求文档（PRD）撰写"><meta property="og:url" content="https://prorise666.site/posts/8024.html"><meta property="og:site_name" content="Prorise的小站"><meta property="og:description" content="第六章：产品需求文档（PRD）撰写 到目前为止，我们已经走过了漫长的旅程：从收集需求、分析需求，到梳理设计思路、绘制可交互的原型。现在，我们手上已经有了一套清晰的解决方案。 一个很自然的问题是：我可以直接把我的原型，丢给开发和设计师，让他们照着做出来就行了吗？ 我的答案是：绝对不行。 因为原型，尤其"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://i1.wp.com/dev.ruom.top/i/2025/07/19/606082.webp"><meta property="article:author" content="Prorise"><meta property="article:tag" content="全栈, Full Stack, 前端, 后端, Node.js, Vue, React, 数据库, Linux, Docker, 个人博客, 技术分享"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://i1.wp.com/dev.ruom.top/i/2025/07/19/606082.webp"><meta name="description" content="第六章：产品需求文档（PRD）撰写 到目前为止，我们已经走过了漫长的旅程：从收集需求、分析需求，到梳理设计思路、绘制可交互的原型。现在，我们手上已经有了一套清晰的解决方案。 一个很自然的问题是：我可以直接把我的原型，丢给开发和设计师，让他们照着做出来就行了吗？ 我的答案是：绝对不行。 因为原型，尤其"><link rel="shortcut icon" href="https://bu.dusays.com/2025/07/19/687b394cb439b.ico"><link rel="canonical" href="https://prorise666.site/posts/8024.html"><link rel="preconnect" href="//cdn.cbd.int"><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""><link rel="preconnect" href="//busuanzi.ibruce.info"><meta name="google-site-verification" content="xxx"><meta name="baidu-site-verification" content="code-xxx"><meta name="msvalidate.01" content="xxx"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media=&quot;all&quot;"><link rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/node-snackbar/0.1.16/snackbar.min.css" media="print" onload="this.media=&quot;all&quot;"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media=&quot;all&quot;"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media=&quot;all&quot;"><script async="" src="https://www.googletagmanager.com/gtag/js?id=[object Object]"></script><script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","[object Object]")</script><script>const GLOBAL_CONFIG = {
+  linkPageTop: {"enable":true,"title":"与数百名博主无限进步","addFriendPlaceholder":"昵称（请勿包含博客等字样）：\n网站地址（要求博客地址，请勿提交个人主页）：\n头像图片url（请提供尽可能清晰的图片，我会上传到我自己的图床）：\n描述：\n站点截图（可选）：\n"},
+  peoplecanvas: undefined,
+  postHeadAiDescription: {"enable":true,"gptName":"Prorise","mode":"tianli","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"S-DNA1JM95BX2F9L0N","Referer":"https://xx.xx/"},
+  diytitle: undefined,
+  LA51: undefined,
+  greetingBox: {"enable":true,"default":"晚上好👋","list":[{"greeting":"晚安😴","startTime":0,"endTime":5},{"greeting":"早上好鸭👋, 祝你一天好心情！","startTime":6,"endTime":9},{"greeting":"上午好👋, 状态很好，鼓励一下～","startTime":10,"endTime":10},{"greeting":"11点多啦, 在坚持一下就吃饭啦～","startTime":11,"endTime":11},{"greeting":"午安👋, 宝贝","startTime":12,"endTime":14},{"greeting":"🌈充实的一天辛苦啦！","startTime":14,"endTime":18},{"greeting":"19点喽, 奖励一顿丰盛的大餐吧🍔。","startTime":19,"endTime":19},{"greeting":"晚上好👋, 在属于自己的时间好好放松😌~","startTime":20,"endTime":24}]},
+  twikooEnvId: 'https://twikoo.prorise666.site/',
+  commentBarrageConfig:{"enable":true,"maxBarrage":1,"barrageTime":10000,"accessToken":"b39753735ed0ed5ffeb771bc108e3158","mailMd5":"ec3291d59a8d7d3675df8a0537fcbc979f0fa611c8df55841fb7f4fd162bd07a"},
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: {"mode":"both","api":"https://img2color-go.vercel.app/api?img=","cover_change":true},
+  authorStatus: {"skills":["🤣 全栈开发工程师","🙂 前端架构设计师","🙃 后端服务构建者","🤩 移动端应用开发","🤯 数据库设计专家","🥳 DevOps运维实践者","🤭 技术栈多面手","😎 性能优化达人"]},
+  algolia: {"appId":"K8Y7M0RMXQ","apiKey":"11fa7380e2694483a44b143044e69e6e","indexName":"prorise_blog","hits":{"per_page":6},"languages":{"input_placeholder":"输入关键词后按下回车查找","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: {"limitDay":360,"position":"top","messagePrev":"距离上次更新已经过了","messageNext":"天，文章内容可能已经过时。"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    simplehomepage: false,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: Prorise","link":"链接: ","source":"来源: Prorise的小站","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: true,
+  shortcutKey: undefined,
+  autoDarkmode: true,
+  code_runner: {"enable":true,"title":"代码运行器","button_title":"代码运行器","panel_width":"600px","auto_load_first":false,"close_on_escape":true,"remember_selection":true,"categories":[{"name":"Trinket","icon":"fas fa-leaf","description":"适合Python/HTML/CSS/JS等基础代码运行，界面简洁易用","instances":[{"name":"Python 3","url":"https://trinket.io/embed/python3/f417f7026885","description":"Python 3 在线编程环境"},{"name":"HTML/CSS/JS","url":"https://trinket.io/embed/html/1aac0e8640a7","description":"前端三件套在线编辑器"},{"name":"Java","url":"https://trinket.io/embed/java/33cfa8ec292c","description":"Java 在线编程环境"}]},{"name":"JDoodle","icon":"fas fa-terminal","description":"支持70+种编程语言，功能强大的在线编译器","instances":[{"name":"C++ Compiler","url":"https://www.jdoodle.com/online-compiler-c++/","description":"C++ 在线编译器"},{"name":"Java Compiler","url":"https://www.jdoodle.com/online-java-compiler/","description":"Java 在线编译器"},{"name":"Python 3","url":"https://www.jdoodle.com/python3-programming-online/","description":"Python 3 在线编程"},{"name":"TypeScript 在线编译器","url":"https://www.jdoodle.com/embed/v1/f40f7676c55c09b","description":"TypeScript"},{"name":"SQL 在线编译器","url":"https://www.jdoodle.com/embed/v1/510d607e22ee9e7c","description":"SQL 在线编译器"},{"name":"PHP 在线编译器","url":"https://www.jdoodle.com/embed/v1/ca85d333af57a5fc","description":"PHP 在线编译器"},{"name":"C语言 在线编译器","url":"https://www.jdoodle.com/embed/v1/8e18f0fd58e4a248","description":"C语言 在线编译器"}]}]}
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE={configTitle:"Prorise的小站",title:"产品经理入门（六）：第六章：产品需求文档（PRD）撰写",postAI:"true",pageFillDescription:"第六章：产品需求文档（PRD）撰写, 6.1 产品需求说明（PRD）概述, 6.1.1 学习目标, 6.1.2 产品需求说明的定义, 6.1.3 产品需求说明的目的, 6.1.4 产品需求文档常见形式, 6.1.5 产品需求文档维护形式, 6.1.6 产品需求文档常见内容, 6.1.7 产品需求说明小结, 6.2 产品交互需求说明详解, 6.2.1 学习目标, 6.2.2 产品交互需求说明内容方向, 6.2.3 常见交互功能及需求说明示例, 1. 功能按钮说明, 2. 选项选择说明, 3. 输入框说明, 4. 时间x2F日期选择说明, 5. 内容显示说明, 6. 状态类说明, 7. 数字显示类说明, 8. 时间显示类说明, 6.2.4 产品交互需求说明小结, 6.3 如何撰写产品交互需求说明, 6.3.1 学习目标, 6.3.2 产品交互需求说明撰写思路, 6.3.3 产品交互需求说明撰写步骤, 6.3.4 产品交互需求说明撰写案例及练习, 6.3.5 产品交互需求全局说明, 6.3.6 产品交互需求说明撰写注意事项与技巧第六章产品需求文档撰写到目前为止我们已经走过了漫长的旅程从收集需求分析需求到梳理设计思路绘制可交互的原型现在我们手上已经有了一套清晰的解决方案一个很自然的问题是我可以直接把我的原型丢给开发和设计师让他们照着做出来就行了吗我的答案是绝对不行因为原型尤其是低保真原型只能展示它看起来长什么样却无法说清楚它在各种情况下应该如何工作为了弥补这个信息鸿沟确保我们的想法能被精准地实现我们就需要产出产品开发流程中最核心最正式的一份交付文档产品需求说明文档产品需求说明概述在这一节我将带大家全面地认识它是什么为什么如此重要以及一份专业的应该包含哪些内容学习目标我的目标是让我们深刻理解在产品研发流程中不可或缺的契约作用学完本节我希望我们都能明确一份合格的定义目的常见形式和核心构成要素产品需求说明的定义我给的定义是一份针对即将开发的产品功能或方案进行全面详细无歧义的必要说明以确保方案被完整准确地实现的正式文档它的本质就是用文档的形式把产品方案的每一个细节都解释得清清楚楚我们看这个注册登录的案例这个页面看起来很简单但背后隐藏了无数的逻辑规则密码的格式要求是什么输入错误时如何提示手机号已被注册怎么办连续输错次密码会怎样这些细节单靠一张原型图是绝对无法表达的必须通过来详细说明产品需求说明的目的我之所以不厌其烦地撰写是因为它能为我和我的团队带来三大不可替代的价值确保方案的完整性撰写的过程本身就是我自己对产品方案进行极限测试的过程它会逼迫我去思考所有可能的异常流程和边界情况确保方案没有漏洞确保团队理解一致是研发团队包括设计开发测试开展工作的唯一和必须的依据它能消除信息偏差避免因为口头沟通带来的误解和返工方便未来回溯和迭代当产品上线后就是一份历史档案未来的产品经理或团队成员可以通过它准确地了解当时我们为什么要做这个功能以及当时的设计思路产品需求文档常见形式并没有一个全球统一的格式在我的工作中最常见的两种形式是文档格式这是最传统最正式的形式通过或类似的文档工具撰写一份包含详细目录图文并茂的说明书优点是结构清晰非常全面原型内嵌格式这是一种更敏捷的形式我直接在原型工具如墨刀中为每个页面和元件添加详细的文字标注和说明优点是原型和文档合二为一查看和理解更直观产品需求文档维护形式在团队协作中的维护和共享方式也很重要本地化形式就是通过邮件微信等方式来回发送或原型文件这种方式在小团队或不规范的团队里很常见但极易造成版本混乱第三方工具这是我极力推荐的现代协作方式我们将统一维护在一个在线的团队共享的平台上比如语雀甚至是墨刀的项目空间里所有人访问的都是同一个最新的版本沟通和反馈都在线上进行效率极高产品需求文档常见内容无论形式如何一份合格的在我看来都必须包含以下六大核心模块文档更新记录记录每次文档的修改时间修改人修改内容需求背景与目的清晰地告诉团队我们为什么要做这次的需求产品流程图附上我们在第四章学过的业务流程图功能流程图等帮助团队理解用户路径和功能逻辑产品结构图附上功能结构图或产品结构图帮助团队理解产品的功能构成和信息框架产品交互需求说明这是最最核心的部分它需要结合原型图对每一个页面的每一个元素的每一个状态和交互规则进行详细的说明非功能性说明对一些非界面功能的需求进行说明比如性能要求页面加载速度兼容性要求数据统计需求等产品需求说明小结我将的核心要点总结如下核心概念我的理解与实践的定义是连接想法与实现的唯一完整准确的说明书的目的确保方案完整团队理解一致方便未来回溯的内容必须包含背景目的流程结构交互说明等六大核心模块产品交互需求说明详解在我看来这部分是的灵魂它详细定义了产品的行为和逻辑是开发和测试工程师工作的直接依据我的目标是写出一份让开发人员无需再问我任何问题的说明学习目标在本节中我的目标是让我们掌握撰写一份清晰无歧义的交互需求说明的方法我们将学习说明的两个核心内容方向并通过一系列真实案例学会如何为我们原型中最高频出现的种元件或场景定义滴水不漏的规则产品交互需求说明内容方向我撰写的所有交互说明都围绕着两大方向展开这能确保我不会遗漏关键信息交互动作说明这部分是描述因果关系我习惯用当如果那么的逻辑来思考行为当用户做了什么操作时如单击滑动条件这个操作在什么条件下会触发如用户已登录输入框有内容反馈系统应该给出什么样的回应如跳转页面弹出提示字段信息说明这部分是描述静态规则主要包含两点显示这个区域默认应该显示什么文案或内容如输入框的提示文字规则这个字段或内容需要遵循什么规则如最多输入个字常见交互功能及需求说明示例现在我们就用交互动作和字段信息这两把手术刀来解剖几个最常见的交互功能功能按钮说明对于一个按钮我绝不会只说点击按钮如何而是会定义它在不同条件下的状态和反馈案例发表按钮条件当输入框内容为空时按钮置灰为不可点击状态条件当输入框有内容时按钮高亮为可点击状态行为点击该按钮反馈为提示发表成功秒后自动消失并跳转到朋友圈首页选项选择说明对于下拉选择单选复选框等我需要定义选项的规则案例朋友圈日期选择选项来源选项中的年份和月份来源于该用户所有发过朋友圈的年份和月份选项规则仅支持单选默认显示默认提示文案为最近发表朋友圈的年限异常情况若用户从未发表过朋友圈年选项隐藏输入框说明对于输入框我需要明确其显示和限制规则案例设置名字输入框默认显示提示文案为请输入个字以内的名字输入规则不限制字符类型但限制数量为个字符定义个中文算个字符个字母数字算个字符异常处理如输入超过个字符则无法继续输入时间日期选择说明对于时间选择器我需要定义其范围和关联规则案例自定义日期选择框默认显示本年本月日到本年本月当日可选范围日期选择精确到年月日不得选择超过当天的日期关联规则开始日期不得超过结束日期开始和结束日期跨度最长为半年内容显示说明对于列表中的内容我需要定义其截取和显示规则案例快报内容显示显示内容包含时间时分和内容简讯截断规则内容简讯取自正文开头部分内容在列表中最多显示三行超出三行的部分末尾显示状态类说明对于有状态概念的业务如订单任务我必须定义清楚状态的流转案例订单状态状态定义一个订单包含待付款待发货待收货交易成功等状态状态变更逻辑用户付款后状态由待付款变为待发货用户点击确认收货或超过最长收货时间如天后状态自动变为交易成功状态影响只有在交易成功状态下用户才能删除订单或申请售后数字显示类说明对于需要计数的数字我需要定义计算和显示规则案例阅读点赞数显示计算规则用户每产生一次阅读点赞评论分享行为对应数据实时显示规则当数据为时只显示不显示数字当数据在及以内显示实际数字当数据在以上以千为单位显示如时间显示类说明对于时间戳的显示为了提升用户体验我需要定义其相对显示规则案例信息发布时间显示显示规则小时内以分钟为单位显示如分钟前当天内以小时为单位显示如小时前昨天前天内显示昨天前天具体时分如昨天超过天则显示为具体年月日时分如产品交互需求说明小结撰写交互说明是一项极其考验产品经理严谨性和同理心的工作核心原则我的实践清单杜绝歧义我会穷尽每一个元件每一个状态每一个用户操作每一个异常情况并为它们都写下清晰的规则结构清晰我总是围绕交互动作和字段信息这两大方向来组织我的说明换位思考我会站在开发者的角度思考我的说明是否清晰到他不需要再来问我任何问题就能直接开始写代码如何撰写产品交互需求说明我们已经知道了交互说明要包含哪些内容但从知道到做到之间还需要一套行之有效的方法论在这一节我将毫无保留地把我自己撰写交互说明的思路步骤和技巧分享给大家学习目标我的目标是让我们掌握一套可以被反复使用的结构化的撰写流程学完本节我希望我们都能自信地有条不紊地为任何一个复杂的页面撰写出清晰完整的交互说明产品交互需求说明撰写思路我的核心撰写思路是由外到内由静到动先考虑页面在描述任何一个按钮之前我总是先从整个页面的视角出发这个页面从哪里来它整体需要遵循什么规则比如列表的排序规则分页逻辑等再考虑控件把页面的整体规则定义清楚后我再钻进去分析页面里的每一个控件也就是元件对于每个控件我同样遵循一个顺序静态先说明它的静态规则比如默认的提示文案输入框的字数限制等动态再说明它的动态交互比如正常的交互动作以及各种异常情况下的交互动作产品交互需求说明撰写步骤这个思路具体落地就变成了我写时雷打不动的三个步骤页面说明在文档的开头我会先对当前页面进行一个整体的介绍包括页面的主要功能从哪些页面可以进入此页面以及该页面的一些全局性规则区域划分为了让说明更有条理我会把一个复杂的页面划分成几个逻辑区域比如顶部导航区内容列表区底部菜单区我通常会在原型图上用数字角标清晰地标注出这些区域详细说明这是工作量最大的部分我会按照区域划分的顺序逐一地详细地说明每个区域内每一个控件的静态规则和动态交互这种在原型图上分区编号再在文档中分点说明的方式是我认为最清晰最高效的撰写范式开发和设计同事都非常喜欢因为它简单明了对应关系一目了然产品交互需求说明撰写案例及练习我们来看注册登录页面的这份详细说明它完美地应用了我们刚才讲的三个步骤它首先有页面说明然后将页面划分为顶部导航栏和登录区域两大块接着在登录区域内又详细地拆分说明了手机号输入框验证码输入框等每一个控件的详细规则内容细致到了光标默认置于输入框键盘用哪种样式等程度这种对细节的极致追求就是一份专业的体现这也是我们接下来需要练习达到的标准产品交互需求全局说明这时一个问题来了有一些规则比如网络异常时如何提示是每个页面都会出现的难道我需要在每个页面都重复写一遍吗答案是不需要为了解决这个问题我会在的开头建立一个全局说明的章节在这个章节里我会把所有非某个页面独有的全产品通用的规则进行统一的说明这通常包括角色权限说明不同角色的用户在使用功能上有什么权限差异加载方式页面加载数据加载时的默认动画样式全局弹层产品中统一的弹窗提示的样式和规则常用字段常用字段的统一规则如昵称密码的格式要求网络异常在各种网络问题下产品应该如何向用户反馈全局交互通用的手势操作等建立全局说明能极大地减少我的重复工作量并保证产品体验的一致性产品交互需求说明撰写注意事项与技巧最后分享四个我多年总结下来的技巧和注意事项先明确产品逻辑在写文档前一定先把产品的流程结构都想清楚是思考的结果而不是思考的过程条件和反馈对每一个交互动作都要像侦探一样把所有的条件和反馈都考虑到特别是异常情况不要边画原型边写说明我建议把这两个工作分开先专注地把低保真原型画完再进入贤者时间专注地为这个静态的原型撰写说明一心二用两边都做不好灵活运用表达方式除了大段的文字我也会大量使用表格比如用来表达状态机流程图等方式来更清晰更简洁地表达复杂的逻辑",isPost:!0,isHome:!1,isHighlightShrink:!1,isToc:!0,postUpdate:"2025-07-21 14:52:01",postMainColor:""}</script><noscript><style type="text/css">#nav{opacity:1}.justified-gallery img{opacity:1}#post-meta time,#recent-posts time{display:inline!important}</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0F1C2E')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#cee8ff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/font.css"><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/avatar.png"><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"><script async="" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><div class="doc-sidebar" id="doc-sidebar"><nav class="doc-sidebar-nav"><div class="doc-toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E7%AB%A0%EF%BC%9A%E4%BA%A7%E5%93%81%E9%9C%80%E6%B1%82%E6%96%87%E6%A1%A3%EF%BC%88PRD%EF%BC%89%E6%92%B0%E5%86%99"><span class="toc-text">第六章：产品需求文档（PRD）撰写</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-%E4%BA%A7%E5%93%81%E9%9C%80%E6%B1%82%E8%AF%B4%E6%98%8E%EF%BC%88PRD%EF%BC%89%E6%A6%82%E8%BF%B0"><span class="toc-text">6.1 产品需求说明（PRD）概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-1-%E5%AD%A6%E4%B9%A0%E7%9B%AE%E6%A0%87"><span class="toc-text">6.1.1 学习目标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-2-%E4%BA%A7%E5%93%81%E9%9C%80%E6%B1%82%E8%AF%B4%E6%98%8E%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-text">6.1.2 产品需求说明的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-3-%E4%BA%A7%E5%93%81%E9%9C%80%E6%B1%82%E8%AF%B4%E6%98%8E%E7%9A%84%E7%9B%AE%E7%9A%84"><span class="toc-text">6.1.3 产品需求说明的目的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-4-%E4%BA%A7%E5%93%81%E9%9C%80%E6%B1%82%E6%96%87%E6%A1%A3%E5%B8%B8%E8%A7%81%E5%BD%A2%E5%BC%8F"><span class="toc-text">6.1.4 产品需求文档常见形式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-5-%E4%BA%A7%E5%93%81%E9%9C%80%E6%B1%82%E6%96%87%E6%A1%A3%E7%BB%B4%E6%8A%A4%E5%BD%A2%E5%BC%8F"><span class="toc-text">6.1.5 产品需求文档维护形式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-6-%E4%BA%A7%E5%93%81%E9%9C%80%E6%B1%82%E6%96%87%E6%A1%A3%E5%B8%B8%E8%A7%81%E5%86%85%E5%AE%B9"><span class="toc-text">6.1.6 产品需求文档常见内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-7-%E4%BA%A7%E5%93%81%E9%9C%80%E6%B1%82%E8%AF%B4%E6%98%8E%E5%B0%8F%E7%BB%93"><span class="toc-text">6.1.7 产品需求说明小结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2-%E4%BA%A7%E5%93%81%E4%BA%A4%E4%BA%92%E9%9C%80%E6%B1%82%E8%AF%B4%E6%98%8E%E8%AF%A6%E8%A7%A3"><span class="toc-text">6.2 产品交互需求说明详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-1-%E5%AD%A6%E4%B9%A0%E7%9B%AE%E6%A0%87"><span class="toc-text">6.2.1 学习目标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-2-%E4%BA%A7%E5%93%81%E4%BA%A4%E4%BA%92%E9%9C%80%E6%B1%82%E8%AF%B4%E6%98%8E%E5%86%85%E5%AE%B9%E6%96%B9%E5%90%91"><span class="toc-text">6.2.2 产品交互需求说明内容方向</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-3-%E5%B8%B8%E8%A7%81%E4%BA%A4%E4%BA%92%E5%8A%9F%E8%83%BD%E5%8F%8A%E9%9C%80%E6%B1%82%E8%AF%B4%E6%98%8E%E7%A4%BA%E4%BE%8B"><span class="toc-text">6.2.3 常见交互功能及需求说明示例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%8A%9F%E8%83%BD%E6%8C%89%E9%92%AE%E8%AF%B4%E6%98%8E"><span class="toc-text">1. 功能按钮说明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E9%80%89%E9%A1%B9%E9%80%89%E6%8B%A9%E8%AF%B4%E6%98%8E"><span class="toc-text">2. 选项选择说明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E8%BE%93%E5%85%A5%E6%A1%86%E8%AF%B4%E6%98%8E"><span class="toc-text">3. 输入框说明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E6%97%B6%E9%97%B4-%E6%97%A5%E6%9C%9F%E9%80%89%E6%8B%A9%E8%AF%B4%E6%98%8E"><span class="toc-text">4. 时间/日期选择说明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E5%86%85%E5%AE%B9%E6%98%BE%E7%A4%BA%E8%AF%B4%E6%98%8E"><span class="toc-text">5. 内容显示说明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E7%8A%B6%E6%80%81%E7%B1%BB%E8%AF%B4%E6%98%8E"><span class="toc-text">6. 状态类说明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-%E6%95%B0%E5%AD%97%E6%98%BE%E7%A4%BA%E7%B1%BB%E8%AF%B4%E6%98%8E"><span class="toc-text">7. 数字显示类说明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-%E6%97%B6%E9%97%B4%E6%98%BE%E7%A4%BA%E7%B1%BB%E8%AF%B4%E6%98%8E"><span class="toc-text">8. 时间显示类说明</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-4-%E4%BA%A7%E5%93%81%E4%BA%A4%E4%BA%92%E9%9C%80%E6%B1%82%E8%AF%B4%E6%98%8E%E5%B0%8F%E7%BB%93"><span class="toc-text">6.2.4 产品交互需求说明小结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-3-%E5%A6%82%E4%BD%95%E6%92%B0%E5%86%99%E4%BA%A7%E5%93%81%E4%BA%A4%E4%BA%92%E9%9C%80%E6%B1%82%E8%AF%B4%E6%98%8E"><span class="toc-text">6.3 如何撰写产品交互需求说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-1-%E5%AD%A6%E4%B9%A0%E7%9B%AE%E6%A0%87"><span class="toc-text">6.3.1 学习目标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-2-%E4%BA%A7%E5%93%81%E4%BA%A4%E4%BA%92%E9%9C%80%E6%B1%82%E8%AF%B4%E6%98%8E%E6%92%B0%E5%86%99%E6%80%9D%E8%B7%AF"><span class="toc-text">6.3.2 产品交互需求说明撰写思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-3-%E4%BA%A7%E5%93%81%E4%BA%A4%E4%BA%92%E9%9C%80%E6%B1%82%E8%AF%B4%E6%98%8E%E6%92%B0%E5%86%99%E6%AD%A5%E9%AA%A4"><span class="toc-text">6.3.3 产品交互需求说明撰写步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-4-%E4%BA%A7%E5%93%81%E4%BA%A4%E4%BA%92%E9%9C%80%E6%B1%82%E8%AF%B4%E6%98%8E%E6%92%B0%E5%86%99%E6%A1%88%E4%BE%8B%E5%8F%8A%E7%BB%83%E4%B9%A0"><span class="toc-text">6.3.4 产品交互需求说明撰写案例及练习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-5-%E4%BA%A7%E5%93%81%E4%BA%A4%E4%BA%92%E9%9C%80%E6%B1%82%E5%85%A8%E5%B1%80%E8%AF%B4%E6%98%8E"><span class="toc-text">6.3.5 产品交互需求全局说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-6-%E4%BA%A7%E5%93%81%E4%BA%A4%E4%BA%92%E9%9C%80%E6%B1%82%E8%AF%B4%E6%98%8E%E6%92%B0%E5%86%99%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9%E4%B8%8E%E6%8A%80%E5%B7%A7"><span class="toc-text">6.3.6 产品交互需求说明撰写注意事项与技巧</span></a></li></ol></li></ol></li></ol></div></nav></div><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" href="/" title="博客"><img class="back-menu-item-icon" src="https://bu.dusays.com/2025/07/19/687b394cb439b.ico" alt="博客"><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" href="/" title="后续项目..."><img class="back-menu-item-icon" src="https://image.anheyu.com/favicon.ico" alt="后续项目..."><span class="back-menu-item-text">后续项目...</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title">Prorise的小站</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)" rel="external nofollow noreferrer">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size:.9em"></i><span> 归档</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size:.9em"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size:.9em"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>个人</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size:.9em"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/todolist/"><i class="fas fa-check-double faa-tada"></i><span> 代办清单</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/awesome-links/"><i class="fas fa-link faa-tada"></i><span> 实用网站</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>预览</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/?server=netease&amp;id=3117791189"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size:.9em"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size:.9em"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/messages/"><i class="fas fa-comments faa-tada"></i><span> 评论总览</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size:.9em"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size:.9em"></i><span> 即刻短文</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size:.9em"></i><span> 随便逛逛</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="background-change-button"><a class="site-page" onclick="toggleWinbox()" title="切换背景" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-palette"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" rel="external nofollow noreferrer" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole()"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://tc.z.wiki/autoupload/iXoPwUD80CPTvQUyITTBFOykMT9FcWW5SasRoXZEs3Wyl5f0KlZfm6UsKj-HyTuv/20250609/bYMH/418X445/ef9a3f68-d36a-441a-95fe-8179b1a25992.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://tc.z.wiki/autoupload/iXoPwUD80CPTvQUyITTBFOykMT9FcWW5SasRoXZEs3Wyl5f0KlZfm6UsKj-HyTuv/20250609/bYMH/418X445/ef9a3f68-d36a-441a-95fe-8179b1a25992.png"></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://tc.z.wiki/autoupload/iXoPwUD80CPTvQUyITTBFOykMT9FcWW5SasRoXZEs3Wyl5f0KlZfm6UsKj-HyTuv/20250609/cYu3/347X390/zfb.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://tc.z.wiki/autoupload/iXoPwUD80CPTvQUyITTBFOykMT9FcWW5SasRoXZEs3Wyl5f0KlZfm6UsKj-HyTuv/20250609/cYu3/347X390/zfb.png"></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title">最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">音乐</div><span class="author-content-item-title">灵魂的碰撞💥</span></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/07/"><span class="card-archive-list-date">七月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">39</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/06/"><span class="card-archive-list-date">六月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">4</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/05/"><span class="card-archive-list-date">五月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">9</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/04/"><span class="card-archive-list-date">四月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">22</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/03/"><span class="card-archive-list-date">三月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">11</span><span>篇</span></div></a></li></ul></div></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item on" id="consoleCommentBarrage" onclick="anzhiyu.switchCommentBarrage()" title="热评开关"><a class="commentBarrage"><i class="anzhiyufont anzhiyu-icon-message"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div><div class="console-btn-item" id="consoleAskAIMode" onclick="rm.toggleAskAIMode()" title="AI询问模式切换"><a class="askAIMode-switch"><i class="fa-solid fa-robot"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);" rel="external nofollow noreferrer"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/" itemprop="url">产品经理</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E6%95%99%E7%A8%8B/" tabindex="-1" itemprop="url"> <span><i class="anzhiyufont anzhiyu-icon-hashtag"></i>产品经理教程</span></a></span></div></div><h1 class="post-title" itemprop="name headline">产品经理入门（六）：第六章：产品需求文档（PRD）撰写</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-07-20T13:13:45.000Z" title="发表于 2025-07-20 21:13:45">2025-07-20</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-07-21T06:52:01.913Z" title="更新于 2025-07-21 14:52:01">2025-07-21</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="anzhiyufont anzhiyu-icon-file-word post-meta-icon" title="文章字数"></i><span class="post-meta-label" title="文章字数">字数总计:</span><span class="word-count" title="文章字数">4.5k</span><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-clock post-meta-icon" title="阅读时长"></i><span class="post-meta-label" title="阅读时长">阅读时长:</span><span>13分钟</span></span><span class="post-meta-separator"></span><span data-flag-title="产品经理入门（六）：第六章：产品需求文档（PRD）撰写"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="twikoo_visitors" title="访问量"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator"> </span><span class="post-meta-position" title="作者IP属地为广东"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>广东</span><span class="post-meta-separator"></span><span class="post-meta-commentcount"><i class="anzhiyufont anzhiyu-icon-comments post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/posts/8024.html#post-comment" tabindex="-1"><span id="twikoo-count"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></a></span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://i1.wp.com/dev.ruom.top/i/2025/07/19/606082.webp"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><div class="post-ai-description"><div class="ai-title"><i class="anzhiyufont anzhiyu-icon-bilibili"></i><div class="ai-title-text">AI-摘要</div><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right"></i><i class="anzhiyufont anzhiyu-icon-circle-dot" title="朗读摘要"></i><div id="ai-tag">Tianli GPT</div></div><div class="ai-explanation">AI初始化中...</div><div class="ai-btn-box"><div class="ai-btn-item">介绍自己 🙈</div><div class="ai-btn-item">生成本文简介 👋</div><div class="ai-btn-item">推荐相关文章 📖</div><div class="ai-btn-item">前往主页 🏠</div><div class="ai-btn-item" id="go-tianli-blog">前往爱发电购买</div></div><script data-pjax="" src="/js/anzhiyu/ai_abstract.js"></script></div><article class="post-content" id="article-container" itemscope="" itemtype="https://prorise666.site/posts/8024.html"><header><a class="post-meta-categories" href="/categories/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/" itemprop="url">产品经理</a><a href="/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E6%95%99%E7%A8%8B/" tabindex="-1" itemprop="url">产品经理教程</a><h1 id="CrawlerTitle" itemprop="name headline">产品经理入门（六）：第六章：产品需求文档（PRD）撰写</h1><span itemprop="author" itemscope="" itemtype="http://schema.org/Person">Prorise</span><time itemprop="dateCreated datePublished" datetime="2025-07-20T13:13:45.000Z" title="发表于 2025-07-20 21:13:45">2025-07-20</time><time itemprop="dateCreated datePublished" datetime="2025-07-21T06:52:01.913Z" title="更新于 2025-07-21 14:52:01">2025-07-21</time></header><div id="postchat_postcontent"><h1 id="第六章：产品需求文档（PRD）撰写"><a href="#第六章：产品需求文档（PRD）撰写" class="headerlink" title="第六章：产品需求文档（PRD）撰写"></a>第六章：产品需求文档（PRD）撰写</h1><p><img src= "https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250720133044016.png" alt="image-20250720133044016"></p><p>到目前为止，我们已经走过了漫长的旅程：从收集需求、分析需求，到梳理设计思路、绘制可交互的原型。现在，我们手上已经有了一套清晰的解决方案。</p><p>一个很自然的问题是：<strong>我可以直接把我的原型，丢给开发和设计师，让他们照着做出来就行了吗？</strong></p><p>我的答案是：<strong>绝对不行</strong>。</p><p>因为原型，尤其是低保真原型，只能展示“<strong>它看起来长什么样</strong>”，却无法说清楚“<strong>它在各种情况下应该如何工作</strong>”。为了弥补这个信息鸿沟，确保我们的想法能被100%精准地实现，我们就需要产出产品开发流程中，最核心、最正式的一份交付文档</p><p>——<strong>产品需求说明文档（Product Requirements Document, PRD）</strong>。</p><h2 id="6-1-产品需求说明（PRD）概述"><a href="#6-1-产品需求说明（PRD）概述" class="headerlink" title="6.1 产品需求说明（PRD）概述"></a>6.1 产品需求说明（PRD）概述</h2><p>在这一节，我将带大家全面地认识PRD——它是什么？为什么如此重要？以及一份专业的PRD，应该包含哪些内容？</p><h3 id="6-1-1-学习目标"><a href="#6-1-1-学习目标" class="headerlink" title="6.1.1 学习目标"></a>6.1.1 学习目标</h3><p>我的目标是，让我们深刻理解PRD在产品研发流程中不可或缺的“契约”作用。学完本节，我希望我们都能明确一份合格PRD的定义、目的、常见形式和核心构成要素。</p><h3 id="6-1-2-产品需求说明的定义"><a href="#6-1-2-产品需求说明的定义" class="headerlink" title="6.1.2 产品需求说明的定义"></a>6.1.2 产品需求说明的定义</h3><p><img src= "https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250720133145066.png" alt="image-20250720133145066"></p><p>我给PRD的定义是：<strong>一份针对即将开发的产品功能或方案，进行全面、详细、无歧义的必要说明，以确保方案被完整、准确地实现的正式文档。</strong></p><p>它的本质，就是用文档的形式，<strong>把产品方案的每一个细节都解释得清清楚楚</strong>。</p><p><img src= "https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250720133240188.png" alt="image-20250720133240188"></p><p>我们看这个“注册登录”的案例。这个页面看起来很简单，但背后隐藏了无数的逻辑规则：密码的格式要求是什么？输入错误时如何提示？手机号已被注册怎么办？连续输错5次密码会怎样？……这些细节，单靠一张原型图是绝对无法表达的，必须通过PRD来详细说明。</p><h3 id="6-1-3-产品需求说明的目的"><a href="#6-1-3-产品需求说明的目的" class="headerlink" title="6.1.3 产品需求说明的目的"></a>6.1.3 产品需求说明的目的</h3><p>我之所以不厌其烦地撰写PRD，是因为它能为我和我的团队，带来三大不可替代的价值：</p><ol><li><strong>确保方案的完整性</strong>：撰写的过程，本身就是我自己对产品方案进行“极限测试”的过程，它会逼迫我去思考所有可能的异常流程和边界情况，确保方案没有漏洞。</li><li><strong>确保团队理解一致</strong>：PRD是研发团队（包括设计、开发、测试）开展工作的“唯一”和“必须”的依据。它能消除信息偏差，避免因为口头沟通带来的误解和返工。</li><li><strong>方便未来回溯和迭代</strong>：当产品上线后，PRD就是一份“历史档案”。未来的产品经理或团队成员，可以通过它，准确地了解当时我们为什么要做这个功能，以及当时的设计思路。</li></ol><h3 id="6-1-4-产品需求文档常见形式"><a href="#6-1-4-产品需求文档常见形式" class="headerlink" title="6.1.4 产品需求文档常见形式"></a>6.1.4 产品需求文档常见形式</h3><p><img src= "https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250720133353206.png" alt="image-20250720133353206"></p><p>PRD并没有一个全球统一的格式，在我的工作中，最常见的两种形式是：</p><ul><li><strong>Word文档格式</strong>：这是最传统、最正式的形式。通过Word或类似的文档工具，撰写一份包含详细目录、图文并茂的说明书。优点是结构清晰、非常全面。</li><li><strong>原型内嵌格式</strong>：这是一种更敏捷的形式。我直接在原型工具（如Axure、墨刀）中，为每个页面和元件添加详细的文字标注和说明。优点是原型和文档合二为一，查看和理解更直观。</li></ul><h3 id="6-1-5-产品需求文档维护形式"><a href="#6-1-5-产品需求文档维护形式" class="headerlink" title="6.1.5 产品需求文档维护形式"></a>6.1.5 产品需求文档维护形式</h3><p><img src= "https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250720133417399.png" alt="image-20250720133417399"></p><p>在团队协作中，PRD的维护和共享方式也很重要。</p><ul><li><strong>本地化形式</strong>：就是通过邮件、微信等方式，来回发送Word或原型文件。这种方式在小团队或不规范的团队里很常见，但极易造成版本混乱。</li><li><strong>第三方工具</strong>：这是我极力推荐的现代协作方式。我们将PRD统一维护在一个在线的、团队共享的平台上，比如<strong>Confluence、Tapd、语雀</strong>，甚至是<strong>墨刀</strong>的项目空间里。所有人访问的都是同一个、最新的版本，沟通和反馈都在线上进行，效率极高。</li></ul><h3 id="6-1-6-产品需求文档常见内容"><a href="#6-1-6-产品需求文档常见内容" class="headerlink" title="6.1.6 产品需求文档常见内容"></a>6.1.6 产品需求文档常见内容</h3><p><img src= "https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250720133446836.png" alt="image-20250720133446836"></p><p>无论形式如何，一份合格的PRD，在我看来，都必须包含以下六大核心模块：</p><ol><li><strong>文档更新记录</strong>：记录每次文档的修改时间、修改人、修改内容。</li><li><strong>需求背景与目的</strong>：清晰地告诉团队，我们“为什么”要做这次的需求。</li><li><strong>产品流程图</strong>：附上我们在第四章学过的业务流程图、功能流程图等，帮助团队理解用户路径和功能逻辑。</li><li><strong>产品结构图</strong>：附上功能结构图或产品结构图，帮助团队理解产品的功能构成和信息框架。</li><li><strong>产品交互需求说明</strong>：<strong>这是PRD最最核心的部分</strong>。它需要结合原型图，对每一个页面的每一个元素的每一个状态和交互规则，进行详细的说明。</li><li><strong>非功能性说明</strong>：对一些非界面功能的需求进行说明，比如性能要求（页面加载速度）、兼容性要求、数据统计需求等。</li></ol><h3 id="6-1-7-产品需求说明小结"><a href="#6-1-7-产品需求说明小结" class="headerlink" title="6.1.7 产品需求说明小结"></a>6.1.7 产品需求说明小结</h3><p>我将PRD的核心要点总结如下：</p><table><thead><tr><th align="left"><strong>核心概念</strong></th><th align="left"><strong>我的理解与实践</strong></th></tr></thead><tbody><tr><td align="left"><strong>PRD的定义</strong></td><td align="left">是连接“想法”与“实现”的<strong>唯一、完整、准确</strong>的说明书。</td></tr><tr><td align="left"><strong>PRD的目的</strong></td><td align="left"><strong>确保方案完整、团队理解一致、方便未来回溯</strong>。</td></tr><tr><td align="left"><strong>PRD的内容</strong></td><td align="left">必须包含<strong>背景目的、流程结构、交互说明</strong>等六大核心模块。</td></tr></tbody></table><hr><h2 id="6-2-产品交互需求说明详解"><a href="#6-2-产品交互需求说明详解" class="headerlink" title="6.2 产品交互需求说明详解"></a>6.2 产品交互需求说明详解</h2><p>在我看来，这部分是PRD的“灵魂”。它详细定义了产品的行为和逻辑，是开发和测试工程师工作的直接依据。</p><p>我的目标是写出一份“让开发人员无需再问我任何问题”的说明。</p><h3 id="6-2-1-学习目标"><a href="#6-2-1-学习目标" class="headerlink" title="6.2.1 学习目标"></a>6.2.1 学习目标</h3><p>在本节中，我的目标是，让我们掌握撰写一份清晰、无歧义的交互需求说明的方法。</p><p>我们将学习说明的两个核心内容方向，并通过一系列真实案例，学会如何为我们原型中最高频出现的8种元件或场景，定义滴水不漏的规则。</p><h3 id="6-2-2-产品交互需求说明内容方向"><a href="#6-2-2-产品交互需求说明内容方向" class="headerlink" title="6.2.2 产品交互需求说明内容方向"></a>6.2.2 产品交互需求说明内容方向</h3><p><img src= "https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250720133948254.png" alt="image-20250720133948254"></p><p>我撰写的所有交互说明，都围绕着两大方向展开，这能确保我不会遗漏关键信息：</p><ol><li><p><strong>交互动作说明 (Interaction Actions)</strong><br>这部分是描述“因果关系”，我习惯用“<strong>When(当…)/If(如果…)/Then(那么…)</strong>”的逻辑来思考：</p><ul><li><strong>行为 (When)</strong>：当用户做了什么操作时？（如：单击、滑动）</li><li><strong>条件 (If)</strong>：这个操作在什么条件下会触发？（如：用户已登录、输入框有内容）</li><li><strong>反馈 (Then)</strong>：系统应该给出什么样的回应？（如：跳转页面、弹出提示）</li></ul></li><li><p><strong>字段信息说明 (Field Information)</strong><br>这部分是描述“静态规则”，主要包含两点：</p><ul><li><strong>显示</strong>：这个区域默认应该显示什么文案或内容？（如：输入框的提示文字）</li><li><strong>规则</strong>：这个字段或内容需要遵循什么规则？（如：最多输入10个字）</li></ul></li></ol><h3 id="6-2-3-常见交互功能及需求说明示例"><a href="#6-2-3-常见交互功能及需求说明示例" class="headerlink" title="6.2.3 常见交互功能及需求说明示例"></a>6.2.3 常见交互功能及需求说明示例</h3><p>现在，我们就用“交互动作”和“字段信息”这两把“手术刀”，来解剖几个最常见的交互功能。</p><h4 id="1-功能按钮说明"><a href="#1-功能按钮说明" class="headerlink" title="1. 功能按钮说明"></a>1. 功能按钮说明</h4><p><img src= "https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250720134028596.png" alt="image-20250720134028596"></p><p>对于一个按钮，我绝不会只说“点击按钮如何”，而是会定义它在不同条件下的状态和反馈。</p><ul><li><strong>案例：“发表”按钮</strong><ol><li><strong>条件1</strong>：当输入框内容为空时，按钮置灰，为不可点击状态。</li><li><strong>条件2</strong>：当输入框有内容时，按钮高亮，为可点击状态。</li><li><strong>行为</strong>：点击该按钮，<strong>反馈</strong>为：提示“发表成功”1.5秒后自动消失，并跳转到朋友圈首页。</li></ol></li></ul><h4 id="2-选项选择说明"><a href="#2-选项选择说明" class="headerlink" title="2. 选项选择说明"></a>2. 选项选择说明</h4><p><img src= "https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250720134051854.png" alt="image-20250720134051854"></p><p>对于下拉选择、单选/复选框等，我需要定义选项的规则。</p><ul><li><strong>案例：朋友圈日期选择</strong><ol><li><strong>选项来源</strong>：选项中的年份和月份，来源于该用户所有发过朋友圈的年份和月份。</li><li><strong>选项规则</strong>：仅支持单选。</li><li><strong>默认显示</strong>：默认提示文案为最近发表朋友圈的年限。</li><li><strong>异常情况</strong>：若用户从未发表过朋友圈，“2022年”选项隐藏。</li></ol></li></ul><h4 id="3-输入框说明"><a href="#3-输入框说明" class="headerlink" title="3. 输入框说明"></a>3. 输入框说明</h4><p><img src= "https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250720134215852.png" alt="image-20250720134215852"></p><p>对于输入框，我需要明确其显示和限制规则。</p><ul><li><strong>案例：设置名字输入框</strong><ol><li><strong>默认显示</strong>：提示文案为“请输入20个字以内的名字”。</li><li><strong>输入规则</strong>：不限制字符类型，但限制数量为1-20个字符（定义：1个中文算2个字符，1个字母/数字算1个字符）。</li><li><strong>异常处理</strong>：如输入超过20个字符，则无法继续输入。</li></ol></li></ul><h4 id="4-时间-日期选择说明"><a href="#4-时间-日期选择说明" class="headerlink" title="4. 时间/日期选择说明"></a>4. 时间/日期选择说明</h4><p><img src= "https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250720134303279.png" alt="image-20250720134303279"></p><p>对于时间选择器，我需要定义其范围和关联规则。</p><ul><li><strong>案例：自定义日期选择框</strong><ol><li><strong>默认显示</strong>：“本年本月01日”到“本年本月当日”。</li><li><strong>可选范围</strong>：日期选择精确到年月日，不得选择超过当天的日期。</li><li><strong>关联规则</strong>：开始日期不得超过结束日期；开始和结束日期跨度最长为半年。</li></ol></li></ul><h4 id="5-内容显示说明"><a href="#5-内容显示说明" class="headerlink" title="5. 内容显示说明"></a>5. 内容显示说明</h4><p><img src= "https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250720134346210.png" alt="image-20250720134346210"></p><p>对于列表中的内容，我需要定义其截取和显示规则。</p><ul><li><strong>案例：快报内容显示</strong><ol><li><strong>显示内容</strong>：包含时间（时分）和内容简讯。</li><li><strong>截断规则</strong>：内容简讯取自正文开头部分内容，在列表中最多显示三行，超出三行的部分，末尾显示“…”。</li></ol></li></ul><h4 id="6-状态类说明"><a href="#6-状态类说明" class="headerlink" title="6. 状态类说明"></a>6. 状态类说明</h4><p><img src= "https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250720134417496.png" alt="image-20250720134417496"></p><p>对于有“状态”概念的业务（如订单、任务），我必须定义清楚状态的流转。</p><ul><li><strong>案例：订单状态</strong><ol><li><strong>状态定义</strong>：一个订单包含“待付款、待发货、待收货、交易成功”等状态。</li><li><strong>状态变更逻辑</strong>：<ul><li>用户付款后，状态由“待付款”变为“待发货”。</li><li>用户点击确认收货，或超过最长收货时间（如7天）后，状态自动变为“交易成功”。</li></ul></li><li><strong>状态影响</strong>：只有在“交易成功”状态下，用户才能删除订单或申请售后。</li></ol></li></ul><h4 id="7-数字显示类说明"><a href="#7-数字显示类说明" class="headerlink" title="7. 数字显示类说明"></a>7. 数字显示类说明</h4><p><img src= "https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250720134444217.png" alt="image-20250720134444217"></p><p>对于需要计数的数字，我需要定义计算和显示规则。</p><ul><li><strong>案例：阅读/点赞数显示</strong><ol><li><strong>计算规则</strong>：用户每产生一次阅读/点赞/评论/分享行为，对应数据实时+1。</li><li><strong>显示规则</strong>：<ul><li>当数据为0时，只显示icon，不显示数字。</li><li>当数据在1000及以内，显示实际数字。</li><li>当数据在1000以上，以千为单位显示，如1k+、10k+。</li></ul></li></ol></li></ul><h4 id="8-时间显示类说明"><a href="#8-时间显示类说明" class="headerlink" title="8. 时间显示类说明"></a>8. 时间显示类说明</h4><p><img src= "https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250720134513602.png" alt="image-20250720134513602"></p><p>对于时间戳的显示，为了提升用户体验，我需要定义其相对显示规则。</p><ul><li><strong>案例：信息发布时间显示</strong><ol><li><strong>显示规则</strong>：<ul><li>1小时内，以分钟为单位显示，如“xx分钟前”。</li><li>当天内，以小时为单位显示，如“xx小时前”。</li><li>昨天/前天内，显示“昨天/前天+具体时分”，如“昨天 15:05”。</li><li>超过3天，则显示为具体年月日+时分，如“09-09 15:05”。</li></ul></li></ol></li></ul><h3 id="6-2-4-产品交互需求说明小结"><a href="#6-2-4-产品交互需求说明小结" class="headerlink" title="6.2.4 产品交互需求说明小结"></a>6.2.4 产品交互需求说明小结</h3><p>撰写交互说明，是一项极其考验产品经理<strong>严谨性</strong>和<strong>同理心</strong>的工作。</p><table><thead><tr><th align="left"><strong>核心原则</strong></th><th align="left"><strong>我的实践清单</strong></th></tr></thead><tbody><tr><td align="left"><strong>杜绝歧义</strong></td><td align="left">我会穷尽每一个元件、每一个状态、每一个用户操作、每一个异常情况，并为它们都写下清晰的规则。</td></tr><tr><td align="left"><strong>结构清晰</strong></td><td align="left">我总是围绕 <strong>交互动作 (When/If/Then)</strong> 和 <strong>字段信息 (Display/Rules)</strong> 这两大方向来组织我的说明。</td></tr><tr><td align="left"><strong>换位思考</strong></td><td align="left">我会站在开发者的角度思考：我的说明是否清晰到他不需要再来问我任何问题就能直接开始写代码？</td></tr></tbody></table><hr><h2 id="6-3-如何撰写产品交互需求说明"><a href="#6-3-如何撰写产品交互需求说明" class="headerlink" title="6.3 如何撰写产品交互需求说明"></a>6.3 如何撰写产品交互需求说明</h2><p>我们已经知道了交互说明要包含哪些内容，但从“知道”到“做到”之间，还需要一套行之有效的方法论。在这一节，我将毫无保留地，把我自己撰写交互说明的思路、步骤和技巧分享给大家。</p><h3 id="6-3-1-学习目标"><a href="#6-3-1-学习目标" class="headerlink" title="6.3.1 学习目标"></a>6.3.1 学习目标</h3><p>我的目标是，让我们掌握一套可以被反复使用的、结构化的PRD撰写流程。学完本节，我希望我们都能自信地、有条不紊地，为任何一个复杂的页面，撰写出清晰、完整的交互说明。</p><h3 id="6-3-2-产品交互需求说明撰写思路"><a href="#6-3-2-产品交互需求说明撰写思路" class="headerlink" title="6.3.2 产品交互需求说明撰写思路"></a>6.3.2 产品交互需求说明撰写思路</h3><p><img src= "https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250720134943468.png" alt="image-20250720134943468"></p><p>我的核心撰写思路，是**“由外到内，由静到动”**。</p><ol><li><strong>先考虑页面</strong>：在描述任何一个按钮之前，我总是先从整个“页面”的视角出发。这个页面从哪里来？它整体需要遵循什么规则（比如列表的排序规则、分页逻辑等）？</li><li><strong>再考虑控件</strong>：把页面的整体规则定义清楚后，我再“钻”进去，分析页面里的每一个“控件”（也就是元件）。对于每个控件，我同样遵循一个顺序：<ul><li><strong>静态</strong>：先说明它的静态规则，比如默认的提示文案、输入框的字数限制等。</li><li><strong>动态</strong>：再说明它的动态交互，比如正常的交互动作，以及各种异常情况下的交互动作。</li></ul></li></ol><h3 id="6-3-3-产品交互需求说明撰写步骤"><a href="#6-3-3-产品交互需求说明撰写步骤" class="headerlink" title="6.3.3 产品交互需求说明撰写步骤"></a>6.3.3 产品交互需求说明撰写步骤</h3><p><img src= "https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250720135827503.png" alt="image-20250720135827503"></p><p>这个思路，具体落地就变成了我写PRD时雷打不动的三个步骤：</p><ol><li><strong>页面说明</strong>：在文档的开头，我会先对当前页面进行一个整体的介绍，包括页面的主要功能、从哪些页面可以进入此页面、以及该页面的一些全局性规则。</li><li><strong>区域划分</strong>：为了让说明更有条理，我会把一个复杂的页面，划分成几个逻辑区域，比如“顶部导航区”、“内容列表区”、“底部菜单区”。我通常会在原型图上用数字角标，清晰地标注出这些区域。</li><li><strong>详细说明</strong>：这是工作量最大的部分。我会按照区域划分的顺序，逐一地、详细地说明每个区域内，每一个控件的“静态规则”和“动态交互”。</li></ol><p><img src= "https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250720140210704.png" alt="image-20250720140210704"><br>这种“<strong>在原型图上分区编号，再在文档中分点说明</strong>”的方式，是我认为最清晰、最高效的撰写范式，开发和设计同事都非常喜欢，因为它简单明了，对应关系一目了然。</p><h3 id="6-3-4-产品交互需求说明撰写案例及练习"><a href="#6-3-4-产品交互需求说明撰写案例及练习" class="headerlink" title="6.3.4 产品交互需求说明撰写案例及练习"></a>6.3.4 产品交互需求说明撰写案例及练习</h3><p><img src= "https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250720140554438.png" alt="image-20250720140554438"></p><p>我们来看“注册登录页面”的这份详细说明。它完美地应用了我们刚才讲的三个步骤：</p><p><img src= "https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250720140647069.png" alt="image-20250720140647069"></p><ul><li>它首先有<strong>页面说明</strong>。</li><li>然后将页面划分为“<strong>1. 顶部导航栏</strong>”和“<strong>2. 登录区域</strong>”两大块。</li><li>接着，在“登录区域”内，又详细地拆分说明了“<strong>2.1 手机号输入框</strong>”、“<strong>2.2 验证码输入框</strong>”等每一个控件的详细规则，内容细致到了“光标默认置于输入框”、“键盘用哪种样式”等程度。</li></ul><p>这种对细节的极致追求，就是一份专业PRD的体现。这也是我们接下来需要练习达到的标准。</p><h3 id="6-3-5-产品交互需求全局说明"><a href="#6-3-5-产品交互需求全局说明" class="headerlink" title="6.3.5 产品交互需求全局说明"></a>6.3.5 产品交互需求全局说明</h3><p><img src= "https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250720141030178.png" alt="image-20250720141030178"></p><p>这时，一个问题来了：<strong>有一些规则，比如“网络异常时如何提示”，是每个页面都会出现的，难道我需要在每个页面都重复写一遍吗？</strong></p><p>答案是不需要。为了解决这个问题，我会在PRD的开头，建立一个**“全局说明”**的章节。</p><p>在这个章节里，我会把所有非某个页面独有的、全产品通用的规则，进行统一的说明。这通常包括：</p><ul><li><p><strong>角色/权限说明</strong>：不同角色的用户，在使用功能上有什么权限差异。</p></li><li><p><strong>加载方式</strong>：页面加载、数据加载时的默认动画样式。</p></li><li><p><strong>全局弹层</strong>：产品中统一的弹窗、提示（Toast）的样式和规则。</p></li><li><p><strong>常用字段</strong>：常用字段的统一规则，如昵称、密码的格式要求。</p></li><li><p><strong>网络异常</strong>：在各种网络问题下，产品应该如何向用户反馈。</p></li><li><p><strong>全局交互</strong>：通用的手势操作等。</p></li></ul><p>建立“全局说明”，能极大地减少我的重复工作量，并保证产品体验的一致性。</p><h3 id="6-3-6-产品交互需求说明撰写注意事项与技巧"><a href="#6-3-6-产品交互需求说明撰写注意事项与技巧" class="headerlink" title="6.3.6 产品交互需求说明撰写注意事项与技巧"></a>6.3.6 产品交互需求说明撰写注意事项与技巧</h3><p><img src= "https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250720143359987.png" alt="image-20250720143359987"></p><p>最后，分享四个我多年总结下来的技巧和注意事项：</p><ol><li><strong>先明确产品逻辑</strong>：在写文档前，一定先把产品的流程、结构都想清楚。PRD是思考的结果，而不是思考的过程。</li><li><strong>条件和反馈</strong>：对每一个交互动作，都要像侦探一样，把所有的“条件”和“反馈”都考虑到，特别是异常情况。</li><li><strong>不要边画原型边写说明</strong>：我建议把这两个工作分开。先专注地把低保真原型画完，再进入“贤者时间”，专注地为这个静态的原型撰写说明。一心二用，两边都做不好。</li><li><strong>灵活运用表达方式</strong>：除了大段的文字，我也会大量使用<strong>表格</strong>（比如用来表达状态机）、<strong>流程图</strong>等方式，来更清晰、更简洁地表达复杂的逻辑。</li></ol><hr></div></article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/avatar.png" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/avatar.png# 版权信息区域作者头像前景图片" title="头像" alt="头像"></a><div class="post-copyright__author_name">Prorise</div><div class="post-copyright__author_desc"></div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://prorise666.site/posts/8024.html">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl(&quot;https://prorise666.site/posts/8024.html&quot;)">产品经理入门（六）：第六章：产品需求文档（PRD）撰写</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://tc.z.wiki/autoupload/iXoPwUD80CPTvQUyITTBFOykMT9FcWW5SasRoXZEs3Wyl5f0KlZfm6UsKj-HyTuv/20250609/bYMH/418X445/ef9a3f68-d36a-441a-95fe-8179b1a25992.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src= "https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://tc.z.wiki/autoupload/iXoPwUD80CPTvQUyITTBFOykMT9FcWW5SasRoXZEs3Wyl5f0KlZfm6UsKj-HyTuv/20250609/bYMH/418X445/ef9a3f68-d36a-441a-95fe-8179b1a25992.png" alt="微信"></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://tc.z.wiki/autoupload/iXoPwUD80CPTvQUyITTBFOykMT9FcWW5SasRoXZEs3Wyl5f0KlZfm6UsKj-HyTuv/20250609/cYu3/347X390/zfb.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src= "https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://tc.z.wiki/autoupload/iXoPwUD80CPTvQUyITTBFOykMT9FcWW5SasRoXZEs3Wyl5f0KlZfm6UsKj-HyTuv/20250609/cYu3/347X390/zfb.png" alt="支付宝"></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display:none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://prorise666.site/posts/8024.html"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=产品经理入门（六）：第六章：产品需求文档（PRD）撰写&amp;url=https://prorise666.site/posts/8024.html&amp;pic=https://i1.wp.com/dev.ruom.top/i/2025/07/19/606082.webp" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl(){var e=window.location.href,t=document.createElement("input");t.setAttribute("value",e),document.body.appendChild(t),t.select(),t.setSelectionRange(0,99999),document.execCommand("copy"),document.body.removeChild(t)}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://prorise666.site" target="_blank">Prorise的小站</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__category-list"><a class="post-meta__box__categoryes" href="/categories/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/"><span class="categoryes-punctuation"><i class="anzhiyufont anzhiyu-icon-inbox"></i></span>产品经理<span class="categoryesPageCount">10</span></a></div><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E6%95%99%E7%A8%8B/"><span class="tags-punctuation"><i class="anzhiyufont anzhiyu-icon-tag"></i></span>产品经理教程<span class="tagsPageCount">10</span></a></div></div><div class="post_share"><div class="social-share" data-image="https://i1.wp.com/dev.ruom.top/i/2025/07/19/606082.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media=&quot;all&quot;"><script src="https://lib.baomitu.com/social-share.js/1.0.16/js/social-share.min.js" defer=""></script></div></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/23264.html"><img class="prev-cover" src= "https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://i1.wp.com/dev.ruom.top/i/2025/07/19/606082.webp" onerror="onerror=null,src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">产品经理入门（五）：第五章：产品设计与原型制作</div></div></a></div><div class="next-post pull-right"><a href="/posts/51587.html"><img class="next-cover" src= "https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://i1.wp.com/dev.ruom.top/i/2025/07/19/606082.webp" onerror="onerror=null,src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">产品经理入门（七）：第七章：用户端设计</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size:1.5rem;margin-right:4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/posts/10477.html" title="产品经理入门（一）：第一章：内容产品模型"><img class="cover" src= "https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://i1.wp.com/dev.ruom.top/i/2025/07/19/606082.webp" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-07-20</div><div class="title">产品经理入门（一）：第一章：内容产品模型</div></div></a></div><div><a href="/posts/59297.html" title="产品经理入门（三）：第三章：需求分析"><img class="cover" src= "https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://i1.wp.com/dev.ruom.top/i/2025/07/19/606082.webp" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-07-20</div><div class="title">产品经理入门（三）：第三章：需求分析</div></div></a></div><div><a href="/posts/38041.html" title="产品经理入门（九）：第九章：平台端设计（用户-内容-运营）"><img class="cover" src= "https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://i1.wp.com/dev.ruom.top/i/2025/07/19/606082.webp" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-07-21</div><div class="title">产品经理入门（九）：第九章：平台端设计（用户-内容-运营）</div></div></a></div><div><a href="/posts/51587.html" title="产品经理入门（七）：第七章：用户端设计"><img class="cover" src= "https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://i1.wp.com/dev.ruom.top/i/2025/07/19/606082.webp" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-07-20</div><div class="title">产品经理入门（七）：第七章：用户端设计</div></div></a></div><div><a href="/posts/11780.html" title="产品经理入门（八）：第八章：内容产品自媒体端设计"><img class="cover" src= "https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://i1.wp.com/dev.ruom.top/i/2025/07/19/606082.webp" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-07-20</div><div class="title">产品经理入门（八）：第八章：内容产品自媒体端设计</div></div></a></div><div><a href="/posts/56262.html" title="产品经理入门（二）：第二章：需求收集与管理"><img class="cover" src= "https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://i1.wp.com/dev.ruom.top/i/2025/07/19/606082.webp" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-07-20</div><div class="title">产品经理入门（二）：第二章：需求收集与管理</div></div></a></div></div></div><hr><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)" rel="external nofollow noreferrer" style="display:none">匿名评论</a><a href="/privacy" style="margin-left:4px">隐私政策</a></div><div class="comment-switch"><span class="first-comment">Twikoo</span><span id="switch-btn"></span><span class="second-comment">Waline</span></div><div class="comment-tips" id="comment-tips"><span>✅ 你无需删除空行，直接评论以获取最佳展示效果</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div><div><div id="waline-wrap"></div></div></div></div><div class="comment-barrage"></div><script>window.postData={title:"产品经理入门（六）：第六章：产品需求文档（PRD）撰写",date:"2025-07-20 21:13:45",updated:"2025-07-21 14:52:01",tags:["产品经理教程"],categories:["产品经理"],content:"\n# 第六章：产品需求文档（PRD）撰写\n\n\n\n![image-20250720133044016](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250720133044016.png)\n\n到目前为止，我们已经走过了漫长的旅程：从收集需求、分析需求，到梳理设计思路、绘制可交互的原型。现在，我们手上已经有了一套清晰的解决方案。\n\n一个很自然的问题是：**我可以直接把我的原型，丢给开发和设计师，让他们照着做出来就行了吗？**\n\n我的答案是：**绝对不行**。\n\n因为原型，尤其是低保真原型，只能展示“**它看起来长什么样**”，却无法说清楚“**它在各种情况下应该如何工作**”。为了弥补这个信息鸿沟，确保我们的想法能被100%精准地实现，我们就需要产出产品开发流程中，最核心、最正式的一份交付文档\n\n——**产品需求说明文档（Product Requirements Document, PRD）**。\n\n## 6.1 产品需求说明（PRD）概述\n\n在这一节，我将带大家全面地认识PRD——它是什么？为什么如此重要？以及一份专业的PRD，应该包含哪些内容？\n\n### 6.1.1 学习目标\n\n我的目标是，让我们深刻理解PRD在产品研发流程中不可或缺的“契约”作用。学完本节，我希望我们都能明确一份合格PRD的定义、目的、常见形式和核心构成要素。\n\n### 6.1.2 产品需求说明的定义\n\n![image-20250720133145066](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250720133145066.png)\n\n我给PRD的定义是：**一份针对即将开发的产品功能或方案，进行全面、详细、无歧义的必要说明，以确保方案被完整、准确地实现的正式文档。**\n\n它的本质，就是用文档的形式，**把产品方案的每一个细节都解释得清清楚楚**。\n\n![image-20250720133240188](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250720133240188.png)\n\n我们看这个“注册登录”的案例。这个页面看起来很简单，但背后隐藏了无数的逻辑规则：密码的格式要求是什么？输入错误时如何提示？手机号已被注册怎么办？连续输错5次密码会怎样？……这些细节，单靠一张原型图是绝对无法表达的，必须通过PRD来详细说明。\n\n### 6.1.3 产品需求说明的目的\n\n我之所以不厌其烦地撰写PRD，是因为它能为我和我的团队，带来三大不可替代的价值：\n\n1.  **确保方案的完整性**：撰写的过程，本身就是我自己对产品方案进行“极限测试”的过程，它会逼迫我去思考所有可能的异常流程和边界情况，确保方案没有漏洞。\n2.  **确保团队理解一致**：PRD是研发团队（包括设计、开发、测试）开展工作的“唯一”和“必须”的依据。它能消除信息偏差，避免因为口头沟通带来的误解和返工。\n3.  **方便未来回溯和迭代**：当产品上线后，PRD就是一份“历史档案”。未来的产品经理或团队成员，可以通过它，准确地了解当时我们为什么要做这个功能，以及当时的设计思路。\n\n### 6.1.4 产品需求文档常见形式\n\n![image-20250720133353206](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250720133353206.png)\n\nPRD并没有一个全球统一的格式，在我的工作中，最常见的两种形式是：\n\n* **Word文档格式**：这是最传统、最正式的形式。通过Word或类似的文档工具，撰写一份包含详细目录、图文并茂的说明书。优点是结构清晰、非常全面。\n* **原型内嵌格式**：这是一种更敏捷的形式。我直接在原型工具（如Axure、墨刀）中，为每个页面和元件添加详细的文字标注和说明。优点是原型和文档合二为一，查看和理解更直观。\n\n### 6.1.5 产品需求文档维护形式\n\n![image-20250720133417399](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250720133417399.png)\n\n在团队协作中，PRD的维护和共享方式也很重要。\n\n* **本地化形式**：就是通过邮件、微信等方式，来回发送Word或原型文件。这种方式在小团队或不规范的团队里很常见，但极易造成版本混乱。\n* **第三方工具**：这是我极力推荐的现代协作方式。我们将PRD统一维护在一个在线的、团队共享的平台上，比如**Confluence、Tapd、语雀**，甚至是**墨刀**的项目空间里。所有人访问的都是同一个、最新的版本，沟通和反馈都在线上进行，效率极高。\n\n### 6.1.6 产品需求文档常见内容\n\n![image-20250720133446836](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250720133446836.png)\n\n无论形式如何，一份合格的PRD，在我看来，都必须包含以下六大核心模块：\n\n1.  **文档更新记录**：记录每次文档的修改时间、修改人、修改内容。\n2.  **需求背景与目的**：清晰地告诉团队，我们“为什么”要做这次的需求。\n3.  **产品流程图**：附上我们在第四章学过的业务流程图、功能流程图等，帮助团队理解用户路径和功能逻辑。\n4.  **产品结构图**：附上功能结构图或产品结构图，帮助团队理解产品的功能构成和信息框架。\n5.  **产品交互需求说明**：**这是PRD最最核心的部分**。它需要结合原型图，对每一个页面的每一个元素的每一个状态和交互规则，进行详细的说明。\n6.  **非功能性说明**：对一些非界面功能的需求进行说明，比如性能要求（页面加载速度）、兼容性要求、数据统计需求等。\n\n### 6.1.7 产品需求说明小结\n\n我将PRD的核心要点总结如下：\n\n| **核心概念** | **我的理解与实践** |\n| :--- | :--- |\n| **PRD的定义** | 是连接“想法”与“实现”的**唯一、完整、准确**的说明书。 |\n| **PRD的目的** | **确保方案完整、团队理解一致、方便未来回溯**。 |\n| **PRD的内容** | 必须包含**背景目的、流程结构、交互说明**等六大核心模块。 |\n\n\n---\n\n## 6.2 产品交互需求说明详解\n\n在我看来，这部分是PRD的“灵魂”。它详细定义了产品的行为和逻辑，是开发和测试工程师工作的直接依据。\n\n我的目标是写出一份“让开发人员无需再问我任何问题”的说明。\n\n### 6.2.1 学习目标\n\n在本节中，我的目标是，让我们掌握撰写一份清晰、无歧义的交互需求说明的方法。\n\n我们将学习说明的两个核心内容方向，并通过一系列真实案例，学会如何为我们原型中最高频出现的8种元件或场景，定义滴水不漏的规则。\n\n### 6.2.2 产品交互需求说明内容方向\n\n![image-20250720133948254](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250720133948254.png)\n\n我撰写的所有交互说明，都围绕着两大方向展开，这能确保我不会遗漏关键信息：\n\n1.  **交互动作说明 (Interaction Actions)**\n    这部分是描述“因果关系”，我习惯用“**When(当…)/If(如果…)/Then(那么…)**”的逻辑来思考：\n    * **行为 (When)**：当用户做了什么操作时？（如：单击、滑动）\n    * **条件 (If)**：这个操作在什么条件下会触发？（如：用户已登录、输入框有内容）\n    * **反馈 (Then)**：系统应该给出什么样的回应？（如：跳转页面、弹出提示）\n\n2.  **字段信息说明 (Field Information)**\n    这部分是描述“静态规则”，主要包含两点：\n    * **显示**：这个区域默认应该显示什么文案或内容？（如：输入框的提示文字）\n    * **规则**：这个字段或内容需要遵循什么规则？（如：最多输入10个字）\n\n### 6.2.3 常见交互功能及需求说明示例\n\n现在，我们就用“交互动作”和“字段信息”这两把“手术刀”，来解剖几个最常见的交互功能。\n\n#### 1. 功能按钮说明\n\n![image-20250720134028596](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250720134028596.png)\n\n对于一个按钮，我绝不会只说“点击按钮如何”，而是会定义它在不同条件下的状态和反馈。\n* **案例：“发表”按钮**\n    1.  **条件1**：当输入框内容为空时，按钮置灰，为不可点击状态。\n    2.  **条件2**：当输入框有内容时，按钮高亮，为可点击状态。\n    3.  **行为**：点击该按钮，**反馈**为：提示“发表成功”1.5秒后自动消失，并跳转到朋友圈首页。\n\n#### 2. 选项选择说明\n\n![image-20250720134051854](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250720134051854.png)\n\n对于下拉选择、单选/复选框等，我需要定义选项的规则。\n* **案例：朋友圈日期选择**\n    1.  **选项来源**：选项中的年份和月份，来源于该用户所有发过朋友圈的年份和月份。\n    2.  **选项规则**：仅支持单选。\n    3.  **默认显示**：默认提示文案为最近发表朋友圈的年限。\n    4.  **异常情况**：若用户从未发表过朋友圈，“2022年”选项隐藏。\n\n#### 3. 输入框说明\n\n![image-20250720134215852](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250720134215852.png)\n\n对于输入框，我需要明确其显示和限制规则。\n* **案例：设置名字输入框**\n    1.  **默认显示**：提示文案为“请输入20个字以内的名字”。\n    2.  **输入规则**：不限制字符类型，但限制数量为1-20个字符（定义：1个中文算2个字符，1个字母/数字算1个字符）。\n    3.  **异常处理**：如输入超过20个字符，则无法继续输入。\n\n#### 4. 时间/日期选择说明\n\n![image-20250720134303279](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250720134303279.png)\n\n对于时间选择器，我需要定义其范围和关联规则。\n* **案例：自定义日期选择框**\n    1.  **默认显示**：“本年本月01日”到“本年本月当日”。\n    2.  **可选范围**：日期选择精确到年月日，不得选择超过当天的日期。\n    3.  **关联规则**：开始日期不得超过结束日期；开始和结束日期跨度最长为半年。\n\n#### 5. 内容显示说明\n\n![image-20250720134346210](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250720134346210.png)\n\n对于列表中的内容，我需要定义其截取和显示规则。\n* **案例：快报内容显示**\n    1.  **显示内容**：包含时间（时分）和内容简讯。\n    2.  **截断规则**：内容简讯取自正文开头部分内容，在列表中最多显示三行，超出三行的部分，末尾显示“...”。\n\n#### 6. 状态类说明\n\n![image-20250720134417496](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250720134417496.png)\n\n对于有“状态”概念的业务（如订单、任务），我必须定义清楚状态的流转。\n* **案例：订单状态**\n    1.  **状态定义**：一个订单包含“待付款、待发货、待收货、交易成功”等状态。\n    2.  **状态变更逻辑**：\n        * 用户付款后，状态由“待付款”变为“待发货”。\n        * 用户点击确认收货，或超过最长收货时间（如7天）后，状态自动变为“交易成功”。\n    3.  **状态影响**：只有在“交易成功”状态下，用户才能删除订单或申请售后。\n\n#### 7. 数字显示类说明\n\n![image-20250720134444217](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250720134444217.png)\n\n对于需要计数的数字，我需要定义计算和显示规则。\n* **案例：阅读/点赞数显示**\n    1.  **计算规则**：用户每产生一次阅读/点赞/评论/分享行为，对应数据实时+1。\n    2.  **显示规则**：\n        * 当数据为0时，只显示icon，不显示数字。\n        * 当数据在1000及以内，显示实际数字。\n        * 当数据在1000以上，以千为单位显示，如1k+、10k+。\n\n#### 8. 时间显示类说明\n\n![image-20250720134513602](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250720134513602.png)\n\n对于时间戳的显示，为了提升用户体验，我需要定义其相对显示规则。\n* **案例：信息发布时间显示**\n    1.  **显示规则**：\n        * 1小时内，以分钟为单位显示，如“xx分钟前”。\n        * 当天内，以小时为单位显示，如“xx小时前”。\n        * 昨天/前天内，显示“昨天/前天+具体时分”，如“昨天 15:05”。\n        * 超过3天，则显示为具体年月日+时分，如“09-09 15:05”。\n\n### 6.2.4 产品交互需求说明小结\n\n撰写交互说明，是一项极其考验产品经理**严谨性**和**同理心**的工作。\n\n| **核心原则** | **我的实践清单** |\n| :--- | :--- |\n| **杜绝歧义** | 我会穷尽每一个元件、每一个状态、每一个用户操作、每一个异常情况，并为它们都写下清晰的规则。 |\n| **结构清晰** | 我总是围绕 **交互动作 (When/If/Then)** 和 **字段信息 (Display/Rules)** 这两大方向来组织我的说明。 |\n| **换位思考** | 我会站在开发者的角度思考：我的说明是否清晰到他不需要再来问我任何问题就能直接开始写代码？ |\n\n\n\n\n\n\n---\n\n## 6.3 如何撰写产品交互需求说明\n\n我们已经知道了交互说明要包含哪些内容，但从“知道”到“做到”之间，还需要一套行之有效的方法论。在这一节，我将毫无保留地，把我自己撰写交互说明的思路、步骤和技巧分享给大家。\n\n### 6.3.1 学习目标\n\n我的目标是，让我们掌握一套可以被反复使用的、结构化的PRD撰写流程。学完本节，我希望我们都能自信地、有条不紊地，为任何一个复杂的页面，撰写出清晰、完整的交互说明。\n\n### 6.3.2 产品交互需求说明撰写思路\n\n![image-20250720134943468](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250720134943468.png)\n\n我的核心撰写思路，是**“由外到内，由静到动”**。\n\n1.  **先考虑页面**：在描述任何一个按钮之前，我总是先从整个“页面”的视角出发。这个页面从哪里来？它整体需要遵循什么规则（比如列表的排序规则、分页逻辑等）？\n2.  **再考虑控件**：把页面的整体规则定义清楚后，我再“钻”进去，分析页面里的每一个“控件”（也就是元件）。对于每个控件，我同样遵循一个顺序：\n    * **静态**：先说明它的静态规则，比如默认的提示文案、输入框的字数限制等。\n    * **动态**：再说明它的动态交互，比如正常的交互动作，以及各种异常情况下的交互动作。\n\n### 6.3.3 产品交互需求说明撰写步骤\n\n![image-20250720135827503](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250720135827503.png)\n\n这个思路，具体落地就变成了我写PRD时雷打不动的三个步骤：\n\n1.  **页面说明**：在文档的开头，我会先对当前页面进行一个整体的介绍，包括页面的主要功能、从哪些页面可以进入此页面、以及该页面的一些全局性规则。\n2.  **区域划分**：为了让说明更有条理，我会把一个复杂的页面，划分成几个逻辑区域，比如“顶部导航区”、“内容列表区”、“底部菜单区”。我通常会在原型图上用数字角标，清晰地标注出这些区域。\n3.  **详细说明**：这是工作量最大的部分。我会按照区域划分的顺序，逐一地、详细地说明每个区域内，每一个控件的“静态规则”和“动态交互”。\n\n![image-20250720140210704](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250720140210704.png)\n这种“**在原型图上分区编号，再在文档中分点说明**”的方式，是我认为最清晰、最高效的撰写范式，开发和设计同事都非常喜欢，因为它简单明了，对应关系一目了然。\n\n### 6.3.4 产品交互需求说明撰写案例及练习\n\n![image-20250720140554438](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250720140554438.png)\n\n\n\n\n\n我们来看“注册登录页面”的这份详细说明。它完美地应用了我们刚才讲的三个步骤：\n\n![image-20250720140647069](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250720140647069.png)\n\n* 它首先有**页面说明**。\n* 然后将页面划分为“**1. 顶部导航栏**”和“**2. 登录区域**”两大块。\n* 接着，在“登录区域”内，又详细地拆分说明了“**2.1 手机号输入框**”、“**2.2 验证码输入框**”等每一个控件的详细规则，内容细致到了“光标默认置于输入框”、“键盘用哪种样式”等程度。\n\n这种对细节的极致追求，就是一份专业PRD的体现。这也是我们接下来需要练习达到的标准。\n\n### 6.3.5 产品交互需求全局说明\n\n![image-20250720141030178](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250720141030178.png)\n\n这时，一个问题来了：**有一些规则，比如“网络异常时如何提示”，是每个页面都会出现的，难道我需要在每个页面都重复写一遍吗？**\n\n答案是不需要。为了解决这个问题，我会在PRD的开头，建立一个**“全局说明”**的章节。\n\n在这个章节里，我会把所有非某个页面独有的、全产品通用的规则，进行统一的说明。这通常包括：\n* **角色/权限说明**：不同角色的用户，在使用功能上有什么权限差异。\n\n* **加载方式**：页面加载、数据加载时的默认动画样式。\n\n* **全局弹层**：产品中统一的弹窗、提示（Toast）的样式和规则。\n* **常用字段**：常用字段的统一规则，如昵称、密码的格式要求。\n* **网络异常**：在各种网络问题下，产品应该如何向用户反馈。\n* **全局交互**：通用的手势操作等。\n\n建立“全局说明”，能极大地减少我的重复工作量，并保证产品体验的一致性。\n\n### 6.3.6 产品交互需求说明撰写注意事项与技巧\n\n![image-20250720143359987](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250720143359987.png)\n\n最后，分享四个我多年总结下来的技巧和注意事项：\n\n1.  **先明确产品逻辑**：在写文档前，一定先把产品的流程、结构都想清楚。PRD是思考的结果，而不是思考的过程。\n2.  **条件和反馈**：对每一个交互动作，都要像侦探一样，把所有的“条件”和“反馈”都考虑到，特别是异常情况。\n3.  **不要边画原型边写说明**：我建议把这两个工作分开。先专注地把低保真原型画完，再进入“贤者时间”，专注地为这个静态的原型撰写说明。一心二用，两边都做不好。\n4.  **灵活运用表达方式**：除了大段的文字，我也会大量使用**表格**（比如用来表达状态机）、**流程图**等方式，来更清晰、更简洁地表达复杂的逻辑。\n\n---"}</script></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/avatar.png" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2024/06/20/6673caa5bca18.gif&quot;" alt="avatar"><div class="author-status"><img class="g-status" src= "https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/07/19/687b396f89934.png" alt="status"></div></div><div class="author-info__description"><div style="line-height:1.4;color:rgba(255,255,255,.9);text-align:center">🚀 全栈开发者，专注于构建优雅高效的数字解决方案<br><span style="color:#fff;font-weight:700">前端 · 后端 · 架构 · 优化</span><br>📚 分享实战经验，一起探索技术边界</div></div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">Prorise</h1><div class="author-info__desc"></div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com/361040115?spm_id_from=333.1387.0.0" rel="external nofollow noreferrer" target="_blank" title="BiliBili"><i class="anzhiyufont anzhiyu-icon-bilibili"></i></a></div></div></div></div><div class="card-widget card-latest-comments"><div class="item-headline"><i class="fas fa-comments"></i><span>最新评论</span></div><div class="item-content"><a href="/messages/" class="headline-right" title="查看更多"><i class="fas fa-angle-right"></i></a><div class="aside-list" id="latest-comments"></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E7%AB%A0%EF%BC%9A%E4%BA%A7%E5%93%81%E9%9C%80%E6%B1%82%E6%96%87%E6%A1%A3%EF%BC%88PRD%EF%BC%89%E6%92%B0%E5%86%99"><span class="toc-number">1.</span> <span class="toc-text">第六章：产品需求文档（PRD）撰写</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-%E4%BA%A7%E5%93%81%E9%9C%80%E6%B1%82%E8%AF%B4%E6%98%8E%EF%BC%88PRD%EF%BC%89%E6%A6%82%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text">6.1 产品需求说明（PRD）概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-1-%E5%AD%A6%E4%B9%A0%E7%9B%AE%E6%A0%87"><span class="toc-number">1.1.1.</span> <span class="toc-text">6.1.1 学习目标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-2-%E4%BA%A7%E5%93%81%E9%9C%80%E6%B1%82%E8%AF%B4%E6%98%8E%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">1.1.2.</span> <span class="toc-text">6.1.2 产品需求说明的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-3-%E4%BA%A7%E5%93%81%E9%9C%80%E6%B1%82%E8%AF%B4%E6%98%8E%E7%9A%84%E7%9B%AE%E7%9A%84"><span class="toc-number">1.1.3.</span> <span class="toc-text">6.1.3 产品需求说明的目的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-4-%E4%BA%A7%E5%93%81%E9%9C%80%E6%B1%82%E6%96%87%E6%A1%A3%E5%B8%B8%E8%A7%81%E5%BD%A2%E5%BC%8F"><span class="toc-number">1.1.4.</span> <span class="toc-text">6.1.4 产品需求文档常见形式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-5-%E4%BA%A7%E5%93%81%E9%9C%80%E6%B1%82%E6%96%87%E6%A1%A3%E7%BB%B4%E6%8A%A4%E5%BD%A2%E5%BC%8F"><span class="toc-number">1.1.5.</span> <span class="toc-text">6.1.5 产品需求文档维护形式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-6-%E4%BA%A7%E5%93%81%E9%9C%80%E6%B1%82%E6%96%87%E6%A1%A3%E5%B8%B8%E8%A7%81%E5%86%85%E5%AE%B9"><span class="toc-number">1.1.6.</span> <span class="toc-text">6.1.6 产品需求文档常见内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-7-%E4%BA%A7%E5%93%81%E9%9C%80%E6%B1%82%E8%AF%B4%E6%98%8E%E5%B0%8F%E7%BB%93"><span class="toc-number">1.1.7.</span> <span class="toc-text">6.1.7 产品需求说明小结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2-%E4%BA%A7%E5%93%81%E4%BA%A4%E4%BA%92%E9%9C%80%E6%B1%82%E8%AF%B4%E6%98%8E%E8%AF%A6%E8%A7%A3"><span class="toc-number">1.2.</span> <span class="toc-text">6.2 产品交互需求说明详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-1-%E5%AD%A6%E4%B9%A0%E7%9B%AE%E6%A0%87"><span class="toc-number">1.2.1.</span> <span class="toc-text">6.2.1 学习目标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-2-%E4%BA%A7%E5%93%81%E4%BA%A4%E4%BA%92%E9%9C%80%E6%B1%82%E8%AF%B4%E6%98%8E%E5%86%85%E5%AE%B9%E6%96%B9%E5%90%91"><span class="toc-number">1.2.2.</span> <span class="toc-text">6.2.2 产品交互需求说明内容方向</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-3-%E5%B8%B8%E8%A7%81%E4%BA%A4%E4%BA%92%E5%8A%9F%E8%83%BD%E5%8F%8A%E9%9C%80%E6%B1%82%E8%AF%B4%E6%98%8E%E7%A4%BA%E4%BE%8B"><span class="toc-number">1.2.3.</span> <span class="toc-text">6.2.3 常见交互功能及需求说明示例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%8A%9F%E8%83%BD%E6%8C%89%E9%92%AE%E8%AF%B4%E6%98%8E"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">1. 功能按钮说明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E9%80%89%E9%A1%B9%E9%80%89%E6%8B%A9%E8%AF%B4%E6%98%8E"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">2. 选项选择说明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E8%BE%93%E5%85%A5%E6%A1%86%E8%AF%B4%E6%98%8E"><span class="toc-number">1.2.3.3.</span> <span class="toc-text">3. 输入框说明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E6%97%B6%E9%97%B4-%E6%97%A5%E6%9C%9F%E9%80%89%E6%8B%A9%E8%AF%B4%E6%98%8E"><span class="toc-number">1.2.3.4.</span> <span class="toc-text">4. 时间/日期选择说明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E5%86%85%E5%AE%B9%E6%98%BE%E7%A4%BA%E8%AF%B4%E6%98%8E"><span class="toc-number">1.2.3.5.</span> <span class="toc-text">5. 内容显示说明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E7%8A%B6%E6%80%81%E7%B1%BB%E8%AF%B4%E6%98%8E"><span class="toc-number">1.2.3.6.</span> <span class="toc-text">6. 状态类说明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-%E6%95%B0%E5%AD%97%E6%98%BE%E7%A4%BA%E7%B1%BB%E8%AF%B4%E6%98%8E"><span class="toc-number">1.2.3.7.</span> <span class="toc-text">7. 数字显示类说明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-%E6%97%B6%E9%97%B4%E6%98%BE%E7%A4%BA%E7%B1%BB%E8%AF%B4%E6%98%8E"><span class="toc-number">1.2.3.8.</span> <span class="toc-text">8. 时间显示类说明</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-4-%E4%BA%A7%E5%93%81%E4%BA%A4%E4%BA%92%E9%9C%80%E6%B1%82%E8%AF%B4%E6%98%8E%E5%B0%8F%E7%BB%93"><span class="toc-number">1.2.4.</span> <span class="toc-text">6.2.4 产品交互需求说明小结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-3-%E5%A6%82%E4%BD%95%E6%92%B0%E5%86%99%E4%BA%A7%E5%93%81%E4%BA%A4%E4%BA%92%E9%9C%80%E6%B1%82%E8%AF%B4%E6%98%8E"><span class="toc-number">1.3.</span> <span class="toc-text">6.3 如何撰写产品交互需求说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-1-%E5%AD%A6%E4%B9%A0%E7%9B%AE%E6%A0%87"><span class="toc-number">1.3.1.</span> <span class="toc-text">6.3.1 学习目标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-2-%E4%BA%A7%E5%93%81%E4%BA%A4%E4%BA%92%E9%9C%80%E6%B1%82%E8%AF%B4%E6%98%8E%E6%92%B0%E5%86%99%E6%80%9D%E8%B7%AF"><span class="toc-number">1.3.2.</span> <span class="toc-text">6.3.2 产品交互需求说明撰写思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-3-%E4%BA%A7%E5%93%81%E4%BA%A4%E4%BA%92%E9%9C%80%E6%B1%82%E8%AF%B4%E6%98%8E%E6%92%B0%E5%86%99%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.3.3.</span> <span class="toc-text">6.3.3 产品交互需求说明撰写步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-4-%E4%BA%A7%E5%93%81%E4%BA%A4%E4%BA%92%E9%9C%80%E6%B1%82%E8%AF%B4%E6%98%8E%E6%92%B0%E5%86%99%E6%A1%88%E4%BE%8B%E5%8F%8A%E7%BB%83%E4%B9%A0"><span class="toc-number">1.3.4.</span> <span class="toc-text">6.3.4 产品交互需求说明撰写案例及练习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-5-%E4%BA%A7%E5%93%81%E4%BA%A4%E4%BA%92%E9%9C%80%E6%B1%82%E5%85%A8%E5%B1%80%E8%AF%B4%E6%98%8E"><span class="toc-number">1.3.5.</span> <span class="toc-text">6.3.5 产品交互需求全局说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-6-%E4%BA%A7%E5%93%81%E4%BA%A4%E4%BA%92%E9%9C%80%E6%B1%82%E8%AF%B4%E6%98%8E%E6%92%B0%E5%86%99%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9%E4%B8%8E%E6%8A%80%E5%B7%A7"><span class="toc-number">1.3.6.</span> <span class="toc-text">6.3.6 产品交互需求说明撰写注意事项与技巧</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/30404.html" title="2️⃣ 电商实战"><img src= "https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/dianshaang.webp" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" alt="2️⃣ 电商实战"></a><div class="content"><a class="title" href="/posts/30404.html" title="2️⃣ 电商实战">2️⃣ 电商实战</a><time datetime="2025-07-21T07:09:45.000Z" title="发表于 2025-07-21 15:09:45">2025-07-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/7673.html" title="产品经理入门（十）：第十章：产品研发全流程管理"><img src= "https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://i1.wp.com/dev.ruom.top/i/2025/07/19/606082.webp" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" alt="产品经理入门（十）：第十章：产品研发全流程管理"></a><div class="content"><a class="title" href="/posts/7673.html" title="产品经理入门（十）：第十章：产品研发全流程管理">产品经理入门（十）：第十章：产品研发全流程管理</a><time datetime="2025-07-20T17:13:45.000Z" title="发表于 2025-07-21 01:13:45">2025-07-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/38041.html" title="产品经理入门（九）：第九章：平台端设计（用户-内容-运营）"><img src= "https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://i1.wp.com/dev.ruom.top/i/2025/07/19/606082.webp" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" alt="产品经理入门（九）：第九章：平台端设计（用户-内容-运营）"></a><div class="content"><a class="title" href="/posts/38041.html" title="产品经理入门（九）：第九章：平台端设计（用户-内容-运营）">产品经理入门（九）：第九章：平台端设计（用户-内容-运营）</a><time datetime="2025-07-20T16:13:45.000Z" title="发表于 2025-07-21 00:13:45">2025-07-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/11780.html" title="产品经理入门（八）：第八章：内容产品自媒体端设计"><img src= "https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://i1.wp.com/dev.ruom.top/i/2025/07/19/606082.webp" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" alt="产品经理入门（八）：第八章：内容产品自媒体端设计"></a><div class="content"><a class="title" href="/posts/11780.html" title="产品经理入门（八）：第八章：内容产品自媒体端设计">产品经理入门（八）：第八章：内容产品自媒体端设计</a><time datetime="2025-07-20T15:13:45.000Z" title="发表于 2025-07-20 23:13:45">2025-07-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/51587.html" title="产品经理入门（七）：第七章：用户端设计"><img src= "https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://i1.wp.com/dev.ruom.top/i/2025/07/19/606082.webp" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" alt="产品经理入门（七）：第七章：用户端设计"></a><div class="content"><a class="title" href="/posts/51587.html" title="产品经理入门（七）：第七章：用户端设计">产品经理入门（七）：第七章：用户端设计</a><time datetime="2025-07-20T14:13:45.000Z" title="发表于 2025-07-20 22:13:45">2025-07-20</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="footer_deal"><a class="deal_link" href="mailto:3381292732@qq.com" rel="external nofollow noreferrer" title="email"><i class="anzhiyufont anzhiyu-icon-envelope"></i></a><a class="deal_link" target="_blank" rel="noopener external nofollow noreferrer" href="https://weibo.com/u/7484736298?tabtype=home" title="微博"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a><a class="deal_link" href="/atom.xml" title="RSS"><i class="anzhiyufont anzhiyu-icon-rss"></i></a><img class="footer_mini_logo" title="返回顶部" alt="返回顶部" onclick="anzhiyu.scrollToDest(0,500)" src= "https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/avatar.png" size="50px"><a class="deal_link" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Prorise-cool" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a><a class="deal_link" target="_blank" rel="noopener external nofollow noreferrer" href="https://space.bilibili.com/361040115?spm_id_from=333.788.0.0" title="Bilibili"><i class="anzhiyufont anzhiyu-icon-bilibili"></i></a><a class="deal_link" href="/copyright" title="CC"><i class="anzhiyufont anzhiyu-icon-copyright-line"></i></a></div><div id="workboard"><div id="runtimeTextTip"></div></div><div class="footer_custom_text">这是我的个人博客，分享技术与生活点滴。</div><div id="anzhiyu-footer"><div class="footer-group"><div class="footer-title">服务</div><div class="footer-links"><a class="footer-item" title="51la统计" target="_blank" rel="noopener external nofollow noreferrer" href="https://v6.51.la/">51la统计</a><a class="footer-item" title="十年之约" target="_blank" rel="noopener external nofollow noreferrer" href="https://www.foreverblog.cn/">十年之约</a></div></div><div class="footer-group"><div class="footer-title">主题</div><div class="footer-links"><a class="footer-item" title="文档" href="/docs/">文档</a><a class="footer-item" title="源码" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Prorise-cool/Prorise-cool.github.io/tree/main">源码</a></div></div><div class="footer-group"><div class="footer-title">导航</div><div class="footer-links"><a class="footer-item" title="即刻短文" href="/essay/">即刻短文</a><a class="footer-item" title="留言板" href="/comments/">留言板</a></div></div><div class="footer-group"><div class="footer-title">协议</div><div class="footer-links"><a class="footer-item" title="隐私协议" href="/privacy/">隐私协议</a><a class="footer-item" title="版权协议" href="/copyright/">版权协议</a></div></div><div class="footer-group"><div class="footer-title-group"><div class="footer-title">友链</div><a class="random-friends-btn" id="footer-random-friends-btn" href="javascript:addFriendLinksInFooter();" rel="external nofollow noreferrer" title="换一批友情链接"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right"></i></a></div><div class="footer-links" id="friend-links-in-footer"></div></div></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="博客框架为Hexo7.0" title="博客框架为Hexo7.0"><img src= "https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Frame-Hexo.svg" alt="博客框架为Hexo7.0"></a><a class="github-badge" target="_blank" href="https://www.dogecloud.com/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站使用多吉云为静态资源提供CDN加速" title="本站使用多吉云为静态资源提供CDN加速"><img src= "https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/CDN-多吉云-3693F3.svg" alt="本站使用多吉云为静态资源提供CDN加速"></a><a class="github-badge" target="_blank" href="https://github.com/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站项目由Github托管" title="本站项目由Github托管"><img src= "https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Source-Github.svg" alt="本站项目由Github托管"></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站采用CC BY-NC-SA 4.0协议" title="本站采用CC BY-NC-SA 4.0协议"><img src= "https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/Copyright-BY-NC-SA.svg" alt="本站采用CC BY-NC-SA 4.0协议"></a></p></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">©2025 By <a class="footer-bar-link" href="/about/" title="Prorise" target="_blank">Prorise</a></div></div><div id="footer-type-tips"></div><div class="js-pjax"><script>function subtitleType () {
+  fetch('https://v1.hitokoto.cn')
+    .then(response => response.json())
+    .then(data => {
+      if (true) {
+        const from = '出自 ' + data.from
+        const sub = ["生活明朗, 万物可爱, 人间值得, 未来可期.","愿你眼里的星星，永远亮晶晶。","愿我们每个人都能被世界温柔以待。"]
+        sub.unshift(data.hitokoto, from)
+        window.typed = new Typed('#footer-type-tips', {
+          strings: sub,
+          startDelay: 300,
+          typeSpeed: 150,
+          loop: true,
+          backSpeed: 50,
+        })
+      } else {
+        document.getElementById('footer-type-tips').innerHTML = data.hitokoto
+      }
+    })
+}
+
+if (true) {
+  if (typeof Typed === 'function') {
+    subtitleType()
+  } else {
+    getScript('https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/typed.js/2.0.12/typed.min.js').then(subtitleType)
+  }
+} else {
+  subtitleType()
+}</script></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Prorise-cool?tab=repositories" title="网站源码">网站源码</a><a class="footer-bar-link" target="_blank" rel="noopener external nofollow noreferrer" href="https://beian.miit.gov.cn/" title="湘ICP备23041-302号">湘ICP备23041-302号</a><a class="footer-bar-link cc" href="/copyright" title="cc协议"><i class="anzhiyufont anzhiyu-icon-copyright-line"></i><i class="anzhiyufont anzhiyu-icon-creative-commons-by-line"></i><i class="anzhiyufont anzhiyu-icon-creative-commons-nc-line"></i><i class="anzhiyufont anzhiyu-icon-creative-commons-nd-line"></i></a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">85</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">8</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" rel="external nofollow noreferrer" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" href="/" title="博客"><img class="back-menu-item-icon" src= "https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/07/19/687b394cb439b.ico" alt="博客"><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" href="/" title="后续项目..."><img class="back-menu-item-icon" src= "https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="后续项目..."><span class="back-menu-item-text">后续项目...</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size:.9em"></i><span> 归档</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size:.9em"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size:.9em"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>个人</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size:.9em"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/todolist/"><i class="fas fa-check-double faa-tada"></i><span> 代办清单</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/awesome-links/"><i class="fas fa-link faa-tada"></i><span> 实用网站</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>预览</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/?server=netease&amp;id=3117791189"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size:.9em"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size:.9em"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/messages/"><i class="fas fa-comments faa-tada"></i><span> 评论总览</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size:.9em"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size:.9em"></i><span> 即刻短文</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size:.9em"></i><span> 随便逛逛</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%80%BB%E6%B1%87/" style="font-size:.88rem">Java基础知识总汇<sup>9</sup></a><a href="/tags/Java%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%AF%87/" style="font-size:.88rem">Java微服务篇<sup>11</sup></a><a href="/tags/Python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%80%BB%E6%B1%87/" style="font-size:.88rem">Python基础知识总汇<sup>22</sup></a><a href="/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E5%AE%9E%E6%88%98/" style="font-size:.88rem">产品经理实战<sup>2</sup></a><a href="/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E6%95%99%E7%A8%8B/" style="font-size:.88rem">产品经理教程<sup>10</sup></a><a href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/" style="font-size:.88rem">博客搭建教程<sup>31</sup></a></div></div><hr></div></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="go-down" type="button" title="直达底部" onclick="anzhiyu.scrollToDest(document.body.scrollHeight,500)"><i class="anzhiyufont anzhiyu-icon-arrow-down"></i></button><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="anzhiyufont anzhiyu-icon-comment-sms"></i></button><button id="to_comment" type="button" title="直达评论" onclick="FixedCommentBtn()"><i class="anzhiyufont anzhiyu-icon-comments"></i></button><a id="switch-commentBarrage" href="javascript:anzhiyu.switchCommentBarrage();" rel="external nofollow noreferrer" title="开关弹幕"><i class="anzhiyufont anzhiyu-icon-danmu"></i></a><button id="download-md-btn" type="button" title="下载文章源文件"><i class="anzhiyufont anzhiyu-icon-download"></i></button><button id="doc-toc-button" type="button" title="文档目录"><i class="anzhiyufont anzhiyu-icon-bars"></i></button><button id="code-runner-btn" type="button" title="代码运行器"><i class="fas fa-code"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div class="code-runner-panel" id="code-runner-panel"><div class="panel-header"><div class="panel-title">代码运行器</div><button class="panel-close-btn" type="button" title="关闭"><i class="fas fa-times"></i></button></div><div class="panel-body"><nav class="panel-nav"><div class="nav-category" data-category="Trinket"><div class="category-header" data-description="适合Python/HTML/CSS/JS等基础代码运行，界面简洁易用" title="适合Python/HTML/CSS/JS等基础代码运行，界面简洁易用"><i class="fas fa-leaf"></i><span class="category-name">Trinket</span><i class="expand-icon fas fa-chevron-down"></i></div><ul class="instance-list"><li class="instance-item"><a class="instance-link" href="javascript:void(0);" rel="external nofollow noreferrer" data-url="https://trinket.io/embed/python3/f417f7026885" data-name="Python 3" title="Python 3 在线编程环境">Python 3</a></li><li class="instance-item"><a class="instance-link" href="javascript:void(0);" rel="external nofollow noreferrer" data-url="https://trinket.io/embed/html/1aac0e8640a7" data-name="HTML/CSS/JS" title="前端三件套在线编辑器">HTML/CSS/JS</a></li><li class="instance-item"><a class="instance-link" href="javascript:void(0);" rel="external nofollow noreferrer" data-url="https://trinket.io/embed/java/33cfa8ec292c" data-name="Java" title="Java 在线编程环境">Java</a></li></ul></div><div class="nav-category" data-category="JDoodle"><div class="category-header" data-description="支持70+种编程语言，功能强大的在线编译器" title="支持70+种编程语言，功能强大的在线编译器"><i class="fas fa-terminal"></i><span class="category-name">JDoodle</span><i class="expand-icon fas fa-chevron-down"></i></div><ul class="instance-list"><li class="instance-item"><a class="instance-link" href="javascript:void(0);" rel="external nofollow noreferrer" data-url="https://www.jdoodle.com/online-compiler-c++/" data-name="C++ Compiler" title="C++ 在线编译器">C++ Compiler</a></li><li class="instance-item"><a class="instance-link" href="javascript:void(0);" rel="external nofollow noreferrer" data-url="https://www.jdoodle.com/online-java-compiler/" data-name="Java Compiler" title="Java 在线编译器">Java Compiler</a></li><li class="instance-item"><a class="instance-link" href="javascript:void(0);" rel="external nofollow noreferrer" data-url="https://www.jdoodle.com/python3-programming-online/" data-name="Python 3" title="Python 3 在线编程">Python 3</a></li><li class="instance-item"><a class="instance-link" href="javascript:void(0);" rel="external nofollow noreferrer" data-url="https://www.jdoodle.com/embed/v1/f40f7676c55c09b" data-name="TypeScript 在线编译器" title="TypeScript">TypeScript 在线编译器</a></li><li class="instance-item"><a class="instance-link" href="javascript:void(0);" rel="external nofollow noreferrer" data-url="https://www.jdoodle.com/embed/v1/510d607e22ee9e7c" data-name="SQL 在线编译器" title="SQL 在线编译器">SQL 在线编译器</a></li><li class="instance-item"><a class="instance-link" href="javascript:void(0);" rel="external nofollow noreferrer" data-url="https://www.jdoodle.com/embed/v1/ca85d333af57a5fc" data-name="PHP 在线编译器" title="PHP 在线编译器">PHP 在线编译器</a></li><li class="instance-item"><a class="instance-link" href="javascript:void(0);" rel="external nofollow noreferrer" data-url="https://www.jdoodle.com/embed/v1/8e18f0fd58e4a248" data-name="C语言 在线编译器" title="C语言 在线编译器">C语言 在线编译器</a></li></ul></div></nav><div class="panel-content"><div class="welcome-message"><div class="welcome-icon"><i class="fas fa-code"></i></div><div class="welcome-text"><h3>欢迎使用代码运行器</h3><p>请从左侧菜单选择一个编程环境开始编码</p></div></div><div class="iframe-container"><iframe id="code-runner-iframe" frameborder="0" width="100%" height="100%" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-modals"></iframe></div><div class="loading-indicator"><div class="loading-spinner"><i class="fas fa-spinner fa-spin"></i></div><div class="loading-text">正在加载编程环境...</div></div></div></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="3117791189" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size:1rem"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-askAI"><i class="fa-solid fa-robot"></i><span>询问智能客服</span></div><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://music.163.com/#/playlist?id=3117791189&quot;, &quot;_blank&quot;);" style="display:none"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/instant.page/5.1.0/instantpage.min.js" type="module"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/vanilla-lazyload/17.3.1/lazyload.iife.min.js"></script><script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/node-snackbar/0.1.16/snackbar.min.js"></script><canvas id="universe"></canvas><script async="" src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>//- 从这里开始的所有JS代码，都必须有缩进（例如2个空格）
+// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("06/10/2025 00:00:00"); // 此处读取您配置中的建站时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  
+  // --- 已将您的专属LOGO和个人信息集成到这里 ---
+  const ascll = [
+    `欢迎访问 Prorise 的数字空间!`,
+    `代码构建世界，思想驱动未来`,
+    "已稳定运行",
+    dnum,
+    "天",
+    `©2025 By Prorise 1.0.0`,
+  ];
+  
+  const ascll2 = [`SYS-INFO`, `前置摄像头拍照成功`, `您的帅气脸庞为：`, `😎`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} \n%c${ascll[2]} ${ascll[3]} ${ascll[4]}\n\n%c ${ascll[5]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF"
+    )
+  );
+
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，朋友.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Created by Prorise %c 你正在访问 Prorise 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 注意，你的所有操作已被记录.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async="" src="/anzhiyu/random.js"></script><script async="">(function () {
+  var grt = new Date("06/10/2025 00:00:00"); //设置网站上线时间
+  var now = new Date();
+  var dnum;
+  var hnum;
+  var mnum;
+  var snum;
+  var nowHour;
+
+  // 计算并更新天数、小时数、分钟数和秒数
+  function updateTime() {
+    now = new Date(); // 更新 now 的值
+    nowHour = now.getHours(); // 更新 nowHour 的值
+    var days = (now - grt) / 1000 / 60 / 60 / 24;
+    dnum = Math.floor(days);
+    var hours = (now - grt) / 1000 / 60 / 60 - 24 * dnum;
+    hnum = Math.floor(hours);
+    if (String(hnum).length == 1) {
+      hnum = "0" + hnum;
+    }
+    var minutes = (now - grt) / 1000 / 60 - 24 * 60 * dnum - 60 * hnum;
+    mnum = Math.floor(minutes);
+    if (String(mnum).length == 1) {
+      mnum = "0" + mnum;
+    }
+    var seconds = (now - grt) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
+    snum = Math.round(seconds);
+    if (String(snum).length == 1) {
+      snum = "0" + snum;
+    }
+  }
+
+  // 更新网页中显示的网站运行时间
+  function updateHtml() {
+    const footer = document.getElementById("footer");
+    if (!footer) return
+    let currentTimeHtml = "";
+    if (nowHour < 18 && nowHour >= 9) {
+      // 如果是上班时间，默认就是"安知鱼-上班摸鱼中.svg"图片，不需要更改
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    } else {
+      // 如果是下班时间，插入"安知鱼-下班啦.svg"图片
+      let img = document.querySelector("#workboard .workSituationImg");
+      if (img != null) {
+        img.src = "";
+        img.title = "下班了就该开开心心的玩耍，嘿嘿~";
+        img.alt = "下班了就该开开心心的玩耍，嘿嘿~";
+      }
+
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    }
+
+    if (document.getElementById("runtimeTextTip")) {
+      document.getElementById("runtimeTextTip").innerHTML = currentTimeHtml;
+    }
+  }
+
+  setInterval(() => {
+    updateTime();
+    updateHtml();
+  }, 1000);
+})();</script><script src="https://cdn.cbd.int/algoliasearch@4.18.0/dist/algoliasearch-lite.umd.js"></script><script src="https://cdn.cbd.int/instantsearch.js@4.60.0/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><div class="js-pjax"><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdn.cbd.int/mermaid@10.2.4/dist/mermaid.min.js').then(runMermaid)
+  }
+
+  anzhiyu.addGlobalFn('themeChange', runMermaid, 'mermaid')
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>(() => {
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo.prorise666.site/',
+      region: 'ap-shanghai',
+      onCommentLoaded: () => {
+        anzhiyu.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') setTimeout(runFn,0)
+    else getScript('https://cdn.cbd.int/twikoo@1.6.39/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo.prorise666.site/',
+      region: 'ap-shanghai',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const runFn = () => {
+    init();
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else {
+      loadTwikoo()
+    }
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script><script>(() => {
+  let initFn = window.walineFn || null
+
+  const initWaline = (Fn) => {
+    const waline = Fn(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'https://waline.prorise666.site',
+      pageview: true,
+      dark: 'html[data-theme="dark"]',
+      path: window.location.pathname,
+      comment: true,
+      imageUploader: true,
+    }, null))
+
+    const destroyWaline = () => {
+      waline.destroy()
+    }
+
+    anzhiyu.addGlobalFn('pjax', destroyWaline, 'destroyWaline')
+  }
+
+  const loadWaline = async () => {
+    if (initFn) initWaline(initFn)
+    else {
+      await getCSS('https://cdn.cbd.int/@waline/client@3.1.3/dist/waline.css')
+      if (true) await getCSS('https://cdn.cbd.int/@waline/client@3.1.3/dist/waline-meta.css')
+      const { init } = await import('https://cdn.cbd.int/@waline/client@3.1.3/dist/waline.js')
+      initFn = init || Waline.init
+      initWaline(initFn)
+      window.walineFn = initFn
+    }
+  }
+
+  if ('Twikoo' === 'Waline' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('waline-wrap'),loadWaline)
+    else setTimeout(loadWaline, 0)
+  } else {
+    window.loadOtherComment = loadWaline
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"><script async="" src="/js/anzhiyu/comment_barrage.js"></script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'https://twikoo.prorise666.site/',
+        region: 'ap-shanghai',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://cdn.cbd.int/twikoo@1.6.39/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'><div class='name'><span>${array[i].nick} </span></div></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script async="" data-pjax="" src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script async="" data-pjax="" src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script src="/js/anzhiyu/right_click_menu.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script src="/js/doc-sidebar.js"></script><script src="/js/load-on-demand.js"></script><script defer="" id="fluttering_ribbon" mobile="false" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="" color="0,0,255" opacity="0.7" zindex="-1" count="99" mobile="false" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="//code.tidio.co//tk571vck0ua2wjoalfbp8wyrlsdaunmz.js" async=""></script><script>(() => {
+  const isChatBtn = true
+  const isChatHideShow = true
+
+  if (isChatBtn) {
+    let isShow = false
+    const close = () => {
+      window.tidioChatApi.hide()
+      isShow = false
+      document.body.style.position = 'relative';
+      document.documentElement.style.overflow = 'auto'
+    }
+    
+    const open = () => {
+      window.tidioChatApi.open()
+      window.tidioChatApi.show()
+      isShow = true
+    }
+
+    const onTidioChatApiReady = () => {
+      window.tidioChatApi.hide()
+      window.tidioChatApi.on("close", close)
+    }
+    if (window.tidioChatApi) {
+      window.tidioChatApi.on("ready", onTidioChatApiReady)
+    } else {
+      document.addEventListener("tidioChat-ready", onTidioChatApiReady)
+    }
+
+    window.chatBtnFn = () => {
+      if (!window.tidioChatApi) return
+      isShow ? close() : open()
+    }
+  } else if (isChatHideShow) {
+    window.chatBtn = {
+      hide: () => {
+        window.tidioChatApi && window.tidioChatApi.hide()
+      },
+      show: () => {
+        window.tidioChatApi && window.tidioChatApi.show()
+      }
+    }
+  }
+})()</script><link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/aplayer/1.10.1/APlayer.min.css" media="print" onload="this.media=&quot;all&quot;"><script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/aplayer/1.10.1/APlayer.min.js"></script><script src="https://npm.elemecdn.com/meting@2.0.1/dist/Meting.min.js"></script><script src="https://lib.baomitu.com/pjax/0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","meta[property=\"og:type\"]","meta[property=\"og:site_name\"]","meta[property=\"og:description\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: true,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '[object Object]', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async="" data-pjax="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div>
+    <link rel="stylesheet" href="https://ai.tianli0.top/static/public/postChatUser_summary.min.css">
+    <script>
+        let tianliGPT_key = 'S-DNA1JM95BX2F9L0N';
+        let tianliGPT_postSelector = '#article-container';
+        let tianliGPT_Title = '✨ AI 文章摘要';
+        let tianliGPT_postURL = '';
+        let tianliGPT_blacklist = '';
+        let tianliGPT_wordLimit = '1000';
+        let tianliGPT_typingAnimate = true;
+        let tianliGPT_theme = 'default';
+        var postChatConfig = {
+          backgroundColor: "#4d648d",
+          bottom: "76px",
+          left: "16px",
+          fill: "#FFFFFF",
+          width: "50px",
+          frameWidth: "380px",
+          frameHeight: "600px",
+          defaultInput: true,
+          upLoadWeb: true,
+          showInviteLink: false,
+          userTitle: "💬 PRChat",
+          userDesc: "我是 Prorise 博客的 AI 助手，有任何关于网站内容的问题都可以问我哦～",
+          addButton: true,
+          beginningText: "这篇文章介绍了",
+          userIcon: "https://bu.dusays.com/2025/07/07/686b7fe90170b.png",
+          userMode: "magic",
+          defaultChatQuestions: ["你好","你是谁"],
+          defaultSearchQuestions: ["视频压缩","设计"]
+        };
+    </script>
+    <script data-postchat_key="S-DNA1JM95BX2F9L0N" src="https://ai.tianli0.top/static/public/postChatUser_summary.min.js"></script>
+  </body></html>
