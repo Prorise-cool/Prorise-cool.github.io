@@ -1,7 +1,7 @@
 (() => {
-    const injectCSS = () => {
-        const style = document.createElement('style');
-        style.textContent = `
+  const injectCSS = () => {
+    const style = document.createElement('style');
+    style.textContent = `
         #aside-content .aside-list > .aside-list-item .content{
           width: 3.2em !important;
           height: 3.2em !important;
@@ -80,75 +80,75 @@
           flex-shrink: 0;
         }
       `;
-        document.head.appendChild(style);
-    };
+    document.head.appendChild(style);
+  };
 
-    const LatestComments = {
-        API_URL: 'https://twikoo.prorise666.site',
-        ADMIN_EMAIL_MD5: 'ec3291d59a8d7d3675df8a0537fcbc979f0fa611c8df55841fb7f4fd162bd07a',
-        PAGE_SIZE: 5,
-        LOADING_GIF: 'https://lib.bsgun.cn/Hexo-static/img/loading.gif',
+  const LatestComments = {
+    API_URL: 'https://twikoo.prorise666.site/',
+    ADMIN_EMAIL_MD5: 'ec3291d59a8d7d3675df8a0537fcbc979f0fa611c8df55841fb7f4fd162bd07a',
+    PAGE_SIZE: 5,
+    LOADING_GIF: 'https://lib.bsgun.cn/Hexo-static/img/loading.gif',
 
-        async fetchComments() {
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 5000);
+    async fetchComments() {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 5000);
 
-            try {
-                const response = await fetch(this.API_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        event: 'GET_RECENT_COMMENTS',
-                        includeReply: true,
-                        pageSize: this.PAGE_SIZE
-                    }),
-                    signal: controller.signal
-                });
+      try {
+        const response = await fetch(this.API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            event: 'GET_RECENT_COMMENTS',
+            includeReply: true,
+            pageSize: this.PAGE_SIZE
+          }),
+          signal: controller.signal
+        });
 
-                const { data } = await response.json();
-                return data;
-            } catch (error) {
-                console.error('获取评论出错:', error);
-                return null;
-            } finally {
-                clearTimeout(timeoutId);
-            }
-        },
+        const { data } = await response.json();
+        return data;
+      } catch (error) {
+        console.error('获取评论出错:', error);
+        return null;
+      } finally {
+        clearTimeout(timeoutId);
+      }
+    },
 
-        formatTimeAgo(timestamp) {
-            const diff = Math.floor((Date.now() - new Date(timestamp)) / 1000);
-            if (diff < 60) return '刚刚';
-            if (diff < 3600) return `${Math.floor(diff / 60)}分钟前`;
-            if (diff < 86400) return `${Math.floor(diff / 3600)}小时前`;
-            if (diff < 604800) return `${Math.floor(diff / 86400)}天前`;
+    formatTimeAgo(timestamp) {
+      const diff = Math.floor((Date.now() - new Date(timestamp)) / 1000);
+      if (diff < 60) return '刚刚';
+      if (diff < 3600) return `${Math.floor(diff / 60)}分钟前`;
+      if (diff < 86400) return `${Math.floor(diff / 3600)}小时前`;
+      if (diff < 604800) return `${Math.floor(diff / 86400)}天前`;
 
-            return new Date(timestamp).toLocaleDateString('zh-CN', { month: 'numeric', day: 'numeric' }) + '日';
-        },
+      return new Date(timestamp).toLocaleDateString('zh-CN', { month: 'numeric', day: 'numeric' }) + '日';
+    },
 
-        formatContent(content) {
-            if (!content) return '';
+    formatContent(content) {
+      if (!content) return '';
 
-            return content
-                .replace(/<pre><code>[\s\S]*?<\/code><\/pre>/g, '[代码块]')
-                .replace(/<code>([^<]{4,})<\/code>/g, '[代码]')
-                .replace(/<code>([^<]{1,3})<\/code>/g, '$1')
-                .replace(/<img[^>]*>/g, '[图片]')
-                .replace(/<a[^>]*?>[\s\S]*?<\/a>/g, '[链接]')
-                .replace(/<[^>]+>/g, '')
-                .replace(/&(gt|lt|amp|quot|#39|nbsp);/g, m =>
-                    ({ '>': '>', '<': '<', '&': '&', 'quot': '"', '#39': "'", 'nbsp': ' ' })[m.slice(1, -1)])
-                .replace(/\s+/g, ' ')
-                .trim();
-        },
+      return content
+        .replace(/<pre><code>[\s\S]*?<\/code><\/pre>/g, '[代码块]')
+        .replace(/<code>([^<]{4,})<\/code>/g, '[代码]')
+        .replace(/<code>([^<]{1,3})<\/code>/g, '$1')
+        .replace(/<img[^>]*>/g, '[图片]')
+        .replace(/<a[^>]*?>[\s\S]*?<\/a>/g, '[链接]')
+        .replace(/<[^>]+>/g, '')
+        .replace(/&(gt|lt|amp|quot|#39|nbsp);/g, m =>
+          ({ '>': '>', '<': '<', '&': '&', 'quot': '"', '#39': "'", 'nbsp': ' ' })[m.slice(1, -1)])
+        .replace(/\s+/g, ' ')
+        .trim();
+    },
 
-        generateCommentHTML(comment) {
-            const { created, comment: content, url, avatar, nick, mailMd5, id } = comment;
-            const timeAgo = this.formatTimeAgo(created);
-            const formattedContent = this.formatContent(content);
-            const adminBadge = mailMd5 === this.ADMIN_EMAIL_MD5 ? `
+    generateCommentHTML(comment) {
+      const { created, comment: content, url, avatar, nick, mailMd5, id } = comment;
+      const timeAgo = this.formatTimeAgo(created);
+      const formattedContent = this.formatContent(content);
+      const adminBadge = mailMd5 === this.ADMIN_EMAIL_MD5 ? `
           <svg t="1731283534336" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="29337" width="22" height="22"><path d="M512 0C230.4 0 0 230.4 0 512s230.4 512 512 512 512-230.4 512-512S793.6 0 512 0z m291.84 366.08c-46.08 0-79.36 23.04-92.16 66.56l-163.84 358.4h-66.56L312.32 435.2c-17.92-46.08-46.08-71.68-89.6-71.68v-35.84H512v35.84h-40.96c-25.6 2.56-30.72 23.04-12.8 61.44l102.4 225.28 89.6-199.68c25.6-56.32 2.56-84.48-71.68-89.6v-35.84h225.28v40.96z" fill="#06c013" p-id="29338" data-spm-anchor-id="a313x.search_index.0.i73.2b2d3a81BgxnVW" class=""></path></svg>` : '';
 
-            return `
+      return `
           <div class="aside-list-item" title="${formattedContent}" onclick="pjax.loadUrl('${url}#${id}')">
             <div class="thumbnail">
               <img class="aside-list-avatar" src="${avatar}" alt="avatar">
@@ -164,49 +164,59 @@
             </div>
           </div>
         `;
-        },
+    },
 
-        getErrorTemplate(icon, message) {
-            return `
+    getErrorTemplate(icon, message) {
+      return `
           <div style="min-height: 346px;display: flex;padding: 20px;text-align: center;justify-content: center;align-items: center;flex-direction: column;">
             <i class="fas fa-${icon}" style="font-size: 2rem; color: ${icon === 'exclamation-circle' ? '#ff6b6b' : '#999'}; margin-bottom: 10px;"></i>
             <p style="color: #666;margin: 0;">${message}</p>
           </div>
         `;
-        },
+    },
 
-        async insertComponent() {
-            const container = document.getElementById("latest-comments");
-            if (!container) return;
+    async insertComponent() {
+      const container = document.getElementById("latest-comments");
+      if (!container) return;
 
-            container.innerHTML = `<img src="${this.LOADING_GIF}" style="display: flex;min-height: 346px;object-fit: cover;">`;
+      container.innerHTML = `<img src="${this.LOADING_GIF}" style="display: flex;min-height: 346px;object-fit: cover;">`;
 
-            const comments = await this.fetchComments();
-            let content;
+      const comments = await this.fetchComments();
+      let content;
 
-            if (comments === null) {
-                content = this.getErrorTemplate('exclamation-circle', '评论加载失败，请稍后再试');
-            } else if (comments.length === 0) {
-                content = this.getErrorTemplate('comment-slash', '还没有评论呢~ 快来抢沙发吧！');
-            } else {
-                content = comments.map(this.generateCommentHTML.bind(this)).join('');
-            }
+      if (comments === null) {
+        content = this.getErrorTemplate('exclamation-circle', '评论加载失败，请稍后再试');
+      } else if (comments.length === 0) {
+        content = this.getErrorTemplate('comment-slash', '还没有评论呢~ 快来抢沙发吧！');
+      } else {
+        content = comments.map(this.generateCommentHTML.bind(this)).join('');
+      }
 
-            container.style.opacity = '0';
-            container.innerHTML = content;
+      container.style.opacity = '0';
+      container.innerHTML = content;
 
-            requestAnimationFrame(() => {
-                container.style.transition = 'opacity 0.3s ease-in';
-                container.style.opacity = '1';
-            });
-        }
-    };
+      requestAnimationFrame(() => {
+        container.style.transition = 'opacity 0.3s ease-in';
+        container.style.opacity = '1';
+      });
+    }
+  };
 
-    // 初始化时注入CSS并启动组件
-    ['DOMContentLoaded', 'pjax:success'].forEach(event =>
-        document.addEventListener(event, () => {
-            injectCSS();
-            LatestComments.insertComponent();
-        })
-    );
+  // 初始化函数
+  const initLatestComments = () => {
+    injectCSS();
+    LatestComments.insertComponent();
+  };
+
+  // 立即执行一次（处理脚本动态加载的情况）
+  if (document.readyState === 'loading') {
+    // 如果文档还在加载中，等待 DOMContentLoaded
+    document.addEventListener('DOMContentLoaded', initLatestComments);
+  } else {
+    // 如果文档已经加载完成，立即执行
+    initLatestComments();
+  }
+
+  // 为 PJAX 页面切换提供支持
+  document.addEventListener('pjax:success', initLatestComments);
 })();

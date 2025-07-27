@@ -1814,6 +1814,11 @@ document.addEventListener("DOMContentLoaded", function () {
     anzhiyu.addEventListenerConsoleMusicList(false);
     anzhiyu.initPaginationObserver();
 
+    // 初始化增强版作者卡片
+    if (typeof anzhiyu.initAuthorCard === "function") {
+      anzhiyu.initAuthorCard();
+    }
+
     setTimeout(() => {
       setInputFocusListener();
       if (typeof addFriendLinksInFooter === "function") {

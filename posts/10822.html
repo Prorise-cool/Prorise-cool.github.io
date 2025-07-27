@@ -1,0 +1,702 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"><title>第二章：活动管理-单品活动 | Prorise - 分享技术与实战经验</title><meta name="keywords" content="产品经理教程"><meta name="author" content="Prorise"><meta name="copyright" content="Prorise"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f0f5f9"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="第二章：活动管理-单品活动"><meta name="application-name" content="第二章：活动管理-单品活动"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f0f5f9"><meta property="og:type" content="article"><meta property="og:title" content="第二章：活动管理-单品活动"><meta property="og:url" content="https://prorise666.site/posts/10822.html"><meta property="og:site_name" content="Prorise - 分享技术与实战经验"><meta property="og:description" content="第二章：活动管理-单品活动在上一章，我们对营销中心的“活动管理、内容管理、用户管理”三大模块有了整体认知。从本章开始，我们将聚焦于其中最核心、也是我作为运营最常使用的模块——活动管理。我将带你一起，从0到1地设计出电商平台最主流、最有效的几种营销活动。  如上图所示，我所说的“活动管理”，本质上是一"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://i1.wp.com/dev.ruom.top/i/2025/07/25/884971.webp"><meta property="article:author" content="Prorise"><meta property="article:tag" content="全栈, Full Stack, 前端, 后端, Node.js, Vue, React, 数据库, Linux, Docker, 个人博客, 技术分享"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://i1.wp.com/dev.ruom.top/i/2025/07/25/884971.webp"><meta name="description" content="第二章：活动管理-单品活动在上一章，我们对营销中心的“活动管理、内容管理、用户管理”三大模块有了整体认知。从本章开始，我们将聚焦于其中最核心、也是我作为运营最常使用的模块——活动管理。我将带你一起，从0到1地设计出电商平台最主流、最有效的几种营销活动。  如上图所示，我所说的“活动管理”，本质上是一"><link rel="shortcut icon" href="https://bu.dusays.com/2025/07/19/687b394cb439b.ico"><link rel="canonical" href="https://prorise666.site/posts/10822.html"><link rel="preconnect" href="//cdn.cbd.int"><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""><link rel="preconnect" href="//busuanzi.ibruce.info"><meta name="google-site-verification" content="xxx"><meta name="baidu-site-verification" content="code-xxx"><meta name="msvalidate.01" content="xxx"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media=&quot;all&quot;"><link rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/node-snackbar/0.1.16/snackbar.min.css" media="print" onload="this.media=&quot;all&quot;"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media=&quot;all&quot;"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media=&quot;all&quot;"><script async="" src="https://www.googletagmanager.com/gtag/js?id=[object Object]"></script><script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","[object Object]")</script><script>const GLOBAL_CONFIG = {
+  linkPageTop: {"enable":true,"title":"与数百名博主无限进步","addFriendPlaceholder":"昵称（请勿包含博客等字样）：\n网站地址（要求博客地址，请勿提交个人主页）：\n头像图片url（请提供尽可能清晰的图片，我会上传到我自己的图床）：\n描述：\n站点截图（可选）：\n"},
+  peoplecanvas: undefined,
+  postHeadAiDescription: {"enable":true,"gptName":"Prorise","mode":"tianli","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"S-DNA1JM95BX2F9L0N","Referer":"https://xx.xx/"},
+  diytitle: undefined,
+  LA51: undefined,
+  greetingBox: {"enable":true,"default":"晚上好👋","list":[{"greeting":"晚安😴","startTime":0,"endTime":5},{"greeting":"早上好鸭👋, 祝你一天好心情！","startTime":6,"endTime":9},{"greeting":"上午好👋, 状态很好，鼓励一下～","startTime":10,"endTime":10},{"greeting":"11点多啦, 在坚持一下就吃饭啦～","startTime":11,"endTime":11},{"greeting":"午安👋, 宝贝","startTime":12,"endTime":14},{"greeting":"🌈充实的一天辛苦啦！","startTime":14,"endTime":18},{"greeting":"19点喽, 奖励一顿丰盛的大餐吧🍔。","startTime":19,"endTime":19},{"greeting":"晚上好👋, 在属于自己的时间好好放松😌~","startTime":20,"endTime":24}]},
+  twikooEnvId: 'https://twikoo.prorise666.site/',
+  commentBarrageConfig:{"enable":true,"maxBarrage":1,"barrageTime":10000,"accessToken":"b39753735ed0ed5ffeb771bc108e3158","mailMd5":"ec3291d59a8d7d3675df8a0537fcbc979f0fa611c8df55841fb7f4fd162bd07a"},
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: {"mode":"both","api":"https://img2color-go.vercel.app/api?img=","cover_change":true},
+  authorStatus: {"skills":["🤣 全栈开发工程师","🙂 前端架构设计师","🙃 后端服务构建者","🤩 移动端应用开发","🤯 数据库设计专家","🥳 DevOps运维实践者","🤭 技术栈多面手","😎 性能优化达人"],"witty_words":["你可以的","你一定可以的","祝你好运，陌生人","保持热爱，奔赴山海","愿你历尽千帆，归来仍是少年","纵然世事无常，也要保持内心的光亮","时间会证明一切，也会治愈一切","做自己的太阳，无需凭借谁的光"],"states":{"morning":"✨ 早上好，新的一天开始了","noon":"🍲 午餐时间","afternoon":"🌞 下午好","night":"早点休息","goodnight":"晚安 😴"}},
+  algolia: {"appId":"K8Y7M0RMXQ","apiKey":"11fa7380e2694483a44b143044e69e6e","indexName":"prorise_blog","hits":{"per_page":6},"languages":{"input_placeholder":"输入关键词后按下回车查找","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: {"limitDay":360,"position":"top","messagePrev":"距离上次更新已经过了","messageNext":"天，文章内容可能已经过时。"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    simplehomepage: false,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: Prorise","link":"链接: ","source":"来源: Prorise - 分享技术与实战经验","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isAnchor: true,
+  shortcutKey: undefined,
+  autoDarkmode: true,
+  code_runner: {"enable":true,"title":"代码运行器","button_title":"代码运行器","panel_width":"600px","auto_load_first":true,"close_on_escape":true,"remember_selection":true,"categories":[{"name":"Trinket","icon":"fas fa-leaf","description":"适合Python/HTML/CSS/JS等基础代码运行，界面简洁易用","instances":[{"name":"Python 3","url":"https://trinket.io/embed/python3/f417f7026885","description":"Python 3 在线编程环境"},{"name":"HTML/CSS/JS","url":"https://trinket.io/embed/html/1aac0e8640a7","description":"前端三件套在线编辑器"},{"name":"Java","url":"https://trinket.io/embed/java/33cfa8ec292c","description":"Java 在线编程环境"}]},{"name":"JDoodle","icon":"fas fa-terminal","description":"支持70+种编程语言，功能强大的在线编译器","instances":[{"name":"C++ Compiler","url":"https://www.jdoodle.com/online-compiler-c++/","description":"C++ 在线编译器"},{"name":"Java Compiler","url":"https://www.jdoodle.com/online-java-compiler/","description":"Java 在线编译器"},{"name":"Python 3","url":"https://www.jdoodle.com/python3-programming-online/","description":"Python 3 在线编程"},{"name":"TypeScript 在线编译器","url":"https://www.jdoodle.com/embed/v1/f40f7676c55c09b","description":"TypeScript"},{"name":"SQL 在线编译器","url":"https://www.jdoodle.com/embed/v1/510d607e22ee9e7c","description":"SQL 在线编译器"},{"name":"PHP 在线编译器","url":"https://www.jdoodle.com/embed/v1/ca85d333af57a5fc","description":"PHP 在线编译器"},{"name":"C语言 在线编译器","url":"https://www.jdoodle.com/embed/v1/8e18f0fd58e4a248","description":"C语言 在线编译器"}]}]}
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE={configTitle:"Prorise - 分享技术与实战经验",title:"第二章：活动管理-单品活动",postAI:"true",pageFillDescription:"第二章：活动管理-单品活动, 2.1 营销活动概述, 2.1.1 营销活动分类, 2.2 预售活动管理, 2.2.1 预售活动需求分析, 2.2.2 预售活动产品方案设计, 2.3 秒杀、直降与折扣活动管理, 2.3.1 秒杀活动需求分析, 2.3.2 秒杀活动产品方案设计, 2.3.3 直降与折扣活动设计, 2.4 拼团活动管理, 2.4.1 拼团活动需求分析, 2.4.2 拼团活动产品方案设计, 2.5 本章总结第二章活动管理单品活动在上一章我们对营销中心的活动管理内容管理用户管理三大模块有了整体认知从本章开始我们将聚焦于其中最核心也是我作为运营最常使用的模块活动管理我将带你一起从到地设计出电商平台最主流最有效的几种营销活动如上图所示我所说的活动管理本质上是一个集营销工具如优惠券折扣营销规则如满减门槛活动时间和营销活动将工具和规则组合成一个完整的活动于一体的强大系统营销活动概述在动手设计具体的功能之前我需要先为你建立一个清晰的活动地图让你了解我们手中的武器都有哪些种类营销活动分类面对五花八门的促销玩法我习惯按照优惠最终作用的范围把它们清晰地划分为两大类单品活动这类活动的优惠是精确到某一个或某几个具体商品上的例如这件恤限时秒杀价元那款手机参与预售定金抵我们本章要学习的预售秒杀直降折扣拼团都属于这一类总价活动这类活动的优惠是作用于用户整个购物车的订单总金额上的例如全场实付金额满元减元订单满件打折我们将在下一章学习的满减满折满赠优惠券等都属于这一类本章我们的核心任务就是把单品活动这一类的典型玩法彻底学会学透预售活动管理我们首先要设计的是预售这个非常重要的活动它不仅是双十一这类大促的标配也是很多新品发布时我用来试探市场引爆声量的利器预售活动需求分析在我决定要设计预售功能之前我首先会问自己业务上为什么需要它它能解决什么问题经过分析我总结出预售的核心价值主要在于新品首发对于即将上市的新品通过预售可以提前预热市场并根据定金数据来预测首批备货量降低库存风险大促蓄水在像双十一这样的大促开始前通过预售提前锁定大量用户的购买意向和定金为大促当天的爆发积蓄能量锁定用户一旦用户支付了定金他的反悔成本就会增加这就在很大程度上提前锁定了这笔交易明确了接下来我就要思考和我的设计思路通常包含对角色流程功能字段的完整定义预售活动产品方案设计现在我们就进入产品方案设计的核心环节我将从角色与流程功能与字段列表与状态这三个方面为你详细拆解我的设计角色与流程一个功能的设计我首先要理清参与者角色以及他们之间的互动方式流程商家创建预售流程对于商家来说创建一个活动的流程必须清晰简单我设计的流程是选择活动类型预售填写基本信息设置活动规则选择参与商品这是一个线性的引导式的创建路径能有效降低商家的使用门槛用户参与预售流程对于用户参与的流程则要顺畅易懂他们的核心流程是浏览预售商品详情页支付定金等待尾款支付时间支付尾款创建预售活动功能及字段信息理清流程后我们就可以定义商家创建活动时到底需要填写哪些信息了我将它分解为三个部分设置基本信息这部分是活动的身份信息包括活动名称方便商家自己识别参与人群如新用户专享用户专享等活动平台是在生效还是生效等填写活动规则这是预售活动的核心我需要让商家可以设置定金金额定金膨胀系数例如定金元可抵元定金支付时间和尾款支付时间选择活动商品商家需要明确指定是哪一个或哪些商品参与这次预售活动上面那些字段最终会构成我们商家后台的活动创建页面通过这样一个结构化的表单商家就可以清晰高效地完成一个预售活动的创建特别是在选择活动商品这一步我还需要为商家设计一个便捷的商品选择器如上图所示当商家点击选择商品后我会提供一个弹窗让他能方便地从店铺的商品库中进行搜索和勾选甚至能进一步选择到具体要参与活动的商品如红色码预售活动列表页与状态机当商家创建完一系列活动后他需要一个列表来统一查看和管理我设计的活动列表页会清晰地展示每个活动的活动名称定金尾款时间活动状态等关键信息并提供必要的操作入口为了让管理工作清晰可控我为每一个预售活动都设计了一套状态机这是后台产品设计中一个至关重要的概念状态流转一个活动从被创建到结束它的生命周期是单向的未开始进行中已结束我不会允许一个已结束的活动再回到进行中状态与操作活动在不同的状态下商家可以进行的操作是不同的我通过上面这张表格来严格定义这些权限未开始活动还没开始一切都还来得及所以商家可以对它进行编辑修改或者直接关闭取消活动进行中活动已经开始了有用户可能已经付了定金为了防止混乱和纠纷我不允许商家再对活动进行编辑但可以强制结束活动已结束活动已经彻底结束商家只能查看历史记录不能再进行任何修改通过这样严谨的状态机设计我就能确保我的预售活动功能在被大量商家使用时依然能够稳定有序地运行秒杀直降与折扣活动管理在这一节我将带你设计一组最常用最直接的降价促销工具它们的核心逻辑都是降低商品价格但在活动氛围技术实现和应用场景上又各有侧重秒杀活动需求分析在我设计的众多活动中秒杀无疑是为平台引流为商品制造爆点最有效的武器之一它的核心价值在于通过超低价限时限量这三大要素营造出一种极度的稀缺感和紧迫感我设计秒杀功能通常是为满足以下业务需求拉新引流用一两款超低价的商品在短时间内吸引海量新用户访问平台爆款促销为重点商品或新品制造一个现象级的抢购事件提升其知名度和销量清仓甩货快速处理掉临期或过季的商品回笼资金秒杀活动产品方案设计秒杀活动的设计思路与预售活动一脉相承我同样会从角色与流程功能与字段列表与状态等方面展开但其中会有一些关键的差异点角色与流程秒杀活动的角色和流程与预售类似但节奏更快商家创建流程依然是选择活动类型秒杀填写基本信息设置活动规则选择参与商品的线性流程用户参与流程用户的路径被大大缩短变为秒杀活动页等待开抢立即抢购下单支付整个过程必须在极短时间内完成创建秒杀活动功能及字段信息我们来看创建秒杀活动需要哪些字段它的大体结构与预售一致但在活动规则上有秒杀专属的特殊设计活动基本信息活动名称活动时间秒杀的起止时间通常很短参与人群等活动规则信息这是与预售最大的不同这里没有复杂的定金和尾款取而代之的是一个至关重要的规则是否限购活动商品信息需要设置秒杀价格和秒杀库存在创建秒杀活动的页面上我必须重点突出是否限购这个选项比如我可以设计为限购件这是秒杀活动的生命线既能防止黄牛刷单也能让更多普通用户能享受到优惠保证了活动的公平性和参与度商品选择的模块我可以完全复用之前为预售活动设计的组件这正是我作为产品经理在设计时需要时刻具备的模块化思维能极大地提升研发效率秒杀活动列表页商家创建好的秒杀活动会统一进入这张列表进行管理列表的字段和状态机未开始进行中已结束已失效的设计与预售活动基本一致这里我就不再赘述平台固定时间秒杀专场实现一个常见的运营需求是平台希望有一个固定的秒杀频道比如像上图案例中那样有点场点场点场等作为商家只能报名参加这些固定的场次而不能随意设置秒杀时间这个功能我该如何实现呢我的方案是在平台运营总后台增加一个秒杀场次管理的功能如上图所示我们平台的运营人员可以在这里预先设定好一天内所有的秒杀时间段如配置好之后商家在创建秒杀活动时活动时间的设置方式就从自由选择时间变成了从已有场次中选择一个进行报名这样我就能将所有商家的秒杀活动规整到平台统一的固定的频道页面中便于集中展示和引流直降与折扣活动设计我们已经彻底搞懂了最复杂的秒杀活动那么它的两个简化版兄弟直降和折扣又该如何设计呢我通常会通过对比来理清思路与秒杀活动对比分析直降和折扣本质上是弱化版的秒杀它们弱化了秒杀最核心的紧迫感和稀缺感从而变成了更常规更温和的促销工具活动类型核心氛围营造我的设计侧重秒杀限时限量超低价强紧张刺激必须有限购活动时间短直降在一定时间内直接降价弱直观清晰只需要设置活动价和活动时间折扣在一定时间内打折销售弱有计算成本只需要设置折扣率和活动时间创建活动所需信息基于以上的对比我在设计直降和折扣的创建功能时就可以在秒杀的基础上做减法创建直降活动我只需要商家设置活动时间和直降后的价格其他信息如活动名称参与商品等完全可以复用秒杀的设计创建折扣活动我只需要商家设置活动时间和折扣率例如输入代表八折系统会自动根据原价计算出折后价通过这种设计复用做减法的思路我就能用最低的研发成本快速地为运营团队提供一套功能覆盖全面的价格管理工具拼团活动管理在掌握了预售秒杀等传统促销工具后现在我们要学习一个与众不同的自带社交裂变属性的强大玩法拼团它不仅仅是降价更是驱动用户主动为我们去拉新用户的增长利器拼团活动需求分析我之所以要设计拼团功能其核心的业务诉求正如上图所述是为了满足商家低成本拉新的强烈需求拼团的本质是一种利益共享的社交电商模式我把它总结为一个循环平台或商家提供一个极具吸引力的拼团价老用户被价格吸引为了成功购买他必须分享链接给好友新用户看到好友分享的优惠信息基于社交信任和价格吸引也参与进来从而完成了一次拉新通过这种方式商家把一部分营销预算直接补贴给了消费者并巧妙地利用他们的社交关系链为自己带来了精准低成本的新流量拼团活动产品方案设计拼团的设计比之前的活动要复杂因为它同时涉及端商家和端用户并且引入了社交分享的流程我将为你一步步拆解角色与流程在拼团这个玩法中我定义了两个新的端用户角色团长第一个发起拼团的人参团人通过团长分享的链接加入这个团的人基于这两个角色我梳理出了端和端两套核心流程端商家创建流程这个流程对商家来说必须简单我设计的步骤是选择活动类型拼团填写活动信息设置活动规则选择参与商品端用户参与流程这是拼团玩法的核心用户的路径是一个社交闭环发起拼团分享拼团好友参与拼团拼团成功端创建拼团活动功能我们重点来看商家创建活动时活动规则的配置这是拼团功能的灵魂成团人数一个团需要多少人才能成功通常我会建议商家设置为人因为这是裂变效率最高的模式成团有效期开团后必须在多长时间内邀请到足够的好友否则拼团失败例如小时模拟成团这是一个非常重要的用户体验优化功能如果我勾选了它就意味着当一个团在有效期结束时如果还差一个人系统会自动模拟一个机器人用户参与进来让这个团强制成功这能极大地降低因拼团失败给真实用户带来的挫败感这些字段最终会落地为我们商家后台的创建页面商家可以根据自己的商品属性和营销目标灵活地配置拼团的玩法端拼团数据与管理商家创建完活动还需要对进行中的团订单进行管理首先商家创建的拼团活动会和其他活动秒杀预售等一起出现在这张总的活动列表里方便进行统一的启停和编辑操作但拼团的特殊性在于一个拼团活动下面会由不同用户发起无数个具体的团因此我还需要为商家设计一个专门的拼团数据列表在这里商家可以清晰地看到每一个团的状态是拼团中拼团成功还是拼团失败这对于客服介入处理售后问题至关重要当商家需要处理某个具体团的问题时他可以点击查看进入拼团详情页这里有这个团所有成员的昵称下单时间订单状态等详细信息方便客服进行精细化的管理和沟通端核心页面设计讲解虽然我们这里没有端的页面原型但我可以为你讲解一下要支撑起整个拼团流程我至少需要为用户设计这几个核心页面商品详情页在这个页面我会同时展示单独购买价和发起拼团价用巨大的价差来吸引用户发起拼团拼团进行页当用户开团后会进入这个页面页面上必须有清晰的成团倒计时已加入成员的头像列表以及一个最醒目的邀请好友参团的分享按钮参团页当好友通过分享链接点进来时看到的页面他可以清楚地看到是谁邀请他还差几个人成团并可以直接点击一键参团完成支付至此一个完整的兼顾了端管理和端体验的拼团功能我们就设计完成了本章总结恭喜你我们已经完整地学习了活动管理单品活动这一核心章节现在让我们一起回顾一下本章最重要的知识点活动运营主要的单品活动有哪些在本章我们系统性地学习并设计了四种最主流的单品活动你需要牢记它们的定位和核心价值预售核心是锁定需求常用于新品首发和大型促销的蓄水期秒杀核心是制造稀缺是短期内吸引流量打造爆款的终极武器直降折扣核心是直接让利是最常用最灵活的常规促销手段拼团核心是社交裂变是利用社交关系链实现低成本拉新的增长引擎创建活动的三个主要步骤是什么通过对四种不同活动的反复设计我们发现无论玩法如何变化我作为产品经理在设计端商家后台创建流程时其底层逻辑是高度一致的我把它总结为创建三部曲设置基本信息明确活动叫什么给谁用在哪里生效配置活动规则定义活动的核心玩法例如预售的定金秒杀的限购拼团的人数等选择参与商品圈定本次优惠具体生效的商品范围掌握了这个结构化的设计思路未来无论你遇到多么新颖的营销玩法都能够快速清晰地把它转化为一套完整的产品方案到这里我们关于单品活动的设计就全部完成了在下一章我们将继续挑战总价活动的设计学习优惠券满减满赠等更复杂的玩法",isPost:!0,isHome:!1,isHighlightShrink:!1,isToc:!0,postUpdate:"2025-07-26 21:11:09",postMainColor:""}</script><noscript><style type="text/css">#nav{opacity:1}.justified-gallery img{opacity:1}#post-meta time,#recent-posts time{display:inline!important}</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#1e2022')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f0f5f9')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/font.css"><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Prorise - 分享技术与实战经验" type="application/atom+xml"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/avatar.png"><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"><script async="" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><div class="doc-sidebar" id="doc-sidebar"><nav class="doc-sidebar-nav"><div class="doc-toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%9A%E6%B4%BB%E5%8A%A8%E7%AE%A1%E7%90%86-%E5%8D%95%E5%93%81%E6%B4%BB%E5%8A%A8"><span class="toc-text">第二章：活动管理-单品活动</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E8%90%A5%E9%94%80%E6%B4%BB%E5%8A%A8%E6%A6%82%E8%BF%B0"><span class="toc-text">2.1 营销活动概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-1-%E8%90%A5%E9%94%80%E6%B4%BB%E5%8A%A8%E5%88%86%E7%B1%BB"><span class="toc-text">2.1.1 营销活动分类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E9%A2%84%E5%94%AE%E6%B4%BB%E5%8A%A8%E7%AE%A1%E7%90%86"><span class="toc-text">2.2 预售活动管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-1-%E9%A2%84%E5%94%AE%E6%B4%BB%E5%8A%A8%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-text">2.2.1 预售活动需求分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-2-%E9%A2%84%E5%94%AE%E6%B4%BB%E5%8A%A8%E4%BA%A7%E5%93%81%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1"><span class="toc-text">2.2.2 预售活动产品方案设计</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-%E7%A7%92%E6%9D%80%E3%80%81%E7%9B%B4%E9%99%8D%E4%B8%8E%E6%8A%98%E6%89%A3%E6%B4%BB%E5%8A%A8%E7%AE%A1%E7%90%86"><span class="toc-text">2.3 秒杀、直降与折扣活动管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-1-%E7%A7%92%E6%9D%80%E6%B4%BB%E5%8A%A8%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-text">2.3.1 秒杀活动需求分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-2-%E7%A7%92%E6%9D%80%E6%B4%BB%E5%8A%A8%E4%BA%A7%E5%93%81%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1"><span class="toc-text">2.3.2 秒杀活动产品方案设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-3-%E7%9B%B4%E9%99%8D%E4%B8%8E%E6%8A%98%E6%89%A3%E6%B4%BB%E5%8A%A8%E8%AE%BE%E8%AE%A1"><span class="toc-text">2.3.3 直降与折扣活动设计</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-%E6%8B%BC%E5%9B%A2%E6%B4%BB%E5%8A%A8%E7%AE%A1%E7%90%86"><span class="toc-text">2.4 拼团活动管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-1-%E6%8B%BC%E5%9B%A2%E6%B4%BB%E5%8A%A8%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-text">2.4.1 拼团活动需求分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-2-%E6%8B%BC%E5%9B%A2%E6%B4%BB%E5%8A%A8%E4%BA%A7%E5%93%81%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1"><span class="toc-text">2.4.2 拼团活动产品方案设计</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-%E6%9C%AC%E7%AB%A0%E6%80%BB%E7%BB%93"><span class="toc-text">2.5 本章总结</span></a></li></ol></li></ol></div></nav></div><header class="not-top-img" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" href="/" title="博客"><img class="back-menu-item-icon" src="https://bu.dusays.com/2025/07/19/687b394cb439b.ico" alt="博客"><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" href="/" title="后续项目..."><img class="back-menu-item-icon" src="https://image.anheyu.com/favicon.ico" alt="后续项目..."><span class="back-menu-item-text">后续项目...</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title">Prorise - 分享技术与实战经验</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)" rel="external nofollow noreferrer">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size:.9em"></i><span> 归档</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size:.9em"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size:.9em"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>个人</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size:.9em"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/todolist/"><i class="fas fa-check-double faa-tada"></i><span> 留言板</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/awesome-links/"><i class="fas fa-link faa-tada"></i><span> 实用网站</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>预览</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/?server=netease&amp;id=3117791189"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size:.9em"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size:.9em"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/messages/"><i class="fas fa-comments faa-tada"></i><span> 评论总览</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size:.9em"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size:.9em"></i><span> 即刻短文</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size:.9em"></i><span> 随便逛逛</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="background-change-button"><a class="site-page" onclick="toggleWinbox()" title="切换背景" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-palette"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" rel="external nofollow noreferrer" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole()"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://tc.z.wiki/autoupload/iXoPwUD80CPTvQUyITTBFOykMT9FcWW5SasRoXZEs3Wyl5f0KlZfm6UsKj-HyTuv/20250609/bYMH/418X445/ef9a3f68-d36a-441a-95fe-8179b1a25992.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://tc.z.wiki/autoupload/iXoPwUD80CPTvQUyITTBFOykMT9FcWW5SasRoXZEs3Wyl5f0KlZfm6UsKj-HyTuv/20250609/bYMH/418X445/ef9a3f68-d36a-441a-95fe-8179b1a25992.png"></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://tc.z.wiki/autoupload/iXoPwUD80CPTvQUyITTBFOykMT9FcWW5SasRoXZEs3Wyl5f0KlZfm6UsKj-HyTuv/20250609/cYu3/347X390/zfb.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://tc.z.wiki/autoupload/iXoPwUD80CPTvQUyITTBFOykMT9FcWW5SasRoXZEs3Wyl5f0KlZfm6UsKj-HyTuv/20250609/cYu3/347X390/zfb.png"></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title">最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%80%BB%E6%B1%87/" style="font-size:1.05rem;color:#500336">Java基础知识总汇<sup>9</sup></a><a href="/tags/Java%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%AF%87/" style="font-size:1.05rem;color:#3d87bb">Java微服务篇<sup>11</sup></a><a href="/tags/Python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%80%BB%E6%B1%87/" style="font-size:1.05rem;color:#5c8a2b">Python基础知识总汇<sup>22</sup></a><a href="/tags/%E4%B8%AA%E4%BA%BA/" style="font-size:1.05rem;color:#988467">个人<sup>5</sup></a><a href="/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E5%AE%9E%E6%88%98/" style="font-size:1.05rem;color:#2ab75e">产品经理实战<sup>5</sup></a><a href="/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E6%95%99%E7%A8%8B/" style="font-size:1.05rem;color:#4d011d">产品经理教程<sup>26</sup></a><a href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/" style="font-size:1.05rem;color:#be5f01">博客搭建教程<sup>31</sup></a></div></div><hr></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/07/"><span class="card-archive-list-date">七月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">58</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/06/"><span class="card-archive-list-date">六月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">4</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/05/"><span class="card-archive-list-date">五月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">9</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/04/"><span class="card-archive-list-date">四月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">22</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/03/"><span class="card-archive-list-date">三月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">11</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/01/"><span class="card-archive-list-date">一月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li></ul></div></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item on" id="consoleCommentBarrage" onclick="anzhiyu.switchCommentBarrage()" title="热评开关"><a class="commentBarrage"><i class="anzhiyufont anzhiyu-icon-message"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div><div class="console-btn-item" id="consoleAskAIMode" onclick="rm.toggleAskAIMode()" title="AI询问模式切换"><a class="askAIMode-switch"><i class="fa-solid fa-robot"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);" rel="external nofollow noreferrer"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/" itemprop="url">产品经理</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E6%95%99%E7%A8%8B/" tabindex="-1" itemprop="url"> <span><i class="anzhiyufont anzhiyu-icon-hashtag"></i>产品经理教程</span></a></span></div></div><h1 class="post-title" itemprop="name headline">第二章：活动管理-单品活动</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-07-26T02:13:45.000Z" title="发表于 2025-07-26 10:13:45">2025-07-26</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-07-26T13:11:09.140Z" title="更新于 2025-07-26 21:11:09">2025-07-26</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="anzhiyufont anzhiyu-icon-file-word post-meta-icon" title="文章字数"></i><span class="post-meta-label" title="文章字数">字数总计:</span><span class="word-count" title="文章字数">5.1k</span><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-clock post-meta-icon" title="阅读时长"></i><span class="post-meta-label" title="阅读时长">阅读时长:</span><span>14分钟</span></span><span class="post-meta-separator"></span><span data-flag-title="第二章：活动管理-单品活动"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="twikoo_visitors" title="访问量"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator"> </span><span class="post-meta-position" title="作者IP属地为广东"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>广东</span><span class="post-meta-separator"></span><span class="post-meta-commentcount"><i class="anzhiyufont anzhiyu-icon-comments post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/posts/10822.html#post-comment" tabindex="-1"><span id="twikoo-count"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></a></span></div></div></div><div class="post-ai-description"><div class="ai-title"><i class="anzhiyufont anzhiyu-icon-bilibili"></i><div class="ai-title-text">AI-摘要</div><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right"></i><i class="anzhiyufont anzhiyu-icon-circle-dot" title="朗读摘要"></i><div id="ai-tag">Tianli GPT</div></div><div class="ai-explanation">AI初始化中...</div><div class="ai-btn-box"><div class="ai-btn-item">介绍自己 🙈</div><div class="ai-btn-item">生成本文简介 👋</div><div class="ai-btn-item">推荐相关文章 📖</div><div class="ai-btn-item">前往主页 🏠</div><div class="ai-btn-item" id="go-tianli-blog">前往爱发电购买</div></div><script data-pjax="" src="/js/anzhiyu/ai_abstract.js"></script></div><article class="post-content" id="article-container" itemscope="" itemtype="https://prorise666.site/posts/10822.html"><header><a class="post-meta-categories" href="/categories/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/" itemprop="url">产品经理</a><a href="/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E6%95%99%E7%A8%8B/" tabindex="-1" itemprop="url">产品经理教程</a><h1 id="CrawlerTitle" itemprop="name headline">第二章：活动管理-单品活动</h1><span itemprop="author" itemscope="" itemtype="http://schema.org/Person">Prorise</span><time itemprop="dateCreated datePublished" datetime="2025-07-26T02:13:45.000Z" title="发表于 2025-07-26 10:13:45">2025-07-26</time><time itemprop="dateCreated datePublished" datetime="2025-07-26T13:11:09.140Z" title="更新于 2025-07-26 21:11:09">2025-07-26</time></header><div id="postchat_postcontent"><h1 id="第二章：活动管理-单品活动"><a href="#第二章：活动管理-单品活动" class="headerlink" title="第二章：活动管理-单品活动"></a>第二章：活动管理-单品活动</h1><p>在上一章，我们对营销中心的“活动管理、内容管理、用户管理”三大模块有了整体认知。从本章开始，我们将聚焦于其中最核心、也是我作为运营最常使用的模块——<strong>活动管理</strong>。我将带你一起，从0到1地设计出电商平台最主流、最有效的几种营销活动。</p><p><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250725134006164.png" alt="image-20250725134006164"></p><p>如上图所示，我所说的“活动管理”，本质上是一个集“<strong>营销工具</strong>”（如优惠券、折扣）、“<strong>营销规则</strong>”（如满减门槛、活动时间）和“<strong>营销活动</strong>”（将工具和规则组合成一个完整的活动）于一体的强大系统。</p><h2 id="2-1-营销活动概述"><a href="#2-1-营销活动概述" class="headerlink" title="2.1 营销活动概述"></a>2.1 营销活动概述</h2><p>在动手设计具体的功能之前，我需要先为你建立一个清晰的“活动地图”，让你了解我们手中的“武器”都有哪些种类。</p><h3 id="2-1-1-营销活动分类"><a href="#2-1-1-营销活动分类" class="headerlink" title="2.1.1 营销活动分类"></a>2.1.1 营销活动分类</h3><p><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250725134058873.png" alt="image-20250725134058873"></p><p>面对五花八门的促销玩法，我习惯按照<strong>优惠最终作用的范围</strong>，把它们清晰地划分为两大类：</p><ol><li><strong>单品活动</strong>：这类活动的优惠，是<strong>精确到某一个或某几个具体商品（SKU）上的</strong>。例如，“这件T恤限时秒杀价99元”、“那款手机参与预售，定金100抵200”。我们本章要学习的<strong>预售、秒杀、直降、折扣、拼团</strong>都属于这一类。</li><li><strong>总价活动</strong>：这类活动的优惠，是作用于用户<strong>整个购物车的订单总金额上的</strong>。例如，“全场实付金额满200元减20元”、“订单满3件打8折”。我们将在下一章学习的<strong>满减/满折、满赠、优惠券</strong>等，都属于这一类。</li></ol><p>本章，我们的核心任务就是，把“单品活动”这一类的典型玩法，彻底学会、学透。</p><h2 id="2-2-预售活动管理"><a href="#2-2-预售活动管理" class="headerlink" title="2.2 预售活动管理"></a>2.2 预售活动管理</h2><p>我们首先要设计的，是“预售”这个非常重要的活动。它不仅是“双十一”这类大促的标配，也是很多新品发布时，我用来试探市场、引爆声量的利器。</p><h3 id="2-2-1-预售活动需求分析"><a href="#2-2-1-预售活动需求分析" class="headerlink" title="2.2.1 预售活动需求分析"></a>2.2.1 预售活动需求分析</h3><p>在我决定要设计“预售”功能之前，我首先会问自己：<strong>业务上为什么需要它？它能解决什么问题？</strong></p><p>经过分析，我总结出预售的核心价值主要在于：</p><ul><li><strong>新品首发</strong>：对于即将上市的新品，通过预售可以提前预热市场，并根据定金数据来预测首批备货量，降低库存风险。</li><li><strong>大促蓄水</strong>：在像“双十一”这样的大促开始前，通过预售提前锁定大量用户的购买意向和定金，为大促当天的爆发积蓄能量。</li><li><strong>锁定用户</strong>：一旦用户支付了定金，他的“反悔成本”就会增加，这就在很大程度上提前锁定了这笔交易。</li></ul><p>明确了“Why”，接下来我就要思考“What”和“How”。我的设计思路，通常包含对<strong>角色、流程、功能、字段</strong>的完整定义。</p><h3 id="2-2-2-预售活动产品方案设计"><a href="#2-2-2-预售活动产品方案设计" class="headerlink" title="2.2.2 预售活动产品方案设计"></a>2.2.2 预售活动产品方案设计</h3><p>现在，我们就进入产品方案设计的核心环节。我将从“<strong>角色与流程</strong>”、“<strong>功能与字段</strong>”、“<strong>列表与状态</strong>”这三个方面，为你详细拆解我的设计。</p><p><strong>1. 角色与流程</strong></p><p><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250725134243737.png" alt="image-20250725134243737"></p><p><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250725134250658.png" alt="image-20250725134250658"></p><p>一个功能的设计，我首先要理清参与者（角色）以及他们之间的互动方式（流程）。</p><ul><li><strong>商家创建预售流程</strong>：对于商家来说，创建一个活动的流程必须清晰、简单。我设计的流程是：<ul><li><code>选择活动类型(预售)</code> -&gt; <code>填写基本信息</code> -&gt; <code>设置活动规则</code> -&gt; <code>选择参与商品</code></li><li>这是一个线性的、引导式的创建路径，能有效降低商家的使用门槛</li></ul></li><li><strong>用户参与预售流程</strong>：对于用户，参与的流程则要顺畅、易懂。他们的核心流程是：<ul><li><code>浏览预售商品详情页</code> -&gt; <code>支付定金</code> -&gt; <code>（等待尾款支付时间）</code> -&gt; <code>支付尾款</code>。</li></ul></li></ul><p><strong>2. 创建预售活动功能及字段信息</strong></p><p><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250725134412506.png" alt="image-20250725134412506"></p><p>理清流程后，我们就可以定义商家创建活动时，到底需要填写哪些信息了。我将它分解为三个部分：</p><ol><li><strong>设置基本信息</strong>：这部分是活动的“身份信息”，包括<code>活动名称</code>（方便商家自己识别）、<code>参与人群</code>（如新用户专享、VIP用户专享等）、<code>活动平台</code>（是在App生效还是H5生效）等。</li><li><strong>填写活动规则</strong>：这是预售活动的核心，我需要让商家可以设置<code>定金金额</code>、<code>定金膨胀系数</code>（例如定金100元可抵200元）、<code>定金支付时间</code>和<code>尾款支付时间</code>。</li><li><strong>选择活动商品</strong>：商家需要明确指定，是哪一个或哪些商品参与这次预售活动。</li></ol><p><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250725134701408.png" alt="image-20250725134701408"></p><p>上面那些字段，最终会构成我们商家后台的活动创建页面。通过这样一个结构化的表单，商家就可以清晰、高效地完成一个预售活动的创建。</p><p><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250725134750203.png" alt="image-20250725134750203"></p><p>特别是在“选择活动商品”这一步，我还需要为商家设计一个便捷的商品选择器。如上图所示，当商家点击“选择商品”后，我会提供一个弹窗，让他能方便地从店铺的商品库中进行搜索和勾选，甚至能进一步选择到具体要参与活动的<strong>商品SKU</strong>（如：红色 L码）。</p><p><strong>3. 预售活动列表页与状态机</strong></p><p><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250725194116572.png" alt="image-20250725194116572"></p><p>当商家创建完一系列活动后，他需要一个列表来统一查看和管理。我设计的活动列表页，会清晰地展示每个活动的<code>活动名称</code>、<code>定金/尾款时间</code>、<code>活动状态</code>等关键信息，并提供必要的操作入口。</p><p><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250725194216822.png" alt="image-20250725194216822"></p><p>为了让管理工作清晰可控，我为每一个预售活动，都设计了一套“<strong>状态机</strong>”。这是后台产品设计中一个至关重要的概念。</p><ul><li><strong>状态流转</strong>：一个活动从被创建到结束，它的生命周期是单向的：<code>未开始</code> -&gt; <code>进行中</code> -&gt; <code>已结束</code>。我不会允许一个已结束的活动再回到进行中。</li><li><strong>状态与操作</strong>：活动在不同的状态下，商家可以进行的操作是不同的。我通过上面这张表格来严格定义这些权限：<ul><li><strong>未开始</strong>：活动还没开始，一切都还来得及，所以商家可以对它进行<code>编辑</code>修改，或者直接<code>关闭</code>（取消活动）。</li><li><strong>进行中</strong>：活动已经开始了，有用户可能已经付了定金。为了防止混乱和纠纷，我<strong>不允许商家再对活动进行<code>编辑</code></strong>，但可以强制<code>结束</code>活动。</li><li><strong>已结束</strong>：活动已经彻底结束，商家只能<code>查看</code>历史记录，不能再进行任何修改。</li></ul></li></ul><p>通过这样严谨的状态机设计，我就能确保我的预售活动功能，在被大量商家使用时，依然能够稳定、有序地运行。</p><hr><h2 id="2-3-秒杀、直降与折扣活动管理"><a href="#2-3-秒杀、直降与折扣活动管理" class="headerlink" title="2.3 秒杀、直降与折扣活动管理"></a>2.3 秒杀、直降与折扣活动管理</h2><p>在这一节，我将带你设计一组最常用、最直接的降价促销工具。它们的核心逻辑都是“<strong>降低商品价格</strong>”，但在活动氛围、技术实现和应用场景上，又各有侧重。</p><h3 id="2-3-1-秒杀活动需求分析"><a href="#2-3-1-秒杀活动需求分析" class="headerlink" title="2.3.1 秒杀活动需求分析"></a>2.3.1 秒杀活动需求分析</h3><p>在我设计的众多活动中，“<strong>秒杀</strong>”无疑是为平台引流、为商品制造爆点最有效的武器之一。它的核心价值在于，通过“<strong>超低价 + 限时 + 限量</strong>”这三大要素，营造出一种极度的稀缺感和紧迫感。</p><p>我设计秒杀功能，通常是为满足以下业务需求：</p><ol><li><strong>拉新引流</strong>：用一两款超低价的商品，在短时间内吸引海量新用户访问平台。</li><li><strong>爆款促销</strong>：为重点商品或新品，制造一个现象级的抢购事件，提升其知名度和销量。</li><li><strong>清仓甩货</strong>：快速处理掉临期或过季的商品，回笼资金。</li></ol><h3 id="2-3-2-秒杀活动产品方案设计"><a href="#2-3-2-秒杀活动产品方案设计" class="headerlink" title="2.3.2 秒杀活动产品方案设计"></a>2.3.2 秒杀活动产品方案设计</h3><p>秒杀活动的设计思路与预售活动一脉相承，我同样会从“角色与流程”、“功能与字段”、“列表与状态”等方面展开，但其中会有一些关键的差异点。</p><p><strong>1. 角色与流程</strong></p><p>秒杀活动的角色和流程与预售类似，但节奏更快：</p><ul><li><strong>商家创建流程</strong>：依然是<code>选择活动类型(秒杀)</code> -&gt; <code>填写基本信息</code> -&gt; <code>设置活动规则</code> -&gt; <code>选择参与商品</code>的线性流程。</li><li><strong>用户参与流程</strong>：用户的路径被大大缩短，变为<code>秒杀活动页</code> -&gt; <code>（等待开抢）</code> -&gt; <code>立即抢购</code> -&gt; <code>下单支付</code>。整个过程必须在极短时间内完成。</li></ul><p><strong>2. 创建秒杀活动功能及字段信息</strong></p><p><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250725194912426.png" alt="image-20250725194912426"></p><p>我们来看创建秒杀活动需要哪些字段。它的大体结构与预售一致，但在“活动规则”上，有秒杀专属的特殊设计。</p><ul><li><strong>活动基本信息</strong>：<code>活动名称</code>、<code>活动时间</code>（秒杀的起止时间通常很短）、<code>参与人群</code>等。</li><li><strong>活动规则信息</strong>：这是与预售最大的不同。这里没有复杂的定金和尾款，取而代之的是一个至关重要的规则——<code>是否限购</code>。</li><li><strong>活动商品信息</strong>：需要设置<code>秒杀价格</code>和<code>秒杀库存</code>。</li></ul><p><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250725195000199.png" alt="image-20250725195000199"></p><p>在创建秒杀活动的页面上，我必须重点突出“<strong>是否限购</strong>”这个选项。比如，我可以设计为“<code>限购 X 件</code>”。这是秒杀活动的生命线，既能防止“黄牛”刷单，也能让更多普通用户能享受到优惠，保证了活动的公平性和参与度。</p><p><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250725195013198.png" alt="image-20250725195013198"></p><p>商品选择的模块，我可以完全复用之前为预售活动设计的组件。这正是我作为产品经理，在设计时需要时刻具备的“<strong>模块化思维</strong>”，能极大地提升研发效率。</p><p><strong>3. 秒杀活动列表页</strong></p><p><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250725195033616.png" alt="image-20250725195033616"></p><p>商家创建好的秒杀活动，会统一进入这张列表进行管理。列表的字段和状态机（未开始、进行中、已结束、已失效）的设计，与预售活动基本一致，这里我就不再赘述。</p><p><strong>4. 平台固定时间秒杀专场实现</strong></p><p><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250725195052650.png" alt="image-20250725195052650"></p><p>一个常见的运营需求是，平台希望有一个固定的秒杀频道，比如像上图案例中那样，有“8点场”、“10点场”、“12点场”等。作为商家，只能报名参加这些固定的场次，而不能随意设置秒杀时间。这个功能我该如何实现呢？</p><p><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250725195111770.png" alt="image-20250725195111770"></p><p>我的方案是，在平台运营总后台，增加一个“<strong>秒杀场次管理</strong>”的功能。</p><p>如上图所示，我们平台的运营人员，可以在这里<strong>预先设定</strong>好一天内所有的秒杀时间段（如：<code>08:00-10:00</code>，<code>10:00-12:00</code>…）。</p><p>配置好之后，商家在创建秒杀活动时，<code>活动时间</code>的设置方式就从“自由选择时间”，变成了“<strong>从已有场次中选择一个进行报名</strong>”。这样，我就能将所有商家的秒杀活动，规整到平台统一的、固定的频道页面中，便于集中展示和引流。</p><h3 id="2-3-3-直降与折扣活动设计"><a href="#2-3-3-直降与折扣活动设计" class="headerlink" title="2.3.3 直降与折扣活动设计"></a>2.3.3 直降与折扣活动设计</h3><p><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250725195143264.png" alt="image-20250725195143264"></p><p>我们已经彻底搞懂了最复杂的秒杀活动。那么，它的两个“简化版”兄弟——<strong>直降</strong>和<strong>折扣</strong>，又该如何设计呢？我通常会通过对比来理清思路。</p><p><strong>1. 与秒杀活动对比分析</strong></p><p>直降和折扣，本质上是“<strong>弱化版</strong>”的秒杀。它们弱化了秒杀最核心的“紧迫感”和“稀缺感”，从而变成了更常规、更温和的促销工具。</p><table><thead><tr><th align="left"><strong>活动类型</strong></th><th align="left"><strong>核心</strong></th><th align="left"><strong>氛围营造</strong></th><th align="left"><strong>我的设计侧重</strong></th></tr></thead><tbody><tr><td align="left"><strong>秒杀</strong></td><td align="left">限时、限量、超低价</td><td align="left"><strong>强</strong>（紧张、刺激）</td><td align="left">必须有<strong>限购</strong>，活动时间<strong>短</strong></td></tr><tr><td align="left"><strong>直降</strong></td><td align="left">在一定时间内，直接降价</td><td align="left"><strong>弱</strong>（直观、清晰）</td><td align="left">只需要设置<strong>活动价</strong>和<strong>活动时间</strong></td></tr><tr><td align="left"><strong>折扣</strong></td><td align="left">在一定时间内，打折销售</td><td align="left"><strong>弱</strong>（有计算成本）</td><td align="left">只需要设置<strong>折扣率</strong>和<strong>活动时间</strong></td></tr></tbody></table><p><strong>2. 创建活动所需信息</strong></p><p>基于以上的对比，我在设计“直降”和“折扣”的创建功能时，就可以在“秒杀”的基础上做减法：</p><ul><li><strong>创建直降活动</strong>：我只需要商家设置<code>活动时间</code>和<code>直降后的价格</code>。其他信息（如活动名称、参与商品等）完全可以复用秒杀的设计。</li><li><strong>创建折扣活动</strong>：我只需要商家设置<code>活动时间</code>和<code>折扣率</code>（例如，输入“8”代表八折）。系统会自动根据原价计算出折后价。</li></ul><p>通过这种“<strong>设计复用+做减法</strong>”的思路，我就能用最低的研发成本，快速地为运营团队，提供一套功能覆盖全面的价格管理工具。</p><hr><h2 id="2-4-拼团活动管理"><a href="#2-4-拼团活动管理" class="headerlink" title="2.4 拼团活动管理"></a>2.4 拼团活动管理</h2><p>在掌握了预售、秒杀等传统促销工具后，现在，我们要学习一个与众不同的、自带“<strong>社交裂变</strong>”属性的强大玩法——<strong>拼团</strong>。它不仅仅是降价，更是驱动用户主动为我们去拉新用户的增长利器。</p><h3 id="2-4-1-拼团活动需求分析"><a href="#2-4-1-拼团活动需求分析" class="headerlink" title="2.4.1 拼团活动需求分析"></a>2.4.1 拼团活动需求分析</h3><p><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250725195740483.png" alt="image-20250725195740483"></p><p>我之所以要设计拼团功能，其核心的业务诉求，正如上图所述，是为了满足商家“<strong>低成本拉新</strong>”的强烈需求。</p><p>拼团的本质，是一种“<strong>利益共享</strong>”的社交电商模式。我把它总结为一个循环：</p><ol><li>平台或商家提供一个极具吸引力的“<strong>拼团价</strong>”。</li><li>老用户被价格吸引，为了成功购买，他必须<strong>分享链接</strong>给好友。</li><li>新用户看到好友分享的优惠信息，基于社交信任和价格吸引，也参与进来，从而<strong>完成了一次拉新</strong>。</li></ol><p>通过这种方式，商家把一部分营销预算，直接补贴给了消费者，并巧妙地利用他们的社交关系链，为自己带来了精准、低成本的新流量。</p><h3 id="2-4-2-拼团活动产品方案设计"><a href="#2-4-2-拼团活动产品方案设计" class="headerlink" title="2.4.2 拼团活动产品方案设计"></a>2.4.2 拼团活动产品方案设计</h3><p>拼团的设计比之前的活动要复杂，因为它同时涉及“<strong>B端（商家）</strong>”和“<strong>C端（用户）</strong>”，并且引入了“<strong>社交分享</strong>”的流程。我将为你一步步拆解。</p><p><strong>1. 角色与流程</strong></p><p><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250725195831494.png" alt="image-20250725195831494"></p><p>在拼团这个玩法中，我定义了两个新的C端用户角色：</p><ul><li><strong>团长 (Leader)</strong>：第一个发起拼团的人。</li><li><strong>参团人 (Member)</strong>：通过团长分享的链接，加入这个团的人。</li></ul><p>基于这两个角色，我梳理出了B端和C端两套核心流程：</p><ul><li><strong>B端 - 商家创建流程</strong>：这个流程对商家来说必须简单，我设计的步骤是：<ul><li><code>选择活动类型(拼团)</code> -&gt; <code>填写活动信息</code> -&gt; <code>设置活动规则</code> -&gt; <code>选择参与商品</code>。</li></ul></li><li><strong>C端 - 用户参与流程</strong>：这是拼团玩法的核心，用户的路径是一个社交闭环：<ul><li><code>发起拼团</code> -&gt; <code>分享拼团</code> -&gt; <code>好友参与拼团</code> -&gt; <code>（拼团成功）</code>。</li></ul></li></ul><p><strong>2. B端 - 创建拼团活动功能</strong></p><p><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250725195922219.png" alt="image-20250725195922219"></p><p>我们重点来看商家创建活动时，“<strong>活动规则</strong>”的配置，这是拼团功能的灵魂。</p><ul><li><strong>成团人数</strong>：一个团需要多少人才能成功。通常我会建议商家设置为2人，因为这是裂变效率最高的模式。</li><li><strong>成团有效期</strong>：开团后，必须在多长时间内邀请到足够的好友，否则拼团失败。例如，24小时。</li><li><strong>模拟成团</strong>：这是一个非常重要的“<strong>用户体验优化</strong>”功能。如果我勾选了它，就意味着当一个团在有效期结束时，如果还差一个人，<strong>系统会自动模拟一个“机器人”用户参与进来，让这个团强制成功</strong>。这能极大地降低因拼团失败给真实用户带来的挫败感。</li></ul><p><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250725200041910.png" alt="image-20250725200041910"></p><p>这些字段最终会落地为我们商家后台的创建页面。商家可以根据自己的商品属性和营销目标，灵活地配置拼团的玩法。</p><p><strong>3. B端 - 拼团数据与管理</strong></p><p>商家创建完活动，还需要对进行中的团订单进行管理。</p><p><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250725200130988.png" alt="image-20250725200130988"></p><p>首先，商家创建的拼团活动，会和其他活动（秒杀、预售等）一起，出现在这张总的“<strong>活动列表</strong>”里，方便进行统一的启停和编辑操作。</p><p>但拼团的特殊性在于，一个“拼团活动”下面，会由不同用户发起无数个具体的“<strong>团（Pingtuan Order）</strong>”。因此，我还需要为商家设计一个专门的“<strong>拼团数据</strong>”列表。</p><p>在这里，商家可以清晰地看到每一个“团”的状态：是<strong>拼团中</strong>、<strong>拼团成功</strong>，还是<strong>拼团失败</strong>。这对于客服介入处理售后问题至关重要。</p><p><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250725200327195.png" alt="image-20250725200327195"></p><p>当商家需要处理某个具体团的问题时，他可以点击“查看”，进入“<strong>拼团详情</strong>”页。这里有这个团所有成员的昵称、下单时间、订单状态等详细信息，方便客服进行精细化的管理和沟通。</p><p><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250725200210298.png" alt="image-20250725200210298"></p><p><strong>4. C端 - 核心页面设计（讲解）</strong></p><p>虽然我们这里没有C端的页面原型，但我可以为你讲解一下，要支撑起整个拼团流程，我至少需要为用户设计这几个核心页面：</p><ul><li><strong>商品详情页</strong>：在这个页面，我会同时展示“单独购买价”和“发起拼团价”，用巨大的价差来吸引用户发起拼团。</li><li><strong>拼团进行页</strong>：当用户开团后，会进入这个页面。页面上必须有清晰的“<strong>成团倒计时</strong>”、已加入成员的头像列表、以及一个最醒目的“<strong>邀请好友参团</strong>”的分享按钮。</li><li><strong>参团页</strong>：当好友通过分享链接点进来时，看到的页面。他可以清楚地看到是谁邀请他、还差几个人成团，并可以直接点击“一键参团”完成支付。</li></ul><p>至此，一个完整的、兼顾了B端管理和C端体验的拼团功能，我们就设计完成了。</p><h2 id="2-5-本章总结"><a href="#2-5-本章总结" class="headerlink" title="2.5 本章总结"></a>2.5 本章总结</h2><p>恭喜你！我们已经完整地学习了“<strong>活动管理-单品活动</strong>”这一核心章节。现在，让我们一起回顾一下本章最重要的知识点。</p><p><strong>1. 活动运营，主要的单品活动有哪些？</strong></p><p>在本章，我们系统性地学习并设计了四种最主流的单品活动，你需要牢记它们的定位和核心价值：</p><ul><li><strong>预售</strong>：核心是“<strong>锁定需求</strong>”，常用于新品首发和大型促销的蓄水期。</li><li><strong>秒杀</strong>：核心是“<strong>制造稀缺</strong>”，是短期内吸引流量、打造爆款的终极武器。</li><li><strong>直降/折扣</strong>：核心是“<strong>直接让利</strong>”，是最常用、最灵活的常规促销手段。</li><li><strong>拼团</strong>：核心是“<strong>社交裂变</strong>”，是利用社交关系链，实现低成本拉新的增长引擎。</li></ul><p><strong>2. 创建活动的三个主要步骤是什么？</strong></p><p>通过对四种不同活动的反复设计，我们发现，无论玩法如何变化，我作为产品经理，在设计B端（商家后台）创建流程时，其底层逻辑是高度一致的。我把它总结为“<strong>创建三部曲</strong>”：</p><ol><li><strong>设置基本信息</strong>：明确活动叫什么、给谁用、在哪里生效。</li><li><strong>配置活动规则</strong>：定义活动的核心玩法，例如预售的定金、秒杀的限购、拼团的人数等。</li><li><strong>选择参与商品</strong>：圈定本次优惠具体生效的商品范围。</li></ol><p>掌握了这个结构化的设计思路，未来无论你遇到多么新颖的营销玩法，都能够快速、清晰地把它转化为一套完整的产品方案。</p><p>到这里，我们关于单品活动的设计就全部完成了。在下一章，我们将继续挑战“总价活动”的设计，学习优惠券、满减满赠等更复杂的玩法。</p><hr></div></article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/avatar.png" title="头像" alt="头像"><img class="post-copyright__author_img_front" src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/avatar.png# 版权信息区域作者头像前景图片" title="头像" alt="头像"></a><div class="post-copyright__author_name">Prorise</div><div class="post-copyright__author_desc"></div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://prorise666.site/posts/10822.html">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl(&quot;https://prorise666.site/posts/10822.html&quot;)">第二章：活动管理-单品活动</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://tc.z.wiki/autoupload/iXoPwUD80CPTvQUyITTBFOykMT9FcWW5SasRoXZEs3Wyl5f0KlZfm6UsKj-HyTuv/20250609/bYMH/418X445/ef9a3f68-d36a-441a-95fe-8179b1a25992.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src="https://tc.z.wiki/autoupload/iXoPwUD80CPTvQUyITTBFOykMT9FcWW5SasRoXZEs3Wyl5f0KlZfm6UsKj-HyTuv/20250609/bYMH/418X445/ef9a3f68-d36a-441a-95fe-8179b1a25992.png" alt="微信"></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://tc.z.wiki/autoupload/iXoPwUD80CPTvQUyITTBFOykMT9FcWW5SasRoXZEs3Wyl5f0KlZfm6UsKj-HyTuv/20250609/cYu3/347X390/zfb.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src="https://tc.z.wiki/autoupload/iXoPwUD80CPTvQUyITTBFOykMT9FcWW5SasRoXZEs3Wyl5f0KlZfm6UsKj-HyTuv/20250609/cYu3/347X390/zfb.png" alt="支付宝"></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display:none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://prorise666.site/posts/10822.html"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=undefined&amp;url=https://prorise666.site/posts/10822.html&amp;pic=undefined" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl(){var e=window.location.href,t=document.createElement("input");t.setAttribute("value",e),document.body.appendChild(t),t.select(),t.setSelectionRange(0,99999),document.execCommand("copy"),document.body.removeChild(t)}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://prorise666.site" target="_blank">Prorise - 分享技术与实战经验</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__category-list"><a class="post-meta__box__categoryes" href="/categories/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/"><span class="categoryes-punctuation"><i class="anzhiyufont anzhiyu-icon-inbox"></i></span>产品经理<span class="categoryesPageCount">26</span></a></div><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E6%95%99%E7%A8%8B/"><span class="tags-punctuation"><i class="anzhiyufont anzhiyu-icon-tag"></i></span>产品经理教程<span class="tagsPageCount">26</span></a></div></div><div class="post_share"><div class="social-share" data-image="https://i1.wp.com/dev.ruom.top/i/2025/07/26/266618.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media=&quot;all&quot;"><script src="https://lib.baomitu.com/social-share.js/1.0.16/js/social-share.min.js" defer=""></script></div></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/38528.html"><img class="prev-cover" src="https://i1.wp.com/dev.ruom.top/i/2025/07/25/884971.webp" onerror="onerror=null,src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">第一章：电商运营基础</div></div></a></div><div class="next-post pull-right"><a href="/posts/27803.html"><img class="next-cover" src="https://i1.wp.com/dev.ruom.top/i/2025/07/25/884971.webp" onerror="onerror=null,src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">第三章：活动管理-总价活动</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size:1.5rem;margin-right:4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/posts/10477.html" title="产品经理入门（一）：第一章：内容产品模型"><img class="cover" src="https://i1.wp.com/dev.ruom.top/i/2025/07/19/606082.webp" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-07-20</div><div class="title">产品经理入门（一）：第一章：内容产品模型</div></div></a></div><div><a href="/posts/51587.html" title="产品经理入门（七）：第七章：用户端设计"><img class="cover" src="https://i1.wp.com/dev.ruom.top/i/2025/07/19/606082.webp" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-07-20</div><div class="title">产品经理入门（七）：第七章：用户端设计</div></div></a></div><div><a href="/posts/59297.html" title="产品经理入门（三）：第三章：需求分析"><img class="cover" src="https://i1.wp.com/dev.ruom.top/i/2025/07/19/606082.webp" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-07-20</div><div class="title">产品经理入门（三）：第三章：需求分析</div></div></a></div><div><a href="/posts/38041.html" title="产品经理入门（九）：第九章：平台端设计（用户-内容-运营）"><img class="cover" src="https://i1.wp.com/dev.ruom.top/i/2025/07/19/606082.webp" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-07-21</div><div class="title">产品经理入门（九）：第九章：平台端设计（用户-内容-运营）</div></div></a></div><div><a href="/posts/56262.html" title="产品经理入门（二）：第二章：需求收集与管理"><img class="cover" src="https://i1.wp.com/dev.ruom.top/i/2025/07/19/606082.webp" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-07-20</div><div class="title">产品经理入门（二）：第二章：需求收集与管理</div></div></a></div><div><a href="/posts/23264.html" title="产品经理入门（五）：第五章：产品设计与原型制作"><img class="cover" src="https://i1.wp.com/dev.ruom.top/i/2025/07/19/606082.webp" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-07-20</div><div class="title">产品经理入门（五）：第五章：产品设计与原型制作</div></div></a></div></div></div><hr><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)" rel="external nofollow noreferrer" style="display:none">匿名评论</a><a href="/privacy" style="margin-left:4px">隐私政策</a></div><div class="comment-switch"><span class="first-comment">Twikoo</span><span id="switch-btn"></span><span class="second-comment">Waline</span></div><div class="comment-tips" id="comment-tips"><span>✅ 你无需删除空行，直接评论以获取最佳展示效果</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div><div><div id="waline-wrap"></div></div></div></div><div class="comment-barrage"></div><script>window.postData={title:"第二章：活动管理-单品活动",date:"2025-07-26 10:13:45",updated:"2025-07-26 21:11:09",tags:["产品经理教程"],categories:["产品经理"],content:"\n# 第二章：活动管理-单品活动\n\n在上一章，我们对营销中心的“活动管理、内容管理、用户管理”三大模块有了整体认知。从本章开始，我们将聚焦于其中最核心、也是我作为运营最常使用的模块——**活动管理**。我将带你一起，从0到1地设计出电商平台最主流、最有效的几种营销活动。\n\n![image-20250725134006164](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250725134006164.png)\n\n如上图所示，我所说的“活动管理”，本质上是一个集“**营销工具**”（如优惠券、折扣）、“**营销规则**”（如满减门槛、活动时间）和“**营销活动**”（将工具和规则组合成一个完整的活动）于一体的强大系统。\n\n\n\n\n\n## 2.1 营销活动概述\n\n在动手设计具体的功能之前，我需要先为你建立一个清晰的“活动地图”，让你了解我们手中的“武器”都有哪些种类。\n\n### 2.1.1 营销活动分类\n\n![image-20250725134058873](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250725134058873.png)\n\n面对五花八门的促销玩法，我习惯按照**优惠最终作用的范围**，把它们清晰地划分为两大类：\n\n1.  **单品活动**：这类活动的优惠，是**精确到某一个或某几个具体商品（SKU）上的**。例如，“这件T恤限时秒杀价99元”、“那款手机参与预售，定金100抵200”。我们本章要学习的**预售、秒杀、直降、折扣、拼团**都属于这一类。\n2.  **总价活动**：这类活动的优惠，是作用于用户**整个购物车的订单总金额上的**。例如，“全场实付金额满200元减20元”、“订单满3件打8折”。我们将在下一章学习的**满减/满折、满赠、优惠券**等，都属于这一类。\n\n本章，我们的核心任务就是，把“单品活动”这一类的典型玩法，彻底学会、学透。\n\n## 2.2 预售活动管理\n\n我们首先要设计的，是“预售”这个非常重要的活动。它不仅是“双十一”这类大促的标配，也是很多新品发布时，我用来试探市场、引爆声量的利器。\n\n### 2.2.1 预售活动需求分析\n\n在我决定要设计“预售”功能之前，我首先会问自己：**业务上为什么需要它？它能解决什么问题？**\n\n经过分析，我总结出预售的核心价值主要在于：\n\n* **新品首发**：对于即将上市的新品，通过预售可以提前预热市场，并根据定金数据来预测首批备货量，降低库存风险。\n* **大促蓄水**：在像“双十一”这样的大促开始前，通过预售提前锁定大量用户的购买意向和定金，为大促当天的爆发积蓄能量。\n* **锁定用户**：一旦用户支付了定金，他的“反悔成本”就会增加，这就在很大程度上提前锁定了这笔交易。\n\n明确了“Why”，接下来我就要思考“What”和“How”。我的设计思路，通常包含对**角色、流程、功能、字段**的完整定义。\n\n### 2.2.2 预售活动产品方案设计\n\n现在，我们就进入产品方案设计的核心环节。我将从“**角色与流程**”、“**功能与字段**”、“**列表与状态**”这三个方面，为你详细拆解我的设计。\n\n**1. 角色与流程**\n\n![image-20250725134243737](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250725134243737.png)\n\n\n\n![image-20250725134250658](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250725134250658.png)\n\n一个功能的设计，我首先要理清参与者（角色）以及他们之间的互动方式（流程）。\n\n* **商家创建预售流程**：对于商家来说，创建一个活动的流程必须清晰、简单。我设计的流程是：\n\t- `选择活动类型(预售)` -> `填写基本信息` -> `设置活动规则` -> `选择参与商品`\n\t- 这是一个线性的、引导式的创建路径，能有效降低商家的使用门槛\n* **用户参与预售流程**：对于用户，参与的流程则要顺畅、易懂。他们的核心流程是：\n\t* `浏览预售商品详情页` -> `支付定金` -> `（等待尾款支付时间）` -> `支付尾款`。\n\n**2. 创建预售活动功能及字段信息**\n\n![image-20250725134412506](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250725134412506.png)\n\n理清流程后，我们就可以定义商家创建活动时，到底需要填写哪些信息了。我将它分解为三个部分：\n\n1.  **设置基本信息**：这部分是活动的“身份信息”，包括`活动名称`（方便商家自己识别）、`参与人群`（如新用户专享、VIP用户专享等）、`活动平台`（是在App生效还是H5生效）等。\n2.  **填写活动规则**：这是预售活动的核心，我需要让商家可以设置`定金金额`、`定金膨胀系数`（例如定金100元可抵200元）、`定金支付时间`和`尾款支付时间`。\n3.  **选择活动商品**：商家需要明确指定，是哪一个或哪些商品参与这次预售活动。\n\n![image-20250725134701408](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250725134701408.png)\n\n上面那些字段，最终会构成我们商家后台的活动创建页面。通过这样一个结构化的表单，商家就可以清晰、高效地完成一个预售活动的创建。\n\n![image-20250725134750203](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250725134750203.png)\n\n特别是在“选择活动商品”这一步，我还需要为商家设计一个便捷的商品选择器。如上图所示，当商家点击“选择商品”后，我会提供一个弹窗，让他能方便地从店铺的商品库中进行搜索和勾选，甚至能进一步选择到具体要参与活动的**商品SKU**（如：红色 L码）。\n\n**3. 预售活动列表页与状态机**\n\n![image-20250725194116572](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250725194116572.png)\n\n当商家创建完一系列活动后，他需要一个列表来统一查看和管理。我设计的活动列表页，会清晰地展示每个活动的`活动名称`、`定金/尾款时间`、`活动状态`等关键信息，并提供必要的操作入口。\n\n![image-20250725194216822](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250725194216822.png)\n\n为了让管理工作清晰可控，我为每一个预售活动，都设计了一套“**状态机**”。这是后台产品设计中一个至关重要的概念。\n\n* **状态流转**：一个活动从被创建到结束，它的生命周期是单向的：`未开始` -> `进行中` -> `已结束`。我不会允许一个已结束的活动再回到进行中。\n* **状态与操作**：活动在不同的状态下，商家可以进行的操作是不同的。我通过上面这张表格来严格定义这些权限：\n    * **未开始**：活动还没开始，一切都还来得及，所以商家可以对它进行`编辑`修改，或者直接`关闭`（取消活动）。\n    * **进行中**：活动已经开始了，有用户可能已经付了定金。为了防止混乱和纠纷，我**不允许商家再对活动进行`编辑`**，但可以强制`结束`活动。\n    * **已结束**：活动已经彻底结束，商家只能`查看`历史记录，不能再进行任何修改。\n\n通过这样严谨的状态机设计，我就能确保我的预售活动功能，在被大量商家使用时，依然能够稳定、有序地运行。\n\n\n---\n## 2.3 秒杀、直降与折扣活动管理\n\n在这一节，我将带你设计一组最常用、最直接的降价促销工具。它们的核心逻辑都是“**降低商品价格**”，但在活动氛围、技术实现和应用场景上，又各有侧重。\n\n### 2.3.1 秒杀活动需求分析\n\n在我设计的众多活动中，“**秒杀**”无疑是为平台引流、为商品制造爆点最有效的武器之一。它的核心价值在于，通过“**超低价 + 限时 + 限量**”这三大要素，营造出一种极度的稀缺感和紧迫感。\n\n我设计秒杀功能，通常是为满足以下业务需求：\n1.  **拉新引流**：用一两款超低价的商品，在短时间内吸引海量新用户访问平台。\n2.  **爆款促销**：为重点商品或新品，制造一个现象级的抢购事件，提升其知名度和销量。\n3.  **清仓甩货**：快速处理掉临期或过季的商品，回笼资金。\n\n### 2.3.2 秒杀活动产品方案设计\n\n秒杀活动的设计思路与预售活动一脉相承，我同样会从“角色与流程”、“功能与字段”、“列表与状态”等方面展开，但其中会有一些关键的差异点。\n\n**1. 角色与流程**\n\n秒杀活动的角色和流程与预售类似，但节奏更快：\n* **商家创建流程**：依然是`选择活动类型(秒杀)` -> `填写基本信息` -> `设置活动规则` -> `选择参与商品`的线性流程。\n* **用户参与流程**：用户的路径被大大缩短，变为`秒杀活动页` -> `（等待开抢）` -> `立即抢购` -> `下单支付`。整个过程必须在极短时间内完成。\n\n**2. 创建秒杀活动功能及字段信息**\n\n![image-20250725194912426](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250725194912426.png)\n\n我们来看创建秒杀活动需要哪些字段。它的大体结构与预售一致，但在“活动规则”上，有秒杀专属的特殊设计。\n\n* **活动基本信息**：`活动名称`、`活动时间`（秒杀的起止时间通常很短）、`参与人群`等。\n* **活动规则信息**：这是与预售最大的不同。这里没有复杂的定金和尾款，取而代之的是一个至关重要的规则——`是否限购`。\n* **活动商品信息**：需要设置`秒杀价格`和`秒杀库存`。\n\n![image-20250725195000199](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250725195000199.png)\n\n在创建秒杀活动的页面上，我必须重点突出“**是否限购**”这个选项。比如，我可以设计为“`限购 X 件`”。这是秒杀活动的生命线，既能防止“黄牛”刷单，也能让更多普通用户能享受到优惠，保证了活动的公平性和参与度。\n\n![image-20250725195013198](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250725195013198.png)\n\n商品选择的模块，我可以完全复用之前为预售活动设计的组件。这正是我作为产品经理，在设计时需要时刻具备的“**模块化思维**”，能极大地提升研发效率。\n\n**3. 秒杀活动列表页**\n\n![image-20250725195033616](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250725195033616.png)\n\n商家创建好的秒杀活动，会统一进入这张列表进行管理。列表的字段和状态机（未开始、进行中、已结束、已失效）的设计，与预售活动基本一致，这里我就不再赘述。\n\n**4. 平台固定时间秒杀专场实现**\n\n![image-20250725195052650](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250725195052650.png)\n\n一个常见的运营需求是，平台希望有一个固定的秒杀频道，比如像上图案例中那样，有“8点场”、“10点场”、“12点场”等。作为商家，只能报名参加这些固定的场次，而不能随意设置秒杀时间。这个功能我该如何实现呢？\n\n![image-20250725195111770](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250725195111770.png)\n\n我的方案是，在平台运营总后台，增加一个“**秒杀场次管理**”的功能。\n\n如上图所示，我们平台的运营人员，可以在这里**预先设定**好一天内所有的秒杀时间段（如：`08:00-10:00`，`10:00-12:00`...）。\n\n配置好之后，商家在创建秒杀活动时，`活动时间`的设置方式就从“自由选择时间”，变成了“**从已有场次中选择一个进行报名**”。这样，我就能将所有商家的秒杀活动，规整到平台统一的、固定的频道页面中，便于集中展示和引流。\n\n### 2.3.3 直降与折扣活动设计\n\n![image-20250725195143264](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250725195143264.png)\n\n我们已经彻底搞懂了最复杂的秒杀活动。那么，它的两个“简化版”兄弟——**直降**和**折扣**，又该如何设计呢？我通常会通过对比来理清思路。\n\n**1. 与秒杀活动对比分析**\n\n直降和折扣，本质上是“**弱化版**”的秒杀。它们弱化了秒杀最核心的“紧迫感”和“稀缺感”，从而变成了更常规、更温和的促销工具。\n\n| **活动类型** | **核心** | **氛围营造** | **我的设计侧重** |\n| :--- | :--- | :--- | :--- |\n| **秒杀** | 限时、限量、超低价 | **强**（紧张、刺激） | 必须有**限购**，活动时间**短** |\n| **直降** | 在一定时间内，直接降价 | **弱**（直观、清晰） | 只需要设置**活动价**和**活动时间** |\n| **折扣** | 在一定时间内，打折销售 | **弱**（有计算成本）| 只需要设置**折扣率**和**活动时间** |\n\n**2. 创建活动所需信息**\n\n基于以上的对比，我在设计“直降”和“折扣”的创建功能时，就可以在“秒杀”的基础上做减法：\n\n* **创建直降活动**：我只需要商家设置`活动时间`和`直降后的价格`。其他信息（如活动名称、参与商品等）完全可以复用秒杀的设计。\n* **创建折扣活动**：我只需要商家设置`活动时间`和`折扣率`（例如，输入“8”代表八折）。系统会自动根据原价计算出折后价。\n\n通过这种“**设计复用+做减法**”的思路，我就能用最低的研发成本，快速地为运营团队，提供一套功能覆盖全面的价格管理工具。\n\n\n\n---\n## 2.4 拼团活动管理\n\n在掌握了预售、秒杀等传统促销工具后，现在，我们要学习一个与众不同的、自带“**社交裂变**”属性的强大玩法——**拼团**。它不仅仅是降价，更是驱动用户主动为我们去拉新用户的增长利器。\n\n### 2.4.1 拼团活动需求分析\n\n![image-20250725195740483](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250725195740483.png)\n\n我之所以要设计拼团功能，其核心的业务诉求，正如上图所述，是为了满足商家“**低成本拉新**”的强烈需求。\n\n拼团的本质，是一种“**利益共享**”的社交电商模式。我把它总结为一个循环：\n1.  平台或商家提供一个极具吸引力的“**拼团价**”。\n2.  老用户被价格吸引，为了成功购买，他必须**分享链接**给好友。\n3.  新用户看到好友分享的优惠信息，基于社交信任和价格吸引，也参与进来，从而**完成了一次拉新**。\n\n通过这种方式，商家把一部分营销预算，直接补贴给了消费者，并巧妙地利用他们的社交关系链，为自己带来了精准、低成本的新流量。\n\n### 2.4.2 拼团活动产品方案设计\n\n拼团的设计比之前的活动要复杂，因为它同时涉及“**B端（商家）**”和“**C端（用户）**”，并且引入了“**社交分享**”的流程。我将为你一步步拆解。\n\n**1. 角色与流程**\n\n![image-20250725195831494](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250725195831494.png)\n\n在拼团这个玩法中，我定义了两个新的C端用户角色：\n\n* **团长 (Leader)**：第一个发起拼团的人。\n* **参团人 (Member)**：通过团长分享的链接，加入这个团的人。\n\n基于这两个角色，我梳理出了B端和C端两套核心流程：\n\n* **B端 - 商家创建流程**：这个流程对商家来说必须简单，我设计的步骤是：\n\t*  `选择活动类型(拼团)` -> `填写活动信息` -> `设置活动规则` -> `选择参与商品`。\n* **C端 - 用户参与流程**：这是拼团玩法的核心，用户的路径是一个社交闭环：\n\t* `发起拼团` -> `分享拼团` -> `好友参与拼团` -> `（拼团成功）`。\n\n**2. B端 - 创建拼团活动功能**\n\n![image-20250725195922219](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250725195922219.png)\n\n我们重点来看商家创建活动时，“**活动规则**”的配置，这是拼团功能的灵魂。\n\n* **成团人数**：一个团需要多少人才能成功。通常我会建议商家设置为2人，因为这是裂变效率最高的模式。\n* **成团有效期**：开团后，必须在多长时间内邀请到足够的好友，否则拼团失败。例如，24小时。\n* **模拟成团**：这是一个非常重要的“**用户体验优化**”功能。如果我勾选了它，就意味着当一个团在有效期结束时，如果还差一个人，**系统会自动模拟一个“机器人”用户参与进来，让这个团强制成功**。这能极大地降低因拼团失败给真实用户带来的挫败感。\n\n![image-20250725200041910](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250725200041910.png)\n\n这些字段最终会落地为我们商家后台的创建页面。商家可以根据自己的商品属性和营销目标，灵活地配置拼团的玩法。\n\n**3. B端 - 拼团数据与管理**\n\n商家创建完活动，还需要对进行中的团订单进行管理。\n\n![image-20250725200130988](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250725200130988.png)\n\n首先，商家创建的拼团活动，会和其他活动（秒杀、预售等）一起，出现在这张总的“**活动列表**”里，方便进行统一的启停和编辑操作。\n\n但拼团的特殊性在于，一个“拼团活动”下面，会由不同用户发起无数个具体的“**团（Pingtuan Order）**”。因此，我还需要为商家设计一个专门的“**拼团数据**”列表。\n\n在这里，商家可以清晰地看到每一个“团”的状态：是**拼团中**、**拼团成功**，还是**拼团失败**。这对于客服介入处理售后问题至关重要。\n\n![image-20250725200327195](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250725200327195.png)\n\n当商家需要处理某个具体团的问题时，他可以点击“查看”，进入“**拼团详情**”页。这里有这个团所有成员的昵称、下单时间、订单状态等详细信息，方便客服进行精细化的管理和沟通。\n\n![image-20250725200210298](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250725200210298.png)\n\n\n\n**4. C端 - 核心页面设计（讲解）**\n\n虽然我们这里没有C端的页面原型，但我可以为你讲解一下，要支撑起整个拼团流程，我至少需要为用户设计这几个核心页面：\n* **商品详情页**：在这个页面，我会同时展示“单独购买价”和“发起拼团价”，用巨大的价差来吸引用户发起拼团。\n* **拼团进行页**：当用户开团后，会进入这个页面。页面上必须有清晰的“**成团倒计时**”、已加入成员的头像列表、以及一个最醒目的“**邀请好友参团**”的分享按钮。\n* **参团页**：当好友通过分享链接点进来时，看到的页面。他可以清楚地看到是谁邀请他、还差几个人成团，并可以直接点击“一键参团”完成支付。\n\n至此，一个完整的、兼顾了B端管理和C端体验的拼团功能，我们就设计完成了。\n\n## 2.5 本章总结\n\n恭喜你！我们已经完整地学习了“**活动管理-单品活动**”这一核心章节。现在，让我们一起回顾一下本章最重要的知识点。\n\n**1. 活动运营，主要的单品活动有哪些？**\n\n在本章，我们系统性地学习并设计了四种最主流的单品活动，你需要牢记它们的定位和核心价值：\n\n* **预售**：核心是“**锁定需求**”，常用于新品首发和大型促销的蓄水期。\n* **秒杀**：核心是“**制造稀缺**”，是短期内吸引流量、打造爆款的终极武器。\n* **直降/折扣**：核心是“**直接让利**”，是最常用、最灵活的常规促销手段。\n* **拼团**：核心是“**社交裂变**”，是利用社交关系链，实现低成本拉新的增长引擎。\n\n**2. 创建活动的三个主要步骤是什么？**\n\n通过对四种不同活动的反复设计，我们发现，无论玩法如何变化，我作为产品经理，在设计B端（商家后台）创建流程时，其底层逻辑是高度一致的。我把它总结为“**创建三部曲**”：\n\n1.  **设置基本信息**：明确活动叫什么、给谁用、在哪里生效。\n2.  **配置活动规则**：定义活动的核心玩法，例如预售的定金、秒杀的限购、拼团的人数等。\n3.  **选择参与商品**：圈定本次优惠具体生效的商品范围。\n\n掌握了这个结构化的设计思路，未来无论你遇到多么新颖的营销玩法，都能够快速、清晰地把它转化为一套完整的产品方案。\n\n到这里，我们关于单品活动的设计就全部完成了。在下一章，我们将继续挑战“总价活动”的设计，学习优惠券、满减满赠等更复杂的玩法。\n\n\n\n---"}</script></div><div class="aside-content" id="aside-content"><div class="card-widget card-info card-author-solitude"><div class="card-top-section"><div class="sayhi" id="author-info__sayhi" onclick="anzhiyu.changeWittyWord()"></div><div class="avatar"><img alt="avatar" src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/avatar.png" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2024/06/20/6673caa5bca18.gif&quot;"><div class="sticker"><img class="sticker-img" src="https://bu.dusays.com/2025/07/19/687b396f89934.png" alt="status"></div></div></div><div class="card-bottom-section"><div class="author-info"><div class="name">Prorise</div><div class="desc">这是我的博客，分享技术与生活的点点滴滴</div></div><div class="site-stats"><div class="stat-item"><a href="/archives/"><div class="stat-number">109</div><div class="stat-label">文章</div></a></div><div class="stat-item"><a href="/tags/"><div class="stat-number">7</div><div class="stat-label">标签</div></a></div><div class="stat-item"><a href="/categories/"><div class="stat-number">9</div><div class="stat-label">分类</div></a></div></div><div class="social-icons"><a class="social-icon" href="https://github.com/Prorise-cool" rel="external nofollow noreferrer" title="Github" target="_blank"><i class="fab fa-github"></i></a><a class="social-icon" href="https://space.bilibili.com/361040115?spm_id_from=333.1387.0.0" rel="external nofollow noreferrer" title="BiliBili" target="_blank"><i class="fab fa-bilibili"></i></a></div></div></div><div class="card-widget card-latest-comments"><div class="item-headline"><i class="fas fa-comments"></i><span>最新评论</span></div><div class="item-content"><a href="/messages/" class="headline-right" title="查看更多"><i class="fas fa-angle-right"></i></a><div class="aside-list" id="latest-comments"></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%9A%E6%B4%BB%E5%8A%A8%E7%AE%A1%E7%90%86-%E5%8D%95%E5%93%81%E6%B4%BB%E5%8A%A8"><span class="toc-number">1.</span> <span class="toc-text">第二章：活动管理-单品活动</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E8%90%A5%E9%94%80%E6%B4%BB%E5%8A%A8%E6%A6%82%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text">2.1 营销活动概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-1-%E8%90%A5%E9%94%80%E6%B4%BB%E5%8A%A8%E5%88%86%E7%B1%BB"><span class="toc-number">1.1.1.</span> <span class="toc-text">2.1.1 营销活动分类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E9%A2%84%E5%94%AE%E6%B4%BB%E5%8A%A8%E7%AE%A1%E7%90%86"><span class="toc-number">1.2.</span> <span class="toc-text">2.2 预售活动管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-1-%E9%A2%84%E5%94%AE%E6%B4%BB%E5%8A%A8%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.2.1 预售活动需求分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-2-%E9%A2%84%E5%94%AE%E6%B4%BB%E5%8A%A8%E4%BA%A7%E5%93%81%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2.2 预售活动产品方案设计</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-%E7%A7%92%E6%9D%80%E3%80%81%E7%9B%B4%E9%99%8D%E4%B8%8E%E6%8A%98%E6%89%A3%E6%B4%BB%E5%8A%A8%E7%AE%A1%E7%90%86"><span class="toc-number">1.3.</span> <span class="toc-text">2.3 秒杀、直降与折扣活动管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-1-%E7%A7%92%E6%9D%80%E6%B4%BB%E5%8A%A8%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-number">1.3.1.</span> <span class="toc-text">2.3.1 秒杀活动需求分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-2-%E7%A7%92%E6%9D%80%E6%B4%BB%E5%8A%A8%E4%BA%A7%E5%93%81%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.3.2.</span> <span class="toc-text">2.3.2 秒杀活动产品方案设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-3-%E7%9B%B4%E9%99%8D%E4%B8%8E%E6%8A%98%E6%89%A3%E6%B4%BB%E5%8A%A8%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.3.3.</span> <span class="toc-text">2.3.3 直降与折扣活动设计</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-%E6%8B%BC%E5%9B%A2%E6%B4%BB%E5%8A%A8%E7%AE%A1%E7%90%86"><span class="toc-number">1.4.</span> <span class="toc-text">2.4 拼团活动管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-1-%E6%8B%BC%E5%9B%A2%E6%B4%BB%E5%8A%A8%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-number">1.4.1.</span> <span class="toc-text">2.4.1 拼团活动需求分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-2-%E6%8B%BC%E5%9B%A2%E6%B4%BB%E5%8A%A8%E4%BA%A7%E5%93%81%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.4.2.</span> <span class="toc-text">2.4.2 拼团活动产品方案设计</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-%E6%9C%AC%E7%AB%A0%E6%80%BB%E7%BB%93"><span class="toc-number">1.5.</span> <span class="toc-text">2.5 本章总结</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/30592.html" title="4️⃣ 商业B端产品经理实战"><img src="https://i1.wp.com/dev.ruom.top/i/2025/07/26/266618.webp" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" alt="4️⃣ 商业B端产品经理实战"></a><div class="content"><a class="title" href="/posts/30592.html" title="4️⃣ 商业B端产品经理实战">4️⃣ 商业B端产品经理实战</a><time datetime="2025-07-26T07:09:45.000Z" title="发表于 2025-07-26 15:09:45">2025-07-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/51707.html" title="第五章：用户运营"><img src="https://i1.wp.com/dev.ruom.top/i/2025/07/25/884971.webp" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" alt="第五章：用户运营"></a><div class="content"><a class="title" href="/posts/51707.html" title="第五章：用户运营">第五章：用户运营</a><time datetime="2025-07-26T05:13:45.000Z" title="发表于 2025-07-26 13:13:45">2025-07-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/19658.html" title="第四章：内容管理"><img src="https://i1.wp.com/dev.ruom.top/i/2025/07/25/884971.webp" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" alt="第四章：内容管理"></a><div class="content"><a class="title" href="/posts/19658.html" title="第四章：内容管理">第四章：内容管理</a><time datetime="2025-07-26T04:13:45.000Z" title="发表于 2025-07-26 12:13:45">2025-07-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/27803.html" title="第三章：活动管理-总价活动"><img src="https://i1.wp.com/dev.ruom.top/i/2025/07/25/884971.webp" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" alt="第三章：活动管理-总价活动"></a><div class="content"><a class="title" href="/posts/27803.html" title="第三章：活动管理-总价活动">第三章：活动管理-总价活动</a><time datetime="2025-07-26T03:13:45.000Z" title="发表于 2025-07-26 11:13:45">2025-07-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/10822.html" title="第二章：活动管理-单品活动"><img src="https://i1.wp.com/dev.ruom.top/i/2025/07/25/884971.webp" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" alt="第二章：活动管理-单品活动"></a><div class="content"><a class="title" href="/posts/10822.html" title="第二章：活动管理-单品活动">第二章：活动管理-单品活动</a><time datetime="2025-07-26T02:13:45.000Z" title="发表于 2025-07-26 10:13:45">2025-07-26</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="footer_deal"><a class="deal_link" href="mailto:3381292732@qq.com" rel="external nofollow noreferrer" title="email"><i class="anzhiyufont anzhiyu-icon-envelope"></i></a><a class="deal_link" target="_blank" rel="noopener external nofollow noreferrer" href="https://weibo.com/u/7484736298?tabtype=home" title="微博"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a><a class="deal_link" href="/atom.xml" title="RSS"><i class="anzhiyufont anzhiyu-icon-rss"></i></a><img class="footer_mini_logo" title="返回顶部" alt="返回顶部" onclick="anzhiyu.scrollToDest(0,500)" src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/avatar.png" size="50px"><a class="deal_link" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Prorise-cool" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a><a class="deal_link" target="_blank" rel="noopener external nofollow noreferrer" href="https://space.bilibili.com/361040115?spm_id_from=333.788.0.0" title="Bilibili"><i class="anzhiyufont anzhiyu-icon-bilibili"></i></a><a class="deal_link" href="/copyright" title="CC"><i class="anzhiyufont anzhiyu-icon-copyright-line"></i></a></div><div id="workboard"><div id="runtimeTextTip"></div></div><div class="footer_custom_text">这是我的个人博客，分享技术与生活点滴。</div><div id="anzhiyu-footer"><div class="footer-group"><div class="footer-title">服务</div><div class="footer-links"><a class="footer-item" title="51la统计" target="_blank" rel="noopener external nofollow noreferrer" href="https://v6.51.la/">51la统计</a><a class="footer-item" title="十年之约" target="_blank" rel="noopener external nofollow noreferrer" href="https://www.foreverblog.cn/">十年之约</a></div></div><div class="footer-group"><div class="footer-title">主题</div><div class="footer-links"><a class="footer-item" title="文档" href="/docs/">文档</a><a class="footer-item" title="源码" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Prorise-cool/Prorise-cool.github.io/tree/main">源码</a></div></div><div class="footer-group"><div class="footer-title">导航</div><div class="footer-links"><a class="footer-item" title="即刻短文" href="/essay/">即刻短文</a><a class="footer-item" title="留言板" href="/comments/">留言板</a></div></div><div class="footer-group"><div class="footer-title">协议</div><div class="footer-links"><a class="footer-item" title="隐私协议" href="/privacy/">隐私协议</a><a class="footer-item" title="版权协议" href="/copyright/">版权协议</a></div></div><div class="footer-group"><div class="footer-title-group"><div class="footer-title">友链</div><a class="random-friends-btn" id="footer-random-friends-btn" href="javascript:addFriendLinksInFooter();" rel="external nofollow noreferrer" title="换一批友情链接"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right"></i></a></div><div class="footer-links" id="friend-links-in-footer"></div></div></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="博客框架为Hexo7.0" title="博客框架为Hexo7.0"><img src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Frame-Hexo.svg" alt="博客框架为Hexo7.0"></a><a class="github-badge" target="_blank" href="https://www.dogecloud.com/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站使用多吉云为静态资源提供CDN加速" title="本站使用多吉云为静态资源提供CDN加速"><img src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/CDN-多吉云-3693F3.svg" alt="本站使用多吉云为静态资源提供CDN加速"></a><a class="github-badge" target="_blank" href="https://github.com/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站项目由Github托管" title="本站项目由Github托管"><img src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Source-Github.svg" alt="本站项目由Github托管"></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站采用CC BY-NC-SA 4.0协议" title="本站采用CC BY-NC-SA 4.0协议"><img src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/Copyright-BY-NC-SA.svg" alt="本站采用CC BY-NC-SA 4.0协议"></a></p></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">©2025 By <a class="footer-bar-link" href="/about/" title="Prorise" target="_blank">Prorise</a></div></div><div id="footer-type-tips"></div><div class="js-pjax"><script>function subtitleType () {
+  fetch('https://v1.hitokoto.cn')
+    .then(response => response.json())
+    .then(data => {
+      if (true) {
+        const from = '出自 ' + data.from
+        const sub = ["生活明朗, 万物可爱, 人间值得, 未来可期.","愿你眼里的星星，永远亮晶晶。","愿我们每个人都能被世界温柔以待。"]
+        sub.unshift(data.hitokoto, from)
+        window.typed = new Typed('#footer-type-tips', {
+          strings: sub,
+          startDelay: 300,
+          typeSpeed: 150,
+          loop: true,
+          backSpeed: 50,
+        })
+      } else {
+        document.getElementById('footer-type-tips').innerHTML = data.hitokoto
+      }
+    })
+}
+
+if (true) {
+  if (typeof Typed === 'function') {
+    subtitleType()
+  } else {
+    getScript('https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/typed.js/2.0.12/typed.min.js').then(subtitleType)
+  }
+} else {
+  subtitleType()
+}</script></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Prorise-cool?tab=repositories" title="网站源码">网站源码</a><a class="footer-bar-link" target="_blank" rel="noopener external nofollow noreferrer" href="https://beian.miit.gov.cn/" title="湘ICP备23041-302号">湘ICP备23041-302号</a><a class="footer-bar-link cc" href="/copyright" title="cc协议"><i class="anzhiyufont anzhiyu-icon-copyright-line"></i><i class="anzhiyufont anzhiyu-icon-creative-commons-by-line"></i><i class="anzhiyufont anzhiyu-icon-creative-commons-nc-line"></i><i class="anzhiyufont anzhiyu-icon-creative-commons-nd-line"></i></a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">109</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">9</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" rel="external nofollow noreferrer" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" href="/" title="博客"><img class="back-menu-item-icon" src="https://bu.dusays.com/2025/07/19/687b394cb439b.ico" alt="博客"><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" href="/" title="后续项目..."><img class="back-menu-item-icon" src="https://image.anheyu.com/favicon.ico" alt="后续项目..."><span class="back-menu-item-text">后续项目...</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size:.9em"></i><span> 归档</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size:.9em"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size:.9em"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>个人</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size:.9em"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/todolist/"><i class="fas fa-check-double faa-tada"></i><span> 留言板</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/awesome-links/"><i class="fas fa-link faa-tada"></i><span> 实用网站</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>预览</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/?server=netease&amp;id=3117791189"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size:.9em"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size:.9em"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/messages/"><i class="fas fa-comments faa-tada"></i><span> 评论总览</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size:.9em"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size:.9em"></i><span> 即刻短文</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size:.9em"></i><span> 随便逛逛</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%80%BB%E6%B1%87/" style="font-size:.88rem">Java基础知识总汇<sup>9</sup></a><a href="/tags/Java%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%AF%87/" style="font-size:.88rem">Java微服务篇<sup>11</sup></a><a href="/tags/Python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%80%BB%E6%B1%87/" style="font-size:.88rem">Python基础知识总汇<sup>22</sup></a><a href="/tags/%E4%B8%AA%E4%BA%BA/" style="font-size:.88rem">个人<sup>5</sup></a><a href="/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E5%AE%9E%E6%88%98/" style="font-size:.88rem">产品经理实战<sup>5</sup></a><a href="/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E6%95%99%E7%A8%8B/" style="font-size:.88rem">产品经理教程<sup>26</sup></a><a href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/" style="font-size:.88rem">博客搭建教程<sup>31</sup></a></div></div><hr></div></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="go-down" type="button" title="直达底部" onclick="anzhiyu.scrollToDest(document.body.scrollHeight,500)"><i class="anzhiyufont anzhiyu-icon-arrow-down"></i></button><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="anzhiyufont anzhiyu-icon-comment-sms"></i></button><button id="to_comment" type="button" title="直达评论" onclick="FixedCommentBtn()"><i class="anzhiyufont anzhiyu-icon-comments"></i></button><a id="switch-commentBarrage" href="javascript:anzhiyu.switchCommentBarrage();" rel="external nofollow noreferrer" title="开关弹幕"><i class="anzhiyufont anzhiyu-icon-danmu"></i></a><button id="download-md-btn" type="button" title="下载文章源文件"><i class="anzhiyufont anzhiyu-icon-download"></i></button><button id="doc-toc-button" type="button" title="文档目录"><i class="anzhiyufont anzhiyu-icon-bars"></i></button><button id="code-runner-btn" type="button" title="代码运行器"><i class="fas fa-code"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div class="code-runner-panel" id="code-runner-panel"><div class="panel-header"><div class="panel-title">代码运行器</div><button class="panel-close-btn" type="button" title="关闭"><i class="fas fa-times"></i></button></div><div class="panel-body"><nav class="panel-nav"><div class="nav-category" data-category="Trinket"><div class="category-header" data-description="适合Python/HTML/CSS/JS等基础代码运行，界面简洁易用" title="适合Python/HTML/CSS/JS等基础代码运行，界面简洁易用"><i class="fas fa-leaf"></i><span class="category-name">Trinket</span><i class="expand-icon fas fa-chevron-down"></i></div><ul class="instance-list"><li class="instance-item"><a class="instance-link" href="javascript:void(0);" rel="external nofollow noreferrer" data-url="https://trinket.io/embed/python3/f417f7026885" data-name="Python 3" title="Python 3 在线编程环境">Python 3</a></li><li class="instance-item"><a class="instance-link" href="javascript:void(0);" rel="external nofollow noreferrer" data-url="https://trinket.io/embed/html/1aac0e8640a7" data-name="HTML/CSS/JS" title="前端三件套在线编辑器">HTML/CSS/JS</a></li><li class="instance-item"><a class="instance-link" href="javascript:void(0);" rel="external nofollow noreferrer" data-url="https://trinket.io/embed/java/33cfa8ec292c" data-name="Java" title="Java 在线编程环境">Java</a></li></ul></div><div class="nav-category" data-category="JDoodle"><div class="category-header" data-description="支持70+种编程语言，功能强大的在线编译器" title="支持70+种编程语言，功能强大的在线编译器"><i class="fas fa-terminal"></i><span class="category-name">JDoodle</span><i class="expand-icon fas fa-chevron-down"></i></div><ul class="instance-list"><li class="instance-item"><a class="instance-link" href="javascript:void(0);" rel="external nofollow noreferrer" data-url="https://www.jdoodle.com/online-compiler-c++/" data-name="C++ Compiler" title="C++ 在线编译器">C++ Compiler</a></li><li class="instance-item"><a class="instance-link" href="javascript:void(0);" rel="external nofollow noreferrer" data-url="https://www.jdoodle.com/online-java-compiler/" data-name="Java Compiler" title="Java 在线编译器">Java Compiler</a></li><li class="instance-item"><a class="instance-link" href="javascript:void(0);" rel="external nofollow noreferrer" data-url="https://www.jdoodle.com/python3-programming-online/" data-name="Python 3" title="Python 3 在线编程">Python 3</a></li><li class="instance-item"><a class="instance-link" href="javascript:void(0);" rel="external nofollow noreferrer" data-url="https://www.jdoodle.com/embed/v1/f40f7676c55c09b" data-name="TypeScript 在线编译器" title="TypeScript">TypeScript 在线编译器</a></li><li class="instance-item"><a class="instance-link" href="javascript:void(0);" rel="external nofollow noreferrer" data-url="https://www.jdoodle.com/embed/v1/510d607e22ee9e7c" data-name="SQL 在线编译器" title="SQL 在线编译器">SQL 在线编译器</a></li><li class="instance-item"><a class="instance-link" href="javascript:void(0);" rel="external nofollow noreferrer" data-url="https://www.jdoodle.com/embed/v1/ca85d333af57a5fc" data-name="PHP 在线编译器" title="PHP 在线编译器">PHP 在线编译器</a></li><li class="instance-item"><a class="instance-link" href="javascript:void(0);" rel="external nofollow noreferrer" data-url="https://www.jdoodle.com/embed/v1/8e18f0fd58e4a248" data-name="C语言 在线编译器" title="C语言 在线编译器">C语言 在线编译器</a></li></ul></div></nav><div class="panel-content"><div class="welcome-message"><div class="welcome-icon"><i class="fas fa-code"></i></div><div class="welcome-text"><h3>欢迎使用代码运行器</h3><p>请从左侧菜单选择一个编程环境开始编码</p></div></div><div class="iframe-container"><iframe id="code-runner-iframe" frameborder="0" width="100%" height="100%" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-modals"></iframe></div><div class="loading-indicator"><div class="loading-spinner"><i class="fas fa-spinner fa-spin"></i></div><div class="loading-text">正在加载编程环境...</div></div></div></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="3117791189" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size:1rem"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-askAI"><i class="fa-solid fa-robot"></i><span>询问智能客服</span></div><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://music.163.com/#/playlist?id=3117791189&quot;, &quot;_blank&quot;);" style="display:none"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/instant.page/5.1.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.5/dist/lazyload.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/pangu/4.0.7/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><canvas id="universe"></canvas><script async="" src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>//- 从这里开始的所有JS代码，都必须有缩进（例如2个空格）
+// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("06/10/2025 00:00:00"); // 此处读取您配置中的建站时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  
+  // --- 已将您的专属LOGO和个人信息集成到这里 ---
+  const ascll = [
+    `欢迎访问 Prorise 的数字空间!`,
+    `代码构建世界，思想驱动未来`,
+    "已稳定运行",
+    dnum,
+    "天",
+    `©2025 By Prorise 1.0.0`,
+  ];
+  
+  const ascll2 = [`SYS-INFO`, `前置摄像头拍照成功`, `您的帅气脸庞为：`, `😎`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} \n%c${ascll[2]} ${ascll[3]} ${ascll[4]}\n\n%c ${ascll[5]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF"
+    )
+  );
+
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，朋友.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Created by Prorise %c 你正在访问 Prorise 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 注意，你的所有操作已被记录.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async="" src="/anzhiyu/random.js"></script><script async="">(function () {
+  var grt = new Date("06/10/2025 00:00:00"); //设置网站上线时间
+  var now = new Date();
+  var dnum;
+  var hnum;
+  var mnum;
+  var snum;
+  var nowHour;
+
+  // 计算并更新天数、小时数、分钟数和秒数
+  function updateTime() {
+    now = new Date(); // 更新 now 的值
+    nowHour = now.getHours(); // 更新 nowHour 的值
+    var days = (now - grt) / 1000 / 60 / 60 / 24;
+    dnum = Math.floor(days);
+    var hours = (now - grt) / 1000 / 60 / 60 - 24 * dnum;
+    hnum = Math.floor(hours);
+    if (String(hnum).length == 1) {
+      hnum = "0" + hnum;
+    }
+    var minutes = (now - grt) / 1000 / 60 - 24 * 60 * dnum - 60 * hnum;
+    mnum = Math.floor(minutes);
+    if (String(mnum).length == 1) {
+      mnum = "0" + mnum;
+    }
+    var seconds = (now - grt) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
+    snum = Math.round(seconds);
+    if (String(snum).length == 1) {
+      snum = "0" + snum;
+    }
+  }
+
+  // 更新网页中显示的网站运行时间
+  function updateHtml() {
+    const footer = document.getElementById("footer");
+    if (!footer) return
+    let currentTimeHtml = "";
+    if (nowHour < 18 && nowHour >= 9) {
+      // 如果是上班时间，默认就是"安知鱼-上班摸鱼中.svg"图片，不需要更改
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    } else {
+      // 如果是下班时间，插入"安知鱼-下班啦.svg"图片
+      let img = document.querySelector("#workboard .workSituationImg");
+      if (img != null) {
+        img.src = "";
+        img.title = "下班了就该开开心心的玩耍，嘿嘿~";
+        img.alt = "下班了就该开开心心的玩耍，嘿嘿~";
+      }
+
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    }
+
+    if (document.getElementById("runtimeTextTip")) {
+      document.getElementById("runtimeTextTip").innerHTML = currentTimeHtml;
+    }
+  }
+
+  setInterval(() => {
+    updateTime();
+    updateHtml();
+  }, 1000);
+})();</script><script src="https://cdn.cbd.int/algoliasearch@4.18.0/dist/algoliasearch-lite.umd.js"></script><script src="https://cdn.cbd.int/instantsearch.js@4.60.0/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><div class="js-pjax"><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdn.cbd.int/mermaid@10.2.4/dist/mermaid.min.js').then(runMermaid)
+  }
+
+  anzhiyu.addGlobalFn('themeChange', runMermaid, 'mermaid')
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>(() => {
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo.prorise666.site/',
+      region: 'ap-shanghai',
+      onCommentLoaded: () => {
+        anzhiyu.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') setTimeout(runFn,0)
+    else getScript('https://cdn.cbd.int/twikoo@1.6.39/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo.prorise666.site/',
+      region: 'ap-shanghai',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const runFn = () => {
+    init();
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else {
+      loadTwikoo()
+    }
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script><script>(() => {
+  let initFn = window.walineFn || null
+
+  const initWaline = (Fn) => {
+    const waline = Fn(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'https://waline.prorise666.site',
+      pageview: true,
+      dark: 'html[data-theme="dark"]',
+      path: window.location.pathname,
+      comment: true,
+      imageUploader: true,
+    }, null))
+
+    const destroyWaline = () => {
+      waline.destroy()
+    }
+
+    anzhiyu.addGlobalFn('pjax', destroyWaline, 'destroyWaline')
+  }
+
+  const loadWaline = async () => {
+    if (initFn) initWaline(initFn)
+    else {
+      await getCSS('https://cdn.cbd.int/@waline/client@3.1.3/dist/waline.css')
+      if (true) await getCSS('https://cdn.cbd.int/@waline/client@3.1.3/dist/waline-meta.css')
+      const { init } = await import('https://cdn.cbd.int/@waline/client@3.1.3/dist/waline.js')
+      initFn = init || Waline.init
+      initWaline(initFn)
+      window.walineFn = initFn
+    }
+  }
+
+  if ('Twikoo' === 'Waline' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('waline-wrap'),loadWaline)
+    else setTimeout(loadWaline, 0)
+  } else {
+    window.loadOtherComment = loadWaline
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"><script async="" src="/js/anzhiyu/comment_barrage.js"></script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'https://twikoo.prorise666.site/',
+        region: 'ap-shanghai',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://cdn.cbd.int/twikoo@1.6.39/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'><div class='name'><span>${array[i].nick} </span></div></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script async="" data-pjax="" src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script async="" data-pjax="" src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script src="/js/anzhiyu/right_click_menu.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script src="/js/doc-sidebar.js"></script><script src="/js/load-on-demand.js"></script><script src="//code.tidio.co//tk571vck0ua2wjoalfbp8wyrlsdaunmz.js" async=""></script><script>(() => {
+  const isChatBtn = true
+  const isChatHideShow = true
+
+  if (isChatBtn) {
+    let isShow = false
+    const close = () => {
+      window.tidioChatApi.hide()
+      isShow = false
+      document.body.style.position = 'relative';
+      document.documentElement.style.overflow = 'auto'
+    }
+    
+    const open = () => {
+      window.tidioChatApi.open()
+      window.tidioChatApi.show()
+      isShow = true
+    }
+
+    const onTidioChatApiReady = () => {
+      window.tidioChatApi.hide()
+      window.tidioChatApi.on("close", close)
+    }
+    if (window.tidioChatApi) {
+      window.tidioChatApi.on("ready", onTidioChatApiReady)
+    } else {
+      document.addEventListener("tidioChat-ready", onTidioChatApiReady)
+    }
+
+    window.chatBtnFn = () => {
+      if (!window.tidioChatApi) return
+      isShow ? close() : open()
+    }
+  } else if (isChatHideShow) {
+    window.chatBtn = {
+      hide: () => {
+        window.tidioChatApi && window.tidioChatApi.hide()
+      },
+      show: () => {
+        window.tidioChatApi && window.tidioChatApi.show()
+      }
+    }
+  }
+})()</script><link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/aplayer/1.10.1/APlayer.min.css" media="print" onload="this.media=&quot;all&quot;"><script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/aplayer/1.10.1/APlayer.min.js"></script><script src="https://npm.elemecdn.com/meting@2.0.1/dist/Meting.min.js"></script><script src="https://lib.baomitu.com/pjax/0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","meta[property=\"og:type\"]","meta[property=\"og:site_name\"]","meta[property=\"og:description\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: true,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '[object Object]', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async="" data-pjax="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div>
+    <link rel="stylesheet" href="https://ai.tianli0.top/static/public/postChatUser_summary.min.css">
+    <script>
+        let tianliGPT_key = 'S-DNA1JM95BX2F9L0N';
+        let tianliGPT_postSelector = '#article-container';
+        let tianliGPT_Title = '✨ AI 文章摘要';
+        let tianliGPT_postURL = '';
+        let tianliGPT_blacklist = '';
+        let tianliGPT_wordLimit = '1000';
+        let tianliGPT_typingAnimate = true;
+        let tianliGPT_theme = 'default';
+        var postChatConfig = {
+          backgroundColor: "#1e2022",
+          bottom: "76px",
+          left: "16px",
+          fill: "#FFFFFF",
+          width: "50px",
+          frameWidth: "380px",
+          frameHeight: "600px",
+          defaultInput: true,
+          upLoadWeb: true,
+          showInviteLink: false,
+          userTitle: "💬 Prorise",
+          userDesc: "我是 Prorise 博客的 AI 助手，有任何关于网站内容的问题都可以问我哦～",
+          addButton: true,
+          beginningText: "这篇文章介绍了",
+          userIcon: "",
+          userMode: "magic",
+          defaultChatQuestions: ["你好","你是谁"],
+          defaultSearchQuestions: ["视频压缩","设计"]
+        };
+    </script>
+    <script data-postchat_key="S-DNA1JM95BX2F9L0N" src="https://ai.tianli0.top/static/public/postChatUser_summary.min.js"></script>
+  </body></html>

@@ -39,7 +39,7 @@ function initDocSidebar() {
     tocItemsWithChildren.forEach(item => {
       const link = item.querySelector(':scope > a.toc-link');
       const childList = item.querySelector(':scope > ol.toc-child');
-      
+
       if (!link || !childList) return;
 
       // 1. 动态添加图标 (样式由CSS控制)
@@ -49,7 +49,7 @@ function initDocSidebar() {
         icon.textContent = '▸'; // 使用更现代的箭头
         link.insertBefore(icon, link.firstChild);
       }
-      
+
       // 2. 默认折叠，并从本地存储恢复状态
       const itemId = link.getAttribute('href');
       const isExpanded = localStorage.getItem(`toc-expanded-${itemId}`) === 'true';
@@ -61,7 +61,7 @@ function initDocSidebar() {
       icon?.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation(); // 阻止链接跳转和事件冒泡
-        
+
         // 切换状态
         const wasExpanded = item.classList.contains('expanded');
         item.classList.toggle('expanded');
@@ -125,17 +125,6 @@ function initDocSidebar() {
         const activeLink = tocLinks.find(link => decodeURIComponent(link.getAttribute('href')?.substring(1) || '') === currentId);
         if (activeLink) {
           activeLink.classList.add('active');
-
-          const tocContent = docSidebar.querySelector('.doc-toc-content');
-          if (tocContent?.contains(activeLink)) {
-            const activeLinkRect = activeLink.getBoundingClientRect();
-            const tocContentRect = tocContent.getBoundingClientRect();
-            if (activeLinkRect.bottom > tocContentRect.bottom - 20) {
-              tocContent.scrollTop += activeLinkRect.bottom - tocContentRect.bottom + 20;
-            } else if (activeLinkRect.top < tocContentRect.top + 20) {
-              tocContent.scrollTop -= tocContentRect.top - activeLinkRect.top - 20;
-            }
-          }
         }
       }
     };

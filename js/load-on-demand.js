@@ -64,15 +64,32 @@ class ResourceLoader {
  * 检测页面内容并按需加载相关资源
  */
     autoDetectAndLoad() {
-        // 检测是否为首页（包括分页）
-        const isHomePage = window.location.pathname === '/' ||
-            window.location.pathname === '/index.html' ||
-            /^\/page\/\d+\/?$/.test(window.location.pathname);
-
-        if (isHomePage) {
-            this.loadCSS('/css/index_media.css', 'index-media-style');
-            this.loadJS('/js/index_media.js', 'index-media-script');
+        // 确保LazyLoad可用
+        if (typeof LazyLoad === 'undefined' && GLOBAL_CONFIG.islazyload) {
+            console.log('LazyLoad not found, loading from local backup...');
+            this.loadJS('https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.5/dist/lazyload.min.js', 'lazyload-script')
+                .then(() => {
+                    if (typeof LazyLoad !== 'undefined') {
+                        console.log('LazyLoad loaded successfully');
+                        window.lazyLoadInstance = new LazyLoad({
+                            elements_selector: "img",
+                            threshold: 0,
+                            data_src: "lazy-src",
+                        });
+                    }
+                })
+                .catch(err => console.error('Failed to load LazyLoad fallback:', err));
         }
+
+        // // 检测是否为首页（包括分页）
+        // const isHomePage = window.location.pathname === '/' ||
+        //     window.location.pathname === '/index.html' ||
+        //     /^\/page\/\d+\/?$/.test(window.location.pathname);
+
+        // if (isHomePage) {
+        //     this.loadCSS('/css/index_media.css', 'index-media-style');
+        //     this.loadJS('/js/index_media.js', 'index-media-script');
+        // }
 
         // 检测是否为文章页
         if (document.querySelector('#post') || document.querySelector('.post-content')) {
@@ -81,6 +98,8 @@ class ResourceLoader {
             this.loadJS('/js/doc-sidebar.js', 'doc-sidebar-script');
             this.loadJS('/custom/js/markdown-download.js', 'markdown-download-script');
 
+
+
             // 原有的文章页资源
             this.loadCSS('/css/custom-comment.css', 'custom-comment-style');
             this.loadCSS('/custom/css/tip_style.css', 'tip-style');
@@ -88,12 +107,23 @@ class ResourceLoader {
             this.loadJS('/custom/js/tip_main.js', 'tip-main-script');
         }
 
-        // 检测代码运行器需求（如果页面有相关按钮或配置）
-        if (document.querySelector('#code-runner-btn') ||
-            document.querySelector('[data-code-runner]') ||
-            (typeof anzhiyu !== 'undefined' && anzhiyu.codeRunner)) {
+        // 检测代码运行器HTML是否存在，如存在则必须加载样式避免塌陷
+        if (document.querySelector('#code-runner-panel')) {
             this.loadCSS('/css/code-runner.css', 'code-runner-style');
-            this.loadJS('/js/code-runner.js', 'code-runner-script');
+
+            // 只在文章页面才加载和初始化JS功能
+            if (document.querySelector('#post') || document.querySelector('.post-content')) {
+                this.loadJS('/js/code-runner.js', 'code-runner-script')
+                    .then(() => {
+                        // JS加载完成后，延迟执行初始化以确保DOM准备就绪
+                        setTimeout(() => {
+                            if (typeof initCodeRunner === 'function') {
+                                initCodeRunner();
+                            }
+                        }, 100);
+                    })
+                    .catch(err => console.warn('代码运行器加载失败:', err));
+            }
         }
 
         // 检测B站视频内容
@@ -108,9 +138,8 @@ class ResourceLoader {
         }
 
         // 检测最新评论小组件（独立检测，主页也需要）
-        if (document.querySelector('#latest-comments')) {
-            this.loadJS('/js/comments.js', 'comments-script');
-        }
+        // 移除按需加载限制，直接加载评论脚本
+        this.loadJS('/js/comments.js', 'comments-script');
 
         // 检测评论区
         if (document.querySelector('#twikoo') ||
@@ -129,7 +158,13 @@ class ResourceLoader {
 
         // 检测待办清单页面
         if (window.location.pathname.includes('/todolist/') || document.querySelector('#todolist-box')) {
-            this.loadCSS('/custom/css/todolist.css', 'todolist-style');
+            this.loadCSS('/custom/css/todolist.css', 'todolist-style')
+                .then(() => {
+                    console.log('Todolist CSS 加载完成');
+                    // 触发自定义事件，通知todolist可以初始化
+                    document.dispatchEvent(new CustomEvent('todolist-css-loaded'));
+                })
+                .catch(err => console.warn('Todolist CSS 加载失败:', err));
         }
 
         // 检测实用网站导航页面

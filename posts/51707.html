@@ -1,0 +1,707 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"><title>第五章：用户运营 | Prorise - 分享技术与实战经验</title><meta name="keywords" content="产品经理教程"><meta name="author" content="Prorise"><meta name="copyright" content="Prorise"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f0f5f9"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="第五章：用户运营"><meta name="application-name" content="第五章：用户运营"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f0f5f9"><meta property="og:type" content="article"><meta property="og:title" content="第五章：用户运营"><meta property="og:url" content="https://prorise666.site/posts/51707.html"><meta property="og:site_name" content="Prorise - 分享技术与实战经验"><meta property="og:description" content="第五章：用户运营在前面的章节中，我们已经为我们的电商平台，搭建了从商品、交易、促销到内容管理的强大“武器库”。我们设计了各种功能，让用户可以顺畅地完成购买。 但武器本身不会自己打仗。从本章开始，我们的视角将发生一次关键的跃迁：从以“功能”为中心，转向以“人”为中心。我们将深入探讨，如何运营我们最宝贵"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://i1.wp.com/dev.ruom.top/i/2025/07/25/884971.webp"><meta property="article:author" content="Prorise"><meta property="article:tag" content="全栈, Full Stack, 前端, 后端, Node.js, Vue, React, 数据库, Linux, Docker, 个人博客, 技术分享"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://i1.wp.com/dev.ruom.top/i/2025/07/25/884971.webp"><meta name="description" content="第五章：用户运营在前面的章节中，我们已经为我们的电商平台，搭建了从商品、交易、促销到内容管理的强大“武器库”。我们设计了各种功能，让用户可以顺畅地完成购买。 但武器本身不会自己打仗。从本章开始，我们的视角将发生一次关键的跃迁：从以“功能”为中心，转向以“人”为中心。我们将深入探讨，如何运营我们最宝贵"><link rel="shortcut icon" href="https://bu.dusays.com/2025/07/19/687b394cb439b.ico"><link rel="canonical" href="https://prorise666.site/posts/51707.html"><link rel="preconnect" href="//cdn.cbd.int"><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""><link rel="preconnect" href="//busuanzi.ibruce.info"><meta name="google-site-verification" content="xxx"><meta name="baidu-site-verification" content="code-xxx"><meta name="msvalidate.01" content="xxx"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media=&quot;all&quot;"><link rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/node-snackbar/0.1.16/snackbar.min.css" media="print" onload="this.media=&quot;all&quot;"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media=&quot;all&quot;"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media=&quot;all&quot;"><script async="" src="https://www.googletagmanager.com/gtag/js?id=[object Object]"></script><script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","[object Object]")</script><script>const GLOBAL_CONFIG = {
+  linkPageTop: {"enable":true,"title":"与数百名博主无限进步","addFriendPlaceholder":"昵称（请勿包含博客等字样）：\n网站地址（要求博客地址，请勿提交个人主页）：\n头像图片url（请提供尽可能清晰的图片，我会上传到我自己的图床）：\n描述：\n站点截图（可选）：\n"},
+  peoplecanvas: undefined,
+  postHeadAiDescription: {"enable":true,"gptName":"Prorise","mode":"tianli","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"S-DNA1JM95BX2F9L0N","Referer":"https://xx.xx/"},
+  diytitle: undefined,
+  LA51: undefined,
+  greetingBox: {"enable":true,"default":"晚上好👋","list":[{"greeting":"晚安😴","startTime":0,"endTime":5},{"greeting":"早上好鸭👋, 祝你一天好心情！","startTime":6,"endTime":9},{"greeting":"上午好👋, 状态很好，鼓励一下～","startTime":10,"endTime":10},{"greeting":"11点多啦, 在坚持一下就吃饭啦～","startTime":11,"endTime":11},{"greeting":"午安👋, 宝贝","startTime":12,"endTime":14},{"greeting":"🌈充实的一天辛苦啦！","startTime":14,"endTime":18},{"greeting":"19点喽, 奖励一顿丰盛的大餐吧🍔。","startTime":19,"endTime":19},{"greeting":"晚上好👋, 在属于自己的时间好好放松😌~","startTime":20,"endTime":24}]},
+  twikooEnvId: 'https://twikoo.prorise666.site/',
+  commentBarrageConfig:{"enable":true,"maxBarrage":1,"barrageTime":10000,"accessToken":"b39753735ed0ed5ffeb771bc108e3158","mailMd5":"ec3291d59a8d7d3675df8a0537fcbc979f0fa611c8df55841fb7f4fd162bd07a"},
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: {"mode":"both","api":"https://img2color-go.vercel.app/api?img=","cover_change":true},
+  authorStatus: {"skills":["🤣 全栈开发工程师","🙂 前端架构设计师","🙃 后端服务构建者","🤩 移动端应用开发","🤯 数据库设计专家","🥳 DevOps运维实践者","🤭 技术栈多面手","😎 性能优化达人"],"witty_words":["你可以的","你一定可以的","祝你好运，陌生人","保持热爱，奔赴山海","愿你历尽千帆，归来仍是少年","纵然世事无常，也要保持内心的光亮","时间会证明一切，也会治愈一切","做自己的太阳，无需凭借谁的光"],"states":{"morning":"✨ 早上好，新的一天开始了","noon":"🍲 午餐时间","afternoon":"🌞 下午好","night":"早点休息","goodnight":"晚安 😴"}},
+  algolia: {"appId":"K8Y7M0RMXQ","apiKey":"11fa7380e2694483a44b143044e69e6e","indexName":"prorise_blog","hits":{"per_page":6},"languages":{"input_placeholder":"输入关键词后按下回车查找","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: {"limitDay":360,"position":"top","messagePrev":"距离上次更新已经过了","messageNext":"天，文章内容可能已经过时。"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    simplehomepage: false,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: Prorise","link":"链接: ","source":"来源: Prorise - 分享技术与实战经验","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isAnchor: true,
+  shortcutKey: undefined,
+  autoDarkmode: true,
+  code_runner: {"enable":true,"title":"代码运行器","button_title":"代码运行器","panel_width":"600px","auto_load_first":true,"close_on_escape":true,"remember_selection":true,"categories":[{"name":"Trinket","icon":"fas fa-leaf","description":"适合Python/HTML/CSS/JS等基础代码运行，界面简洁易用","instances":[{"name":"Python 3","url":"https://trinket.io/embed/python3/f417f7026885","description":"Python 3 在线编程环境"},{"name":"HTML/CSS/JS","url":"https://trinket.io/embed/html/1aac0e8640a7","description":"前端三件套在线编辑器"},{"name":"Java","url":"https://trinket.io/embed/java/33cfa8ec292c","description":"Java 在线编程环境"}]},{"name":"JDoodle","icon":"fas fa-terminal","description":"支持70+种编程语言，功能强大的在线编译器","instances":[{"name":"C++ Compiler","url":"https://www.jdoodle.com/online-compiler-c++/","description":"C++ 在线编译器"},{"name":"Java Compiler","url":"https://www.jdoodle.com/online-java-compiler/","description":"Java 在线编译器"},{"name":"Python 3","url":"https://www.jdoodle.com/python3-programming-online/","description":"Python 3 在线编程"},{"name":"TypeScript 在线编译器","url":"https://www.jdoodle.com/embed/v1/f40f7676c55c09b","description":"TypeScript"},{"name":"SQL 在线编译器","url":"https://www.jdoodle.com/embed/v1/510d607e22ee9e7c","description":"SQL 在线编译器"},{"name":"PHP 在线编译器","url":"https://www.jdoodle.com/embed/v1/ca85d333af57a5fc","description":"PHP 在线编译器"},{"name":"C语言 在线编译器","url":"https://www.jdoodle.com/embed/v1/8e18f0fd58e4a248","description":"C语言 在线编译器"}]}]}
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE={configTitle:"Prorise - 分享技术与实战经验",title:"第五章：用户运营",postAI:"true",pageFillDescription:"第五章：用户运营, 5.1 精细化运营的目的, 5.1.1 为什么要进行精细化运营, 5.1.2 精细化运营的目标是什么, 5.2 用户画像, 5.2.1 什么是用户画像, 5.2.2 用户画像的搭建思路, 1. 搭建标签体系, 2. 进行用户分群, 3. 制定运营策略 amp 实施用户触达, 5.3 积分体系, 5.3.1 积分系统的需求分析, 1. 为什么要搭建积分体系？, 2. 积分体系的设计思路：建立闭环, 3. 核心业务流程, 2. 积分体系的产品设计, 一、 用户端（C端）产品设计, 二、 平台端（B端）产品设计, 5.4 会员体系, 5.4.1 什么是会员体系, 5.4.2 会员体系搭建思路, 1. 定义会员类型, 2. 设计会员权益, 3. 建立风险控制与关怀机制第五章用户运营在前面的章节中我们已经为我们的电商平台搭建了从商品交易促销到内容管理的强大武器库我们设计了各种功能让用户可以顺畅地完成购买但武器本身不会自己打仗从本章开始我们的视角将发生一次关键的跃迁从以功能为中心转向以人为中心我们将深入探讨如何运营我们最宝贵的资产用户而用户运营的第一课也是最重要的一课就是精细化运营精细化运营的目的为什么要进行精细化运营在我设计任何一个产品时早期我追求的是功能的普适性我提供的优惠券拼团秒杀等是面向所有用户的通用武器目的是在产品初期快速验证模式吸引第一批用户但随着产品发展用户量不断提升我逐渐发现一个严峻的问题我们的增长变慢了用户的活跃度在逐渐下降当用户规模扩大后用户类型变得极其丰富有学生有白领有宝妈用户需求也变得高度多元化有人追求性价比有人追求品质有人追求新品此时如果我还用一招鲜吃遍天的统一运营方式结果必然是吃力不讨好这就好比用大水漫灌田地对一部分口渴的用户或许有效但对另一部分不渴的用户就是一种资源浪费和体验骚扰而对那些需要特定养分的用户则完全无效一线运营同事的复盘也从实践层面印证了我的判断我们发现大量的优惠券成本投下去只刺激了部分价格敏感用户他们本来就需要强优惠才会下单对于那些忠诚的高价值用户他们本就会购买这些普适的优惠对他们没有带来任何增量消费相当于浪费了营销成本而对于那些从不购买的沉默用户这点优惠力度又不足以打动他们没有起到激活的作用结论是我们粗放式的运营成本没有花在刀刃上正是基于以上种种痛点我意识到运营的思路必须从广撒网转变为精准点射这就是精细化运营的由来我给精细化运营的定义是一种基于数据分析对不同的人群在不同的场景下推送不同的内容并引导他们完成特定目标的差异化细分的运营策略它的核心就是四个字因材施教精细化运营的目标是什么明确了为什么要做我们再来看精细化运营的目标是什么总的来说所有精细化的手段最终都服务于一个终极目的提升用户的生命周期总价值从而实现产品的长期健康增长和商业化营收目标我将这个总目标拆解为以下几个可执行的分层目标对全体用户实现用户规模最大化这不仅仅是指通过测试优化注册按钮更深层地是通过精细化运营去分析不同渠道来源用户的后续留存和消费数据从而判断出哪些是高价值渠道并将预算向这些渠道倾斜实现更高质量的用户增长对活跃用户提升留存与粘性这是为了让用户留下来并爱上我们通过分析用户的行为偏好我可以为喜欢数码的用户推送新品手机的资讯为美妆爱好者推送护肤品的使用教程通过这种个性化的内容和活动来维持用户的活跃度并在他们产生需求时第一个想到我们的产品对商业化实现精准的营收目标这是精细化运营价值兑现的核心通过对用户进行分层我可以实现好钢用在刀刃上而要达成这些目标我的核心搭建思路主要分为两步第一步用户分层识人我需要基于数据建立起一套用户分层模型例如根据经典的模型我可以将用户分为高价值用户潜力用户价格敏感用户沉默流失用户等不同的群体第二步用户触达施策在识人的基础上我就可以进行精准的因材施教了对高价值用户我可以推送新品通知提供专属客服维护好他们的忠诚度对价格敏感用户我可以在大促前精准地给他们推送大额优惠券刺激他们下单转化对沉默流失用户我则可以通过短信等渠道用老友回归大礼包这样的强激励手段尝试将他们召回通过这一整套分层触达的精细化运营体系我才能摆脱低效昂贵的大水漫灌模式走向一种更高效更个性化也最终能带来更高回报的用户关系管理模式用户画像在上一节我们明确了精细化运营的核心思路是因材施教但要做到因材施教我们首先必须搞清楚我们的用户到底都是些什么样的材这就是用户画像要解决的问题什么是用户画像在业界用户画像这个词其实常常包含两种不同的概念用户角色和用户资料我必须先为你理清这两者的区别因为它们服务于完全不同的目的定性画像这是一种定性的偏研究的方法它通常是通过访谈调研等方式创造出来的一个虚拟的典型的用户代表他会有姓名照片职业甚至生活信条和烦恼它的核心目的是帮助我们产品和设计团队在规划功能时能时刻记住我们是在为谁而设计从而产生同理心做出更贴合用户真实场景的决策定量画像这是我们本章要深入学习的服务于精细化运营的定量的数据驱动的画像它不是一个虚拟的人而是一个用户身上所有标签的集合它描述了一个真实用户的客观事实如女岁消费能力高最近天活跃其核心目的是让系统和运营人员可以对用户进行批量的筛选分类和触达简单来说是用来理解和共情的而是用来筛选和运营的用户画像的搭建思路要搭建一套能驱动精细化运营的用户画像体系我作为产品经理需要设计一个包含四大步骤的完整闭环这套闭环清晰地回答了如何从数据到最终的运营动作的全过程搭建标签体系标签是用户画像的原子和砖块是我们认知用户的最基本单位我通常会将标签归纳为以下四大类别标签类别我的解读举例基本属性用户固有的相对静态的人口学特征性别年龄地域社会属性用户在社会关系网络中的特征职业收入教育程度行为属性用户在我们产品内的互动行为登录天数活跃时长浏览偏好消费属性用户的交易行为消费金额消费频次客单价在产品设计上我需要在后台为运营人员提供一个标签管理系统让他们可以清晰地看到平台目前拥有哪些标签以及这些标签的定义更新方式和状态进行用户分群有了成千上万的标签后我就可以进行第二步把拥有相似标签的用户圈在一起形成用户分群这是精细化运营能够规模化执行的前提为此我需要在后台设计一个强大的用户分群工具它允许运营人员像搭积木一样通过自定义规则例如最近天登录过消费金额元用户等级钻石会员来创建自己想要的任何用户群体除了让运营人员自定义分群我还会内置一些业界成熟通用的分群模型作为基础的用户洞察工具最经典的就是用户价值模型和模型用户价值模型这个模型源于经典的二八定律它将用户分为高价值用户中坚用户和普通用户三层帮助我们快速识别出那些贡献了绝大部分利润的的核心用户以便为他们提供更好的服务模型这是在电商和零售领域应用最广泛最有效的一个用户价值分析模型它通过三个核心指标来衡量用户的价值最近一次消费时间离现在越近价值越高消费频率一段时间内买得越频繁价值越高消费金额一段时间内花钱越多价值越高模型通过对这三个维度进行高低通常以平均值为分界线的组合可以将我们的用户精准地划分为个价值完全不同的群体例如重要价值客户高高高他们是我们的财神爷需要重点维护提供服务重要挽留客户低高高他们曾经是财神爷但最近不来了必须立刻采取措施如专属客服回访大额优惠券召回去挽留他们制定运营策略实施用户触达有了清晰的用户分群精细化运营的最后两步就水到渠成了运营人员可以针对重要挽留客户制定大额优惠券召回的策略针对重要价值客户制定新品优先体验的策略然后再通过我们前面设计的优惠券站内信等触达工具将这些策略精准地推送给对应的用户群体最终形成一个从识人到施策的完整闭环积分体系在精细化运营的工具箱中如果说用户画像是我们用来洞察用户的作战地图那么积分体系就是我们用来引导和激励用户长期行为的平台自建的经济系统它是一项重要的长期的用户忠诚度计划积分系统的需求分析为什么要搭建积分体系在我完成了初步的用户增长拥有了一定规模的用户后我的下一个核心目标就是如何提升用户的长期留存和生命周期总价值我需要一套能够持续激励用户与我们互动的体系在对比了大量竞品后我决定搭建一套积分体系它的核心战略价值在于量化用户贡献通过积分为用户在平台内的各种积极行为如购买签到评价进行量化和奖励划分用户等级以积分为标尺将用户划分为不同的等级为后续针对不同等级用户进行差异化的运营打下基础在电商场景中积分最核心的价值就是建立一个消费奖励再消费的良性循环从而提升用户的长期活跃和复购率积分体系的设计思路建立闭环要设计一个健康的可持续的积分体系我必须遵循一个核心原则建立积分的闭环这意味着积分必须有来路获取也要有去路消耗并且整个过程是安全可控的如果只进不出积分就会严重通货膨胀变得毫无价值如果只出不进则无法起到激励作用因此我的设计思路将围绕积分获取积分消耗和积分风控这三大支柱展开积分获取的需求在获取端我需要同时满足用户和平台运营的需求对于用户需要清晰地看到如何获取积分的规则有明确的入口去完成这些任务并且能随时查看自己的积分获取记录对于平台运营需要有一个后台可以灵活地定义哪些用户行为可以获得积分如下单评价签到等并且可以根据积分的不同提供不同的用户等级作为指标积分消耗的需求在消耗端需求与获取端相辅相成对于用户需要知道积分能用来做什么如抵扣现金兑换礼品有明确的场景去使用积分并能查看自己的积分消耗记录对于平台运营需要有一个后台可以灵活地定义积分的消耗渠道和规则例如设置积分商城配置积分抵现比例等积分风控的需求最后作为一个经济系统积分体系必须有监管机制防止被黑产薅羊毛而导致系统崩溃因此风控是平台侧至关重要的需求平台运营需要系统能够监控特殊或异常的积分获取行为并能对这些行为进行手动或自动的处理如冻结积分封禁账号等核心业务流程将以上所有的需求点进行串联我就能提炼出我们积分体系的核心业务流程这张流程图完整地展示了积分获取与消耗的闭环以及平台在其中扮演的规则制定者和秩序维护者的角色用户根据平台设定的规则通过各种行为获取积分平台侧则会对用户的行为进行校验一旦发现违规行为就会触发风控机制用户可以在消耗场景使用积分整个过程中用户和平台都可以清晰地看到每一笔积分的流入和流出明细这个流程就是我们下一节进行具体产品设计的总纲和指导蓝图积分体系的产品设计我将积分体系的产品设计拆分为用户端端和平台端端两大部分端负责用户的体验和互动端则负责平台的管理和调控一用户端端产品设计对于用户来说积分体系的体验必须是清晰的有激励感的且值得信赖的积分入口首先我需要在用户最容易找到的地方为他提供一个固定的入口通常这个入口会放在个人中心页面直观地展示出用户当前的积分总额我的积分主页点击入口后用户会进入我的积分主页这是用户与积分体系互动的核心枢纽概览区页面的顶部会展示用户的头像等级以及当前的积分总额并提供一个查看明细的入口任务列表积分获取页面的核心区域是一个任务列表我会把所有可以获取积分的行为都以任务卡片的形式清晰地陈列在这里例如签到邀请新用户购物下单晒单评价等用户每完成一项对应的任务状态就会变为已完成每日签到上图中间和右侧的截图详细展示了每日签到这个最常见的积分获取任务我通过一个日历来直观地记录用户的连续签到行为并通过连续签到天可领额外奖励的规则来激励用户保持每日访问的习惯积分消耗讲解虽然截图中未包含积分消耗的页面但在一个完整的体系中这个主页上通常还必须有积分商城用积分兑换商品或积分抵现在下单时用积分抵扣现金的入口这是让用户辛苦赚来的积分有处可花的关键是构成闭环不可或缺的一环积分明细为了建立用户对积分体系的信任我必须提供一个绝对清晰透明的账单在积分明细页面用户可以查到自己每一笔积分的流入获取和流出消耗记录就像查看自己的银行账单一样页面顶部的全部获取消耗三个可以帮助用户快速地进行筛选二平台端端产品设计如果说端是公民体验积分价值的地方那么端就是我作为平台方进行宏观调控和维护秩序的中央银行和监管机构规则制定积分规则管理这是整个积分经济系统的立法机构在这个后台运营人员可以定义规则创建所有积分的获取和消耗规则例如可以创建一条规则名称发表话题规则类型每日次积分的规则管理规则对已创建的规则进行启用停用编辑等操作这赋予了运营极大的灵活性可以根据平台的运营节奏来动态地调整积分的发放策略等级体系等级管理这是积分体系与用户成长体系相结合的核心在这个后台运营人员可以定义等级创建不同的用户等级如设置门槛为每一个等级设置一个所需积分的门槛当用户的累计积分达到这个门槛时系统就会自动为他升级配置权益为不同等级的用户配置不同的权益例如更高倍数的积分获取系数或者专属的兑换商品等数据监控积分明细记录这是平台的审计系统它记录了系统内所有用户的每一笔积分流水当出现用户申诉或需要排查问题时运营人员可以在这里通过用户或手机号快速地查询到该用户的完整积分历史为客诉处理和数据分析提供依据风险控制积分风控这是积分体系的监管和执法机构用于处理异常情况维护系统公平用户查询运营可以在这里查询到任何一个用户的当前积分状况手动调分当需要进行人工补偿或处罚时运营可以通过调整积分功能手动为用户增加或扣除积分并记录原因账号处理当发现有用户存在严重违规的刷分行为时运营可以将其加入黑名单禁止该用户再参与任何积分相关的活动以维护积分系统的秩序通过这样一套权责分明功能完备的端和端产品设计我才能确保我们搭建的积分经济系统既能有效激励用户又能被平台牢牢掌控最终实现健康可持续的长期运营会员体系我们已经学习了积分体系它像是一个普惠制的游戏币系统现在我们要学习一个更高阶的用户运营玩法会员体系如果说积分是游戏币那么会员体系就是俱乐部它存在的目的不是激励所有用户而是要筛选和深度服务我们平台最核心最有价值的用户群体什么是会员体系在开始设计前我们首先要回答这个核心问题我们已经有了积分为什么还需要会员我的答案是积分和会员解决的是不同层面的问题积分是一种普惠制的可量化的行为奖励人人都可以参与像游戏币它的目的是引导用户的日常行为会员则是一种身份的象征和权益的集合它具有一定的门槛是一种筛选机制像俱乐部入场券它的目的是筛选和锁定高价值用户基于这个定位我设计会员体系的核心目的主要有三个用户管理通过会员等级将用户清晰地划分为核心用户潜力用户普通用户等不同群体实现用户分层价值管理识别出平台最有价值的用户并通过专属权益深度绑定他们从而提升他们的生命周期总价值用户增长以极具吸引力的会员权益作为诱饵既能激励潜力用户不断升级打怪也能吸引平台外的新用户加入综上我给会员体系的定义是一套通过设置身份门槛和提供差异化的专属权益筛选出核心用户并深度绑定提升其长期价值的运营机制正如我们熟知的视频网站会员通过付费这个门槛筛选出愿意为内容付费的用户并为他们提供免广告看独家内容等专属权益会员体系搭建思路要搭建一个成功的会员体系我作为产品经理必须从顶层设计好三大支柱定义会员类型设计会员权益以及建立风险控制机制定义会员类型首先我要决定我的俱乐部是用什么方式来招募和划分会员的我通常会从这两个维度来思考和组合维度一是否付费付费会员用户需要支付一笔费用才能获得会员身份和权益这是最直接的筛选方式门槛高用户价值也最高例如京东免费会员用户无需付费通过注册即可成为会员但通常权益较少或需要通过成长来解锁维度二成长体系等级会员会员身份分为多个等级如用户需要通过特定行为如消费获取积分来升级不同等级享有不同权益我们之前设计的积分体系就是为等级会员服务的无差别会员所有会员的身份和权益都是完全一样的没有等级之分在实践中最成功的会员体系往往是混合模式以淘宝的为例它首先是一个付费会员你需要花元年购买但它的购买资格又与一个成长体系淘气值挂钩只有淘气值超过的用户才能以元的优惠价购买这种成长付费的双重门槛精准地筛选出了平台消费能力强且活跃度高的最优质用户设计会员权益会员权益是整个体系的灵魂是用户加入和升级的唯一动力我设计的权益必须能为用户带来稀缺感尊贵感和差异化的体验并且这些权益必须是阶梯式的即等级越高的会员享受的权益越好越独特我将电商平台的会员权益归纳为以下几类权益类型权益举例我的设计思考交易类权益会员专享价每月免运费券积分加速这是最基础最直接的权益能让会员在购物时感受到实实在在的优惠服务类权益专属客服通道极速退款生日礼包这是提升会员尊贵感的关键让他们感受到被特殊对待的服务身份类权益专属身份标识标会员日活动这是满足会员荣誉感的设计让他们在平台内拥有与众不同的身份象征生态类权益免费阅读视频会员兑换线下活动资格这是大型平台的护城河通过打通集团内其他业务为会员提供跨界的独特的价值建立风险控制与关怀机制最后一个健康的会员体系还需要有完善的秩序维护和关系维护机制风险控制我需要为运营人员设计必要的后台干预工具例如黑白名单处理功能可以手动将会员加入黑名单取消其资格或加入白名单破格授予资格人工干预功能可以在出现问题时手动调整用户的等级或权益会员关怀这本质上是一种基于会员数据的精细化运营我需要将用户的会员身份和等级作为一个重要的标签纳入我们的用户画像体系运营人员可以基于这个标签对不同等级的会员进行差异化的沟通和关怀例如在会员即将降级前发送提醒通知在会员生日时自动发放生日礼包等以此来维系好我们与这些高价值用户的关系",isPost:!0,isHome:!1,isHighlightShrink:!1,isToc:!0,postUpdate:"2025-07-26 21:11:09",postMainColor:""}</script><noscript><style type="text/css">#nav{opacity:1}.justified-gallery img{opacity:1}#post-meta time,#recent-posts time{display:inline!important}</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#1e2022')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f0f5f9')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/font.css"><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Prorise - 分享技术与实战经验" type="application/atom+xml"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/avatar.png"><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"><script async="" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><div class="doc-sidebar" id="doc-sidebar"><nav class="doc-sidebar-nav"><div class="doc-toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0%EF%BC%9A%E7%94%A8%E6%88%B7%E8%BF%90%E8%90%A5"><span class="toc-text">第五章：用户运营</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-%E7%B2%BE%E7%BB%86%E5%8C%96%E8%BF%90%E8%90%A5%E7%9A%84%E7%9B%AE%E7%9A%84"><span class="toc-text">5.1 精细化运营的目的</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-1-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E8%BF%9B%E8%A1%8C%E7%B2%BE%E7%BB%86%E5%8C%96%E8%BF%90%E8%90%A5"><span class="toc-text">5.1.1 为什么要进行精细化运营</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-2-%E7%B2%BE%E7%BB%86%E5%8C%96%E8%BF%90%E8%90%A5%E7%9A%84%E7%9B%AE%E6%A0%87%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">5.1.2 精细化运营的目标是什么</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F"><span class="toc-text">5.2 用户画像</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-1-%E4%BB%80%E4%B9%88%E6%98%AF%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F"><span class="toc-text">5.2.1 什么是用户画像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-2-%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F%E7%9A%84%E6%90%AD%E5%BB%BA%E6%80%9D%E8%B7%AF"><span class="toc-text">5.2.2 用户画像的搭建思路</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%90%AD%E5%BB%BA%E6%A0%87%E7%AD%BE%E4%BD%93%E7%B3%BB"><span class="toc-text">1. 搭建标签体系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%BF%9B%E8%A1%8C%E7%94%A8%E6%88%B7%E5%88%86%E7%BE%A4"><span class="toc-text">2. 进行用户分群</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%88%B6%E5%AE%9A%E8%BF%90%E8%90%A5%E7%AD%96%E7%95%A5-%E5%AE%9E%E6%96%BD%E7%94%A8%E6%88%B7%E8%A7%A6%E8%BE%BE"><span class="toc-text">3. 制定运营策略 &amp; 实施用户触达</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3-%E7%A7%AF%E5%88%86%E4%BD%93%E7%B3%BB"><span class="toc-text">5.3 积分体系</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-1-%E7%A7%AF%E5%88%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-text">5.3.1 积分系统的需求分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%90%AD%E5%BB%BA%E7%A7%AF%E5%88%86%E4%BD%93%E7%B3%BB%EF%BC%9F"><span class="toc-text">1. 为什么要搭建积分体系？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%A7%AF%E5%88%86%E4%BD%93%E7%B3%BB%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF%EF%BC%9A%E5%BB%BA%E7%AB%8B%E9%97%AD%E7%8E%AF"><span class="toc-text">2. 积分体系的设计思路：建立闭环</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E6%A0%B8%E5%BF%83%E4%B8%9A%E5%8A%A1%E6%B5%81%E7%A8%8B"><span class="toc-text">3. 核心业务流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%A7%AF%E5%88%86%E4%BD%93%E7%B3%BB%E7%9A%84%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1"><span class="toc-text">2. 积分体系的产品设计</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%80%E3%80%81-%E7%94%A8%E6%88%B7%E7%AB%AF%EF%BC%88C%E7%AB%AF%EF%BC%89%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1"><span class="toc-text">一、 用户端（C端）产品设计</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E3%80%81-%E5%B9%B3%E5%8F%B0%E7%AB%AF%EF%BC%88B%E7%AB%AF%EF%BC%89%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1"><span class="toc-text">二、 平台端（B端）产品设计</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-4-%E4%BC%9A%E5%91%98%E4%BD%93%E7%B3%BB"><span class="toc-text">5.4 会员体系</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-4-1-%E4%BB%80%E4%B9%88%E6%98%AF%E4%BC%9A%E5%91%98%E4%BD%93%E7%B3%BB"><span class="toc-text">5.4.1 什么是会员体系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-4-2-%E4%BC%9A%E5%91%98%E4%BD%93%E7%B3%BB%E6%90%AD%E5%BB%BA%E6%80%9D%E8%B7%AF"><span class="toc-text">5.4.2 会员体系搭建思路</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%AE%9A%E4%B9%89%E4%BC%9A%E5%91%98%E7%B1%BB%E5%9E%8B"><span class="toc-text">1. 定义会员类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%AE%BE%E8%AE%A1%E4%BC%9A%E5%91%98%E6%9D%83%E7%9B%8A"><span class="toc-text">2. 设计会员权益</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%BB%BA%E7%AB%8B%E9%A3%8E%E9%99%A9%E6%8E%A7%E5%88%B6%E4%B8%8E%E5%85%B3%E6%80%80%E6%9C%BA%E5%88%B6"><span class="toc-text">3. 建立风险控制与关怀机制</span></a></li></ol></li></ol></li></ol></li></ol></div></nav></div><header class="not-top-img" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" href="/" title="博客"><img class="back-menu-item-icon" src="https://bu.dusays.com/2025/07/19/687b394cb439b.ico" alt="博客"><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" href="/" title="后续项目..."><img class="back-menu-item-icon" src="https://image.anheyu.com/favicon.ico" alt="后续项目..."><span class="back-menu-item-text">后续项目...</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title">Prorise - 分享技术与实战经验</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)" rel="external nofollow noreferrer">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size:.9em"></i><span> 归档</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size:.9em"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size:.9em"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>个人</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size:.9em"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/todolist/"><i class="fas fa-check-double faa-tada"></i><span> 留言板</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/awesome-links/"><i class="fas fa-link faa-tada"></i><span> 实用网站</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>预览</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/?server=netease&amp;id=3117791189"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size:.9em"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size:.9em"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/messages/"><i class="fas fa-comments faa-tada"></i><span> 评论总览</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size:.9em"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size:.9em"></i><span> 即刻短文</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size:.9em"></i><span> 随便逛逛</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="background-change-button"><a class="site-page" onclick="toggleWinbox()" title="切换背景" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-palette"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" rel="external nofollow noreferrer" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole()"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://tc.z.wiki/autoupload/iXoPwUD80CPTvQUyITTBFOykMT9FcWW5SasRoXZEs3Wyl5f0KlZfm6UsKj-HyTuv/20250609/bYMH/418X445/ef9a3f68-d36a-441a-95fe-8179b1a25992.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://tc.z.wiki/autoupload/iXoPwUD80CPTvQUyITTBFOykMT9FcWW5SasRoXZEs3Wyl5f0KlZfm6UsKj-HyTuv/20250609/bYMH/418X445/ef9a3f68-d36a-441a-95fe-8179b1a25992.png"></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://tc.z.wiki/autoupload/iXoPwUD80CPTvQUyITTBFOykMT9FcWW5SasRoXZEs3Wyl5f0KlZfm6UsKj-HyTuv/20250609/cYu3/347X390/zfb.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://tc.z.wiki/autoupload/iXoPwUD80CPTvQUyITTBFOykMT9FcWW5SasRoXZEs3Wyl5f0KlZfm6UsKj-HyTuv/20250609/cYu3/347X390/zfb.png"></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title">最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%80%BB%E6%B1%87/" style="font-size:1.05rem;color:#500336">Java基础知识总汇<sup>9</sup></a><a href="/tags/Java%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%AF%87/" style="font-size:1.05rem;color:#3d87bb">Java微服务篇<sup>11</sup></a><a href="/tags/Python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%80%BB%E6%B1%87/" style="font-size:1.05rem;color:#5c8a2b">Python基础知识总汇<sup>22</sup></a><a href="/tags/%E4%B8%AA%E4%BA%BA/" style="font-size:1.05rem;color:#988467">个人<sup>5</sup></a><a href="/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E5%AE%9E%E6%88%98/" style="font-size:1.05rem;color:#2ab75e">产品经理实战<sup>5</sup></a><a href="/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E6%95%99%E7%A8%8B/" style="font-size:1.05rem;color:#4d011d">产品经理教程<sup>26</sup></a><a href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/" style="font-size:1.05rem;color:#be5f01">博客搭建教程<sup>31</sup></a></div></div><hr></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/07/"><span class="card-archive-list-date">七月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">58</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/06/"><span class="card-archive-list-date">六月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">4</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/05/"><span class="card-archive-list-date">五月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">9</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/04/"><span class="card-archive-list-date">四月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">22</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/03/"><span class="card-archive-list-date">三月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">11</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/01/"><span class="card-archive-list-date">一月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li></ul></div></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item on" id="consoleCommentBarrage" onclick="anzhiyu.switchCommentBarrage()" title="热评开关"><a class="commentBarrage"><i class="anzhiyufont anzhiyu-icon-message"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div><div class="console-btn-item" id="consoleAskAIMode" onclick="rm.toggleAskAIMode()" title="AI询问模式切换"><a class="askAIMode-switch"><i class="fa-solid fa-robot"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);" rel="external nofollow noreferrer"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/" itemprop="url">产品经理</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E6%95%99%E7%A8%8B/" tabindex="-1" itemprop="url"> <span><i class="anzhiyufont anzhiyu-icon-hashtag"></i>产品经理教程</span></a></span></div></div><h1 class="post-title" itemprop="name headline">第五章：用户运营</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-07-26T05:13:45.000Z" title="发表于 2025-07-26 13:13:45">2025-07-26</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-07-26T13:11:09.136Z" title="更新于 2025-07-26 21:11:09">2025-07-26</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="anzhiyufont anzhiyu-icon-file-word post-meta-icon" title="文章字数"></i><span class="post-meta-label" title="文章字数">字数总计:</span><span class="word-count" title="文章字数">6.8k</span><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-clock post-meta-icon" title="阅读时长"></i><span class="post-meta-label" title="阅读时长">阅读时长:</span><span>19分钟</span></span><span class="post-meta-separator"></span><span data-flag-title="第五章：用户运营"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="twikoo_visitors" title="访问量"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator"> </span><span class="post-meta-position" title="作者IP属地为广东"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>广东</span><span class="post-meta-separator"></span><span class="post-meta-commentcount"><i class="anzhiyufont anzhiyu-icon-comments post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/posts/51707.html#post-comment" tabindex="-1"><span id="twikoo-count"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></a></span></div></div></div><div class="post-ai-description"><div class="ai-title"><i class="anzhiyufont anzhiyu-icon-bilibili"></i><div class="ai-title-text">AI-摘要</div><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right"></i><i class="anzhiyufont anzhiyu-icon-circle-dot" title="朗读摘要"></i><div id="ai-tag">Tianli GPT</div></div><div class="ai-explanation">AI初始化中...</div><div class="ai-btn-box"><div class="ai-btn-item">介绍自己 🙈</div><div class="ai-btn-item">生成本文简介 👋</div><div class="ai-btn-item">推荐相关文章 📖</div><div class="ai-btn-item">前往主页 🏠</div><div class="ai-btn-item" id="go-tianli-blog">前往爱发电购买</div></div><script data-pjax="" src="/js/anzhiyu/ai_abstract.js"></script></div><article class="post-content" id="article-container" itemscope="" itemtype="https://prorise666.site/posts/51707.html"><header><a class="post-meta-categories" href="/categories/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/" itemprop="url">产品经理</a><a href="/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E6%95%99%E7%A8%8B/" tabindex="-1" itemprop="url">产品经理教程</a><h1 id="CrawlerTitle" itemprop="name headline">第五章：用户运营</h1><span itemprop="author" itemscope="" itemtype="http://schema.org/Person">Prorise</span><time itemprop="dateCreated datePublished" datetime="2025-07-26T05:13:45.000Z" title="发表于 2025-07-26 13:13:45">2025-07-26</time><time itemprop="dateCreated datePublished" datetime="2025-07-26T13:11:09.136Z" title="更新于 2025-07-26 21:11:09">2025-07-26</time></header><div id="postchat_postcontent"><h1 id="第五章：用户运营"><a href="#第五章：用户运营" class="headerlink" title="第五章：用户运营"></a>第五章：用户运营</h1><p>在前面的章节中，我们已经为我们的电商平台，搭建了从商品、交易、促销到内容管理的强大“武器库”。我们设计了各种功能，让用户可以顺畅地完成购买。</p><p>但武器本身不会自己打仗。从本章开始，我们的视角将发生一次关键的跃迁：从以“<strong>功能</strong>”为中心，转向以“<strong>人</strong>”为中心。我们将深入探讨，如何运营我们最宝贵的资产——用户。而用户运营的第一课，也是最重要的一课，就是“精细化运营”。</p><h2 id="5-1-精细化运营的目的"><a href="#5-1-精细化运营的目的" class="headerlink" title="5.1 精细化运营的目的"></a>5.1 精细化运营的目的</h2><h3 id="5-1-1-为什么要进行精细化运营"><a href="#5-1-1-为什么要进行精细化运营" class="headerlink" title="5.1.1 为什么要进行精细化运营"></a>5.1.1 为什么要进行精细化运营</h3><p>在我设计任何一个产品时，早期我追求的是“<strong>功能的普适性</strong>”。我提供的优惠券、拼团、秒杀等，是面向所有用户的“通用武器”，目的是在产品初期，快速验证模式、吸引第一批用户。</p><p><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726200150576.png" alt="image-20250726200150576"></p><p>但随着产品发展，用户量不断提升，我逐渐发现一个严峻的问题：<strong>我们的增长变慢了，用户的活跃度在逐渐下降。</strong></p><p>当用户规模扩大后，<code>用户类型</code>变得极其丰富（有学生、有白领、有宝妈），<code>用户需求</code>也变得高度多元化（有人追求性价比、有人追求品质、有人追求新品）。此时，如果我还用“一招鲜，吃遍天”的统一运营方式，结果必然是吃力不讨好。</p><p>这就好比用大水漫灌田地，对一部分“口渴”的用户或许有效，但对另一部分“不渴”的用户就是一种资源浪费和体验骚扰，而对那些“需要特定养分”的用户则完全无效。</p><p><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726200108788.png" alt="image-20250726200108788"></p><p>一线运营同事的复盘，也从实践层面印证了我的判断。我们发现：</p><ul><li>大量的优惠券成本投下去，只刺激了部分“<strong>价格敏感用户</strong>”，他们本来就需要强优惠才会下单。</li><li>对于那些“<strong>忠诚的高价值用户</strong>”，他们本就会购买，这些普适的优惠对他们没有带来任何增量消费，相当于浪费了营销成本。</li><li>而对于那些“<strong>从不购买的沉默用户</strong>”，这点优惠力度又不足以打动他们，没有起到激活的作用。</li></ul><p>结论是：<strong>我们粗放式的运营成本，没有花在刀刃上。</strong></p><p><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726200453467.png" alt="image-20250726200453467"></p><p>正是基于以上种种痛点，我意识到，运营的思路，必须从“<strong>广撒网</strong>”，转变为“<strong>精准点射</strong>”。这，就是精细化运营的由来。</p><p>我给<strong>精细化运营</strong>的定义是：<strong>一种基于数据分析，对不同的人群、在不同的场景下，推送不同的内容，并引导他们完成特定目标的、差异化细分的运营策略。</strong> 它的核心，就是四个字：<strong>因材施教</strong>。</p><h3 id="5-1-2-精细化运营的目标是什么"><a href="#5-1-2-精细化运营的目标是什么" class="headerlink" title="5.1.2 精细化运营的目标是什么"></a>5.1.2 精细化运营的目标是什么</h3><p>明确了“为什么”要做，我们再来看精细化运营的“目标”是什么。</p><p><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726200522267.png" alt="image-20250726200522267"></p><p>总的来说，所有精细化的手段，最终都服务于一个终极目的——<strong>提升用户的生命周期总价值（LTV）</strong>，从而实现产品的长期健康增长和商业化营收目标。</p><p>我将这个总目标，拆解为以下几个可执行的分层目标：</p><ol><li><p><strong>对全体用户：实现用户规模最大化</strong><br>这不仅仅是指通过A/B测试优化注册按钮。更深层地，是通过精细化运营，去分析不同渠道来源用户的后续留存和消费数据，从而判断出哪些是“高价值渠道”，并将预算向这些渠道倾斜，实现更高质量的用户增长。</p></li><li><p><strong>对活跃用户：提升留存与粘性</strong><br>这是为了让用户“留下来，并爱上我们”。通过分析用户的行为偏好，我可以为喜欢数码的用户，推送新品手机的资讯；为美妆爱好者，推送护肤品的使用教程。通过这种个性化的内容和活动，来维持用户的活跃度，并在他们产生需求时，第一个想到我们的产品。</p></li><li><p><strong>对商业化：实现精准的营收目标</strong><br>这是精细化运营价值兑现的核心。通过对用户进行分层，我可以实现“<strong>好钢用在刀刃上</strong>”。</p></li></ol><p><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726201008132.png" alt="image-20250726201008132"></p><p>而要达成这些目标，我的核心搭建思路，主要分为两步：</p><ul><li><p><strong>第一步：用户分层（识人）</strong><br>我需要基于数据，建立起一套用户分层模型。例如，根据经典的RFM模型，我可以将用户分为“高价值用户”、“潜力用户”、“价格敏感用户”、“沉默流失用户”等不同的群体。</p></li><li><p><strong>第二步：用户触达（施策）</strong><br>在识人的基础上，我就可以进行精准的“因材施教”了：</p><ul><li>对“<strong>高价值用户</strong>”，我可以推送新品通知、提供VIP专属客服，维护好他们的忠诚度。</li><li>对“<strong>价格敏感用户</strong>”，我可以在大促前，精准地给他们推送大额优惠券，刺激他们下单转化。</li><li>对“<strong>沉默流失用户</strong>”，我则可以通过短信、App Push等渠道，用“老友回归大礼包”这样的强激励手段，尝试将他们召回。</li></ul></li></ul><p>通过这一整套“分层-触达”的精细化运营体系，我才能摆脱低效、昂贵的“大水漫灌”模式，走向一种更高效、更个性化、也最终能带来更高回报的用户关系管理模式。</p><hr><h2 id="5-2-用户画像"><a href="#5-2-用户画像" class="headerlink" title="5.2 用户画像"></a>5.2 用户画像</h2><p>在上一节，我们明确了精细化运营的核心思路是“因材施教”。但要做到因材施教，我们首先必须搞清楚，我们的用户，到底都是些什么样的“材”。这，就是“用户画像”要解决的问题。</p><h3 id="5-2-1-什么是用户画像"><a href="#5-2-1-什么是用户画像" class="headerlink" title="5.2.1 什么是用户画像"></a>5.2.1 什么是用户画像</h3><p><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726201733165.png" alt="image-20250726201733165"></p><p>在业界，“用户画像”这个词，其实常常包含两种不同的概念：<strong>User Persona（用户角色）</strong> 和 <strong>User Profile（用户资料）</strong>。我必须先为你理清这两者的区别，因为它们服务于完全不同的目的。</p><ul><li><p><strong>User Persona (定性画像)</strong>：这是一种<strong>定性的、偏研究</strong>的方法。它通常是通过访谈、调研等方式，创造出来的一个“<strong>虚拟的、典型的</strong>”用户代表。他会有姓名、照片、职业、甚至生活信条和烦恼。它的核心目的，是帮助我们产品和设计团队，在规划功能时，能时刻记住我们是在为“谁”而设计，从而产生同理心，做出更贴合用户真实场景的决策。</p></li><li><p><strong>User Profile (定量画像)</strong>：这是我们本章要深入学习的、服务于“精细化运营”的、<strong>定量的、数据驱动的</strong>画像。它不是一个虚拟的人，而是“<strong>一个用户身上所有标签的集合</strong>”。它描述了一个真实用户的客观事实（如：女，25岁，消费能力高，最近7天活跃），其核心目的，是<strong>让系统和运营人员，可以对用户进行批量的筛选、分类和触达</strong>。</p></li></ul><p>简单来说，<strong>Persona是用来“理解和共情”的，而Profile是用来“筛选和运营”的。</strong></p><h3 id="5-2-2-用户画像的搭建思路"><a href="#5-2-2-用户画像的搭建思路" class="headerlink" title="5.2.2 用户画像的搭建思路"></a>5.2.2 用户画像的搭建思路</h3><p><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726201847308.png" alt="image-20250726201847308"></p><p>要搭建一套能驱动精细化运营的用户画像体系（User Profile），我作为产品经理，需要设计一个包含四大步骤的完整闭环。这套闭环，清晰地回答了“如何从数据，到最终的运营动作”的全过程。</p><h4 id="1-搭建标签体系"><a href="#1-搭建标签体系" class="headerlink" title="1. 搭建标签体系"></a>1. 搭建标签体系</h4><p>标签，是用户画像的“<strong>原子</strong>”和“<strong>砖块</strong>”，是我们认知用户的最基本单位。</p><p><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726203000275.png" alt="image-20250726203000275"></p><p>我通常会将标签，归纳为以下四大类别：</p><table><thead><tr><th align="left"><strong>标签类别</strong></th><th align="left"><strong>我的解读</strong></th><th align="left"><strong>举例</strong></th></tr></thead><tbody><tr><td align="left"><strong>基本属性</strong></td><td align="left">用户<strong>固有</strong>的、相对静态的人口学特征。</td><td align="left">性别、年龄、地域</td></tr><tr><td align="left"><strong>社会属性</strong></td><td align="left">用户在社会关系网络中的特征。</td><td align="left">职业、收入、教育程度</td></tr><tr><td align="left"><strong>行为属性</strong></td><td align="left">用户在我们产品内的<strong>互动行为</strong>。</td><td align="left">登录天数、活跃时长、浏览偏好</td></tr><tr><td align="left"><strong>消费属性</strong></td><td align="left">用户的<strong>交易行为</strong>。</td><td align="left">消费金额、消费频次、客单价</td></tr></tbody></table><p><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726203037858.png" alt="image-20250726203037858"></p><p>在产品设计上，我需要在后台，为运营人员提供一个“<strong>标签管理系统</strong>”，让他们可以清晰地看到平台目前拥有哪些标签，以及这些标签的定义、更新方式和状态。</p><h4 id="2-进行用户分群"><a href="#2-进行用户分群" class="headerlink" title="2. 进行用户分群"></a>2. 进行用户分群</h4><p>有了成千上万的标签后，我就可以进行第二步：把拥有相似标签的用户，“圈”在一起，形成“<strong>用户分群</strong>”。这是精细化运营能够规模化执行的前提。</p><p><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726203129232.png" alt="image-20250726203129232"></p><p><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726203451759.png" alt="image-20250726203451759"></p><p>为此，我需要在后台设计一个强大的“<strong>用户分群工具</strong>”。它允许运营人员，像搭积木一样，通过自定义“规则”（例如：<code>最近7天登录过</code> AND <code>消费金额&gt;1000元</code> AND <code>用户等级=钻石会员</code>），来创建自己想要的任何用户群体。</p><p>除了让运营人员“自定义”分群，我还会内置一些业界成熟、通用的分群模型，作为基础的用户洞察工具。最经典的就是“<strong>用户价值模型</strong>”和“<strong>RFM模型</strong>”。</p><ul><li><p><strong>用户价值模型</strong><br><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726203203209.png" alt="image-20250726203203209"><br>这个模型，源于经典的“二八定律”。它将用户分为“高价值用户”、“中坚用户”和“普通用户”三层，帮助我们快速识别出那些贡献了绝大部分利润的20%的核心用户，以便为他们提供更好的服务。</p></li><li><p><strong>RFM模型</strong><br><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726203234427.png" alt="image-20250726203234427"><br>这是在电商和零售领域，应用最广泛、最有效的一个用户价值分析模型。它通过三个核心指标，来衡量用户的价值：</p><ul><li><strong>R (Recency)</strong>：最近一次消费时间。离现在越近，价值越高。</li><li><strong>F (Frequency)</strong>：消费频率。一段时间内买得越频繁，价值越高。</li></ul></li><li><p><strong>M (Monetary)</strong>：消费金额。一段时间内花钱越多，价值越高。</p><p><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726203311287.png" alt="image-20250726203311287"></p></li></ul><p>RFM模型，通过对这三个维度进行“高/低”（通常以平均值为分界线）的组合，可以将我们的用户，精准地划分为8个价值完全不同的群体。</p><pre><code>![image-20250726203357468](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726203357468.png)
+例如：
+
+* **重要价值客户 (R高-F高-M高)**：他们是我们的“财神爷”，需要重点维护，提供VIP服务。
+* **重要挽留客户 (R低-F高-M高)**：他们曾经是“财神爷”，但最近不来了。必须立刻采取措施（如专属客服回访、大额优惠券召回）去挽留他们。
+</code></pre><h4 id="3-制定运营策略-实施用户触达"><a href="#3-制定运营策略-实施用户触达" class="headerlink" title="3. 制定运营策略 &amp; 实施用户触达"></a>3. 制定运营策略 &amp; 实施用户触达</h4><p>有了清晰的用户分群，精细化运营的最后两步就水到渠成了。</p><p>运营人员可以针对“重要挽留客户”，制定“<strong>大额优惠券召回</strong>”的策略；针对“重要价值客户”，制定“<strong>新品优先体验</strong>”的策略。</p><p>然后，再通过我们前面设计的优惠券、站内信、Push等“<strong>触达工具</strong>”，将这些策略精准地推送给对应的用户群体，最终形成一个从“识人”到“施策”的完整闭环。</p><hr><h2 id="5-3-积分体系"><a href="#5-3-积分体系" class="headerlink" title="5.3 积分体系"></a>5.3 积分体系</h2><p>在精细化运营的工具箱中，如果说“用户画像”是我们用来洞察用户的“作战地图”，那么“<strong>积分体系</strong>”就是我们用来<strong>引导和激励用户长期行为</strong>的、平台自建的“<strong>经济系统</strong>”。它是一项重要的、长期的用户忠诚度计划。</p><h3 id="5-3-1-积分系统的需求分析"><a href="#5-3-1-积分系统的需求分析" class="headerlink" title="5.3.1 积分系统的需求分析"></a>5.3.1 积分系统的需求分析</h3><h4 id="1-为什么要搭建积分体系？"><a href="#1-为什么要搭建积分体系？" class="headerlink" title="1. 为什么要搭建积分体系？"></a>1. 为什么要搭建积分体系？</h4><p><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726203858063.png" alt="image-20250726203858063"></p><p>在我完成了初步的用户增长，拥有了一定规模的用户后，我的下一个核心目标，就是如何<strong>提升用户的长期留存和生命周期总价值（LTV）</strong>。我需要一套能够持续激励用户与我们互动的体系。在对比了大量竞品后，我决定搭建一套“积分体系”。</p><p>它的核心战略价值在于：</p><ol><li><strong>量化用户贡献</strong>：通过积分为用户在平台内的各种“积极行为”（如购买、签到、评价）进行量化和奖励。</li><li><strong>划分用户等级</strong>：以积分为标尺，将用户划分为不同的等级，为后续针对不同等级用户，进行差异化的运营，打下基础。</li></ol><p><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726204102401.png" alt="image-20250726204102401"></p><p>在电商场景中，积分最核心的价值，就是建立一个“<strong>消费 -&gt; 奖励 -&gt; 再消费</strong>”的良性循环，从而提升用户的“<strong>长期活跃</strong>”和复购率。</p><h4 id="2-积分体系的设计思路：建立闭环"><a href="#2-积分体系的设计思路：建立闭环" class="headerlink" title="2. 积分体系的设计思路：建立闭环"></a>2. 积分体系的设计思路：建立闭环</h4><p><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726204126224.png" alt="image-20250726204126224"></p><p>要设计一个健康的、可持续的积分体系，我必须遵循一个核心原则：<strong>建立积分的“闭环”</strong>。</p><p>这意味着，积分必须有来路（获取），也要有去路（消耗），并且整个过程是安全可控的。如果只进不出，积分就会严重“通货膨胀”，变得毫无价值；如果只出不进，则无法起到激励作用。因此，我的设计思路，将围绕“<strong>积分获取</strong>”、“<strong>积分消耗</strong>”和“<strong>积分风控</strong>”这三大支柱展开。</p><ul><li><p><strong>积分获取的需求</strong><br><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726204243777.png" alt="image-20250726204243777"><br>在“获取”端，我需要同时满足“用户”和“平台运营”的需求：</p><ul><li><strong>对于用户</strong>：需要清晰地看到“如何获取积分”的规则，有明确的入口去完成这些任务，并且能随时查看自己的积分获取记录。</li><li><strong>对于平台运营</strong>：需要有一个后台，可以灵活地“定义哪些用户行为可以获得积分”（如下单、评价、签到等），并且可以根据积分的不同提供不同的用户等级作为指标</li></ul></li><li><p><strong>积分消耗的需求</strong><br><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726204349492.png" alt="image-20250726204349492"><br>在“消耗”端，需求与获取端相辅相成：</p><ul><li><strong>对于用户</strong>：需要知道“积分能用来做什么”（如抵扣现金、兑换礼品），有明确的场景去使用积分，并能查看自己的积分消耗记录。</li><li><strong>对于平台运营</strong>：需要有一个后台，可以灵活地“定义积分的消耗渠道和规则”，例如设置“积分商城”、配置“积分抵现比例”等。</li></ul></li><li><p><strong>积分风控的需求</strong><br><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726204423160.png" alt="image-20250726204423160"><br>最后，作为一个“经济系统”，积分体系必须有“监管机制”，防止被黑产“薅羊毛”而导致系统崩溃。因此，“风控”是平台侧至关重要的需求。平台运营需要系统能够<strong>监控特殊或异常的积分获取行为</strong>，并能对这些行为进行<strong>手动或自动的处理</strong>（如冻结积分、封禁账号等）。</p></li></ul><h4 id="3-核心业务流程"><a href="#3-核心业务流程" class="headerlink" title="3. 核心业务流程"></a>3. 核心业务流程</h4><p><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726204441423.png" alt="image-20250726204441423"></p><p>将以上所有的需求点进行串联，我就能提炼出我们积分体系的“<strong>核心业务流程</strong>”。</p><p>这张流程图，完整地展示了积分<strong>获取与消耗的闭环</strong>，以及平台在其中扮演的“<strong>规则制定者</strong>”和“<strong>秩序维护者</strong>”的角色。</p><ul><li>用户根据平台设定的规则，通过各种行为<strong>获取积分</strong>。</li><li>平台侧则会对用户的行为进行校验，一旦发现违规行为，就会触发<strong>风控机制</strong>。</li><li>用户可以在消耗场景<strong>使用积分</strong>。</li><li>整个过程中，用户和平台，都可以清晰地看到每一笔积分的<strong>流入和流出明细</strong>。</li></ul><p>这个流程，就是我们下一节进行具体产品设计的“总纲”和指导蓝图。</p><hr><h4 id="2-积分体系的产品设计"><a href="#2-积分体系的产品设计" class="headerlink" title="2. 积分体系的产品设计"></a>2. 积分体系的产品设计</h4><p>我将积分体系的产品设计，拆分为<strong>用户端（C端）<strong>和</strong>平台端（B端）<strong>两大部分。C端负责用户的</strong>体验和互动</strong>，B端则负责平台的<strong>管理和调控</strong>。</p><h5 id="一、-用户端（C端）产品设计"><a href="#一、-用户端（C端）产品设计" class="headerlink" title="一、 用户端（C端）产品设计"></a>一、 用户端（C端）产品设计</h5><p>对于用户来说，积分体系的体验必须是<strong>清晰的、有激励感的、且值得信赖的</strong>。</p><ul><li><p><strong>积分入口</strong><br>首先，我需要在用户最容易找到的地方，为他提供一个固定的入口。通常，这个入口会放在“<strong>个人中心</strong>”页面，直观地展示出用户当前的积分总额。</p></li><li><p><strong>“我的积分”主页</strong><br><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726204745142.png" alt="image-20250726204745142"><br>点击入口后，用户会进入“我的积分”主页。这是用户与积分体系互动的核心枢纽。</p><ul><li><strong>概览区</strong>：页面的顶部，会展示用户的头像、等级（Lv.10）、以及当前的积分总额，并提供一个“查看明细”的入口。</li><li><strong>任务列表（积分获取）</strong>：页面的核心区域，是一个“<strong>任务列表</strong>”。我会把所有可以获取积分的行为，都以任务卡片的形式，清晰地陈列在这里。例如，“<code>签到</code>”、“<code>邀请新用户</code>”、“<code>购物下单</code>”、“<code>晒单评价</code>”等。用户每完成一项，对应的任务状态就会变为“已完成”。</li><li><strong>每日签到</strong>：上图中间和右侧的截图，详细展示了“每日签到”这个最常见的积分获取任务。我通过一个日历，来直观地记录用户的连续签到行为，并通过“<strong>连续签到X天，可领额外奖励</strong>”的规则，来激励用户保持每日访问的习惯。</li><li><strong>积分消耗（讲解）</strong>：虽然截图中未包含“积分消耗”的页面，但在一个完整的体系中，这个主页上通常还必须有“<strong>积分商城</strong>”（用积分兑换商品）或“<strong>积分抵现</strong>”（在下单时用积分抵扣现金）的入口。这是让用户辛苦赚来的积分“<strong>有处可花</strong>”的关键，是构成闭环不可或缺的一环。</li></ul></li><li><p><strong>积分明细</strong><br><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726204838848.png" alt="image-20250726204838848"><br>为了建立用户对积分体系的信任，我必须提供一个绝对清晰、透明的账单。在“积分明细”页面，用户可以查到自己<strong>每一笔</strong>积分的流入（获取）和流出（消耗）记录，就像查看自己的银行账单一样。页面顶部的<code>全部</code>、<code>获取</code>、<code>消耗</code>三个Tab，可以帮助用户快速地进行筛选。</p></li></ul><h5 id="二、-平台端（B端）产品设计"><a href="#二、-平台端（B端）产品设计" class="headerlink" title="二、 平台端（B端）产品设计"></a>二、 平台端（B端）产品设计</h5><p>如果说C端是“公民”体验积分价值的地方，那么B端就是我作为平台方，进行“宏观调控”和“维护秩序”的“<strong>中央银行</strong>”和“<strong>监管机构</strong>”。</p><ul><li><p><strong>规则制定：积分规则管理</strong><br><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726204855929.png" alt="image-20250726204855929"><br>这是整个积分经济系统的“<strong>立法机构</strong>”。在这个后台，运营人员可以：</p><ol><li><strong>定义规则</strong>：创建所有积分的获取和消耗规则。例如，可以创建一条“<code>规则名称</code>：发表话题，<code>规则类型</code>：每日N次，<code>积分</code>：+20”的规则。</li><li><strong>管理规则</strong>：对已创建的规则，进行启用、停用、编辑等操作。这赋予了运营极大的灵活性，可以根据平台的运营节奏，来动态地调整积分的发放策略。</li></ol></li><li><p><strong>等级体系：等级管理</strong><br><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726205015265.png" alt="image-20250726205015265"><br>这是积分体系与用户成长体系相结合的核心。在这个后台，运营人员可以：</p><ol><li><strong>定义等级</strong>：创建不同的用户等级，如 Lv.1, Lv.2 …</li><li><strong>设置门槛</strong>：为每一个等级，设置一个“<strong>所需积分</strong>”的门槛。当用户的累计积分达到这个门槛时，系统就会自动为他升级。</li><li><strong>配置权益</strong>：为不同等级的用户，配置不同的权益，例如更高倍数的积分获取系数、或者专属的兑换商品等。</li></ol></li><li><p><strong>数据监控：积分明细记录</strong><br><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726205029492.png" alt="image-20250726205029492"><br>这是平台的“<strong>审计系统</strong>”。它记录了系统内<strong>所有用户</strong>的<strong>每一笔</strong>积分流水。当出现用户申诉或需要排查问题时，运营人员可以在这里，通过用户ID或手机号，快速地查询到该用户的完整积分历史，为客诉处理和数据分析，提供依据。</p></li><li><p><strong>风险控制：积分风控</strong><br><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726205040929.png" alt="image-20250726205040929"><br>这是积分体系的“<strong>监管和执法机构</strong>”，用于处理异常情况，维护系统公平。</p><ol><li><strong>用户查询</strong>：运营可以在这里，查询到任何一个用户的当前积分状况。</li><li><strong>手动调分</strong>：当需要进行人工补偿或处罚时，运营可以通过“<strong>调整积分</strong>”功能，手动为用户增加或扣除积分，并记录原因。</li><li><strong>账号处理</strong>：当发现有用户存在严重违规的“刷分”行为时，运营可以将其“<strong>加入黑名单</strong>”，禁止该用户再参与任何积分相关的活动，以维护积分系统的秩序。</li></ol></li></ul><p>通过这样一套权责分明、功能完备的C端和B端产品设计，我才能确保我们搭建的“积分经济系统”，既能有效激励用户，又能被平台牢牢掌控，最终实现健康、可持续的长期运营。</p><hr><h2 id="5-4-会员体系"><a href="#5-4-会员体系" class="headerlink" title="5.4 会员体系"></a>5.4 会员体系</h2><p>我们已经学习了积分体系，它像是一个普惠制的“游戏币”系统。现在，我们要学习一个更高阶的用户运营玩法——<strong>会员体系</strong>。<br>如果说积分是“游戏币”，那么会员体系就是“<strong>VIP俱乐部</strong>”。它存在的目的，不是激励所有用户，而是要<strong>筛选和深度服务</strong>我们平台最核心、最有价值的用户群体。</p><h3 id="5-4-1-什么是会员体系"><a href="#5-4-1-什么是会员体系" class="headerlink" title="5.4.1 什么是会员体系"></a>5.4.1 什么是会员体系</h3><p>在开始设计前，我们首先要回答这个核心问题：<strong>我们已经有了积分，为什么还需要会员？</strong></p><p>我的答案是：<strong>积分和会员，解决的是不同层面的问题</strong>。</p><ul><li><strong>积分</strong>：是一种<strong>普惠制的、可量化的行为奖励</strong>，人人都可以参与，像游戏币。它的目的是<strong>引导用户的日常行为</strong>。</li><li><strong>会员</strong>：则是一种<strong>身份的象征和权益的集合</strong>，它具有一定的门槛，是一种<strong>筛选机制</strong>，像俱乐部入场券。它的目的是<strong>筛选和锁定高价值用户</strong>。</li></ul><p>基于这个定位，我设计会员体系的核心目的，主要有三个：</p><ol><li><strong>用户管理</strong>：通过会员等级，将用户清晰地划分为“核心用户”、“潜力用户”、“普通用户”等不同群体，实现用户分层。</li><li><strong>价值管理</strong>：识别出平台最有价值的用户，并通过专属权益，深度绑定他们，从而提升他们的生命周期总价值（LTV）。</li><li><strong>用户增长</strong>：以极具吸引力的会员权益作为“诱饵”，既能激励潜力用户不断“升级打怪”，也能吸引平台外的新用户加入。</li></ol><p><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726210254504.png" alt="image-20250726210254504"></p><p>综上，我给<strong>会员体系</strong>的定义是：<strong>一套通过设置身份门槛和提供差异化的专属权益，筛选出核心用户，并深度绑定、提升其长期价值的运营机制。</strong></p><p>正如我们熟知的视频网站会员，通过付费这个门槛，筛选出愿意为内容付费的用户，并为他们提供“免广告”、“看独家内容”等专属权益。</p><h3 id="5-4-2-会员体系搭建思路"><a href="#5-4-2-会员体系搭建思路" class="headerlink" title="5.4.2 会员体系搭建思路"></a>5.4.2 会员体系搭建思路</h3><p>要搭建一个成功的会员体系，我作为产品经理，必须从顶层设计好三大支柱：<strong>定义会员类型、设计会员权益、以及建立风险控制机制。</strong></p><h4 id="1-定义会员类型"><a href="#1-定义会员类型" class="headerlink" title="1. 定义会员类型"></a>1. 定义会员类型</h4><p>首先，我要决定我的“俱乐部”，是用什么方式来招募和划分会员的。</p><p><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726210331211.png" alt="image-20250726210331211"></p><p>我通常会从这两个维度来思考和组合：</p><ul><li><strong>维度一：是否付费</strong><ul><li><code>付费会员</code>：用户需要支付一笔费用，才能获得会员身份和权益。这是最直接的筛选方式，门槛高，用户价值也最高。例如，Amazon Prime, 京东PLUS。</li><li><code>免费会员</code>：用户无需付费，通过注册即可成为会员，但通常权益较少或需要通过成长来解锁。</li></ul></li><li><strong>维度二：成长体系</strong><ul><li><code>等级会员</code>：会员身份分为多个等级（如Lv.1 - Lv.10），用户需要通过特定行为（如消费、获取积分）来“升级”，不同等级享有不同权益。我们之前设计的“积分体系”，就是为“等级会员”服务的。</li><li><code>无差别会员</code>：所有会员的身份和权益，都是完全一样的，没有等级之分。</li></ul></li></ul><p><img src="https://bu.dusays.com/2025/07/15/68763f14f04fb.gif" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" data-lazy-src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726210416260.png" alt="image-20250726210416260"></p><p>在实践中，最成功的会员体系，往往是<strong>混合模式</strong>。以淘宝的88VIP为例，它首先是一个“<strong>付费会员</strong>”，你需要花88元/年购买。但它的购买资格，又与一个“<strong>成长体系</strong>”（淘气值）挂钩，只有淘气值超过1000的用户，才能以88元的优惠价购买。这种“<strong>成长+付费</strong>”的双重门槛，精准地筛选出了平台消费能力强、且活跃度高的最优质用户。</p><h4 id="2-设计会员权益"><a href="#2-设计会员权益" class="headerlink" title="2. 设计会员权益"></a>2. 设计会员权益</h4><p>会员权益，是整个体系的“灵魂”，是用户加入和升级的唯一动力。</p><p>我设计的权益，必须能为用户带来<strong>稀缺感、尊贵感和差异化</strong>的体验。并且，这些权益必须是“<strong>阶梯式</strong>”的，即等级越高的会员，享受的权益越好、越独特。</p><p>我将电商平台的会员权益，归纳为以下几类：</p><table><thead><tr><th align="left"><strong>权益类型</strong></th><th align="left"><strong>权益举例</strong></th><th align="left"><strong>我的设计思考</strong></th></tr></thead><tbody><tr><td align="left"><strong>交易类权益</strong></td><td align="left">会员专享价、每月免运费券、积分加速</td><td align="left">这是最基础、最直接的权益，能让会员在购物时感受到实实在在的优惠。</td></tr><tr><td align="left"><strong>服务类权益</strong></td><td align="left">专属客服通道、极速退款、生日礼包</td><td align="left">这是提升会员“尊贵感”的关键，让他们感受到被特殊对待的服务。</td></tr><tr><td align="left"><strong>身份类权益</strong></td><td align="left">专属身份标识(V标)、会员日活动</td><td align="left">这是满足会员“荣誉感”的设计，让他们在平台内拥有与众不同的身份象征。</td></tr><tr><td align="left"><strong>生态类权益</strong></td><td align="left">免费阅读、视频会员兑换、线下活动资格</td><td align="left">这是大型平台的“护城河”，通过打通集团内其他业务，为会员提供跨界的、独特的价值。</td></tr></tbody></table><h4 id="3-建立风险控制与关怀机制"><a href="#3-建立风险控制与关怀机制" class="headerlink" title="3. 建立风险控制与关怀机制"></a>3. 建立风险控制与关怀机制</h4><p>最后，一个健康的会员体系，还需要有完善的“秩序维护”和“关系维护”机制。</p><ul><li><strong>风险控制</strong>：我需要为运营人员，设计必要的后台干预工具。例如，<code>黑白名单处理</code>功能，可以手动将会员加入黑名单（取消其资格），或加入白名单（破格授予资格）；<code>人工干预</code>功能，可以在出现问题时，手动调整用户的等级或权益。</li><li><strong>会员关怀</strong>：这本质上是一种<strong>基于会员数据的精细化运营</strong>。我需要将用户的会员身份和等级，作为一个重要的“标签”，纳入我们的用户画像体系。运营人员可以基于这个标签，对不同等级的会员，进行差异化的沟通和关怀。例如，在会员即将降级前，发送提醒通知；在会员生日时，自动发放生日礼包等，以此来维系好我们与这些高价值用户的关系。</li></ul></div></article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/avatar.png" title="头像" alt="头像"><img class="post-copyright__author_img_front" src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/avatar.png# 版权信息区域作者头像前景图片" title="头像" alt="头像"></a><div class="post-copyright__author_name">Prorise</div><div class="post-copyright__author_desc"></div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://prorise666.site/posts/51707.html">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl(&quot;https://prorise666.site/posts/51707.html&quot;)">第五章：用户运营</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://tc.z.wiki/autoupload/iXoPwUD80CPTvQUyITTBFOykMT9FcWW5SasRoXZEs3Wyl5f0KlZfm6UsKj-HyTuv/20250609/bYMH/418X445/ef9a3f68-d36a-441a-95fe-8179b1a25992.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src="https://tc.z.wiki/autoupload/iXoPwUD80CPTvQUyITTBFOykMT9FcWW5SasRoXZEs3Wyl5f0KlZfm6UsKj-HyTuv/20250609/bYMH/418X445/ef9a3f68-d36a-441a-95fe-8179b1a25992.png" alt="微信"></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://tc.z.wiki/autoupload/iXoPwUD80CPTvQUyITTBFOykMT9FcWW5SasRoXZEs3Wyl5f0KlZfm6UsKj-HyTuv/20250609/cYu3/347X390/zfb.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src="https://tc.z.wiki/autoupload/iXoPwUD80CPTvQUyITTBFOykMT9FcWW5SasRoXZEs3Wyl5f0KlZfm6UsKj-HyTuv/20250609/cYu3/347X390/zfb.png" alt="支付宝"></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display:none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://prorise666.site/posts/51707.html"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=undefined&amp;url=https://prorise666.site/posts/51707.html&amp;pic=undefined" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl(){var e=window.location.href,t=document.createElement("input");t.setAttribute("value",e),document.body.appendChild(t),t.select(),t.setSelectionRange(0,99999),document.execCommand("copy"),document.body.removeChild(t)}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://prorise666.site" target="_blank">Prorise - 分享技术与实战经验</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__category-list"><a class="post-meta__box__categoryes" href="/categories/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/"><span class="categoryes-punctuation"><i class="anzhiyufont anzhiyu-icon-inbox"></i></span>产品经理<span class="categoryesPageCount">26</span></a></div><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E6%95%99%E7%A8%8B/"><span class="tags-punctuation"><i class="anzhiyufont anzhiyu-icon-tag"></i></span>产品经理教程<span class="tagsPageCount">26</span></a></div></div><div class="post_share"><div class="social-share" data-image="https://i1.wp.com/dev.ruom.top/i/2025/07/26/266618.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media=&quot;all&quot;"><script src="https://lib.baomitu.com/social-share.js/1.0.16/js/social-share.min.js" defer=""></script></div></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/19658.html"><img class="prev-cover" src="https://i1.wp.com/dev.ruom.top/i/2025/07/25/884971.webp" onerror="onerror=null,src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">第四章：内容管理</div></div></a></div><div class="next-post pull-right"><a href="/posts/30592.html"><img class="next-cover" src="https://i1.wp.com/dev.ruom.top/i/2025/07/26/266618.webp" onerror="onerror=null,src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">4️⃣ 商业B端产品经理实战</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size:1.5rem;margin-right:4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/posts/10477.html" title="产品经理入门（一）：第一章：内容产品模型"><img class="cover" src="https://i1.wp.com/dev.ruom.top/i/2025/07/19/606082.webp" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-07-20</div><div class="title">产品经理入门（一）：第一章：内容产品模型</div></div></a></div><div><a href="/posts/51587.html" title="产品经理入门（七）：第七章：用户端设计"><img class="cover" src="https://i1.wp.com/dev.ruom.top/i/2025/07/19/606082.webp" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-07-20</div><div class="title">产品经理入门（七）：第七章：用户端设计</div></div></a></div><div><a href="/posts/59297.html" title="产品经理入门（三）：第三章：需求分析"><img class="cover" src="https://i1.wp.com/dev.ruom.top/i/2025/07/19/606082.webp" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-07-20</div><div class="title">产品经理入门（三）：第三章：需求分析</div></div></a></div><div><a href="/posts/38041.html" title="产品经理入门（九）：第九章：平台端设计（用户-内容-运营）"><img class="cover" src="https://i1.wp.com/dev.ruom.top/i/2025/07/19/606082.webp" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-07-21</div><div class="title">产品经理入门（九）：第九章：平台端设计（用户-内容-运营）</div></div></a></div><div><a href="/posts/56262.html" title="产品经理入门（二）：第二章：需求收集与管理"><img class="cover" src="https://i1.wp.com/dev.ruom.top/i/2025/07/19/606082.webp" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-07-20</div><div class="title">产品经理入门（二）：第二章：需求收集与管理</div></div></a></div><div><a href="/posts/23264.html" title="产品经理入门（五）：第五章：产品设计与原型制作"><img class="cover" src="https://i1.wp.com/dev.ruom.top/i/2025/07/19/606082.webp" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-07-20</div><div class="title">产品经理入门（五）：第五章：产品设计与原型制作</div></div></a></div></div></div><hr><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)" rel="external nofollow noreferrer" style="display:none">匿名评论</a><a href="/privacy" style="margin-left:4px">隐私政策</a></div><div class="comment-switch"><span class="first-comment">Twikoo</span><span id="switch-btn"></span><span class="second-comment">Waline</span></div><div class="comment-tips" id="comment-tips"><span>✅ 你无需删除空行，直接评论以获取最佳展示效果</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div><div><div id="waline-wrap"></div></div></div></div><div class="comment-barrage"></div><script>window.postData={title:"第五章：用户运营",date:"2025-07-26 13:13:45",updated:"2025-07-26 21:11:09",tags:["产品经理教程"],categories:["产品经理"],content:"\n# 第五章：用户运营\n\n在前面的章节中，我们已经为我们的电商平台，搭建了从商品、交易、促销到内容管理的强大“武器库”。我们设计了各种功能，让用户可以顺畅地完成购买。\n\n但武器本身不会自己打仗。从本章开始，我们的视角将发生一次关键的跃迁：从以“**功能**”为中心，转向以“**人**”为中心。我们将深入探讨，如何运营我们最宝贵的资产——用户。而用户运营的第一课，也是最重要的一课，就是“精细化运营”。\n\n## 5.1 精细化运营的目的\n\n### 5.1.1 为什么要进行精细化运营\n\n在我设计任何一个产品时，早期我追求的是“**功能的普适性**”。我提供的优惠券、拼团、秒杀等，是面向所有用户的“通用武器”，目的是在产品初期，快速验证模式、吸引第一批用户。\n\n![image-20250726200150576](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726200150576.png)\n\n但随着产品发展，用户量不断提升，我逐渐发现一个严峻的问题：**我们的增长变慢了，用户的活跃度在逐渐下降。**\n\n当用户规模扩大后，`用户类型`变得极其丰富（有学生、有白领、有宝妈），`用户需求`也变得高度多元化（有人追求性价比、有人追求品质、有人追求新品）。此时，如果我还用“一招鲜，吃遍天”的统一运营方式，结果必然是吃力不讨好。\n\n这就好比用大水漫灌田地，对一部分“口渴”的用户或许有效，但对另一部分“不渴”的用户就是一种资源浪费和体验骚扰，而对那些“需要特定养分”的用户则完全无效。\n\n![image-20250726200108788](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726200108788.png)\n\n一线运营同事的复盘，也从实践层面印证了我的判断。我们发现：\n* 大量的优惠券成本投下去，只刺激了部分“**价格敏感用户**”，他们本来就需要强优惠才会下单。\n* 对于那些“**忠诚的高价值用户**”，他们本就会购买，这些普适的优惠对他们没有带来任何增量消费，相当于浪费了营销成本。\n* 而对于那些“**从不购买的沉默用户**”，这点优惠力度又不足以打动他们，没有起到激活的作用。\n\n结论是：**我们粗放式的运营成本，没有花在刀刃上。**\n\n![image-20250726200453467](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726200453467.png)\n\n正是基于以上种种痛点，我意识到，运营的思路，必须从“**广撒网**”，转变为“**精准点射**”。这，就是精细化运营的由来。\n\n我给**精细化运营**的定义是：**一种基于数据分析，对不同的人群、在不同的场景下，推送不同的内容，并引导他们完成特定目标的、差异化细分的运营策略。** 它的核心，就是四个字：**因材施教**。\n\n### 5.1.2 精细化运营的目标是什么\n\n明确了“为什么”要做，我们再来看精细化运营的“目标”是什么。\n\n![image-20250726200522267](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726200522267.png)\n\n总的来说，所有精细化的手段，最终都服务于一个终极目的——**提升用户的生命周期总价值（LTV）**，从而实现产品的长期健康增长和商业化营收目标。\n\n我将这个总目标，拆解为以下几个可执行的分层目标：\n\n1.  **对全体用户：实现用户规模最大化**\n    这不仅仅是指通过A/B测试优化注册按钮。更深层地，是通过精细化运营，去分析不同渠道来源用户的后续留存和消费数据，从而判断出哪些是“高价值渠道”，并将预算向这些渠道倾斜，实现更高质量的用户增长。\n\n2.  **对活跃用户：提升留存与粘性**\n    这是为了让用户“留下来，并爱上我们”。通过分析用户的行为偏好，我可以为喜欢数码的用户，推送新品手机的资讯；为美妆爱好者，推送护肤品的使用教程。通过这种个性化的内容和活动，来维持用户的活跃度，并在他们产生需求时，第一个想到我们的产品。\n\n3.  **对商业化：实现精准的营收目标**\n    这是精细化运营价值兑现的核心。通过对用户进行分层，我可以实现“**好钢用在刀刃上**”。\n\n![image-20250726201008132](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726201008132.png)\n\n而要达成这些目标，我的核心搭建思路，主要分为两步：\n\n* **第一步：用户分层（识人）**\n    我需要基于数据，建立起一套用户分层模型。例如，根据经典的RFM模型，我可以将用户分为“高价值用户”、“潜力用户”、“价格敏感用户”、“沉默流失用户”等不同的群体。\n\n* **第二步：用户触达（施策）**\n    在识人的基础上，我就可以进行精准的“因材施教”了：\n    * 对“**高价值用户**”，我可以推送新品通知、提供VIP专属客服，维护好他们的忠诚度。\n    * 对“**价格敏感用户**”，我可以在大促前，精准地给他们推送大额优惠券，刺激他们下单转化。\n    * 对“**沉默流失用户**”，我则可以通过短信、App Push等渠道，用“老友回归大礼包”这样的强激励手段，尝试将他们召回。\n\n通过这一整套“分层-触达”的精细化运营体系，我才能摆脱低效、昂贵的“大水漫灌”模式，走向一种更高效、更个性化、也最终能带来更高回报的用户关系管理模式。\n\n\n\n---\n## 5.2 用户画像\n\n在上一节，我们明确了精细化运营的核心思路是“因材施教”。但要做到因材施教，我们首先必须搞清楚，我们的用户，到底都是些什么样的“材”。这，就是“用户画像”要解决的问题。\n\n### 5.2.1 什么是用户画像\n\n![image-20250726201733165](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726201733165.png)\n\n在业界，“用户画像”这个词，其实常常包含两种不同的概念：**User Persona（用户角色）** 和 **User Profile（用户资料）**。我必须先为你理清这两者的区别，因为它们服务于完全不同的目的。\n\n* **User Persona (定性画像)**：这是一种**定性的、偏研究**的方法。它通常是通过访谈、调研等方式，创造出来的一个“**虚拟的、典型的**”用户代表。他会有姓名、照片、职业、甚至生活信条和烦恼。它的核心目的，是帮助我们产品和设计团队，在规划功能时，能时刻记住我们是在为“谁”而设计，从而产生同理心，做出更贴合用户真实场景的决策。\n\n* **User Profile (定量画像)**：这是我们本章要深入学习的、服务于“精细化运营”的、**定量的、数据驱动的**画像。它不是一个虚拟的人，而是“**一个用户身上所有标签的集合**”。它描述了一个真实用户的客观事实（如：女，25岁，消费能力高，最近7天活跃），其核心目的，是**让系统和运营人员，可以对用户进行批量的筛选、分类和触达**。\n\n简单来说，**Persona是用来“理解和共情”的，而Profile是用来“筛选和运营”的。**\n\n### 5.2.2 用户画像的搭建思路\n\n![image-20250726201847308](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726201847308.png)\n\n要搭建一套能驱动精细化运营的用户画像体系（User Profile），我作为产品经理，需要设计一个包含四大步骤的完整闭环。这套闭环，清晰地回答了“如何从数据，到最终的运营动作”的全过程。\n\n#### 1. 搭建标签体系\n\n标签，是用户画像的“**原子**”和“**砖块**”，是我们认知用户的最基本单位。\n\n![image-20250726203000275](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726203000275.png)\n\n我通常会将标签，归纳为以下四大类别：\n\n| **标签类别** | **我的解读** | **举例** |\n| :--- | :--- | :--- |\n| **基本属性** | 用户**固有**的、相对静态的人口学特征。 | 性别、年龄、地域 |\n| **社会属性** | 用户在社会关系网络中的特征。 | 职业、收入、教育程度 |\n| **行为属性** | 用户在我们产品内的**互动行为**。 | 登录天数、活跃时长、浏览偏好 |\n| **消费属性** | 用户的**交易行为**。 | 消费金额、消费频次、客单价 |\n\n![image-20250726203037858](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726203037858.png)\n\n在产品设计上，我需要在后台，为运营人员提供一个“**标签管理系统**”，让他们可以清晰地看到平台目前拥有哪些标签，以及这些标签的定义、更新方式和状态。\n\n#### 2. 进行用户分群\n\n有了成千上万的标签后，我就可以进行第二步：把拥有相似标签的用户，“圈”在一起，形成“**用户分群**”。这是精细化运营能够规模化执行的前提。\n\n![image-20250726203129232](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726203129232.png)\n\n![image-20250726203451759](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726203451759.png)\n\n为此，我需要在后台设计一个强大的“**用户分群工具**”。它允许运营人员，像搭积木一样，通过自定义“规则”（例如：`最近7天登录过` AND `消费金额>1000元` AND `用户等级=钻石会员`），来创建自己想要的任何用户群体。\n\n除了让运营人员“自定义”分群，我还会内置一些业界成熟、通用的分群模型，作为基础的用户洞察工具。最经典的就是“**用户价值模型**”和“**RFM模型**”。\n\n* **用户价值模型**\n    ![image-20250726203203209](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726203203209.png)\n    这个模型，源于经典的“二八定律”。它将用户分为“高价值用户”、“中坚用户”和“普通用户”三层，帮助我们快速识别出那些贡献了绝大部分利润的20%的核心用户，以便为他们提供更好的服务。\n\n* **RFM模型**\n    ![image-20250726203234427](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726203234427.png)\n    这是在电商和零售领域，应用最广泛、最有效的一个用户价值分析模型。它通过三个核心指标，来衡量用户的价值：\n    \n    * **R (Recency)**：最近一次消费时间。离现在越近，价值越高。\n    * **F (Frequency)**：消费频率。一段时间内买得越频繁，价值越高。\n* **M (Monetary)**：消费金额。一段时间内花钱越多，价值越高。\n  \n    ![image-20250726203311287](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726203311287.png)\nRFM模型，通过对这三个维度进行“高/低”（通常以平均值为分界线）的组合，可以将我们的用户，精准地划分为8个价值完全不同的群体。\n    \n    ![image-20250726203357468](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726203357468.png)\n    例如：\n    \n    * **重要价值客户 (R高-F高-M高)**：他们是我们的“财神爷”，需要重点维护，提供VIP服务。\n    * **重要挽留客户 (R低-F高-M高)**：他们曾经是“财神爷”，但最近不来了。必须立刻采取措施（如专属客服回访、大额优惠券召回）去挽留他们。\n\n#### 3. 制定运营策略 & 实施用户触达\n\n有了清晰的用户分群，精细化运营的最后两步就水到渠成了。\n\n运营人员可以针对“重要挽留客户”，制定“**大额优惠券召回**”的策略；针对“重要价值客户”，制定“**新品优先体验**”的策略。\n\n然后，再通过我们前面设计的优惠券、站内信、Push等“**触达工具**”，将这些策略精准地推送给对应的用户群体，最终形成一个从“识人”到“施策”的完整闭环。\n\n\n\n\n\n---\n## 5.3 积分体系\n\n在精细化运营的工具箱中，如果说“用户画像”是我们用来洞察用户的“作战地图”，那么“**积分体系**”就是我们用来**引导和激励用户长期行为**的、平台自建的“**经济系统**”。它是一项重要的、长期的用户忠诚度计划。\n\n### 5.3.1 积分系统的需求分析\n\n#### 1. 为什么要搭建积分体系？\n\n![image-20250726203858063](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726203858063.png)\n\n在我完成了初步的用户增长，拥有了一定规模的用户后，我的下一个核心目标，就是如何**提升用户的长期留存和生命周期总价值（LTV）**。我需要一套能够持续激励用户与我们互动的体系。在对比了大量竞品后，我决定搭建一套“积分体系”。\n\n它的核心战略价值在于：\n1.  **量化用户贡献**：通过积分为用户在平台内的各种“积极行为”（如购买、签到、评价）进行量化和奖励。\n2.  **划分用户等级**：以积分为标尺，将用户划分为不同的等级，为后续针对不同等级用户，进行差异化的运营，打下基础。\n\n![image-20250726204102401](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726204102401.png)\n\n在电商场景中，积分最核心的价值，就是建立一个“**消费 -> 奖励 -> 再消费**”的良性循环，从而提升用户的“**长期活跃**”和复购率。\n\n#### 2. 积分体系的设计思路：建立闭环\n\n![image-20250726204126224](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726204126224.png)\n\n要设计一个健康的、可持续的积分体系，我必须遵循一个核心原则：**建立积分的“闭环”**。\n\n这意味着，积分必须有来路（获取），也要有去路（消耗），并且整个过程是安全可控的。如果只进不出，积分就会严重“通货膨胀”，变得毫无价值；如果只出不进，则无法起到激励作用。因此，我的设计思路，将围绕“**积分获取**”、“**积分消耗**”和“**积分风控**”这三大支柱展开。\n\n* **积分获取的需求**\n    ![image-20250726204243777](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726204243777.png)\n    在“获取”端，我需要同时满足“用户”和“平台运营”的需求：\n    * **对于用户**：需要清晰地看到“如何获取积分”的规则，有明确的入口去完成这些任务，并且能随时查看自己的积分获取记录。\n    * **对于平台运营**：需要有一个后台，可以灵活地“定义哪些用户行为可以获得积分”（如下单、评价、签到等），并且可以根据积分的不同提供不同的用户等级作为指标\n\n* **积分消耗的需求**\n    ![image-20250726204349492](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726204349492.png)\n    在“消耗”端，需求与获取端相辅相成：\n    * **对于用户**：需要知道“积分能用来做什么”（如抵扣现金、兑换礼品），有明确的场景去使用积分，并能查看自己的积分消耗记录。\n    * **对于平台运营**：需要有一个后台，可以灵活地“定义积分的消耗渠道和规则”，例如设置“积分商城”、配置“积分抵现比例”等。\n\n* **积分风控的需求**\n    ![image-20250726204423160](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726204423160.png)\n    最后，作为一个“经济系统”，积分体系必须有“监管机制”，防止被黑产“薅羊毛”而导致系统崩溃。因此，“风控”是平台侧至关重要的需求。平台运营需要系统能够**监控特殊或异常的积分获取行为**，并能对这些行为进行**手动或自动的处理**（如冻结积分、封禁账号等）。\n\n#### 3. 核心业务流程\n\n![image-20250726204441423](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726204441423.png)\n\n将以上所有的需求点进行串联，我就能提炼出我们积分体系的“**核心业务流程**”。\n\n这张流程图，完整地展示了积分**获取与消耗的闭环**，以及平台在其中扮演的“**规则制定者**”和“**秩序维护者**”的角色。\n\n* 用户根据平台设定的规则，通过各种行为**获取积分**。\n* 平台侧则会对用户的行为进行校验，一旦发现违规行为，就会触发**风控机制**。\n* 用户可以在消耗场景**使用积分**。\n* 整个过程中，用户和平台，都可以清晰地看到每一笔积分的**流入和流出明细**。\n\n这个流程，就是我们下一节进行具体产品设计的“总纲”和指导蓝图。\n\n---\n#### 2. 积分体系的产品设计\n\n我将积分体系的产品设计，拆分为**用户端（C端）**和**平台端（B端）**两大部分。C端负责用户的**体验和互动**，B端则负责平台的**管理和调控**。\n\n##### 一、 用户端（C端）产品设计\n\n对于用户来说，积分体系的体验必须是**清晰的、有激励感的、且值得信赖的**。\n\n* **积分入口**\n    首先，我需要在用户最容易找到的地方，为他提供一个固定的入口。通常，这个入口会放在“**个人中心**”页面，直观地展示出用户当前的积分总额。\n    \n* **“我的积分”主页**\n    ![image-20250726204745142](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726204745142.png)\n    点击入口后，用户会进入“我的积分”主页。这是用户与积分体系互动的核心枢纽。\n    * **概览区**：页面的顶部，会展示用户的头像、等级（Lv.10）、以及当前的积分总额，并提供一个“查看明细”的入口。\n    * **任务列表（积分获取）**：页面的核心区域，是一个“**任务列表**”。我会把所有可以获取积分的行为，都以任务卡片的形式，清晰地陈列在这里。例如，“`签到`”、“`邀请新用户`”、“`购物下单`”、“`晒单评价`”等。用户每完成一项，对应的任务状态就会变为“已完成”。\n    * **每日签到**：上图中间和右侧的截图，详细展示了“每日签到”这个最常见的积分获取任务。我通过一个日历，来直观地记录用户的连续签到行为，并通过“**连续签到X天，可领额外奖励**”的规则，来激励用户保持每日访问的习惯。\n    * **积分消耗（讲解）**：虽然截图中未包含“积分消耗”的页面，但在一个完整的体系中，这个主页上通常还必须有“**积分商城**”（用积分兑换商品）或“**积分抵现**”（在下单时用积分抵扣现金）的入口。这是让用户辛苦赚来的积分“**有处可花**”的关键，是构成闭环不可或缺的一环。\n\n* **积分明细**\n    ![image-20250726204838848](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726204838848.png)\n    为了建立用户对积分体系的信任，我必须提供一个绝对清晰、透明的账单。在“积分明细”页面，用户可以查到自己**每一笔**积分的流入（获取）和流出（消耗）记录，就像查看自己的银行账单一样。页面顶部的`全部`、`获取`、`消耗`三个Tab，可以帮助用户快速地进行筛选。\n\n##### 二、 平台端（B端）产品设计\n\n如果说C端是“公民”体验积分价值的地方，那么B端就是我作为平台方，进行“宏观调控”和“维护秩序”的“**中央银行**”和“**监管机构**”。\n\n* **规则制定：积分规则管理**\n    ![image-20250726204855929](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726204855929.png)\n    这是整个积分经济系统的“**立法机构**”。在这个后台，运营人员可以：\n    1.  **定义规则**：创建所有积分的获取和消耗规则。例如，可以创建一条“`规则名称`：发表话题，`规则类型`：每日N次，`积分`：+20”的规则。\n    2.  **管理规则**：对已创建的规则，进行启用、停用、编辑等操作。这赋予了运营极大的灵活性，可以根据平台的运营节奏，来动态地调整积分的发放策略。\n\n* **等级体系：等级管理**\n    ![image-20250726205015265](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726205015265.png)\n    这是积分体系与用户成长体系相结合的核心。在这个后台，运营人员可以：\n    1.  **定义等级**：创建不同的用户等级，如 Lv.1, Lv.2 ...\n    2.  **设置门槛**：为每一个等级，设置一个“**所需积分**”的门槛。当用户的累计积分达到这个门槛时，系统就会自动为他升级。\n    3.  **配置权益**：为不同等级的用户，配置不同的权益，例如更高倍数的积分获取系数、或者专属的兑换商品等。\n\n* **数据监控：积分明细记录**\n    ![image-20250726205029492](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726205029492.png)\n    这是平台的“**审计系统**”。它记录了系统内**所有用户**的**每一笔**积分流水。当出现用户申诉或需要排查问题时，运营人员可以在这里，通过用户ID或手机号，快速地查询到该用户的完整积分历史，为客诉处理和数据分析，提供依据。\n\n* **风险控制：积分风控**\n    ![image-20250726205040929](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726205040929.png)\n    这是积分体系的“**监管和执法机构**”，用于处理异常情况，维护系统公平。\n    1.  **用户查询**：运营可以在这里，查询到任何一个用户的当前积分状况。\n    2.  **手动调分**：当需要进行人工补偿或处罚时，运营可以通过“**调整积分**”功能，手动为用户增加或扣除积分，并记录原因。\n    3.  **账号处理**：当发现有用户存在严重违规的“刷分”行为时，运营可以将其“**加入黑名单**”，禁止该用户再参与任何积分相关的活动，以维护积分系统的秩序。\n\n通过这样一套权责分明、功能完备的C端和B端产品设计，我才能确保我们搭建的“积分经济系统”，既能有效激励用户，又能被平台牢牢掌控，最终实现健康、可持续的长期运营。\n\n\n---\n## 5.4 会员体系\n我们已经学习了积分体系，它像是一个普惠制的“游戏币”系统。现在，我们要学习一个更高阶的用户运营玩法——**会员体系**。\n如果说积分是“游戏币”，那么会员体系就是“**VIP俱乐部**”。它存在的目的，不是激励所有用户，而是要**筛选和深度服务**我们平台最核心、最有价值的用户群体。\n\n### 5.4.1 什么是会员体系\n\n在开始设计前，我们首先要回答这个核心问题：**我们已经有了积分，为什么还需要会员？**\n\n我的答案是：**积分和会员，解决的是不同层面的问题**。\n* **积分**：是一种**普惠制的、可量化的行为奖励**，人人都可以参与，像游戏币。它的目的是**引导用户的日常行为**。\n* **会员**：则是一种**身份的象征和权益的集合**，它具有一定的门槛，是一种**筛选机制**，像俱乐部入场券。它的目的是**筛选和锁定高价值用户**。\n\n基于这个定位，我设计会员体系的核心目的，主要有三个：\n1.  **用户管理**：通过会员等级，将用户清晰地划分为“核心用户”、“潜力用户”、“普通用户”等不同群体，实现用户分层。\n2.  **价值管理**：识别出平台最有价值的用户，并通过专属权益，深度绑定他们，从而提升他们的生命周期总价值（LTV）。\n3.  **用户增长**：以极具吸引力的会员权益作为“诱饵”，既能激励潜力用户不断“升级打怪”，也能吸引平台外的新用户加入。\n\n![image-20250726210254504](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726210254504.png)\n\n综上，我给**会员体系**的定义是：**一套通过设置身份门槛和提供差异化的专属权益，筛选出核心用户，并深度绑定、提升其长期价值的运营机制。**\n\n正如我们熟知的视频网站会员，通过付费这个门槛，筛选出愿意为内容付费的用户，并为他们提供“免广告”、“看独家内容”等专属权益。\n\n### 5.4.2 会员体系搭建思路\n\n要搭建一个成功的会员体系，我作为产品经理，必须从顶层设计好三大支柱：**定义会员类型、设计会员权益、以及建立风险控制机制。**\n\n#### 1. 定义会员类型\n\n首先，我要决定我的“俱乐部”，是用什么方式来招募和划分会员的。\n\n![image-20250726210331211](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726210331211.png)\n\n我通常会从这两个维度来思考和组合：\n\n* **维度一：是否付费**\n    * `付费会员`：用户需要支付一笔费用，才能获得会员身份和权益。这是最直接的筛选方式，门槛高，用户价值也最高。例如，Amazon Prime, 京东PLUS。\n    * `免费会员`：用户无需付费，通过注册即可成为会员，但通常权益较少或需要通过成长来解锁。\n* **维度二：成长体系**\n    * `等级会员`：会员身份分为多个等级（如Lv.1 - Lv.10），用户需要通过特定行为（如消费、获取积分）来“升级”，不同等级享有不同权益。我们之前设计的“积分体系”，就是为“等级会员”服务的。\n    * `无差别会员`：所有会员的身份和权益，都是完全一样的，没有等级之分。\n\n![image-20250726210416260](https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/image-20250726210416260.png)\n\n在实践中，最成功的会员体系，往往是**混合模式**。以淘宝的88VIP为例，它首先是一个“**付费会员**”，你需要花88元/年购买。但它的购买资格，又与一个“**成长体系**”（淘气值）挂钩，只有淘气值超过1000的用户，才能以88元的优惠价购买。这种“**成长+付费**”的双重门槛，精准地筛选出了平台消费能力强、且活跃度高的最优质用户。\n\n#### 2. 设计会员权益\n\n会员权益，是整个体系的“灵魂”，是用户加入和升级的唯一动力。\n\n我设计的权益，必须能为用户带来**稀缺感、尊贵感和差异化**的体验。并且，这些权益必须是“**阶梯式**”的，即等级越高的会员，享受的权益越好、越独特。\n\n我将电商平台的会员权益，归纳为以下几类：\n\n| **权益类型** | **权益举例** | **我的设计思考** |\n| :--- | :--- | :--- |\n| **交易类权益** | 会员专享价、每月免运费券、积分加速 | 这是最基础、最直接的权益，能让会员在购物时感受到实实在在的优惠。|\n| **服务类权益** | 专属客服通道、极速退款、生日礼包 | 这是提升会员“尊贵感”的关键，让他们感受到被特殊对待的服务。 |\n| **身份类权益** | 专属身份标识(V标)、会员日活动 | 这是满足会员“荣誉感”的设计，让他们在平台内拥有与众不同的身份象征。|\n| **生态类权益** | 免费阅读、视频会员兑换、线下活动资格 | 这是大型平台的“护城河”，通过打通集团内其他业务，为会员提供跨界的、独特的价值。|\n\n#### 3. 建立风险控制与关怀机制\n\n最后，一个健康的会员体系，还需要有完善的“秩序维护”和“关系维护”机制。\n\n* **风险控制**：我需要为运营人员，设计必要的后台干预工具。例如，`黑白名单处理`功能，可以手动将会员加入黑名单（取消其资格），或加入白名单（破格授予资格）；`人工干预`功能，可以在出现问题时，手动调整用户的等级或权益。\n* **会员关怀**：这本质上是一种**基于会员数据的精细化运营**。我需要将用户的会员身份和等级，作为一个重要的“标签”，纳入我们的用户画像体系。运营人员可以基于这个标签，对不同等级的会员，进行差异化的沟通和关怀。例如，在会员即将降级前，发送提醒通知；在会员生日时，自动发放生日礼包等，以此来维系好我们与这些高价值用户的关系。"}</script></div><div class="aside-content" id="aside-content"><div class="card-widget card-info card-author-solitude"><div class="card-top-section"><div class="sayhi" id="author-info__sayhi" onclick="anzhiyu.changeWittyWord()"></div><div class="avatar"><img alt="avatar" src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/avatar.png" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2024/06/20/6673caa5bca18.gif&quot;"><div class="sticker"><img class="sticker-img" src="https://bu.dusays.com/2025/07/19/687b396f89934.png" alt="status"></div></div></div><div class="card-bottom-section"><div class="author-info"><div class="name">Prorise</div><div class="desc">这是我的博客，分享技术与生活的点点滴滴</div></div><div class="site-stats"><div class="stat-item"><a href="/archives/"><div class="stat-number">109</div><div class="stat-label">文章</div></a></div><div class="stat-item"><a href="/tags/"><div class="stat-number">7</div><div class="stat-label">标签</div></a></div><div class="stat-item"><a href="/categories/"><div class="stat-number">9</div><div class="stat-label">分类</div></a></div></div><div class="social-icons"><a class="social-icon" href="https://github.com/Prorise-cool" rel="external nofollow noreferrer" title="Github" target="_blank"><i class="fab fa-github"></i></a><a class="social-icon" href="https://space.bilibili.com/361040115?spm_id_from=333.1387.0.0" rel="external nofollow noreferrer" title="BiliBili" target="_blank"><i class="fab fa-bilibili"></i></a></div></div></div><div class="card-widget card-latest-comments"><div class="item-headline"><i class="fas fa-comments"></i><span>最新评论</span></div><div class="item-content"><a href="/messages/" class="headline-right" title="查看更多"><i class="fas fa-angle-right"></i></a><div class="aside-list" id="latest-comments"></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0%EF%BC%9A%E7%94%A8%E6%88%B7%E8%BF%90%E8%90%A5"><span class="toc-number">1.</span> <span class="toc-text">第五章：用户运营</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-%E7%B2%BE%E7%BB%86%E5%8C%96%E8%BF%90%E8%90%A5%E7%9A%84%E7%9B%AE%E7%9A%84"><span class="toc-number">1.1.</span> <span class="toc-text">5.1 精细化运营的目的</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-1-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E8%BF%9B%E8%A1%8C%E7%B2%BE%E7%BB%86%E5%8C%96%E8%BF%90%E8%90%A5"><span class="toc-number">1.1.1.</span> <span class="toc-text">5.1.1 为什么要进行精细化运营</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-2-%E7%B2%BE%E7%BB%86%E5%8C%96%E8%BF%90%E8%90%A5%E7%9A%84%E7%9B%AE%E6%A0%87%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.1.2.</span> <span class="toc-text">5.1.2 精细化运营的目标是什么</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F"><span class="toc-number">1.2.</span> <span class="toc-text">5.2 用户画像</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-1-%E4%BB%80%E4%B9%88%E6%98%AF%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F"><span class="toc-number">1.2.1.</span> <span class="toc-text">5.2.1 什么是用户画像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-2-%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F%E7%9A%84%E6%90%AD%E5%BB%BA%E6%80%9D%E8%B7%AF"><span class="toc-number">1.2.2.</span> <span class="toc-text">5.2.2 用户画像的搭建思路</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%90%AD%E5%BB%BA%E6%A0%87%E7%AD%BE%E4%BD%93%E7%B3%BB"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">1. 搭建标签体系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%BF%9B%E8%A1%8C%E7%94%A8%E6%88%B7%E5%88%86%E7%BE%A4"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">2. 进行用户分群</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%88%B6%E5%AE%9A%E8%BF%90%E8%90%A5%E7%AD%96%E7%95%A5-%E5%AE%9E%E6%96%BD%E7%94%A8%E6%88%B7%E8%A7%A6%E8%BE%BE"><span class="toc-number">1.2.2.3.</span> <span class="toc-text">3. 制定运营策略 &amp; 实施用户触达</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3-%E7%A7%AF%E5%88%86%E4%BD%93%E7%B3%BB"><span class="toc-number">1.3.</span> <span class="toc-text">5.3 积分体系</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-1-%E7%A7%AF%E5%88%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-number">1.3.1.</span> <span class="toc-text">5.3.1 积分系统的需求分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%90%AD%E5%BB%BA%E7%A7%AF%E5%88%86%E4%BD%93%E7%B3%BB%EF%BC%9F"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">1. 为什么要搭建积分体系？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%A7%AF%E5%88%86%E4%BD%93%E7%B3%BB%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF%EF%BC%9A%E5%BB%BA%E7%AB%8B%E9%97%AD%E7%8E%AF"><span class="toc-number">1.3.1.2.</span> <span class="toc-text">2. 积分体系的设计思路：建立闭环</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E6%A0%B8%E5%BF%83%E4%B8%9A%E5%8A%A1%E6%B5%81%E7%A8%8B"><span class="toc-number">1.3.1.3.</span> <span class="toc-text">3. 核心业务流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%A7%AF%E5%88%86%E4%BD%93%E7%B3%BB%E7%9A%84%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.3.1.4.</span> <span class="toc-text">2. 积分体系的产品设计</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%80%E3%80%81-%E7%94%A8%E6%88%B7%E7%AB%AF%EF%BC%88C%E7%AB%AF%EF%BC%89%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.3.1.4.1.</span> <span class="toc-text">一、 用户端（C端）产品设计</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E3%80%81-%E5%B9%B3%E5%8F%B0%E7%AB%AF%EF%BC%88B%E7%AB%AF%EF%BC%89%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.3.1.4.2.</span> <span class="toc-text">二、 平台端（B端）产品设计</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-4-%E4%BC%9A%E5%91%98%E4%BD%93%E7%B3%BB"><span class="toc-number">1.4.</span> <span class="toc-text">5.4 会员体系</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-4-1-%E4%BB%80%E4%B9%88%E6%98%AF%E4%BC%9A%E5%91%98%E4%BD%93%E7%B3%BB"><span class="toc-number">1.4.1.</span> <span class="toc-text">5.4.1 什么是会员体系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-4-2-%E4%BC%9A%E5%91%98%E4%BD%93%E7%B3%BB%E6%90%AD%E5%BB%BA%E6%80%9D%E8%B7%AF"><span class="toc-number">1.4.2.</span> <span class="toc-text">5.4.2 会员体系搭建思路</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%AE%9A%E4%B9%89%E4%BC%9A%E5%91%98%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.4.2.1.</span> <span class="toc-text">1. 定义会员类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%AE%BE%E8%AE%A1%E4%BC%9A%E5%91%98%E6%9D%83%E7%9B%8A"><span class="toc-number">1.4.2.2.</span> <span class="toc-text">2. 设计会员权益</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%BB%BA%E7%AB%8B%E9%A3%8E%E9%99%A9%E6%8E%A7%E5%88%B6%E4%B8%8E%E5%85%B3%E6%80%80%E6%9C%BA%E5%88%B6"><span class="toc-number">1.4.2.3.</span> <span class="toc-text">3. 建立风险控制与关怀机制</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/30592.html" title="4️⃣ 商业B端产品经理实战"><img src="https://i1.wp.com/dev.ruom.top/i/2025/07/26/266618.webp" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" alt="4️⃣ 商业B端产品经理实战"></a><div class="content"><a class="title" href="/posts/30592.html" title="4️⃣ 商业B端产品经理实战">4️⃣ 商业B端产品经理实战</a><time datetime="2025-07-26T07:09:45.000Z" title="发表于 2025-07-26 15:09:45">2025-07-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/51707.html" title="第五章：用户运营"><img src="https://i1.wp.com/dev.ruom.top/i/2025/07/25/884971.webp" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" alt="第五章：用户运营"></a><div class="content"><a class="title" href="/posts/51707.html" title="第五章：用户运营">第五章：用户运营</a><time datetime="2025-07-26T05:13:45.000Z" title="发表于 2025-07-26 13:13:45">2025-07-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/19658.html" title="第四章：内容管理"><img src="https://i1.wp.com/dev.ruom.top/i/2025/07/25/884971.webp" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" alt="第四章：内容管理"></a><div class="content"><a class="title" href="/posts/19658.html" title="第四章：内容管理">第四章：内容管理</a><time datetime="2025-07-26T04:13:45.000Z" title="发表于 2025-07-26 12:13:45">2025-07-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/27803.html" title="第三章：活动管理-总价活动"><img src="https://i1.wp.com/dev.ruom.top/i/2025/07/25/884971.webp" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" alt="第三章：活动管理-总价活动"></a><div class="content"><a class="title" href="/posts/27803.html" title="第三章：活动管理-总价活动">第三章：活动管理-总价活动</a><time datetime="2025-07-26T03:13:45.000Z" title="发表于 2025-07-26 11:13:45">2025-07-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/10822.html" title="第二章：活动管理-单品活动"><img src="https://i1.wp.com/dev.ruom.top/i/2025/07/25/884971.webp" onerror="this.onerror=null,this.src=&quot;https://bu.dusays.com/2025/07/19/687b3ab77aed8.jpg&quot;" alt="第二章：活动管理-单品活动"></a><div class="content"><a class="title" href="/posts/10822.html" title="第二章：活动管理-单品活动">第二章：活动管理-单品活动</a><time datetime="2025-07-26T02:13:45.000Z" title="发表于 2025-07-26 10:13:45">2025-07-26</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="footer_deal"><a class="deal_link" href="mailto:3381292732@qq.com" rel="external nofollow noreferrer" title="email"><i class="anzhiyufont anzhiyu-icon-envelope"></i></a><a class="deal_link" target="_blank" rel="noopener external nofollow noreferrer" href="https://weibo.com/u/7484736298?tabtype=home" title="微博"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a><a class="deal_link" href="/atom.xml" title="RSS"><i class="anzhiyufont anzhiyu-icon-rss"></i></a><img class="footer_mini_logo" title="返回顶部" alt="返回顶部" onclick="anzhiyu.scrollToDest(0,500)" src="https://prorise-blog.oss-cn-guangzhou.aliyuncs.com/cover/avatar.png" size="50px"><a class="deal_link" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Prorise-cool" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a><a class="deal_link" target="_blank" rel="noopener external nofollow noreferrer" href="https://space.bilibili.com/361040115?spm_id_from=333.788.0.0" title="Bilibili"><i class="anzhiyufont anzhiyu-icon-bilibili"></i></a><a class="deal_link" href="/copyright" title="CC"><i class="anzhiyufont anzhiyu-icon-copyright-line"></i></a></div><div id="workboard"><div id="runtimeTextTip"></div></div><div class="footer_custom_text">这是我的个人博客，分享技术与生活点滴。</div><div id="anzhiyu-footer"><div class="footer-group"><div class="footer-title">服务</div><div class="footer-links"><a class="footer-item" title="51la统计" target="_blank" rel="noopener external nofollow noreferrer" href="https://v6.51.la/">51la统计</a><a class="footer-item" title="十年之约" target="_blank" rel="noopener external nofollow noreferrer" href="https://www.foreverblog.cn/">十年之约</a></div></div><div class="footer-group"><div class="footer-title">主题</div><div class="footer-links"><a class="footer-item" title="文档" href="/docs/">文档</a><a class="footer-item" title="源码" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Prorise-cool/Prorise-cool.github.io/tree/main">源码</a></div></div><div class="footer-group"><div class="footer-title">导航</div><div class="footer-links"><a class="footer-item" title="即刻短文" href="/essay/">即刻短文</a><a class="footer-item" title="留言板" href="/comments/">留言板</a></div></div><div class="footer-group"><div class="footer-title">协议</div><div class="footer-links"><a class="footer-item" title="隐私协议" href="/privacy/">隐私协议</a><a class="footer-item" title="版权协议" href="/copyright/">版权协议</a></div></div><div class="footer-group"><div class="footer-title-group"><div class="footer-title">友链</div><a class="random-friends-btn" id="footer-random-friends-btn" href="javascript:addFriendLinksInFooter();" rel="external nofollow noreferrer" title="换一批友情链接"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right"></i></a></div><div class="footer-links" id="friend-links-in-footer"></div></div></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="博客框架为Hexo7.0" title="博客框架为Hexo7.0"><img src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Frame-Hexo.svg" alt="博客框架为Hexo7.0"></a><a class="github-badge" target="_blank" href="https://www.dogecloud.com/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站使用多吉云为静态资源提供CDN加速" title="本站使用多吉云为静态资源提供CDN加速"><img src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/CDN-多吉云-3693F3.svg" alt="本站使用多吉云为静态资源提供CDN加速"></a><a class="github-badge" target="_blank" href="https://github.com/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站项目由Github托管" title="本站项目由Github托管"><img src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Source-Github.svg" alt="本站项目由Github托管"></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站采用CC BY-NC-SA 4.0协议" title="本站采用CC BY-NC-SA 4.0协议"><img src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/Copyright-BY-NC-SA.svg" alt="本站采用CC BY-NC-SA 4.0协议"></a></p></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">©2025 By <a class="footer-bar-link" href="/about/" title="Prorise" target="_blank">Prorise</a></div></div><div id="footer-type-tips"></div><div class="js-pjax"><script>function subtitleType () {
+  fetch('https://v1.hitokoto.cn')
+    .then(response => response.json())
+    .then(data => {
+      if (true) {
+        const from = '出自 ' + data.from
+        const sub = ["生活明朗, 万物可爱, 人间值得, 未来可期.","愿你眼里的星星，永远亮晶晶。","愿我们每个人都能被世界温柔以待。"]
+        sub.unshift(data.hitokoto, from)
+        window.typed = new Typed('#footer-type-tips', {
+          strings: sub,
+          startDelay: 300,
+          typeSpeed: 150,
+          loop: true,
+          backSpeed: 50,
+        })
+      } else {
+        document.getElementById('footer-type-tips').innerHTML = data.hitokoto
+      }
+    })
+}
+
+if (true) {
+  if (typeof Typed === 'function') {
+    subtitleType()
+  } else {
+    getScript('https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/typed.js/2.0.12/typed.min.js').then(subtitleType)
+  }
+} else {
+  subtitleType()
+}</script></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Prorise-cool?tab=repositories" title="网站源码">网站源码</a><a class="footer-bar-link" target="_blank" rel="noopener external nofollow noreferrer" href="https://beian.miit.gov.cn/" title="湘ICP备23041-302号">湘ICP备23041-302号</a><a class="footer-bar-link cc" href="/copyright" title="cc协议"><i class="anzhiyufont anzhiyu-icon-copyright-line"></i><i class="anzhiyufont anzhiyu-icon-creative-commons-by-line"></i><i class="anzhiyufont anzhiyu-icon-creative-commons-nc-line"></i><i class="anzhiyufont anzhiyu-icon-creative-commons-nd-line"></i></a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">109</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">9</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" rel="external nofollow noreferrer" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" href="/" title="博客"><img class="back-menu-item-icon" src="https://bu.dusays.com/2025/07/19/687b394cb439b.ico" alt="博客"><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" href="/" title="后续项目..."><img class="back-menu-item-icon" src="https://image.anheyu.com/favicon.ico" alt="后续项目..."><span class="back-menu-item-text">后续项目...</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size:.9em"></i><span> 归档</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size:.9em"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size:.9em"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>个人</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size:.9em"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/todolist/"><i class="fas fa-check-double faa-tada"></i><span> 留言板</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/awesome-links/"><i class="fas fa-link faa-tada"></i><span> 实用网站</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>预览</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/?server=netease&amp;id=3117791189"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size:.9em"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size:.9em"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/messages/"><i class="fas fa-comments faa-tada"></i><span> 评论总览</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size:.9em"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size:.9em"></i><span> 即刻短文</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size:.9em"></i><span> 随便逛逛</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%80%BB%E6%B1%87/" style="font-size:.88rem">Java基础知识总汇<sup>9</sup></a><a href="/tags/Java%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%AF%87/" style="font-size:.88rem">Java微服务篇<sup>11</sup></a><a href="/tags/Python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%80%BB%E6%B1%87/" style="font-size:.88rem">Python基础知识总汇<sup>22</sup></a><a href="/tags/%E4%B8%AA%E4%BA%BA/" style="font-size:.88rem">个人<sup>5</sup></a><a href="/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E5%AE%9E%E6%88%98/" style="font-size:.88rem">产品经理实战<sup>5</sup></a><a href="/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E6%95%99%E7%A8%8B/" style="font-size:.88rem">产品经理教程<sup>26</sup></a><a href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/" style="font-size:.88rem">博客搭建教程<sup>31</sup></a></div></div><hr></div></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="go-down" type="button" title="直达底部" onclick="anzhiyu.scrollToDest(document.body.scrollHeight,500)"><i class="anzhiyufont anzhiyu-icon-arrow-down"></i></button><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="anzhiyufont anzhiyu-icon-comment-sms"></i></button><button id="to_comment" type="button" title="直达评论" onclick="FixedCommentBtn()"><i class="anzhiyufont anzhiyu-icon-comments"></i></button><a id="switch-commentBarrage" href="javascript:anzhiyu.switchCommentBarrage();" rel="external nofollow noreferrer" title="开关弹幕"><i class="anzhiyufont anzhiyu-icon-danmu"></i></a><button id="download-md-btn" type="button" title="下载文章源文件"><i class="anzhiyufont anzhiyu-icon-download"></i></button><button id="doc-toc-button" type="button" title="文档目录"><i class="anzhiyufont anzhiyu-icon-bars"></i></button><button id="code-runner-btn" type="button" title="代码运行器"><i class="fas fa-code"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div class="code-runner-panel" id="code-runner-panel"><div class="panel-header"><div class="panel-title">代码运行器</div><button class="panel-close-btn" type="button" title="关闭"><i class="fas fa-times"></i></button></div><div class="panel-body"><nav class="panel-nav"><div class="nav-category" data-category="Trinket"><div class="category-header" data-description="适合Python/HTML/CSS/JS等基础代码运行，界面简洁易用" title="适合Python/HTML/CSS/JS等基础代码运行，界面简洁易用"><i class="fas fa-leaf"></i><span class="category-name">Trinket</span><i class="expand-icon fas fa-chevron-down"></i></div><ul class="instance-list"><li class="instance-item"><a class="instance-link" href="javascript:void(0);" rel="external nofollow noreferrer" data-url="https://trinket.io/embed/python3/f417f7026885" data-name="Python 3" title="Python 3 在线编程环境">Python 3</a></li><li class="instance-item"><a class="instance-link" href="javascript:void(0);" rel="external nofollow noreferrer" data-url="https://trinket.io/embed/html/1aac0e8640a7" data-name="HTML/CSS/JS" title="前端三件套在线编辑器">HTML/CSS/JS</a></li><li class="instance-item"><a class="instance-link" href="javascript:void(0);" rel="external nofollow noreferrer" data-url="https://trinket.io/embed/java/33cfa8ec292c" data-name="Java" title="Java 在线编程环境">Java</a></li></ul></div><div class="nav-category" data-category="JDoodle"><div class="category-header" data-description="支持70+种编程语言，功能强大的在线编译器" title="支持70+种编程语言，功能强大的在线编译器"><i class="fas fa-terminal"></i><span class="category-name">JDoodle</span><i class="expand-icon fas fa-chevron-down"></i></div><ul class="instance-list"><li class="instance-item"><a class="instance-link" href="javascript:void(0);" rel="external nofollow noreferrer" data-url="https://www.jdoodle.com/online-compiler-c++/" data-name="C++ Compiler" title="C++ 在线编译器">C++ Compiler</a></li><li class="instance-item"><a class="instance-link" href="javascript:void(0);" rel="external nofollow noreferrer" data-url="https://www.jdoodle.com/online-java-compiler/" data-name="Java Compiler" title="Java 在线编译器">Java Compiler</a></li><li class="instance-item"><a class="instance-link" href="javascript:void(0);" rel="external nofollow noreferrer" data-url="https://www.jdoodle.com/python3-programming-online/" data-name="Python 3" title="Python 3 在线编程">Python 3</a></li><li class="instance-item"><a class="instance-link" href="javascript:void(0);" rel="external nofollow noreferrer" data-url="https://www.jdoodle.com/embed/v1/f40f7676c55c09b" data-name="TypeScript 在线编译器" title="TypeScript">TypeScript 在线编译器</a></li><li class="instance-item"><a class="instance-link" href="javascript:void(0);" rel="external nofollow noreferrer" data-url="https://www.jdoodle.com/embed/v1/510d607e22ee9e7c" data-name="SQL 在线编译器" title="SQL 在线编译器">SQL 在线编译器</a></li><li class="instance-item"><a class="instance-link" href="javascript:void(0);" rel="external nofollow noreferrer" data-url="https://www.jdoodle.com/embed/v1/ca85d333af57a5fc" data-name="PHP 在线编译器" title="PHP 在线编译器">PHP 在线编译器</a></li><li class="instance-item"><a class="instance-link" href="javascript:void(0);" rel="external nofollow noreferrer" data-url="https://www.jdoodle.com/embed/v1/8e18f0fd58e4a248" data-name="C语言 在线编译器" title="C语言 在线编译器">C语言 在线编译器</a></li></ul></div></nav><div class="panel-content"><div class="welcome-message"><div class="welcome-icon"><i class="fas fa-code"></i></div><div class="welcome-text"><h3>欢迎使用代码运行器</h3><p>请从左侧菜单选择一个编程环境开始编码</p></div></div><div class="iframe-container"><iframe id="code-runner-iframe" frameborder="0" width="100%" height="100%" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-modals"></iframe></div><div class="loading-indicator"><div class="loading-spinner"><i class="fas fa-spinner fa-spin"></i></div><div class="loading-text">正在加载编程环境...</div></div></div></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="3117791189" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size:1rem"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-askAI"><i class="fa-solid fa-robot"></i><span>询问智能客服</span></div><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://music.163.com/#/playlist?id=3117791189&quot;, &quot;_blank&quot;);" style="display:none"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/instant.page/5.1.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.5/dist/lazyload.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/pangu/4.0.7/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><canvas id="universe"></canvas><script async="" src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>//- 从这里开始的所有JS代码，都必须有缩进（例如2个空格）
+// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("06/10/2025 00:00:00"); // 此处读取您配置中的建站时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  
+  // --- 已将您的专属LOGO和个人信息集成到这里 ---
+  const ascll = [
+    `欢迎访问 Prorise 的数字空间!`,
+    `代码构建世界，思想驱动未来`,
+    "已稳定运行",
+    dnum,
+    "天",
+    `©2025 By Prorise 1.0.0`,
+  ];
+  
+  const ascll2 = [`SYS-INFO`, `前置摄像头拍照成功`, `您的帅气脸庞为：`, `😎`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} \n%c${ascll[2]} ${ascll[3]} ${ascll[4]}\n\n%c ${ascll[5]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF"
+    )
+  );
+
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，朋友.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Created by Prorise %c 你正在访问 Prorise 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 注意，你的所有操作已被记录.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async="" src="/anzhiyu/random.js"></script><script async="">(function () {
+  var grt = new Date("06/10/2025 00:00:00"); //设置网站上线时间
+  var now = new Date();
+  var dnum;
+  var hnum;
+  var mnum;
+  var snum;
+  var nowHour;
+
+  // 计算并更新天数、小时数、分钟数和秒数
+  function updateTime() {
+    now = new Date(); // 更新 now 的值
+    nowHour = now.getHours(); // 更新 nowHour 的值
+    var days = (now - grt) / 1000 / 60 / 60 / 24;
+    dnum = Math.floor(days);
+    var hours = (now - grt) / 1000 / 60 / 60 - 24 * dnum;
+    hnum = Math.floor(hours);
+    if (String(hnum).length == 1) {
+      hnum = "0" + hnum;
+    }
+    var minutes = (now - grt) / 1000 / 60 - 24 * 60 * dnum - 60 * hnum;
+    mnum = Math.floor(minutes);
+    if (String(mnum).length == 1) {
+      mnum = "0" + mnum;
+    }
+    var seconds = (now - grt) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
+    snum = Math.round(seconds);
+    if (String(snum).length == 1) {
+      snum = "0" + snum;
+    }
+  }
+
+  // 更新网页中显示的网站运行时间
+  function updateHtml() {
+    const footer = document.getElementById("footer");
+    if (!footer) return
+    let currentTimeHtml = "";
+    if (nowHour < 18 && nowHour >= 9) {
+      // 如果是上班时间，默认就是"安知鱼-上班摸鱼中.svg"图片，不需要更改
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    } else {
+      // 如果是下班时间，插入"安知鱼-下班啦.svg"图片
+      let img = document.querySelector("#workboard .workSituationImg");
+      if (img != null) {
+        img.src = "";
+        img.title = "下班了就该开开心心的玩耍，嘿嘿~";
+        img.alt = "下班了就该开开心心的玩耍，嘿嘿~";
+      }
+
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    }
+
+    if (document.getElementById("runtimeTextTip")) {
+      document.getElementById("runtimeTextTip").innerHTML = currentTimeHtml;
+    }
+  }
+
+  setInterval(() => {
+    updateTime();
+    updateHtml();
+  }, 1000);
+})();</script><script src="https://cdn.cbd.int/algoliasearch@4.18.0/dist/algoliasearch-lite.umd.js"></script><script src="https://cdn.cbd.int/instantsearch.js@4.60.0/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><div class="js-pjax"><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdn.cbd.int/mermaid@10.2.4/dist/mermaid.min.js').then(runMermaid)
+  }
+
+  anzhiyu.addGlobalFn('themeChange', runMermaid, 'mermaid')
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>(() => {
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo.prorise666.site/',
+      region: 'ap-shanghai',
+      onCommentLoaded: () => {
+        anzhiyu.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') setTimeout(runFn,0)
+    else getScript('https://cdn.cbd.int/twikoo@1.6.39/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo.prorise666.site/',
+      region: 'ap-shanghai',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const runFn = () => {
+    init();
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else {
+      loadTwikoo()
+    }
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script><script>(() => {
+  let initFn = window.walineFn || null
+
+  const initWaline = (Fn) => {
+    const waline = Fn(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'https://waline.prorise666.site',
+      pageview: true,
+      dark: 'html[data-theme="dark"]',
+      path: window.location.pathname,
+      comment: true,
+      imageUploader: true,
+    }, null))
+
+    const destroyWaline = () => {
+      waline.destroy()
+    }
+
+    anzhiyu.addGlobalFn('pjax', destroyWaline, 'destroyWaline')
+  }
+
+  const loadWaline = async () => {
+    if (initFn) initWaline(initFn)
+    else {
+      await getCSS('https://cdn.cbd.int/@waline/client@3.1.3/dist/waline.css')
+      if (true) await getCSS('https://cdn.cbd.int/@waline/client@3.1.3/dist/waline-meta.css')
+      const { init } = await import('https://cdn.cbd.int/@waline/client@3.1.3/dist/waline.js')
+      initFn = init || Waline.init
+      initWaline(initFn)
+      window.walineFn = initFn
+    }
+  }
+
+  if ('Twikoo' === 'Waline' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('waline-wrap'),loadWaline)
+    else setTimeout(loadWaline, 0)
+  } else {
+    window.loadOtherComment = loadWaline
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"><script async="" src="/js/anzhiyu/comment_barrage.js"></script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'https://twikoo.prorise666.site/',
+        region: 'ap-shanghai',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://cdn.cbd.int/twikoo@1.6.39/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'><div class='name'><span>${array[i].nick} </span></div></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script async="" data-pjax="" src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script async="" data-pjax="" src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script src="/js/anzhiyu/right_click_menu.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script src="/js/doc-sidebar.js"></script><script src="/js/load-on-demand.js"></script><script src="//code.tidio.co//tk571vck0ua2wjoalfbp8wyrlsdaunmz.js" async=""></script><script>(() => {
+  const isChatBtn = true
+  const isChatHideShow = true
+
+  if (isChatBtn) {
+    let isShow = false
+    const close = () => {
+      window.tidioChatApi.hide()
+      isShow = false
+      document.body.style.position = 'relative';
+      document.documentElement.style.overflow = 'auto'
+    }
+    
+    const open = () => {
+      window.tidioChatApi.open()
+      window.tidioChatApi.show()
+      isShow = true
+    }
+
+    const onTidioChatApiReady = () => {
+      window.tidioChatApi.hide()
+      window.tidioChatApi.on("close", close)
+    }
+    if (window.tidioChatApi) {
+      window.tidioChatApi.on("ready", onTidioChatApiReady)
+    } else {
+      document.addEventListener("tidioChat-ready", onTidioChatApiReady)
+    }
+
+    window.chatBtnFn = () => {
+      if (!window.tidioChatApi) return
+      isShow ? close() : open()
+    }
+  } else if (isChatHideShow) {
+    window.chatBtn = {
+      hide: () => {
+        window.tidioChatApi && window.tidioChatApi.hide()
+      },
+      show: () => {
+        window.tidioChatApi && window.tidioChatApi.show()
+      }
+    }
+  }
+})()</script><link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/aplayer/1.10.1/APlayer.min.css" media="print" onload="this.media=&quot;all&quot;"><script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/aplayer/1.10.1/APlayer.min.js"></script><script src="https://npm.elemecdn.com/meting@2.0.1/dist/Meting.min.js"></script><script src="https://lib.baomitu.com/pjax/0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","meta[property=\"og:type\"]","meta[property=\"og:site_name\"]","meta[property=\"og:description\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: true,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '[object Object]', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async="" data-pjax="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div>
+    <link rel="stylesheet" href="https://ai.tianli0.top/static/public/postChatUser_summary.min.css">
+    <script>
+        let tianliGPT_key = 'S-DNA1JM95BX2F9L0N';
+        let tianliGPT_postSelector = '#article-container';
+        let tianliGPT_Title = '✨ AI 文章摘要';
+        let tianliGPT_postURL = '';
+        let tianliGPT_blacklist = '';
+        let tianliGPT_wordLimit = '1000';
+        let tianliGPT_typingAnimate = true;
+        let tianliGPT_theme = 'default';
+        var postChatConfig = {
+          backgroundColor: "#1e2022",
+          bottom: "76px",
+          left: "16px",
+          fill: "#FFFFFF",
+          width: "50px",
+          frameWidth: "380px",
+          frameHeight: "600px",
+          defaultInput: true,
+          upLoadWeb: true,
+          showInviteLink: false,
+          userTitle: "💬 Prorise",
+          userDesc: "我是 Prorise 博客的 AI 助手，有任何关于网站内容的问题都可以问我哦～",
+          addButton: true,
+          beginningText: "这篇文章介绍了",
+          userIcon: "",
+          userMode: "magic",
+          defaultChatQuestions: ["你好","你是谁"],
+          defaultSearchQuestions: ["视频压缩","设计"]
+        };
+    </script>
+    <script data-postchat_key="S-DNA1JM95BX2F9L0N" src="https://ai.tianli0.top/static/public/postChatUser_summary.min.js"></script>
+  </body></html>

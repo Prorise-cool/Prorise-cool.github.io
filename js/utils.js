@@ -1046,15 +1046,15 @@ const anzhiyu = {
 
     function dr_js_autofill_commentinfos() {
       var lauthor = [
-          "#author",
-          "input[name='comname']",
-          "#inpName",
-          "input[name='author']",
-          "#ds-dialog-name",
-          "#name",
-          "input[name='nick']",
-          "#comment_author",
-        ],
+        "#author",
+        "input[name='comname']",
+        "#inpName",
+        "input[name='author']",
+        "#ds-dialog-name",
+        "#name",
+        "input[name='nick']",
+        "#comment_author",
+      ],
         lmail = [
           "#mail",
           "#email",
@@ -1321,11 +1321,18 @@ const anzhiyu = {
       menuCommentBarrageDom.style.display = "none";
     }
   },
-  // 切换作者卡片状态文字
+  // 切换作者卡片状态文字（增强版）
   changeSayHelloText: function () {
+    // 检查 authorStatus 是否存在且不是字符串 'undefined'
+    if (!GLOBAL_CONFIG.authorStatus || GLOBAL_CONFIG.authorStatus === 'undefined' || typeof GLOBAL_CONFIG.authorStatus === 'string') {
+      return;
+    }
+
     const greetings = GLOBAL_CONFIG.authorStatus.skills;
+    if (!greetings || greetings.length === 0) return;
 
     const authorInfoSayHiElement = document.getElementById("author-info__sayhi");
+    if (!authorInfoSayHiElement) return;
 
     // 如果只有一个问候语，设置为默认值
     if (greetings.length === 1) {
@@ -1340,6 +1347,84 @@ const anzhiyu = {
       randomGreeting = greetings[Math.floor(Math.random() * greetings.length)];
     }
     authorInfoSayHiElement.textContent = randomGreeting;
+  },
+
+  // 增强版智慧话语切换功能
+  changeWittyWord: function () {
+    // 检查 authorStatus 是否存在且不是字符串 'undefined'
+    if (!GLOBAL_CONFIG.authorStatus || GLOBAL_CONFIG.authorStatus === 'undefined' || typeof GLOBAL_CONFIG.authorStatus === 'string') {
+      return;
+    }
+
+    const greetings = GLOBAL_CONFIG.authorStatus.witty_words || GLOBAL_CONFIG.authorStatus.skills;
+    const greetingElement = document.getElementById("author-info__sayhi");
+
+    if (!greetings || greetings.length === 0 || !greetingElement) return;
+
+    let randomGreeting;
+    let lastWittyWord = greetingElement.textContent;
+
+    do {
+      randomGreeting = greetings[Math.floor(Math.random() * greetings.length)];
+    } while (randomGreeting === lastWittyWord && greetings.length > 1);
+
+    greetingElement.textContent = randomGreeting;
+
+    // 添加切换动画效果
+    greetingElement.style.transform = 'scale(0.8)';
+    setTimeout(() => {
+      greetingElement.style.transform = 'scale(1)';
+    }, 150);
+  },
+
+  // 时间状态设置功能
+  setTimeState: function () {
+    const el = document.getElementById("author-info__sayhi");
+    if (!el) return;
+
+    // 检查 authorStatus 是否存在且不是字符串 'undefined'
+    if (!GLOBAL_CONFIG.authorStatus || GLOBAL_CONFIG.authorStatus === 'undefined' || typeof GLOBAL_CONFIG.authorStatus === 'string') {
+      return;
+    }
+
+    const hours = new Date().getHours();
+    const states = GLOBAL_CONFIG.authorStatus.states || {};
+
+    let greeting;
+    if (hours >= 5 && hours < 11) {
+      greeting = states.morning || "✨ 早上好，新的一天开始了";
+    } else if (hours >= 11 && hours < 14) {
+      greeting = states.noon || "🍲 午餐时间";
+    } else if (hours >= 14 && hours < 18) {
+      greeting = states.afternoon || "🌞 下午好";
+    } else if (hours >= 18 && hours < 22) {
+      greeting = states.night || "早点休息";
+    } else {
+      greeting = states.goodnight || "晚安 😴";
+    }
+
+    el.textContent = greeting;
+  },
+
+  // 初始化作者卡片
+  initAuthorCard: function () {
+    // 检查 authorStatus 是否存在且不是字符串 'undefined'
+    if (!GLOBAL_CONFIG.authorStatus || GLOBAL_CONFIG.authorStatus === 'undefined' || typeof GLOBAL_CONFIG.authorStatus === 'string') {
+      return;
+    }
+
+    // 设置初始时间状态
+    this.setTimeState();
+
+    // 如果有智慧话语，则使用智慧话语覆盖时间状态
+    const wittyWords = GLOBAL_CONFIG.authorStatus.witty_words;
+    if (wittyWords && wittyWords.length > 0) {
+      const randomGreeting = wittyWords[Math.floor(Math.random() * wittyWords.length)];
+      const greetingElement = document.getElementById("author-info__sayhi");
+      if (greetingElement) {
+        greetingElement.textContent = randomGreeting;
+      }
+    }
   },
 };
 
