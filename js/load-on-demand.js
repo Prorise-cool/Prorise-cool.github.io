@@ -81,15 +81,15 @@ class ResourceLoader {
                 .catch(err => console.error('Failed to load LazyLoad fallback:', err));
         }
 
-        // // 检测是否为首页（包括分页）
-        // const isHomePage = window.location.pathname === '/' ||
-        //     window.location.pathname === '/index.html' ||
-        //     /^\/page\/\d+\/?$/.test(window.location.pathname);
+        // 检测是否为首页（包括分页）
+        const isHomePage = window.location.pathname === '/' ||
+            window.location.pathname === '/index.html' ||
+            /^\/page\/\d+\/?$/.test(window.location.pathname);
 
-        // if (isHomePage) {
-        //     this.loadCSS('/css/index_media.css', 'index-media-style');
-        //     this.loadJS('/js/index_media.js', 'index-media-script');
-        // }
+        if (isHomePage) {
+            this.loadCSS('/css/index_media.css', 'index-media-style');
+            this.loadJS('/js/index_media.js', 'index-media-script');
+        }
 
         // 检测是否为文章页
         if (document.querySelector('#post') || document.querySelector('.post-content')) {
@@ -135,6 +135,41 @@ class ResourceLoader {
         // 检测代码块
         if (document.querySelector('pre code') || document.querySelector('.highlight')) {
             this.loadCSS('/custom/css/sandbox_style.css', 'sandbox-style');
+            // 统一加载代码相关样式
+            this.loadCSS('/custom/css/idea-code-theme.css', 'idea-code-theme');
+            this.loadCSS('/custom/css/enhanced-tags.css', 'enhanced-tags');
+        }
+
+        // 检测runbox可运行代码块标签
+        if (document.querySelector('.runbox-container')) {
+            // {{CHENGQI:
+            // Action: Modified
+            // Timestamp: [2025-01-15 10:45:00 +08:00]
+            // Reason: 优化runbox按需加载，解决PJAX页面切换时初始化问题
+            // Principle_Applied: KISS - 保持简洁的按需加载逻辑
+            // Optimization: 添加延迟和重试机制确保加载成功
+            // Architectural_Note (AR): 确保与主题PJAX系统完美兼容
+            // Documentation_Note (DW): 解决从主页到文章页面runbox功能不加载的问题
+            // }}
+            console.log('检测到runbox容器，开始加载资源...');
+
+            // 同时加载runbox样式和交互脚本
+            Promise.all([
+                this.loadCSS('/css/runbox.css', 'runbox-style'),
+                this.loadJS('/js/runbox-runner.js', 'runbox-runner-script')
+            ])
+                .then(() => {
+                    console.log('Runbox资源加载完成，延迟初始化...');
+                    // 延迟一下确保DOM完全渲染和脚本执行
+                    setTimeout(() => {
+                        // 触发重新检查runbox关联
+                        if (typeof window.recheckRunboxAssociations === 'function') {
+                            window.recheckRunboxAssociations();
+                            console.log('已触发runbox关联检查');
+                        }
+                    }, 200);
+                })
+                .catch(err => console.warn('Runbox资源加载失败:', err));
         }
 
         // 检测最新评论小组件（独立检测，主页也需要）
@@ -196,7 +231,17 @@ document.addEventListener('DOMContentLoaded', () => {
     window.resourceLoader.autoDetectAndLoad();
 });
 
-// 为PJAX提供支持
+// 为PJAX提供支持 - 优化时机
 document.addEventListener('pjax:complete', () => {
-    window.resourceLoader.autoDetectAndLoad();
+    // 给PJAX页面切换留出更多时间，确保DOM完全渲染
+    setTimeout(() => {
+        window.resourceLoader.autoDetectAndLoad();
+    }, 100);
+});
+
+// 额外的PJAX事件支持
+document.addEventListener('pjax:success', () => {
+    setTimeout(() => {
+        window.resourceLoader.autoDetectAndLoad();
+    }, 150);
 }); 

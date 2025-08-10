@@ -252,11 +252,89 @@ document.addEventListener("DOMContentLoaded", function () {
     const highlightShrinkClass = isHighlightShrink === true ? "closed" : "";
     const highlightShrinkEle =
       isHighlightShrink !== undefined
-        ? '<i class="anzhiyufont anzhiyu-icon-angle-down expand ${highlightShrinkClass}"></i>'
+        ? `<i class="anzhiyufont anzhiyu-icon-angle-down expand ${highlightShrinkClass}"></i>`
         : "";
     const highlightCopyEle = highlightCopy
       ? '<div class="copy-notice"></div><i class="anzhiyufont anzhiyu-icon-paste copy-button"></i>'
       : "";
+
+    // === Runbox 集成功能 ===
+
+    /**
+     * 检查代码块是否关联runbox
+     * @param {HTMLElement} codeBlock - 代码块元素
+     * @returns {string|null} runbox实例ID或null
+     */
+    const checkRunboxAssociation = (codeBlock) => {
+      try {
+        if (!window.runboxAPI || !window.runboxAPI.checkAssociation) {
+          return null;
+        }
+        return window.runboxAPI.checkAssociation(codeBlock);
+      } catch (error) {
+        console.warn('[main.js] Runbox association check failed:', error);
+        return null;
+      }
+    };
+
+    /**
+     * 生成runbox运行按钮HTML
+     * @param {string} runboxId - runbox实例ID
+     * @returns {string} 按钮HTML字符串
+     */
+    const generateRunboxButton = (runboxId) => {
+      return `<i class="anzhiyufont anzhiyu-icon-play runbox-run-btn" data-runbox-id="${runboxId}" title="运行"></i>`;
+    };
+
+    /**
+     * 处理runbox按钮点击事件
+     * @param {HTMLElement} button - 按钮元素
+     */
+    const handleRunboxButtonClick = async (button) => {
+      try {
+        const runboxId = button.dataset.runboxId;
+        if (!runboxId) {
+          console.warn('[main.js] No runbox ID found on button');
+          return;
+        }
+
+        if (!window.runboxAPI || !window.runboxAPI.execute) {
+          console.warn('[main.js] Runbox API not available');
+          anzhiyu.snackbarShow && anzhiyu.snackbarShow('Runbox功能暂不可用');
+          return;
+        }
+
+        // 执行runbox代码
+        await window.runboxAPI.execute(runboxId, button);
+
+      } catch (error) {
+        console.error('[main.js] Runbox execution failed:', error);
+        anzhiyu.snackbarShow && anzhiyu.snackbarShow('代码执行失败');
+      }
+    };
+
+    // === Runbox 重新检查函数 ===
+    const recheckRunboxAssociations = () => {
+      const pendingBlocks = document.querySelectorAll('figure.highlight[data-needs-runbox-check="true"]');
+
+      pendingBlocks.forEach(codeBlock => {
+        const runboxId = checkRunboxAssociation(codeBlock);
+        if (runboxId) {
+          const toolsElement = codeBlock.querySelector('.highlight-tools');
+          if (toolsElement && !toolsElement.querySelector('.runbox-run-btn')) {
+            const copyButton = toolsElement.querySelector('.copy-button');
+            if (copyButton) {
+              const button = generateRunboxButton(runboxId);
+              copyButton.insertAdjacentHTML('beforebegin', button);
+            }
+          }
+          codeBlock.removeAttribute('data-needs-runbox-check');
+        }
+      });
+    };
+
+    // 暴露给runbox-runner.js调用
+    window.recheckRunboxAssociations = recheckRunboxAssociations;
 
     const alertInfo = (ele, text) => {
       if (GLOBAL_CONFIG.Snackbar !== undefined) {
@@ -299,10 +377,23 @@ document.addEventListener("DOMContentLoaded", function () {
       ele.classList.toggle("closed");
     };
 
+    // === 扩展事件处理机制，支持runbox按钮 ===
     const highlightToolsFn = function (e) {
-      const $target = e.target.classList;
-      if ($target.contains("expand")) highlightShrinkFn(this);
-      else if ($target.contains("copy-button")) highlightCopyFn(this);
+      const $target = e.target;
+      const $targetClassList = $target.classList;
+
+      // 处理原有功能
+      if ($targetClassList.contains("expand")) {
+        highlightShrinkFn(this);
+      } else if ($targetClassList.contains("copy-button")) {
+        highlightCopyFn(this);
+      }
+      // 兼容 runbox-run-btn 与 runbox-button
+      else if ($targetClassList.contains("runbox-run-btn") || $targetClassList.contains("runbox-button")) {
+        e.preventDefault();
+        e.stopPropagation();
+        handleRunboxButtonClick($target);
+      }
     };
 
     const expandCode = function () {
@@ -315,7 +406,20 @@ document.addEventListener("DOMContentLoaded", function () {
       if (isShowTool) {
         const hlTools = document.createElement("div");
         hlTools.className = `highlight-tools ${highlightShrinkClass}`;
-        hlTools.innerHTML = highlightShrinkEle + lang + highlightCopyEle;
+
+        // === 检测runbox关联并生成按钮 ===
+        const runboxId = checkRunboxAssociation(item);
+        const runboxButtonEle = runboxId ? generateRunboxButton(runboxId) : "";
+
+        // 如果没找到但可能需要延迟检查，标记这个代码块
+        if (!runboxId) {
+          item.dataset.needsRunboxCheck = 'true';
+        }
+
+        // 将runbox按钮添加到工具栏HTML中
+        hlTools.innerHTML = highlightShrinkEle + lang + runboxButtonEle + highlightCopyEle;
+
+        // 绑定事件处理（已扩展支持runbox按钮）
         anzhiyu.addEventListenerPjax(hlTools, "click", highlightToolsFn);
         fragment.appendChild(hlTools);
       }

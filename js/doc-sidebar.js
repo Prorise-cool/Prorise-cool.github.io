@@ -26,10 +26,17 @@ function initDocSidebar() {
 
   // --- 函数定义区 ---
 
-  // 初始化布局状态 (来自您的原始代码)
+  // 初始化布局状态 (修改为默认隐藏)
   function initLayoutState() {
-    const isHidden = localStorage.getItem('doc-sidebar-hidden') === 'true';
+    const storedState = localStorage.getItem('doc-sidebar-hidden');
+    // 如果没有存储状态，默认隐藏；如果有存储状态，使用存储的状态
+    const isHidden = storedState === null ? true : storedState === 'true';
     document.body.classList.toggle('hide-doc-sidebar', isHidden);
+
+    // 如果是首次访问，保存默认隐藏状态到localStorage
+    if (storedState === null) {
+      localStorage.setItem('doc-sidebar-hidden', 'true');
+    }
   }
 
   // 初始化折叠功能 (基于您的原始逻辑进行优化)
