@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Prorise - 倾心分享技术</title>
+  <title>Prorise - 分享技术</title>
   
   
-  <link href="https://prorise666.site/atom.xml" rel="self"/>
+  <link href="https://zh.vma.cc/atom.xml" rel="self"/>
   
-  <link href="https://prorise666.site/"/>
+  <link href="https://zh.vma.cc/"/>
   <updated>2025-08-09T13:04:05.316Z</updated>
-  <id>https://prorise666.site/</id>
+  <id>https://zh.vma.cc/</id>
   
   <author>
     <name>Prorise</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Java微服务（一）：1.0 Spring6框架 - 为简化开发而生</title>
-    <link href="https://prorise666.site/posts/34023.html"/>
-    <id>https://prorise666.site/posts/34023.html</id>
+    <link href="https://zh.vma.cc/posts/34023.html"/>
+    <id>https://zh.vma.cc/posts/34023.html</id>
     <published>2025-08-09T08:13:45.000Z</published>
     <updated>2025-08-09T13:04:05.316Z</updated>
     
@@ -36,23 +36,23 @@
     
     
     
-    <category term="后端技术" scheme="https://prorise666.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/"/>
+    <category term="后端技术" scheme="https://zh.vma.cc/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/"/>
     
-    <category term="Java" scheme="https://prorise666.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/Java/"/>
+    <category term="Java" scheme="https://zh.vma.cc/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/Java/"/>
     
     
-    <category term="Java微服务篇" scheme="https://prorise666.site/tags/Java%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%AF%87/"/>
+    <category term="Java微服务篇" scheme="https://zh.vma.cc/tags/Java%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%AF%87/"/>
     
   </entry>
   
   <entry>
     <title>测试页</title>
-    <link href="https://prorise666.site/posts/5941.html"/>
-    <id>https://prorise666.site/posts/5941.html</id>
+    <link href="https://zh.vma.cc/posts/5941.html"/>
+    <id>https://zh.vma.cc/posts/5941.html</id>
     <published>2025-08-05T06:13:45.000Z</published>
-    <updated>2025-08-10T14:25:14.591Z</updated>
+    <updated>2025-08-10T14:54:39.379Z</updated>
     
-    <content type="html"><![CDATA[<div id="postchat_postcontent"><h1 id="Runbox功能测试页面"><a href="#Runbox功能测试页面" class="headerlink" title="Runbox功能测试页面"></a>Runbox功能测试页面</h1><h2 id="1-基础Console模式测试"><a href="#1-基础Console模式测试" class="headerlink" title="1. 基础Console模式测试"></a>1. 基础Console模式测试</h2><h3 id="Python代码执行示例"><a href="#Python代码执行示例" class="headerlink" title="Python代码执行示例"></a>Python代码执行示例</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">t = (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="number">5</span> <span class="keyword">not</span> <span class="keyword">in</span> t)  <span class="comment"># 5不在元组里面</span></span><br></pre></td></tr></table></figure>    <div class="runbox-container" data-runbox-label="运行元组测试" data-runbox-output="console" data-runbox-collapsed="true">        <div class="runbox-result collapsed">            <div class="runbox-result-content">                <pre class="runbox-output runbox-console"><code><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">False</span></span><br></pre></td></tr></table></figure></code></pre>            </div>        </div>    </div><h3 id="JavaScript代码执行示例"><a href="#JavaScript代码执行示例" class="headerlink" title="JavaScript代码执行示例"></a>JavaScript代码执行示例</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">const</span> result = numbers.<span class="title function_">includes</span>(<span class="number">5</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`5在数组中: <span class="subst">$&#123;result&#125;</span>`</span>);</span><br></pre></td></tr></table></figure>    <div class="runbox-container" data-runbox-label="执行JS" data-runbox-output="console" data-runbox-collapsed="true">        <div class="runbox-result collapsed">            <div class="runbox-result-content">                <pre class="runbox-output runbox-console"><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">5</span>在数组中: <span class="literal">true</span></span><br></pre></td></tr></table></figure></code></pre>            </div>        </div>    </div><h2 id="2-参数配置测试"><a href="#2-参数配置测试" class="headerlink" title="2. 参数配置测试"></a>2. 参数配置测试</h2><h3 id="自定义按钮标签"><a href="#自定义按钮标签" class="headerlink" title="自定义按钮标签"></a>自定义按钮标签</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">fibonacci</span>(<span class="params">n</span>):</span><br><span class="line">    <span class="keyword">if</span> n &lt;= <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> n</span><br><span class="line">    <span class="keyword">return</span> fibonacci(n-<span class="number">1</span>) + fibonacci(n-<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;斐波那契数列第10项: <span class="subst">&#123;fibonacci(<span class="number">10</span>)&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>    <div class="runbox-container" data-runbox-label="计算斐波那契" data-runbox-output="console" data-runbox-collapsed="false">        <div class="runbox-result">            <div class="runbox-result-content">                <pre class="runbox-output runbox-console"><code><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">斐波那契数列第<span class="number">10</span>项: <span class="number">55</span></span><br></pre></td></tr></table></figure></code></pre>            </div>        </div>    </div><h3 id="默认折叠状态测试"><a href="#默认折叠状态测试" class="headerlink" title="默认折叠状态测试"></a>默认折叠状态测试</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;圆周率: <span class="subst">&#123;math.pi&#125;</span>&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;自然常数: <span class="subst">&#123;math.e&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>    <div class="runbox-container" data-runbox-label="运行" data-runbox-output="console" data-runbox-collapsed="true">        <div class="runbox-result collapsed">            <div class="runbox-result-content">                <pre class="runbox-output runbox-console"><code><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">圆周率: <span class="number">3.141592653589793</span></span><br><span class="line">自然常数: <span class="number">2.718281828459045</span></span><br></pre></td></tr></table></figure></code></pre>            </div>        </div>    </div><h2 id="3-复杂输出测试"><a href="#3-复杂输出测试" class="headerlink" title="3. 复杂输出测试"></a>3. 复杂输出测试</h2><h3 id="多行输出"><a href="#多行输出" class="headerlink" title="多行输出"></a>多行输出</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">6</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;第<span class="subst">&#123;i&#125;</span>次循环，平方值: <span class="subst">&#123;i**<span class="number">2</span>&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>    <div class="runbox-container" data-runbox-label="循环输出" data-runbox-output="console" data-runbox-collapsed="true">        <div class="runbox-result collapsed">            <div class="runbox-result-content">                <pre class="runbox-output runbox-console"><code><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">第<span class="number">1</span>次循环，平方值: <span class="number">1</span></span><br><span class="line">第<span class="number">2</span>次循环，平方值: <span class="number">4</span></span><br><span class="line">第<span class="number">3</span>次循环，平方值: <span class="number">9</span></span><br><span class="line">第<span class="number">4</span>次循环，平方值: <span class="number">16</span></span><br><span class="line">第<span class="number">5</span>次循环，平方值: <span class="number">25</span></span><br></pre></td></tr></table></figure></code></pre>            </div>        </div>    </div><h3 id="包含特殊字符的输出"><a href="#包含特殊字符的输出" class="headerlink" title="包含特殊字符的输出"></a>包含特殊字符的输出</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data = &#123;<span class="string">&quot;name&quot;</span>: <span class="string">&quot;张三&quot;</span>, <span class="string">&quot;age&quot;</span>: <span class="number">25</span>, <span class="string">&quot;skills&quot;</span>: [<span class="string">&quot;Python&quot;</span>, <span class="string">&quot;JavaScript&quot;</span>]&#125;</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;用户信息: <span class="subst">&#123;data&#125;</span>&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;特殊字符测试: &lt;&gt;&amp;\&quot;&#x27;&quot;</span>)</span><br></pre></td></tr></table></figure>    <div class="runbox-container" data-runbox-label="特殊字符测试" data-runbox-output="console" data-runbox-collapsed="true">        <div class="runbox-result collapsed">            <div class="runbox-result-content">                <pre class="runbox-output runbox-console"><code><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">用户信息: &#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;张三&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">25</span>, <span class="string">&#x27;skills&#x27;</span>: [<span class="string">&#x27;Python&#x27;</span>, <span class="string">&#x27;JavaScript&#x27;</span>]&#125;</span><br><span class="line">特殊字符测试: &lt;&gt;&amp;<span class="string">&quot;&#x27;</span></span><br></pre></td></tr></table></figure></code></pre>            </div>        </div>    </div><h2 id="4-Image模式测试"><a href="#4-Image模式测试" class="headerlink" title="4. Image模式测试"></a>4. Image模式测试</h2><h3 id="前端代码效果展示"><a href="#前端代码效果展示" class="headerlink" title="前端代码效果展示"></a>前端代码效果展示</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;demo-box&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h3</span>&gt;</span>CSS动画效果<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;animated-circle&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>    <div class="runbox-container" data-runbox-label="查看效果" data-runbox-output="image" data-runbox-collapsed="true" data-runbox-src="https">        <div class="runbox-result collapsed">            <div class="runbox-result-content">                <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 这是一个CSS动画演示效果的截图 --&gt;</span></span><br></pre></td></tr></table></figure>            </div>        </div>    </div><h2 id="5-错误处理测试"><a href="#5-错误处理测试" class="headerlink" title="5. 错误处理测试"></a>5. 错误处理测试</h2><h3 id="空内容测试"><a href="#空内容测试" class="headerlink" title="空内容测试"></a>空内容测试</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 这个runbox内容为空，测试空内容处理</span></span><br></pre></td></tr></table></figure>    <div class="runbox-container" data-runbox-label="空结果测试" data-runbox-output="console" data-runbox-collapsed="true">        <div class="runbox-result collapsed">            <div class="runbox-result-content">                <pre class="runbox-output runbox-console"><code># 暂无内容请在runbox标签内添加代码执行结果</code></pre>            </div>        </div>    </div><h3 id="长文本输出测试"><a href="#长文本输出测试" class="headerlink" title="长文本输出测试"></a>长文本输出测试</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 生成长文本输出</span></span><br><span class="line">text = <span class="string">&quot;这是一行很长的文本输出，用于测试Console模式下的文本换行和显示效果。&quot;</span> * <span class="number">5</span></span><br><span class="line"><span class="built_in">print</span>(text)</span><br></pre></td></tr></table></figure>    <div class="runbox-container" data-runbox-label="长文本测试" data-runbox-output="console" data-runbox-collapsed="true">        <div class="runbox-result collapsed">            <div class="runbox-result-content">                <pre class="runbox-output runbox-console"><code><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这是一行很长的文本输出，用于测试Console模式下的文本换行和显示效果。这是一行很长的文本输出，用于测试Console模式下的文本换行和显示效果。这是一行很长的文本输出，用于测试Console模式下的文本换行和显示效果。这是一行很长的文本输出，用于测试Console模式下的文本换行和显示效果。这是一行很长的文本输出，用于测试Console模式下的文本换行和显示效果。</span><br></pre></td></tr></table></figure></code></pre>            </div>        </div>    </div><h2 id="6-多个runbox并存测试"><a href="#6-多个runbox并存测试" class="headerlink" title="6. 多个runbox并存测试"></a>6. 多个runbox并存测试</h2><h3 id="第一个runbox"><a href="#第一个runbox" class="headerlink" title="第一个runbox"></a>第一个runbox</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;第一个runbox测试&quot;</span>)</span><br></pre></td></tr></table></figure>    <div class="runbox-container" data-runbox-label="运行1" data-runbox-output="console" data-runbox-collapsed="true">        <div class="runbox-result collapsed">            <div class="runbox-result-content">                <pre class="runbox-output runbox-console"><code><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">第一个runbox测试</span><br></pre></td></tr></table></figure></code></pre>            </div>        </div>    </div><h3 id="第二个runbox"><a href="#第二个runbox" class="headerlink" title="第二个runbox"></a>第二个runbox</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;第二个runbox测试&quot;</span>)</span><br></pre></td></tr></table></figure>    <div class="runbox-container" data-runbox-label="运行2" data-runbox-output="console" data-runbox-collapsed="true">        <div class="runbox-result collapsed">            <div class="runbox-result-content">                <pre class="runbox-output runbox-console"><code><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">第二个runbox测试</span><br></pre></td></tr></table></figure></code></pre>            </div>        </div>    </div><h2 id="7-移动端体验测试"><a href="#7-移动端体验测试" class="headerlink" title="7. 移动端体验测试"></a>7. 移动端体验测试</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在移动端测试按钮点击和Console显示效果</span></span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line">now = datetime.datetime.now()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;当前时间: <span class="subst">&#123;now.strftime(<span class="string">&#x27;%Y-%m-%d %H:%M:%S&#x27;</span>)&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>    <div class="runbox-container" data-runbox-label="移动端测试" data-runbox-output="console" data-runbox-collapsed="true">        <div class="runbox-result collapsed">            <div class="runbox-result-content">                <pre class="runbox-output runbox-console"><code><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">当前时间: <span class="number">2025</span>-01-<span class="number">14</span> <span class="number">21</span>:<span class="number">30</span>:<span class="number">00</span></span><br></pre></td></tr></table></figure></code></pre>            </div>        </div>    </div><hr></div>]]></content>
+    <content type="html"><![CDATA[<div id="postchat_postcontent"><h1 id="Runbox功能测试页面"><a href="#Runbox功能测试页面" class="headerlink" title="Runbox功能测试页面"></a>Runbox功能测试页面</h1><h2 id="1-基础Console模式测试"><a href="#1-基础Console模式测试" class="headerlink" title="1. 基础Console模式测试"></a>1. 基础Console模式测试</h2><h3 id="Python代码执行示例"><a href="#Python代码执行示例" class="headerlink" title="Python代码执行示例"></a>Python代码执行示例</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">t = (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="number">5</span> <span class="keyword">not</span> <span class="keyword">in</span> t)  <span class="comment"># 5不在元组里面</span></span><br></pre></td></tr></table></figure>    <div class="runbox-container" data-runbox-label="运行元组测试" data-runbox-output="console" data-runbox-collapsed="true">        <div class="runbox-result collapsed">            <div class="runbox-result-content">                <pre class="runbox-output runbox-console"><code><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">False</span></span><br></pre></td></tr></table></figure></code></pre>            </div>        </div>    </div><h3 id="JavaScript代码执行示例"><a href="#JavaScript代码执行示例" class="headerlink" title="JavaScript代码执行示例"></a>JavaScript代码执行示例</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">const</span> result = numbers.<span class="title function_">includes</span>(<span class="number">5</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`5在数组中: <span class="subst">$&#123;result&#125;</span>`</span>);</span><br></pre></td></tr></table></figure>    <div class="runbox-container" data-runbox-label="执行JS" data-runbox-output="console" data-runbox-collapsed="true">        <div class="runbox-result collapsed">            <div class="runbox-result-content">                <pre class="runbox-output runbox-console"><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">5</span>在数组中: <span class="literal">true</span></span><br></pre></td></tr></table></figure></code></pre>            </div>        </div>    </div><h2 id="2-参数配置测试"><a href="#2-参数配置测试" class="headerlink" title="2. 参数配置测试"></a>2. 参数配置测试</h2><h3 id="自定义按钮标签"><a href="#自定义按钮标签" class="headerlink" title="自定义按钮标签"></a>自定义按钮标签</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">fibonacci</span>(<span class="params">n</span>):</span><br><span class="line">    <span class="keyword">if</span> n &lt;= <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> n</span><br><span class="line">    <span class="keyword">return</span> fibonacci(n-<span class="number">1</span>) + fibonacci(n-<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;斐波那契数列第10项: <span class="subst">&#123;fibonacci(<span class="number">10</span>)&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>    <div class="runbox-container" data-runbox-label="计算斐波那契" data-runbox-output="console" data-runbox-collapsed="false">        <div class="runbox-result">            <div class="runbox-result-content">                <pre class="runbox-output runbox-console"><code><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">斐波那契数列第<span class="number">10</span>项: <span class="number">55</span></span><br></pre></td></tr></table></figure></code></pre>            </div>        </div>    </div><h3 id="默认折叠状态测试"><a href="#默认折叠状态测试" class="headerlink" title="默认折叠状态测试"></a>默认折叠状态测试</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;圆周率: <span class="subst">&#123;math.pi&#125;</span>&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;自然常数: <span class="subst">&#123;math.e&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>    <div class="runbox-container" data-runbox-label="运行" data-runbox-output="console" data-runbox-collapsed="true">        <div class="runbox-result collapsed">            <div class="runbox-result-content">                <pre class="runbox-output runbox-console"><code><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">圆周率: <span class="number">3.141592653589793</span></span><br><span class="line">自然常数: <span class="number">2.718281828459045</span></span><br></pre></td></tr></table></figure></code></pre>            </div>        </div>    </div><h2 id="3-复杂输出测试"><a href="#3-复杂输出测试" class="headerlink" title="3. 复杂输出测试"></a>3. 复杂输出测试</h2><h3 id="多行输出"><a href="#多行输出" class="headerlink" title="多行输出"></a>多行输出</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">6</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;第<span class="subst">&#123;i&#125;</span>次循环，平方值: <span class="subst">&#123;i**<span class="number">2</span>&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>    <div class="runbox-container" data-runbox-label="循环输出" data-runbox-output="console" data-runbox-collapsed="true">        <div class="runbox-result collapsed">            <div class="runbox-result-content">                <pre class="runbox-output runbox-console"><code><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">第<span class="number">1</span>次循环，平方值: <span class="number">1</span></span><br><span class="line">第<span class="number">2</span>次循环，平方值: <span class="number">4</span></span><br><span class="line">第<span class="number">3</span>次循环，平方值: <span class="number">9</span></span><br><span class="line">第<span class="number">4</span>次循环，平方值: <span class="number">16</span></span><br><span class="line">第<span class="number">5</span>次循环，平方值: <span class="number">25</span></span><br></pre></td></tr></table></figure></code></pre>            </div>        </div>    </div><h3 id="包含特殊字符的输出"><a href="#包含特殊字符的输出" class="headerlink" title="包含特殊字符的输出"></a>包含特殊字符的输出</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data = &#123;<span class="string">&quot;name&quot;</span>: <span class="string">&quot;张三&quot;</span>, <span class="string">&quot;age&quot;</span>: <span class="number">25</span>, <span class="string">&quot;skills&quot;</span>: [<span class="string">&quot;Python&quot;</span>, <span class="string">&quot;JavaScript&quot;</span>]&#125;</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;用户信息: <span class="subst">&#123;data&#125;</span>&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;特殊字符测试: &lt;&gt;&amp;\&quot;&#x27;&quot;</span>)</span><br></pre></td></tr></table></figure>    <div class="runbox-container" data-runbox-label="特殊字符测试" data-runbox-output="console" data-runbox-collapsed="true">        <div class="runbox-result collapsed">            <div class="runbox-result-content">                <pre class="runbox-output runbox-console"><code><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">用户信息: &#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;张三&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">25</span>, <span class="string">&#x27;skills&#x27;</span>: [<span class="string">&#x27;Python&#x27;</span>, <span class="string">&#x27;JavaScript&#x27;</span>]&#125;</span><br><span class="line">特殊字符测试: &lt;&gt;&amp;<span class="string">&quot;&#x27;</span></span><br></pre></td></tr></table></figure></code></pre>            </div>        </div>    </div><h2 id="4-Image模式测试"><a href="#4-Image模式测试" class="headerlink" title="4. Image模式测试"></a>4. Image模式测试</h2><h3 id="前端代码效果展示"><a href="#前端代码效果展示" class="headerlink" title="前端代码效果展示"></a>前端代码效果展示</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;demo-box&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h3</span>&gt;</span>CSS动画效果<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;animated-circle&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>    <div class="runbox-container" data-runbox-label="查看效果" data-runbox-output="image" data-runbox-collapsed="true" data-runbox-src="https">        <div class="runbox-result collapsed">            <div class="runbox-result-content">                <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 这是一个CSS动画演示效果的截图 --&gt;</span></span><br></pre></td></tr></table></figure>            </div>        </div>    </div><h2 id="5-错误处理测试"><a href="#5-错误处理测试" class="headerlink" title="5. 错误处理测试"></a>5. 错误处理测试</h2><h3 id="空内容测试"><a href="#空内容测试" class="headerlink" title="空内容测试"></a>空内容测试</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 这个runbox内容为空，测试空内容处理</span></span><br></pre></td></tr></table></figure>    <div class="runbox-container" data-runbox-label="空结果测试" data-runbox-output="console" data-runbox-collapsed="true">        <div class="runbox-result collapsed">            <div class="runbox-result-content">                <pre class="runbox-output runbox-console"><code># 暂无内容请在runbox标签内添加代码执行结果</code></pre>            </div>        </div>    </div><h3 id="长文本输出测试"><a href="#长文本输出测试" class="headerlink" title="长文本输出测试"></a>长文本输出测试</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 生成长文本输出</span></span><br><span class="line">text = <span class="string">&quot;这是一行很长的文本输出，用于测试Console模式下的文本换行和显示效果。&quot;</span> * <span class="number">5</span></span><br><span class="line"><span class="built_in">print</span>(text)</span><br></pre></td></tr></table></figure>    <div class="runbox-container" data-runbox-label="长文本测试" data-runbox-output="console" data-runbox-collapsed="true">        <div class="runbox-result collapsed">            <div class="runbox-result-content">                <pre class="runbox-output runbox-console"><code><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这是一行很长的文本输出，用于测试Console模式下的文本换行和显示效果。这是一行很长的文本输出，用于测试Console模式下的文本换行和显示效果。这是一行很长的文本输出，用于测试Console模式下的文本换行和显示效果。这是一行很长的文本输出，用于测试Console模式下的文本换行和显示效果。这是一行很长的文本输出，用于测试Console模式下的文本换行和显示效果。</span><br></pre></td></tr></table></figure></code></pre>            </div>        </div>    </div><h2 id="6-多个runbox并存测试"><a href="#6-多个runbox并存测试" class="headerlink" title="6. 多个runbox并存测试"></a>6. 多个runbox并存测试</h2><h3 id="第一个runbox"><a href="#第一个runbox" class="headerlink" title="第一个runbox"></a>第一个runbox</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;第一个runbox测试&quot;</span>)</span><br></pre></td></tr></table></figure>    <div class="runbox-container" data-runbox-label="运行1" data-runbox-output="console" data-runbox-collapsed="true">        <div class="runbox-result collapsed">            <div class="runbox-result-content">                <pre class="runbox-output runbox-console"><code><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">第一个runbox测试</span><br></pre></td></tr></table></figure></code></pre>            </div>        </div>    </div><h3 id="第二个runbox"><a href="#第二个runbox" class="headerlink" title="第二个runbox"></a>第二个runbox</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;第二个runbox测试&quot;</span>)</span><br></pre></td></tr></table></figure>    <div class="runbox-container" data-runbox-label="运行2" data-runbox-output="console" data-runbox-collapsed="true">        <div class="runbox-result collapsed">            <div class="runbox-result-content">                <pre class="runbox-output runbox-console"><code><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">第二个runbox测试</span><br></pre></td></tr></table></figure></code></pre>            </div>        </div>    </div><h2 id="7-移动端体验测试"><a href="#7-移动端体验测试" class="headerlink" title="7. 移动端体验测试"></a>7. 移动端体验测试</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在移动端测试按钮点击和Console显示效果</span></span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line">now = datetime.datetime.now()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;当前时间: <span class="subst">&#123;now.strftime(<span class="string">&#x27;%Y-%m-%d %H:%M:%S&#x27;</span>)&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>    <div class="runbox-container" data-runbox-label="移动端测试" data-runbox-output="console" data-runbox-collapsed="true">        <div class="runbox-result collapsed">            <div class="runbox-result-content">                <pre class="runbox-output runbox-console"><code><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">当前时间: <span class="number">2025</span>-01-<span class="number">14</span> <span class="number">21</span>:<span class="number">30</span>:<span class="number">00</span></span><br></pre></td></tr></table></figure></code></pre>            </div>        </div>    </div><hr><h1 id="测试缓存是否会自动刷新！！"><a href="#测试缓存是否会自动刷新！！" class="headerlink" title="测试缓存是否会自动刷新！！~~~~"></a>测试缓存是否会自动刷新！！~~~~</h1></div>]]></content>
     
     
     <summary type="html">测试用页面 - runbox功能测试</summary>
@@ -64,8 +64,8 @@
   
   <entry>
     <title>进站必看博客手册</title>
-    <link href="https://prorise666.site/posts/59129.html"/>
-    <id>https://prorise666.site/posts/59129.html</id>
+    <link href="https://zh.vma.cc/posts/59129.html"/>
+    <id>https://zh.vma.cc/posts/59129.html</id>
     <published>2025-08-03T06:13:45.000Z</published>
     <updated>2025-08-09T08:48:06.769Z</updated>
     
@@ -77,14 +77,14 @@
     
     
     
-    <category term="入站必读" scheme="https://prorise666.site/tags/%E5%85%A5%E7%AB%99%E5%BF%85%E8%AF%BB/"/>
+    <category term="入站必读" scheme="https://zh.vma.cc/tags/%E5%85%A5%E7%AB%99%E5%BF%85%E8%AF%BB/"/>
     
   </entry>
   
   <entry>
     <title>Claude Code 使用教程</title>
-    <link href="https://prorise666.site/posts/35531.html"/>
-    <id>https://prorise666.site/posts/35531.html</id>
+    <link href="https://zh.vma.cc/posts/35531.html"/>
+    <id>https://zh.vma.cc/posts/35531.html</id>
     <published>2025-08-03T03:13:45.000Z</published>
     <updated>2025-08-06T11:39:45.729Z</updated>
     
@@ -101,17 +101,17 @@
     
     
     
-    <category term="三方平台系列" scheme="https://prorise666.site/categories/%E4%B8%89%E6%96%B9%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97/"/>
+    <category term="三方平台系列" scheme="https://zh.vma.cc/categories/%E4%B8%89%E6%96%B9%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97/"/>
     
     
-    <category term="Claude Code教程" scheme="https://prorise666.site/tags/Claude-Code%E6%95%99%E7%A8%8B/"/>
+    <category term="Claude Code教程" scheme="https://zh.vma.cc/tags/Claude-Code%E6%95%99%E7%A8%8B/"/>
     
   </entry>
   
   <entry>
     <title>Coze三方平台使用教程</title>
-    <link href="https://prorise666.site/posts/35020.html"/>
-    <id>https://prorise666.site/posts/35020.html</id>
+    <link href="https://zh.vma.cc/posts/35020.html"/>
+    <id>https://zh.vma.cc/posts/35020.html</id>
     <published>2025-07-30T03:13:45.000Z</published>
     <updated>2025-08-03T14:14:01.809Z</updated>
     
@@ -128,19 +128,19 @@
     
     
     
-    <category term="三方平台系列" scheme="https://prorise666.site/categories/%E4%B8%89%E6%96%B9%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97/"/>
+    <category term="三方平台系列" scheme="https://zh.vma.cc/categories/%E4%B8%89%E6%96%B9%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97/"/>
     
-    <category term="Coze系列" scheme="https://prorise666.site/categories/%E4%B8%89%E6%96%B9%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97/Coze%E7%B3%BB%E5%88%97/"/>
+    <category term="Coze系列" scheme="https://zh.vma.cc/categories/%E4%B8%89%E6%96%B9%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97/Coze%E7%B3%BB%E5%88%97/"/>
     
     
-    <category term="Coze教程" scheme="https://prorise666.site/tags/Coze%E6%95%99%E7%A8%8B/"/>
+    <category term="Coze教程" scheme="https://zh.vma.cc/tags/Coze%E6%95%99%E7%A8%8B/"/>
     
   </entry>
   
   <entry>
     <title>4️⃣ 商业B端产品经理实战</title>
-    <link href="https://prorise666.site/posts/30592.html"/>
-    <id>https://prorise666.site/posts/30592.html</id>
+    <link href="https://zh.vma.cc/posts/30592.html"/>
+    <id>https://zh.vma.cc/posts/30592.html</id>
     <published>2025-07-26T07:09:45.000Z</published>
     <updated>2025-07-28T12:49:11.361Z</updated>
     
@@ -157,17 +157,17 @@
     
     
     
-    <category term="产品经理实战" scheme="https://prorise666.site/categories/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E5%AE%9E%E6%88%98/"/>
+    <category term="产品经理实战" scheme="https://zh.vma.cc/categories/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E5%AE%9E%E6%88%98/"/>
     
     
-    <category term="产品经理实战" scheme="https://prorise666.site/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E5%AE%9E%E6%88%98/"/>
+    <category term="产品经理实战" scheme="https://zh.vma.cc/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E5%AE%9E%E6%88%98/"/>
     
   </entry>
   
   <entry>
     <title>第五章：用户运营</title>
-    <link href="https://prorise666.site/posts/51707.html"/>
-    <id>https://prorise666.site/posts/51707.html</id>
+    <link href="https://zh.vma.cc/posts/51707.html"/>
+    <id>https://zh.vma.cc/posts/51707.html</id>
     <published>2025-07-26T05:13:45.000Z</published>
     <updated>2025-07-26T13:11:09.136Z</updated>
     
@@ -184,17 +184,17 @@
     
     
     
-    <category term="产品经理" scheme="https://prorise666.site/categories/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/"/>
+    <category term="产品经理" scheme="https://zh.vma.cc/categories/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/"/>
     
     
-    <category term="产品经理教程" scheme="https://prorise666.site/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E6%95%99%E7%A8%8B/"/>
+    <category term="产品经理教程" scheme="https://zh.vma.cc/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E6%95%99%E7%A8%8B/"/>
     
   </entry>
   
   <entry>
     <title>第四章：内容管理</title>
-    <link href="https://prorise666.site/posts/19658.html"/>
-    <id>https://prorise666.site/posts/19658.html</id>
+    <link href="https://zh.vma.cc/posts/19658.html"/>
+    <id>https://zh.vma.cc/posts/19658.html</id>
     <published>2025-07-26T04:13:45.000Z</published>
     <updated>2025-07-26T13:11:09.139Z</updated>
     
@@ -211,17 +211,17 @@
     
     
     
-    <category term="产品经理" scheme="https://prorise666.site/categories/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/"/>
+    <category term="产品经理" scheme="https://zh.vma.cc/categories/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/"/>
     
     
-    <category term="产品经理教程" scheme="https://prorise666.site/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E6%95%99%E7%A8%8B/"/>
+    <category term="产品经理教程" scheme="https://zh.vma.cc/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E6%95%99%E7%A8%8B/"/>
     
   </entry>
   
   <entry>
     <title>第三章：活动管理-总价活动</title>
-    <link href="https://prorise666.site/posts/27803.html"/>
-    <id>https://prorise666.site/posts/27803.html</id>
+    <link href="https://zh.vma.cc/posts/27803.html"/>
+    <id>https://zh.vma.cc/posts/27803.html</id>
     <published>2025-07-26T03:13:45.000Z</published>
     <updated>2025-07-26T13:11:09.134Z</updated>
     
@@ -238,17 +238,17 @@
     
     
     
-    <category term="产品经理" scheme="https://prorise666.site/categories/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/"/>
+    <category term="产品经理" scheme="https://zh.vma.cc/categories/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/"/>
     
     
-    <category term="产品经理教程" scheme="https://prorise666.site/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E6%95%99%E7%A8%8B/"/>
+    <category term="产品经理教程" scheme="https://zh.vma.cc/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E6%95%99%E7%A8%8B/"/>
     
   </entry>
   
   <entry>
     <title>第二章：活动管理-单品活动</title>
-    <link href="https://prorise666.site/posts/10822.html"/>
-    <id>https://prorise666.site/posts/10822.html</id>
+    <link href="https://zh.vma.cc/posts/10822.html"/>
+    <id>https://zh.vma.cc/posts/10822.html</id>
     <published>2025-07-26T02:13:45.000Z</published>
     <updated>2025-07-26T13:11:09.140Z</updated>
     
@@ -265,17 +265,17 @@
     
     
     
-    <category term="产品经理" scheme="https://prorise666.site/categories/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/"/>
+    <category term="产品经理" scheme="https://zh.vma.cc/categories/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/"/>
     
     
-    <category term="产品经理教程" scheme="https://prorise666.site/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E6%95%99%E7%A8%8B/"/>
+    <category term="产品经理教程" scheme="https://zh.vma.cc/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E6%95%99%E7%A8%8B/"/>
     
   </entry>
   
   <entry>
     <title>第一章：电商运营基础</title>
-    <link href="https://prorise666.site/posts/38528.html"/>
-    <id>https://prorise666.site/posts/38528.html</id>
+    <link href="https://zh.vma.cc/posts/38528.html"/>
+    <id>https://zh.vma.cc/posts/38528.html</id>
     <published>2025-07-26T01:13:45.000Z</published>
     <updated>2025-07-26T13:11:09.131Z</updated>
     
@@ -292,17 +292,17 @@
     
     
     
-    <category term="产品经理" scheme="https://prorise666.site/categories/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/"/>
+    <category term="产品经理" scheme="https://zh.vma.cc/categories/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/"/>
     
     
-    <category term="产品经理教程" scheme="https://prorise666.site/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E6%95%99%E7%A8%8B/"/>
+    <category term="产品经理教程" scheme="https://zh.vma.cc/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E6%95%99%E7%A8%8B/"/>
     
   </entry>
   
   <entry>
     <title>3️⃣ 电商运营实战</title>
-    <link href="https://prorise666.site/posts/45404.html"/>
-    <id>https://prorise666.site/posts/45404.html</id>
+    <link href="https://zh.vma.cc/posts/45404.html"/>
+    <id>https://zh.vma.cc/posts/45404.html</id>
     <published>2025-07-25T03:22:34.000Z</published>
     <updated>2025-07-26T13:21:31.318Z</updated>
     
@@ -319,17 +319,17 @@
     
     
     
-    <category term="产品经理实战" scheme="https://prorise666.site/categories/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E5%AE%9E%E6%88%98/"/>
+    <category term="产品经理实战" scheme="https://zh.vma.cc/categories/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E5%AE%9E%E6%88%98/"/>
     
     
-    <category term="产品经理实战" scheme="https://prorise666.site/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E5%AE%9E%E6%88%98/"/>
+    <category term="产品经理实战" scheme="https://zh.vma.cc/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E5%AE%9E%E6%88%98/"/>
     
   </entry>
   
   <entry>
     <title>产品经理进阶（十一）：第十一章：直播电商</title>
-    <link href="https://prorise666.site/posts/60138.html"/>
-    <id>https://prorise666.site/posts/60138.html</id>
+    <link href="https://zh.vma.cc/posts/60138.html"/>
+    <id>https://zh.vma.cc/posts/60138.html</id>
     <published>2025-07-24T18:13:45.000Z</published>
     <updated>2025-07-25T03:05:48.661Z</updated>
     
@@ -346,17 +346,17 @@
     
     
     
-    <category term="产品经理" scheme="https://prorise666.site/categories/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/"/>
+    <category term="产品经理" scheme="https://zh.vma.cc/categories/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/"/>
     
     
-    <category term="产品经理教程" scheme="https://prorise666.site/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E6%95%99%E7%A8%8B/"/>
+    <category term="产品经理教程" scheme="https://zh.vma.cc/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E6%95%99%E7%A8%8B/"/>
     
   </entry>
   
   <entry>
     <title>产品经理进阶（十）：第十章：分销电商</title>
-    <link href="https://prorise666.site/posts/27703.html"/>
-    <id>https://prorise666.site/posts/27703.html</id>
+    <link href="https://zh.vma.cc/posts/27703.html"/>
+    <id>https://zh.vma.cc/posts/27703.html</id>
     <published>2025-07-24T17:13:45.000Z</published>
     <updated>2025-07-25T03:05:48.665Z</updated>
     
@@ -373,17 +373,17 @@
     
     
     
-    <category term="产品经理" scheme="https://prorise666.site/categories/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/"/>
+    <category term="产品经理" scheme="https://zh.vma.cc/categories/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/"/>
     
     
-    <category term="产品经理教程" scheme="https://prorise666.site/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E6%95%99%E7%A8%8B/"/>
+    <category term="产品经理教程" scheme="https://zh.vma.cc/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E6%95%99%E7%A8%8B/"/>
     
   </entry>
   
   <entry>
     <title>产品经理进阶（九）：第九章：电商后台 - 财务管理</title>
-    <link href="https://prorise666.site/posts/40087.html"/>
-    <id>https://prorise666.site/posts/40087.html</id>
+    <link href="https://zh.vma.cc/posts/40087.html"/>
+    <id>https://zh.vma.cc/posts/40087.html</id>
     <published>2025-07-24T16:13:45.000Z</published>
     <updated>2025-07-25T03:05:48.658Z</updated>
     
@@ -400,17 +400,17 @@
     
     
     
-    <category term="产品经理" scheme="https://prorise666.site/categories/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/"/>
+    <category term="产品经理" scheme="https://zh.vma.cc/categories/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/"/>
     
     
-    <category term="产品经理教程" scheme="https://prorise666.site/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E6%95%99%E7%A8%8B/"/>
+    <category term="产品经理教程" scheme="https://zh.vma.cc/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E6%95%99%E7%A8%8B/"/>
     
   </entry>
   
   <entry>
     <title>产品经理进阶（八）：第八章：电商后台 - 种草管理</title>
-    <link href="https://prorise666.site/posts/25511.html"/>
-    <id>https://prorise666.site/posts/25511.html</id>
+    <link href="https://zh.vma.cc/posts/25511.html"/>
+    <id>https://zh.vma.cc/posts/25511.html</id>
     <published>2025-07-24T15:13:45.000Z</published>
     <updated>2025-07-25T03:05:48.654Z</updated>
     
@@ -427,17 +427,17 @@
     
     
     
-    <category term="产品经理" scheme="https://prorise666.site/categories/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/"/>
+    <category term="产品经理" scheme="https://zh.vma.cc/categories/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/"/>
     
     
-    <category term="产品经理教程" scheme="https://prorise666.site/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E6%95%99%E7%A8%8B/"/>
+    <category term="产品经理教程" scheme="https://zh.vma.cc/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E6%95%99%E7%A8%8B/"/>
     
   </entry>
   
   <entry>
     <title>产品经理进阶（七）：第七章：售后管理</title>
-    <link href="https://prorise666.site/posts/32684.html"/>
-    <id>https://prorise666.site/posts/32684.html</id>
+    <link href="https://zh.vma.cc/posts/32684.html"/>
+    <id>https://zh.vma.cc/posts/32684.html</id>
     <published>2025-07-24T14:13:45.000Z</published>
     <updated>2025-07-25T03:05:48.656Z</updated>
     
@@ -454,17 +454,17 @@
     
     
     
-    <category term="产品经理" scheme="https://prorise666.site/categories/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/"/>
+    <category term="产品经理" scheme="https://zh.vma.cc/categories/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/"/>
     
     
-    <category term="产品经理教程" scheme="https://prorise666.site/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E6%95%99%E7%A8%8B/"/>
+    <category term="产品经理教程" scheme="https://zh.vma.cc/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E6%95%99%E7%A8%8B/"/>
     
   </entry>
   
   <entry>
     <title>产品经理进阶（六）：第六章：电商后台 - 运营与交易管理</title>
-    <link href="https://prorise666.site/posts/37507.html"/>
-    <id>https://prorise666.site/posts/37507.html</id>
+    <link href="https://zh.vma.cc/posts/37507.html"/>
+    <id>https://zh.vma.cc/posts/37507.html</id>
     <published>2025-07-24T13:13:45.000Z</published>
     <updated>2025-07-25T03:05:48.638Z</updated>
     
@@ -481,17 +481,17 @@
     
     
     
-    <category term="产品经理" scheme="https://prorise666.site/categories/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/"/>
+    <category term="产品经理" scheme="https://zh.vma.cc/categories/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/"/>
     
     
-    <category term="产品经理教程" scheme="https://prorise666.site/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E6%95%99%E7%A8%8B/"/>
+    <category term="产品经理教程" scheme="https://zh.vma.cc/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E6%95%99%E7%A8%8B/"/>
     
   </entry>
   
   <entry>
     <title>产品经理进阶（五）：第五章：电商后台 - 商品管理</title>
-    <link href="https://prorise666.site/posts/4512.html"/>
-    <id>https://prorise666.site/posts/4512.html</id>
+    <link href="https://zh.vma.cc/posts/4512.html"/>
+    <id>https://zh.vma.cc/posts/4512.html</id>
     <published>2025-07-24T12:13:45.000Z</published>
     <updated>2025-07-25T03:05:48.644Z</updated>
     
@@ -508,17 +508,17 @@
     
     
     
-    <category term="产品经理" scheme="https://prorise666.site/categories/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/"/>
+    <category term="产品经理" scheme="https://zh.vma.cc/categories/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/"/>
     
     
-    <category term="产品经理教程" scheme="https://prorise666.site/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E6%95%99%E7%A8%8B/"/>
+    <category term="产品经理教程" scheme="https://zh.vma.cc/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E6%95%99%E7%A8%8B/"/>
     
   </entry>
   
   <entry>
     <title>产品经理进阶（四）：第四章：电商后台产品设计</title>
-    <link href="https://prorise666.site/posts/26490.html"/>
-    <id>https://prorise666.site/posts/26490.html</id>
+    <link href="https://zh.vma.cc/posts/26490.html"/>
+    <id>https://zh.vma.cc/posts/26490.html</id>
     <published>2025-07-24T11:13:45.000Z</published>
     <updated>2025-07-25T03:05:48.651Z</updated>
     
@@ -535,10 +535,10 @@
     
     
     
-    <category term="产品经理" scheme="https://prorise666.site/categories/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/"/>
+    <category term="产品经理" scheme="https://zh.vma.cc/categories/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/"/>
     
     
-    <category term="产品经理教程" scheme="https://prorise666.site/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E6%95%99%E7%A8%8B/"/>
+    <category term="产品经理教程" scheme="https://zh.vma.cc/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E6%95%99%E7%A8%8B/"/>
     
   </entry>
   
